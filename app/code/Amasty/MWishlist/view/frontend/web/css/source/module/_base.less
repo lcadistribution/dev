@@ -1,0 +1,121 @@
+//
+//  Base and override Magento styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-wishlist-index {
+        .sidebar-main,
+        .sidebar-additional {
+            width: 22.3%;
+        }
+
+        .column.main {
+            width: 77.7%;
+        }
+    }
+
+    .amwishlist-overlay-block {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 8;
+    }
+
+    .amwishlist-wishlist-index .pager {
+        & {
+            .am-flex(space-between, none, wrap);
+
+            padding: @amwishlist__indent 0 @amwishlist__indent__l;
+        }
+
+        .pages {
+            flex-basis: 100%;
+            text-align: center;
+        }
+
+        .limiter {
+            margin: @amwishlist__indent__m * 2 0 0 auto;
+        }
+
+        .toolbar-amount {
+            display: none;
+        }
+    }
+
+    .amwishlist-pager {
+        .toolbar-amount,
+        .pages,
+        .limiter {
+            display: inline-block;
+        }
+
+        .pages {
+            right: 0;
+            left: 0;
+            width: auto;
+        }
+    }
+
+    .amwishlist-messages-list {
+        & {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            color: @amwishlist__color__error;
+            list-style: none;
+            text-align: left;
+            text-transform: capitalize;
+            font-size: 12px;
+        }
+
+        .amwishlist-item {
+            display: block;
+            margin: 0;
+            padding: @amwishlist__indent 0 0;
+            width: 100%;
+        }
+    }
+}
+
+//
+//  Mobile
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amwishlist-wishlist-index .pager {
+        .pages {
+            flex-basis: auto;
+        }
+
+        .limiter {
+            margin: 0;
+        }
+
+        .toolbar-amount {
+            display: inline-block;
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-wishlist-index .pager .toolbar-amount {
+        display: inline-block;
+    }
+}

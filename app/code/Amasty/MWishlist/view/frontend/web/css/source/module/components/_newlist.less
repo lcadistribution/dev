@@ -1,0 +1,70 @@
+//
+//  Amasty NewList Block Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-newlist-block {
+        .amwishlist-button.-plus {
+            padding: 0 0 @amwishlist__indent__m * 2;
+            width: auto;
+            text-align: left;
+        }
+
+        .amwishlist-newlist {
+            .am-flex(none, none, wrap);
+
+            padding: 0 0 @amwishlist__indent__l;
+        }
+
+        .amwishlist-form {
+            .am-flex(none, none, wrap);
+
+            flex-basis: 100%;
+        }
+
+        .mage-error {
+            flex-basis: 100%;
+            order: 3;
+        }
+
+        .amwishlist-input {
+            flex-basis: 68%;
+            order: 1;
+            max-width: 240px;
+            font-size: 12px;
+        }
+
+        .amwishlist-button.-add {
+            order: 2;
+            margin: 0 0 0 @amwishlist__indent;
+            padding: 0 @amwishlist__indent;
+            min-width: 70px;
+            max-width: 70px;
+            height: 32px;
+        }
+
+        .amwishlist-messages-list {
+            order: 3;
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amwishlist-newlist-block .amwishlist-button.-plus {
+        padding: 0 0 @amwishlist__indent__l;
+    }
+}

@@ -1,0 +1,66 @@
+//
+//  PopUp Wishlist Component Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-popup-block {
+        .amwishlist-list {
+            .am-flex(center, flex-start, wrap);
+        }
+
+        .amwishlist-toolbar.-footer {
+            z-index: 1;
+            border-radius: 0 0 @amwishlist__indent__m @amwishlist__indent;
+            background: #fff;
+            box-shadow: 0 -10px 30px rgba(154, 162, 181, .5), 0 -5px 15px rgba(154, 162, 181, .14);
+        }
+
+        .amwishlist-button.-addtolist {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .amwishlist-tabs-block.-block {
+            .am-scrollbar(#adadad, #f0f0f0, y, 4px);
+
+            margin: 0 -6px 0 0;
+            padding-right: 6px;
+            max-height: 48vh;
+        }
+
+        .amwishlist-content-tab.-active {
+            padding: 0 1px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amwishlist-popup-block {
+        .amwishlist-list.-align-left {
+            justify-content: flex-start;
+        }
+
+        .amwishlist-button.-create-list {
+            padding: 0 0 @amwishlist__indent__l;
+        }
+
+
+        .amwishlist-tabs-block.-title {
+            margin: 0 0 @amwishlist__indent__l;
+        }
+    }
+}

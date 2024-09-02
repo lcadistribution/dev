@@ -1,0 +1,103 @@
+//
+//  Mixins
+//  _____________________________________
+
+.am-flex(
+    @horiz-pos: none,
+    @vert-pos: none,
+    @wrap: none
+) {
+    & {
+        display: flex;
+    }
+
+    & when not (@horiz-pos = none) {
+        justify-content: @horiz-pos;
+    }
+
+    & when not (@vert-pos = none) {
+        align-items: @vert-pos;
+    }
+
+    & when not (@wrap = none) {
+        flex-wrap: @wrap;
+    }
+}
+
+
+.am-mage-icon(@ico: none) {
+    display: inline-block;
+    content: @ico;
+    font-family: @icons__font-name;
+}
+
+.am-icon(@icon-url: none, @width: 20px, @height: 20px) {
+    .am-flex(center, center);
+
+
+    display: inline-flex;
+    width: @width;
+    height: @height;
+    background-image: @icon-url;
+    background-position: center center;
+    background-size: 95% 95%;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.am-scrollbar(
+    @color: #adadad,
+    @second-color: #f0f0f0,
+    @direction: y,
+    @width: 4px,
+    @shadow-color: #fff
+) {
+    & {
+        overflow: hidden;
+        overflow-@{direction}: auto;
+        scrollbar-color: @color rgba(255, 255, 255, .2);
+        scrollbar-width: thin;
+    }
+
+    &::-webkit-scrollbar {
+        background: @second-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: @width;
+        background: @color;
+        cursor: pointer;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px @shadow-color;
+    }
+
+    & when not (@direction = x) {
+        &::-webkit-scrollbar {
+            width: @width;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            width: @width;
+        }
+
+        ::-webkit-scrollbar-track {
+            width: @width;
+        }
+    }
+
+    & when not (@direction = y) {
+        &::-webkit-scrollbar {
+            height: @width;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            height: @width;
+        }
+
+        ::-webkit-scrollbar-track {
+            height: @width;
+        }
+    }
+}

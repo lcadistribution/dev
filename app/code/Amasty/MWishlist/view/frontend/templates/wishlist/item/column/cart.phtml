@@ -1,0 +1,62 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Cart $block */
+
+/** @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+
+/** @var \Magento\Wishlist\ViewModel\AllowedQuantity $viewModel */
+$viewModel = $block->getData('allowedQuantityViewModel');
+$allowedQty = $viewModel->setItem($item)->getMinMaxQty();
+?>
+
+<?php foreach ($block->getChildNames() as $childName): ?>
+    <?= /* @noEscape */ $block->getLayout()->renderElement($childName, false) ?>
+<?php endforeach;?>
+<?php if ($item->canHaveQty() && $product->isVisibleInSiteVisibility()): ?>
+    <div class="amwishlist-field -qty">
+        <label class="amwishlist-label" for="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]">
+            <?= $block->escapeHtml(__('Qty')) ?>
+        </label>
+        <input id="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]"
+               class="amwishlist-input -qty"
+               data-validate="{
+                    'required-number':true,'validate-greater-than-zero':true,
+                    'validate-item-quantity':{
+                        'minAllowed':<?= /* @noEscape */ $allowedQty['minAllowed'] ?>,
+                        'maxAllowed':<?= /* @noEscape */ $allowedQty['maxAllowed'] ?>
+                    }
+               }"
+               type="number"
+               data-role="qty"
+               name="qty[<?= $block->escapeHtmlAttr($item->getId()) ?>]"
+               value="<?= /* @noEscape */ $block->getAddToCartQty($item) * 1 ?>"
+               data-amwishlist-js="item-qty"
+               <?= /* @noEscape */ $product->isSaleable() ? '' : 'disabled="disabled"' ?> />
+    </div>
+<?php endif; ?>
+<?php if ($product->isSaleable()): ?>
+    <button class="amwishlist-button -fill -primary -tocart action tocart"
+            type="button"
+            data-role="tocart"
+            <?= /** @noEscape */ $block->getPostAttribute() ?>='<?= /* @noEscape */ $block->getItemAddCartParams($item) ?>'
+            title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
+            data-item-id="<?= $block->escapeHtmlAttr($item->getId()) ?>">
+        <?= $block->escapeHtml(__('Add to Cart')) ?>
+    </button>
+<?php else: ?>
+    <?php if ($product->getIsSalable()): ?>
+        <p class="available stock" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('In stock')) ?></span>
+        </p>
+    <?php else: ?>
+        <p class="unavailable stock" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+        </p>
+    <?php endif; ?>
+<?php endif; ?>

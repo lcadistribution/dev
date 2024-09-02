@@ -1,0 +1,77 @@
+<div class="amwishlist-list-block amwishlist-newlist-block" data-bind="scope: 'ampopup.amwishlist'">
+    <ul class="amwishlist-tabs-block -title" data-bind="foreach: Object.keys(tabs())">
+        <li class="amwishlist-item"
+            data-bind="css: { '-active' : $parent.currentListType() === Object.keys($parent.tabs()).indexOf($data) },
+                       click: function () { $parent.currentListType(Object.keys($parent.tabs()).indexOf($data)) },
+                       text: $parent.getTypeLabel($data)">
+        </li>
+    </ul>
+
+    <button class="amwishlist-button -clear -link -plus"
+            data-bind="i18n: 'Create New List',
+                       click: function () {
+                         !newListActive() ? newListActive(true) : newListActive(false)
+                       }">
+    </button>
+
+    <div class="amwishlist-newlist" data-bind="visible: newListActive">
+        <input class="amwishlist-input"
+               data-bind="i18n: 'Add',
+                          attr: {
+                             placeholder: $t('Enter List name')
+                          },
+                          css: { '-error': newNameErrors() },
+                          event: {
+                             input: function(ui, event) {
+                                 isNameValid(false);
+                                 newListName(event.target.value);
+                             }
+                          },
+                          hasFocus: newListActive(),
+                          value: newListName"
+               type="text"
+        >
+        <button class="amwishlist-button -fill -primary -add"
+                data-bind="
+                    css: { '-disabled': newNameErrors() || !isNameValid() },
+                    click: addNewList,
+                    i18n: 'Add'">
+        </button>
+
+        <ul class="amwishlist-messages-list" data-bind="foreach: newNameErrors, visible: newNameErrors()">
+            <li class="amwishlist-item" html="$data"></li>
+        </ul>
+    </div>
+
+    <div class="amwishlist-tabs-block -block" data-bind="foreach: Object.keys(tabs())">
+        <section class="amwishlist-content-tab"
+                 data-bind="
+                    css: {
+                        '-active' : $parent.currentListType() == Object.keys($parent.tabs()).indexOf($data)
+                    }">
+            <ul class="amwishlist-list"
+                data-bind="
+                    css: {
+                        '-align-left' : $parent.tabs()[$data].length < 2
+                    },
+                    foreach: $parent.tabs()[$data]">
+                <!-- ko if: $parents[1].isWishlistVisible(wishlist_id) -->
+                <li class="amwishlist-item -empty"
+                    data-bind="attr: {
+                                    'data-label': !items_count ? $t('The folder is empty') : $t(name[0])
+                               },
+                               css: {
+                                    '-active': $parents[1].currentListId() == wishlist_id,
+                                    '-empty': !items_count
+                               },
+                               click: function () {
+                                    $parents[1].currentListId(wishlist_id);
+                               }">
+                    <span class="amwishlist-name" data-bind="i18n: name"></span>
+                    <span class="amwishlist-desc" data-bind="text: items_count + ' ' + $t('items')"></span>
+                </li>
+                <!-- /ko -->
+            </ul>
+        </section>
+    </div>
+</div>

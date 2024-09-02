@@ -1,0 +1,159 @@
+//
+//  Wishlist List Component Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-list-block {
+        .amwishlist-list {
+            margin: 0 -@amwishlist__indent / 2;
+        }
+
+        .amwishlist-list .amwishlist-item {
+            & {
+                .am-flex(center, flex-start, wrap);
+
+                display: inline-flex;
+                align-content: flex-start;
+                box-sizing: border-box;
+                margin: 0 4px @amwishlist__indent__l;
+                padding: @amwishlist__indent__m;
+                min-height: 196px;
+                max-width: 150px;
+                width: 100%;
+                border: 1px solid transparent;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            &:hover {
+                background: #f4f5fa;
+            }
+
+            &.-active,
+            &:active {
+                border-color: @amwishlist__color__primary;
+            }
+
+            &:before {
+                .am-flex(center, center);
+
+                box-sizing: border-box;
+                padding: 0 @amwishlist__indent / 2;
+                width: 120px;
+                height: 120px;
+                border: 1px solid transparent;
+                border-radius: 5px;
+                color: #fff;
+                content: attr(data-label);
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 30px;
+            }
+
+            &:nth-child(1n):before {
+                background: #f9d484;
+            }
+
+            &:nth-child(2n):before {
+                background: #eb785f;
+            }
+
+            &:nth-child(3n):before {
+                background: #afe188;
+            }
+
+            &:nth-child(4n):before {
+                background: #86d5f2;
+            }
+        }
+
+        .amwishlist-list .amwishlist-item.-empty:before {
+            border-color: #e8e9ef;
+            background: #fff;
+            color: #000;
+            text-transform: inherit;
+            font-size: 12px;
+        }
+
+        .amwishlist-list .amwishlist-name {
+            flex-basis: 100%;
+            margin: @amwishlist__indent 0;
+            text-align: left;
+            word-break: break-word;
+            font-weight: 600;
+        }
+
+        .amwishlist-list .amwishlist-desc {
+            flex-basis: 100%;
+            color: #757575;
+            text-align: left;
+            font-size: 10px;
+        }
+    }
+
+    .amwishlist-list-block.-recently-viewed {
+        & {
+            margin: @amwishlist__indent__l * 2 0;
+        }
+
+        .amwishlist-title {
+            margin: 0;
+            padding: 0 0 @amwishlist__indent__l;
+            font-weight: 400;
+            font-size: 24px;
+        }
+
+        .amwishlist-list {
+            .am-scrollbar(#adadad, #f0f0f0, x, 4px);
+
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            margin: 0 -@amwishlist__indent;
+            padding: 0;
+        }
+
+        .amwishlist-item {
+            margin: 0 @amwishlist__indent;
+            padding: 0;
+            max-width: 120px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-list-block.-recently-viewed {
+        & {
+            margin: 0;
+        }
+
+        .amwishlist-item {
+            & {
+                padding: @amwishlist__indent__m;
+                max-width: 175px;
+            }
+
+            &:before {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .amwishlist-list {
+            flex-wrap: wrap;
+        }
+    }
+}

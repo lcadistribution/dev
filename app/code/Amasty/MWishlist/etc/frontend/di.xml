@@ -1,0 +1,109 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="mwishlist" xsi:type="array">
+                    <item name="class" xsi:type="string">Amasty\MWishlist\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">25</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- START replace data-post to data-mwishlist-ajax for wishlist button -->
+    <type name="Magento\Wishlist\Block\Catalog\Product\ProductList\Item\AddTo\Wishlist">
+        <plugin name="Amasty_MWishlist::wishlist-category" type="Amasty\MWishlist\Plugin\DataPost\Block\Category\Wishlist" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\Compare\ListCompare">
+        <plugin name="Amasty_MWishlist::compare-product" type="Amasty\MWishlist\Plugin\DataPost\Block\Product\ListCompare" />
+    </type>
+    <type name="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist">
+        <plugin name="Amasty_MWishlist::wishlist-product" type="Amasty\MWishlist\Plugin\DataPost\Block\Product\Wishlist" />
+    </type>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="Amasty_MWishlist::widget-ajax" type="Amasty\MWishlist\Plugin\DataPost\Block\Widget\ProductsList" />
+    </type>
+    <type name="Magento\Wishlist\Block\Cart\Item\Renderer\Actions\MoveToWishlist">
+        <plugin name="Amasty_MWishlist::move-ajax" type="Amasty\MWishlist\Plugin\DataPost\Block\Cart\MoveToWishlist" />
+    </type>
+    <type name="Magento\Wishlist\Block\Share\Wishlist">
+        <plugin name="Amasty_MWishlist::wishlist-on-share" type="Amasty\MWishlist\Plugin\DataPost\Block\Share\Wishlist" />
+    </type>
+    <type name="Amasty\Xsearch\Block\Search\Product">
+        <plugin name="Amasty_MWishlist::advanced-search-popup" type="Amasty\MWishlist\Plugin\Xsearch\Block\Search\Product" />
+    </type>
+    <!-- END replace data-post to data-mwishlist-ajax wishlist button -->
+
+    <type name="Amasty\Cart\Helper\Data">
+        <plugin name="Amasty_MWishlist::disable-ajax-cart-wishlist" type="Amasty\MWishlist\Plugin\Cart\Helper\DataPlugin" />
+    </type>
+
+    <type name="Magento\Wishlist\Helper\Data">
+        <plugin name="Amasty_MWishlist::replace-data-post-action" type="Amasty\MWishlist\Plugin\Wishlist\Helper\DataPlugin" />
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\DataProvider">
+        <plugin name="Amasty_MWishlist::add-compare-and-wishlist-ajax-data" type="Amasty\MWishlist\Plugin\Catalog\Ui\Listing\DataProvider\AddMWishlistData"/>
+    </type>
+
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="mwishlist" xsi:type="string">Amasty\MWishlist\CustomerData\Wishlist</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+        <arguments>
+            <argument name="configurationsMap" xsi:type="array">
+                <item name="createListMWishlist" xsi:type="array">
+                    <item name="renderer" xsi:type="const">Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Amasty_MWishlist::messages/createListMWishlist.phtml</item>
+                    </item>
+                </item>
+                <item name="addItemMWishlist" xsi:type="array">
+                    <item name="renderer" xsi:type="const">Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Amasty_MWishlist::messages/addItemMWishlist.phtml</item>
+                    </item>
+                </item>
+                <item name="moveFromCartItemMWishlist" xsi:type="array">
+                    <item name="renderer" xsi:type="const">Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Amasty_MWishlist::messages/moveFromCartItemMWishlist.phtml</item>
+                    </item>
+                </item>
+                <item name="messageWithUrlMWishlist" xsi:type="array">
+                    <item name="renderer" xsi:type="const">Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="data" xsi:type="array">
+                        <item name="template" xsi:type="string">Amasty_MWishlist::messages/messageWithUrlMWishlist.phtml</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- start: make search in quickorder_search_container always wildcard as *searchTerm* -->
+    <type name="Magento\Elasticsearch\Elasticsearch5\SearchAdapter\Mapper">
+        <plugin name="Amasty_MWishlist::Wildcard" type="Amasty\MWishlist\Plugin\Elasticsearch\Elasticsearch5\SearchAdapter\MapperPlugin" />
+    </type>
+    <type name="Amasty\ElasticSearch\Model\Search\GetRequestQuery">
+        <plugin name="Amasty_MWishlist::Wildcard" type="Amasty\MWishlist\Plugin\Elasticsearch\Model\Search\GetRequestQueryPlugin" />
+    </type>
+    <!-- end: make search in quickorder_search_container always wildcard as *searchTerm* -->
+
+    <type name="Magento\Framework\View\Model\Layout\Merge">
+        <plugin name="Amasty_MWishlist::update-handles" type="Amasty\MWishlist\Plugin\Framework\View\Model\Layout\MergePlugin" />
+    </type>
+
+    <type name="Amasty\MWishlist\Controller\AbstractIndexInterface">
+        <plugin name="Amasty_MWishlist::validate-actions" type="Amasty\MWishlist\Plugin\MWishlist\Controller\AbstractIndexPlugin" />
+    </type>
+
+    <type name="Magento\Wishlist\Model\Wishlist">
+        <plugin name="Amasty_MWishlist::shared-by-networks" type="Amasty\MWishlist\Plugin\Wishlist\Model\Wishlist\AllowWishlistAccess" />
+    </type>
+</config>

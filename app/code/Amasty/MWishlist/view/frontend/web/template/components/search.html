@@ -1,0 +1,69 @@
+<div class="amwishlist-search" data-amwishlist-js="search-wrapper">
+    <button class="amwishlist-button -clear -link -plus"
+            data-bind="
+                event: {
+                    click: function () { isSearchActive() ? isSearchActive(false) : isSearchActive(true) }
+                },
+                i18n: 'Ajouter produits'">
+    </button>
+    <div class="amwishlist-field"
+         data-bind="visible: isSearchActive,
+                    css: { '-active' : !isEmptyInput() }">
+        <input class="amwishlist-input -search"
+               data-amwishlist-js="search-input"
+               data-bind="
+                    attr: { placeholder: search_placeholder },
+                    event: { click: search, input: search }"
+        >
+        <button class="amwishlist-button -clear -search"
+                type="button"
+                data-bind="event: { click: search }">
+        </button>
+        <button class="amwishlist-button -clear -remove"
+                type="button"
+                data-bind="visible: !isEmptyInput(), event: { click: clear }">
+        </button>
+    </div>
+    <ul class="amwishlist-message-block"
+        data-amwishlist-js="message"
+        data-bind="visible: isEmpty() && isSearchActive()">
+        <li class="amwishlist-item -empty" data-bind="i18n: 'Your search returned no products.'"></li>
+    </ul>
+    <ul class="amwishlist-items-block"
+        data-amwishlist-js="items"
+        data-bind="foreach: elems(), visible: isSearchActive()">
+        <li class="amwishlist-item">
+            <img class="amwishlist-image"
+                 data-amwishlist-js="image"
+                 data-bind="attr: {alt: $t('Product Photo'), src: image}">
+            <span class="amwishlist-name" data-amwishlist-js="name" data-bind="i18n: name"></span>
+            <div class="amwishlist-qty-block" data-bind="mageInit: {'amwishlistQty': {}}">
+                <input class="amwishlist-input"
+                       data-amwishlist-js="input"
+                       type="number"
+                       min="1"
+                       value="1"
+                       data-bind="event: {
+                            change: function(){ this.qty = +$element.value }
+                       }"
+                >
+            </div>
+            <span class="amwishlist-sku">
+                <b data-bind="i18n: 'SKU'"></b>: <span class="amwishlist-text" data-amwishlist-js="sku" text="sku"></span>
+            </span>
+            <span class="amwishlist-price" data-amwishlist-js="price" html="price"></span>
+            <button class="amwishlist-button -empty"
+                    type="button"
+                    data-amwishlist-js="add"
+                    data-bind="
+                        i18n: 'Add',
+                        attr: {title: $t('Add current product')},
+                        click: function(){ $parent.add(this) }">
+            </button>
+        </li>
+    </ul>
+</div>
+
+<div class="amwishlist-overlay-block"
+     data-bind="visible: elems().length || isEmpty(), click: function (){ elems([]); isEmpty(false) }">
+</div>

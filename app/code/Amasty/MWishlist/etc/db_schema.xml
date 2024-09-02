@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="wishlist">
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Wish List Name"/>
+        <column xsi:type="smallint" name="type" unsigned="false" nullable="false" comment="Type of wishlist by Amasty"/>
+        <constraint xsi:type="unique" referenceId="WISHLIST_CUSTOMER_ID" disabled="true"/>
+        <index referenceId="WISHLIST_CUSTOMER_ID" indexType="btree">
+            <column name="customer_id"/>
+        </index>
+    </table>
+
+    <table name="wishlist_item">
+        <column xsi:type="decimal" name="product_price" scale="6" precision="20" nullable="true" comment="Price amount"/>
+    </table>
+
+    <table name="amasty_wishlist_most_purchased" resource="sales" engine="innodb" comment="Most Purchased Items from Lists">
+        <column xsi:type="int" name="quote_item_id" padding="4" unsigned="true" nullable="false" identity="false"
+                comment="Quote Item Id"/>
+        <index referenceId="WISHLIST_PURCHASED_QUOTE_ITEM_ID" indexType="btree">
+            <column name="quote_item_id"/>
+        </index>
+    </table>
+
+    <table name="ammwishlist_unsubscribed_price_alerts" engine="innodb" comment="Unsubscribed Wishlist Price Alerts">
+        <column xsi:type="int" name="id" padding="4" unsigned="true" nullable="false" identity="false"
+                comment="User ID"/>
+        <index referenceId="WISHLIST_UNSUBSCRIBED_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

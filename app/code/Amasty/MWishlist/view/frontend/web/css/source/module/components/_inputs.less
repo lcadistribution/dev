@@ -1,0 +1,283 @@
+//
+//  Inputs
+//  _____________________________________
+
+//
+//  Imports
+//  -------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-input:not([disabled]) {
+        & {
+            margin: 0;
+            padding: 0 @amwishlist__indent;
+            height: 32px;
+            outline: 0;
+            border-color: #949494;
+        }
+
+        &::placeholder {
+            color: #adadad;
+        }
+
+        &:focus {
+            border: 1px solid @amwishlist__color__primary;
+            box-shadow: none;
+        }
+
+        &.-error {
+            border-color: @amwishlist__color__error;
+        }
+
+        &.-clear {
+            & {
+                margin: 0;
+                padding: 0;
+                height: auto;
+                outline: 0;
+                border-color: transparent;
+                background-color: transparent;
+                box-shadow: none;
+            }
+
+            &:focus,
+            &:active,
+            &:hover {
+                outline: 0;
+                border-color: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .amwishlist-input.-textarea {
+        padding: @amwishlist__indent / 2 @amwishlist__indent;
+        border-color: #c2c2c2;
+    }
+
+    .amwishlist-checkbox-block {
+        & {
+
+
+            position: relative;
+            width: @amwishlist__indent__l;
+            height: @amwishlist__indent__l;
+            cursor: pointer;
+        }
+
+        .amwishlist-input {
+            & {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+            }
+
+            &:hover + .amwishlist-checker {
+                border-color: @amwishlist__color__primary;
+                background: @amwishlist__color__primary;
+            }
+        }
+
+        .amwishlist-input:checked + .amwishlist-checker {
+            & {
+                border-color: @amwishlist__color__primary;
+                background: @amwishlist__color__primary;
+            }
+
+            &:before {
+                opacity: 1;
+            }
+        }
+
+        .amwishlist-checker {
+            & {
+
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                border: 1px solid #c2c2c2;
+                border-radius: 2px;
+                background: #fff;
+            }
+
+            &:before {
+
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 3px;
+                left: 0;
+                display: inline-flex;
+                margin: auto;
+                width: 45%;
+                height: 30%;
+                border-bottom: 2px solid #fff;
+                border-left: 2px solid #fff;
+                border-radius: 2px;
+                content: '';
+                opacity: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .amwishlist-select-block {
+        & {
+            position: absolute;
+            z-index: 9;
+            box-sizing: border-box;
+            margin: 0;
+            padding: @amwishlist__indent 0;
+            min-width: 115px;
+            max-width: 100%;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0 3px 20px rgba(190, 198, 218, .19), 0 1px 7px rgba(190, 198, 218, .28);
+            font-size: initial;
+            line-height: normal;
+        }
+
+        &[aria-hidden='true'] {
+            display: none;
+        }
+
+        .amwishlist-item {
+            & {
+                display: block;
+                margin: 0;
+                padding: 0 @amwishlist__indent;
+                text-align: left;
+                text-transform: capitalize;
+                letter-spacing: .25px;
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            &:hover {
+                background: rgba(229, 236, 253, .69);
+                color: @amwishlist__color__primary;
+            }
+        }
+
+        .amwishlist-item > * {
+            justify-content: flex-start;
+            padding: 4px 0;
+            color: #000;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .amwishlist-item.-error > *,
+        .amwishlist-item.-error {
+            color: @amwishlist__color__error;
+        }
+    }
+
+    .amwishlist-field-block.-editable {
+        & {
+            .am-flex(none, center);
+
+            position: relative;
+        }
+
+        &.-error {
+            border-color: @amwishlist__color__error;
+        }
+
+        .amwishlist-field {
+            .am-flex();
+
+            position: relative;
+            flex-basis: 100%;
+            margin: 0 @amwishlist__indent 0 0;
+            pointer-events: none;
+        }
+
+        .amwishlist-input {
+
+
+            padding: 0;
+            letter-spacing: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        .amwishlist-button {
+            transition: none;
+        }
+
+        &.-active .amwishlist-input {
+            padding: 0 @amwishlist__indent__l * 2 0 @amwishlist__indent;
+            height: 32px;
+            border-color: @amwishlist__color__primary;
+            font-weight: 400;
+            font-size: 12px;
+            pointer-events: initial;
+        }
+
+        .amwishlist-button.-remove {
+            position: absolute;
+            right: 0;
+            padding: 8px @amwishlist__indent;
+        }
+
+        &.-active .amwishlist-button.-save {
+            margin: 0;
+            min-width: 70px;
+            max-width: 70px;
+            height: 32px;
+            font-size: 14px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-field-block.-editable {
+        &:hover:not(.-active) {
+            background: #f4f5f7;
+        }
+
+        &:hover .amwishlist-button.-edit {
+            .am-flex();
+
+            margin: 0 @amwishlist__indent / 2 0 0;
+            height: 34px;
+        }
+
+        .amwishlist-button.-edit {
+            position: absolute;
+            display: none;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 0 @amwishlist__indent;
+        }
+    }
+
+    .amwishlist-checkbox-block .amwishlist-input:hover + .amwishlist-checker {
+        border-color: @amwishlist__color__primary;
+        background: @amwishlist__color__primary;
+    }
+}

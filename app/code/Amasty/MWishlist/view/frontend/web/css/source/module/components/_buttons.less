@@ -1,0 +1,290 @@
+//
+//  Buttons
+//  _____________________________________
+
+//
+//  Imports
+//  -------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-button:not(.-regular) {
+        & {
+            .am-flex(center, center);
+
+
+            position: relative;
+            box-sizing: border-box;
+            padding: 0 @amwishlist__indent;
+            height: @amwishlist__indent__l * 2;
+            box-shadow: none;
+            font-weight: 400;
+            cursor: pointer;
+            user-select: none;
+            pointer-events: auto;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: none;
+            box-shadow: none;
+        }
+
+        &:before,
+        &:after {
+
+        }
+
+        &.-disabled {
+            & {
+                pointer-events: none;
+            }
+
+            &:focus {
+                pointer-events: none;
+            }
+        }
+    }
+
+    .amwishlist-button.-clear {
+        & {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: initial;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            border: none;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+
+    .amwishlist-button.-link {
+        & {
+            color: @amwishlist__color__primary;
+        }
+
+        &:hover {
+            color: @amwishlist__hover__color__primary;
+        }
+    }
+
+    .amwishlist-button.-plus {
+        & {
+            font-weight: 600;
+        }
+
+        &:before {
+            margin: 0 @amwishlist__indent / 2 0 0;
+            content: '+';
+            font-size: 20px;
+        }
+    }
+
+    .amwishlist-button.-search {
+        &:after {
+            .am-icon(@amwishlist-search-icon__background);
+
+            transition: none;
+        }
+
+        &:hover:after {
+            filter: invert(23%) sepia(90%) saturate(6191%) hue-rotate(227deg) brightness(100%) contrast(91%);
+        }
+    }
+
+    .amwishlist-button.-remove {
+        &:after {
+            content: 'x';
+            transform: scale(1.5, 1);
+        }
+
+        &:hover:after {
+            color: @amwishlist__hover__color__primary;
+        }
+    }
+
+    .amwishlist-button.-basket {
+        & {
+            .am-flex(none, center);
+
+            filter: invert(53%) sepia(94%) saturate(3301%) hue-rotate(332deg) brightness(108%) contrast(84%);
+        }
+
+        &:hover {
+            filter: invert(53%) sepia(94%) saturate(3301%) hue-rotate(332deg) brightness(75%) contrast(84%);
+        }
+
+        &:before {
+            .am-icon(@amwishlist-basket-icon__background, 12px, 20px);
+
+            margin: 0 8px 0 0;
+        }
+    }
+
+    .amwishlist-button.-share {
+        & {
+            .am-flex(none, center);
+        }
+
+        &:hover {
+            color: @amwishlist__color__primary;
+        }
+
+        &:hover {
+            filter: invert(23%) sepia(90%) saturate(6191%) hue-rotate(227deg) brightness(100%) contrast(91%);
+        }
+
+        &:before {
+            .am-icon(@amwishlist-share-icon__background);
+
+            margin: 0 8px 0 0;
+        }
+    }
+
+    .amwishlist-button.-update {
+        & {
+            .am-flex(none, center);
+        }
+
+        &:hover {
+            filter: invert(23%) sepia(90%) saturate(6191%) hue-rotate(227deg) brightness(100%) contrast(91%);
+        }
+
+        &:before {
+            .am-icon(@amwishlist-refresh-icon__background, 19px, 18px);
+
+            margin: 0 8px 0 0;
+            background-size: contain;
+        }
+    }
+
+    .amwishlist-button.-prev {
+        &:hover {
+            color: #000;
+        }
+
+        &:hover:before {
+            transform: scaleY(2) translateX(-1px);
+        }
+
+        &:before {
+            margin: 0 @amwishlist__indent 0 0;
+            content: '<';
+            font-size: 11px;
+            transform: scaleY(2);
+        }
+    }
+
+    .amwishlist-button.-edit {
+        &:hover {
+            filter: invert(40%) sepia(63%) saturate(2628%) hue-rotate(210deg) brightness(98%) contrast(91%);
+        }
+
+        &:before {
+            .am-icon(@amwishlist-edit-icon__background);
+        }
+    }
+
+    .amwishlist-button.-more {
+        & {
+            min-width: @amwishlist__indent__l;
+            height: @amwishlist__indent__l;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        &:hover {
+            color: @amwishlist__color__primary;
+        }
+
+        &:before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            content: '...';
+            line-height: 7px;
+            transform: rotate(90deg);
+        }
+    }
+
+    .amwishlist-button.-empty:not(.-disabled) {
+        & {
+            min-width: 100px;
+            border: 1px solid @amwishlist__color__primary;
+            border-radius: 3px;
+            background: #fff;
+            color: @amwishlist__color__primary;
+        }
+
+        &:hover {
+            background: linear-gradient(0deg, #c8d7ff, #c8d7ff);
+        }
+
+        &:focus {
+            border: 1px solid @amwishlist__focus__color__primary;
+            background: transparent;
+            color: @amwishlist__focus__color__primary;
+        }
+    }
+
+    .amwishlist-button.-empty.-disabled {
+        box-sizing: border-box;
+        border: 1px solid #d0d5e1;
+        border-radius: 3px;
+        background: #fff;
+        color: #d0d5e1;
+    }
+
+    .amwishlist-button.-fill {
+        min-width: 100px;
+        border: 1px solid;
+        border-radius: 3px;
+        background: #fff;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .amwishlist-button.-fill.-primary:not(.-disabled) {
+        & {
+            border-color: @amwishlist__color__primary;
+            background-color: @amwishlist__color__primary;
+        }
+
+        &:hover {
+            background-color: @amwishlist__hover__color__primary;
+        }
+
+        &:focus {
+            background-color: @amwishlist__focus__color__primary;
+        }
+    }
+
+    .amwishlist-button.-fill.-disabled {
+        border-color: #d0d5e1;
+        background-color: #d0d5e1;
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .amwishlist-button:not(.-regular) {
+        width: auto;
+    }
+}

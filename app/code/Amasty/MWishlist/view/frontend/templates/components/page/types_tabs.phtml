@@ -1,0 +1,19 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\WishlistList\Tabs $block */
+?>
+
+<ul class="amwishlist-tabs-block -title" data-mage-init='{"amPageTabs":{}}' data-amwishlist-js="tabs">
+    <?php foreach ($block->getTabs() as $tabId => $tabName): ?>
+    <li class="amwishlist-item <?= $block->isActiveTab($tabId) ? '-active' : ''?>"
+        data-amwishlist-js="tab-label"
+        data-tab-id="<?= /** @noEscape */ $tabId ?>"
+        title="<?= $block->escapeHtml(__('Open') . ' ' . $tabName) ?>">
+        <?= $block->escapeHtml($tabName) ?>
+    </li>
+    <?php endforeach; ?>
+</ul>

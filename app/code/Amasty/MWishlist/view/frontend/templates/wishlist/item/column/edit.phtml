@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Edit $block */
+
+/** @var \Magento\Wishlist\Model\Item $item */
+$item = $block->getItem();
+$product = $item->getProduct();
+?>
+
+<?php if ($product->isVisibleInSiteVisibility()): ?>
+    <a class="amwishlist-button -clear" href="<?= $block->escapeUrl($block->getItemConfigureUrl($item)) ?>">
+        <?= $block->escapeHtml(__('Edit')) ?>
+    </a>
+<?php endif ?>

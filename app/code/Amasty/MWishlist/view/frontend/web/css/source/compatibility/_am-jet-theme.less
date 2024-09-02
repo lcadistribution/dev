@@ -1,0 +1,101 @@
+//
+//  Compatibility with Amasty Jet Theme
+//  ____________________________________
+
+//
+//  Common
+//  ------------------------------------
+
+& when (@media-common = true) {
+    .amasty-jet-theme .amwishlist-button {
+        &.-fill {
+            font-size: 1.4rem;
+        }
+
+        &.-more {
+            color: #000;
+        }
+    }
+
+    .amwishlist-page-title .amwishlist-toolbar .amwishlist-button,
+    .amwishlist-search-block .amwishlist-button.-remove {
+        color: #000;
+    }
+
+    .amasty-jet-theme .amwishlist-checkbox-block .amwishlist-checker {
+        & {
+            padding: 0;
+        }
+
+        &:first-of-type:before {
+            border-color: #fff;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        &:before {
+            &:extend(.amwishlist-checkbox-block .amwishlist-checker:before);
+
+            border-top: none;
+            border-right: none;
+            background: transparent;
+        }
+    }
+
+    .amwishlist-product-grid .amwishlist-inner {
+        & {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .amwishlist-button.-tocart {
+            align-self: flex-start;
+        }
+
+        .product-details {
+            order: -1;
+            margin: 0 0 10px;
+        }
+
+        .product-details > .title {
+            display: none;
+        }
+
+        .product-details .values {
+            font-weight: @font-weight__bold;
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-toolbar-block.-mass-action .amwishlist-button:not(.-link) {
+        font-size: 1.4rem;
+    }
+
+    .amwishlist-items > .amwishlist-item .product-image-wrapper {
+        position: relative;
+        z-index: 1;
+        display: block;
+        overflow: hidden;
+        height: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amwishlist-wishlist-index {
+        .sidebar-main,
+        .sidebar-additional {
+            width: 100%;
+        }
+
+        .column.main {
+            width: 100%;
+        }
+    }
+}

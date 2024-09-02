@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Magento\Backend\Block\Template $block */
+/** @var \Amasty\MWishlist\ViewModel\Analytics\Purchased $viewModel */
+
+$viewModel = $block->getData('viewModel');
+?>
+
+<div class="amwishlist-table-container">
+    <p class="amwishlist-title">
+        <?= $escaper->escapeHtml(__('Most Purchased Items from Lists')); ?>
+    </p>
+
+    <table class="amwishlist-table-block">
+        <thead class="amwishlist-thead">
+            <tr>
+                <th class="amwishlist-cell"><?= $escaper->escapeHtml(__('Product Name')); ?></th>
+                <th class="amwishlist-cell"><?= $escaper->escapeHtml(__('SKU')); ?></th>
+                <th class="amwishlist-cell"><?= $escaper->escapeHtml(__('Orders Placed from Lists')); ?></th>
+                <th class="amwishlist-cell"><?= $escaper->escapeHtml(__('Qty Purchased from Lists')); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($viewModel->getPurchasedProducts() as $product): ?>
+                <tr class="amwishlist-row">
+                    <td class="amwishlist-cell"><?= $escaper->escapeHtml($product->getName()); ?></td>
+                    <td class="amwishlist-cell"><?= $escaper->escapeHtml($product->getSku()); ?></td>
+                    <td class="amwishlist-cell"><?= /* @noEscape */ (int)$product->getPlacedFromList(); ?></td>
+                    <td class="amwishlist-cell"><?= /* @noEscape */ (int)$product->getQty(); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <a href="<?= $escaper->escapeUrl($viewModel->getMoreUrl()) ?>"
+       class="amwishlist-more-link"
+       title="<?= $escaper->escapeHtmlAttr(__('View more')); ?>"
+       target="_blank">
+        <?= $escaper->escapeHtml(__('View more')); ?>
+    </a>
+</div>

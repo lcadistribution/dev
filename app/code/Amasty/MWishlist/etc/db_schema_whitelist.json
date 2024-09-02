@@ -1,0 +1,16 @@
+{
+    "wishlist": {
+        "column": {
+            "name": true,
+            "type": true
+        },
+        "index": {
+          "WISHLIST_CUSTOMER_ID": true
+        }
+    },
+    "wishlist_item": {
+        "column": {
+            "product_price": true
+        }
+    }
+}

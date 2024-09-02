@@ -1,0 +1,33 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\NewWishlist $block */
+?>
+
+<div class="amwishlist-newlist-block" data-mage-init='{ "collapsible":{} }' data-amwishlist-js="new-block">
+    <button class="amwishlist-button -link -clear -plus"
+            data-role="title"
+            data-amwishlist-js="newlist-button"
+            type="button">
+        <?= $block->escapeHtml(__('Create New List')) ?>
+    </button>
+
+    <div class="amwishlist-newlist" data-role="content">
+        <form class="amwishlist-form"
+              data-amwishlist-js="newlist-form"
+              data-mage-init='{"validation": {}}'
+              data-mwishlist-ajax='<?= $block->escapeHtml($block->getPostData()) ?>'>
+            <input class="amwishlist-input"
+                   name="wishlist[name]"
+                   type="text"
+                   title="<?= $block->escapeHtml(__('Name List')) ?>"
+                   data-validate='{"validate-no-empty":true, "remote":"<?= $block->escapeHtml($block->getValidateWishlistAction()) ?>"}'>
+            <button class="amwishlist-button -fill -primary -add" type="submit">
+                <?= $block->escapeHtml(__('Add')) ?>
+            </button>
+        </form>
+    </div>
+</div>

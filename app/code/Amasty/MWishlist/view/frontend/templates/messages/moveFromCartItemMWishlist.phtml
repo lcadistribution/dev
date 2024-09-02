@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<?= $block->escapeHtml(
+    __(
+        '%1 has been moved to <a href="%2">%3</a>.',
+        $block->getData('product_name'),
+        $block->getData('wishlist_url'),
+        $block->getData('wishlist_name')
+    ),
+    ['a']
+);

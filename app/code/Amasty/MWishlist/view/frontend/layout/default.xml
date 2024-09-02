@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="formkey"/>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Amasty\MWishlist\Block\Account\Wishlist\Script" name="mwishlist.script" ifconfig="amasty_mwishlist/general/enabled" />
+            <block class="Amasty\MWishlist\Block\Popup"
+                   name="amwishlist.popup"
+                   template="Amasty_MWishlist::components/popup.phtml"
+                   ifconfig="amasty_mwishlist/general/enabled">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="ampopup" xsi:type="array">
+                                <item name="component" xsi:type="string">Amasty_MWishlist/js/components/popup/popup</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="wrapper" xsi:type="string">[data-amwishlist-js="popup"]</item>
+                                    <item name="template" xsi:type="string">Amasty_MWishlist/components/popup/wrapper</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="amwishlist" xsi:type="array">
+                                        <item name="component" xsi:type="string">Amasty_MWishlist/js/components/popup/wishlist</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Amasty_QuickOrder/components/popup/wishlist</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

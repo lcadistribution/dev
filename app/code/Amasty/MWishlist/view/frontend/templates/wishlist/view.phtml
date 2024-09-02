@@ -1,0 +1,34 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Wishlist $block */
+?>
+
+<?php if ($block->getHelperContext()->getWishlistHelper()->isAllow()): ?>
+    <?= ($block->getChildHtml('wishlist.rss.link')) ?>
+    <form class="form-wishlist-items" id="wishlist-view-form"
+          data-amwishlist-js="wishlist-form"
+          data-mage-init='{"wishlist":{
+          "addToCartUrl":<?= /* @noEscape */ $block->getItemAddToCartParams("%item%") ?>,
+          "addAllToCartUrl":<?= /* @noEscape */ $block->getAddAllToCartParams() ?>,
+          "commentString":""},
+          "validation": {}}' action="<?= $block->escapeUrl($block->getUpdateUrl()) ?>" method="post">
+        <?= $block->getChildHtml('customer.mwishlist.title'); ?>
+        <?= $block->getChildHtml('customer.mwishlist.search.product'); ?>
+        <div data-amwishlist-js="items-block">
+            <?php if ($block->hasWishlistItems()): ?>
+                <?= $block->getBlockHtml('formkey') ?>
+                <?php $block->getChildBlock('items')->setItems($block->getWishlistItems()); ?>
+                <?= $block->getChildHtml('mass_actions') ?>
+                <?= $block->getChildHtml('items') ?>
+            <?php else: ?>
+                <div class="message info empty"><span><?= $block->escapeHtml(__('You have no items in your wish list.')) ?></span></div>
+            <?php endif ?>
+        </div>
+        <?= $block->getChildHtml('bottom') ?>
+    </form>
+    <div class="toolbar wishlist-toolbar" data-amwishlist-js="pager"><br><?= $block->getChildHtml('wishlist_item_pager'); ?></div>
+<?php endif ?>

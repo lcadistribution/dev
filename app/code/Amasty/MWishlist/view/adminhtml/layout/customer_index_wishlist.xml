@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer.wishlist.edit.tab">
+            <arguments>
+                <argument name="dataSource" xsi:type="object">
+                    <updater>Amasty\MWishlist\Model\ResourceModel\Wishlist\Item\Collection\Updater</updater>
+                </argument>
+            </arguments>
+            <referenceBlock name="customer.wishlist.edit.tab.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column" name="customer.wishlist.edit.tab.columnSet.wishlist_name" as="wishlist_name" before="-">
+                    <arguments>
+                        <argument name="header" xsi:type="string" translate="true">List Name</argument>
+                        <argument name="index" xsi:type="string">wishlist_name</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Grid\Column" name="customer.wishlist.edit.tab.columnSet.type" as="type" after="wishlist_name">
+                    <arguments>
+                        <argument name="header" xsi:type="string" translate="true">List Type</argument>
+                        <argument name="index" xsi:type="string">wishlist_type</argument>
+                        <argument name="renderer" xsi:type="string">Amasty\MWishlist\Block\Widget\Grid\Column\Renderer\Type</argument>
+                        <argument name="filter" xsi:type="string">Magento\Backend\Block\Widget\Grid\Column\Filter\Select</argument>
+                        <argument name="options" xsi:type="array">
+                            <item name="0" xsi:type="string" translate="true">Wish</item>
+                            <item name="1" xsi:type="string" translate="true">Requisition</item>
+                        </argument>
+                    </arguments>
+                </block>
+                <referenceBlock name="customer.wishlist.edit.tab.columnSet.description">
+                    <arguments>
+                        <argument name="header" xsi:type="string" translate="true">Comment</argument>
+                    </arguments>
+                </referenceBlock>
+            </referenceBlock>
+        </referenceBlock>
+    </body>
+</page>

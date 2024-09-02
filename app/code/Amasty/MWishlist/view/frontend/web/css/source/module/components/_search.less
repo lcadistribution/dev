@@ -1,0 +1,259 @@
+//
+//  Amasty Search Component Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-search-block {
+        & {
+            .am-flex(none, center);
+
+            position: relative;
+            flex-basis: 100%;
+            margin: 0 0 @amwishlist__indent__l * 2;
+            background: #fff;
+        }
+
+        .amwishlist-search {
+            display: block;
+            width: 100%;
+        }
+
+        .amwishlist-field {
+            .am-flex();
+
+
+            position: relative;
+            margin: @amwishlist__indent__l * 2 0 0 0;
+            width: 100%;
+        }
+
+        .amwishlist-field.-active {
+            max-width: 100%;
+        }
+
+        .amwishlist-input.-search {
+            flex-basis: 100%;
+            padding: 0 @amwishlist__indent__l * 2;
+            border: 1px solid #949494;
+            font-size: 12px;
+        }
+
+        .amwishlist-button.-remove {
+            right: 0;
+            padding: 0 @amwishlist__indent;
+            height: 100%;
+        }
+
+        .amwishlist-button.-search {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0 @amwishlist__indent;
+            height: 100%;
+        }
+
+        .amwishlist-button.-remove {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 @amwishlist__indent;
+            height: 100%;
+        }
+
+        .amwishlist-button.-empty {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: inline-block;
+            margin: 16px;
+            padding: 0 @amwishlist__indent__m;
+            min-width: auto;
+            max-width: 54px;
+            height: 34px;
+            font-size: 12px;
+        }
+
+        .amwishlist-message-block {
+            .am-flex(center, center);
+
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            z-index: 9;
+            padding: @amwishlist__indent__xl * 2 @amwishlist__indent;
+            border-radius: 0 0 6px 6px;
+            background: #fff;
+            box-shadow: 0 6px 25px rgba(218, 225, 241, .5);
+            color: #000;
+            list-style: none;
+        }
+
+        .amwishlist-items-block {
+            .am-scrollbar();
+
+
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            z-index: 9;
+            display: block;
+            margin: 0;
+            padding: 0;
+            max-height: 605px;
+            border-radius: 0 0 6px 6px;
+            background: #fff;
+            box-shadow: 0 6px 25px rgba(218, 225, 241, .5);
+            color: #000;
+            list-style: none;
+        }
+
+        .amwishlist-item {
+            & {
+
+
+                position: relative;
+                display: block;
+                box-sizing: border-box;
+                margin: 0;
+                padding: @amwishlist__indent__m;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #ebeef5;
+            }
+
+            &:not(.-empty):hover {
+                background: #f9f9f9;
+            }
+        }
+
+        .amwishlist-name {
+            display: inline-block;
+            overflow: hidden;
+            margin: 0 0 0 @amwishlist__indent__m;
+            max-height: @amwishlist__indent__l * 2;
+            width: 65%;
+            word-break: break-word;
+        }
+
+        .amwishlist-image {
+            display: inline-block;
+            float: left;
+            max-width: 29%;
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .amwishlist-sku {
+            display: inline-block;
+            overflow: hidden;
+            margin: @amwishlist__indent / 2 0 0 @amwishlist__indent__m;
+            width: 65%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .amwishlist-price {
+            display: inline-block;
+            overflow: hidden;
+            margin: @amwishlist__indent 0 0 @amwishlist__indent__m;
+            text-overflow: ellipsis;
+        }
+
+        .amwishlist-qty-block {
+            display: none;
+        }
+
+        .amwishlist-qty-block .amwishlist-msg.-error {
+            top: 100%;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .amwishlist-search-block .amwishlist-items-block {
+        .amwishlist-item {
+            .am-flex(space-between, center);
+
+            padding: @amwishlist__indent__m 36px;
+            max-height: none;
+        }
+
+        .amwishlist-button.-empty {
+            position: initial;
+            flex-grow: 1;
+            margin: 0 0 0 @amwishlist__indent;
+        }
+
+        .amwishlist-image {
+            float: none;
+            width: 70px;
+            height: 70px;
+        }
+
+        .amwishlist-name {
+            .am-flex();
+
+            margin: 0 @amwishlist__indent__l;
+            max-height: 60px;
+            width: 30%;
+        }
+
+        .amwishlist-qty-block {
+            margin: 0 @amwishlist__indent;
+            width: 20%;
+        }
+
+        .amwishlist-sku {
+            overflow: hidden;
+            margin: 0 @amwishlist__indent;
+            width: 378px;
+        }
+
+        .amwishlist-price {
+            flex-basis: auto;
+            overflow: initial;
+            margin: 0 @amwishlist__indent;
+            width: 25%;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-search-block {
+        & {
+            margin: 0 0 @amwishlist__indent__l * 2;
+        }
+
+        .amwishlist-qty-block {
+            .am-flex();
+        }
+
+        .amwishlist-field {
+            margin: @amwishlist__indent__l 0 0 0;
+            max-width: 270px;
+        }
+    }
+}

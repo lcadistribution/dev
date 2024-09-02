@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Template" name="am_purchased_products"
+                   template="Amasty_MWishlist::analytics/purchased.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Amasty\MWishlist\ViewModel\Analytics\Purchased</argument>
+                </arguments>
+            </block>
+            <uiComponent name="amasty_mwishlist_popular_listing" />
+        </referenceContainer>
+    </body>
+</page>

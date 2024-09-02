@@ -1,0 +1,92 @@
+//
+//  Amasty Mass Action Component Styles
+//  ____________________________________________
+
+//
+//  Imports
+//  --------------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-toolbar-block.-mass-action {
+        & {
+            .am-flex(none, center, wrap);
+
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 9;
+            margin: 0 -@amwishlist__indent / 2;
+            padding: @amwishlist__indent__m;
+            background: #fff;
+            box-shadow: 0 -10px 30px rgba(154, 162, 181, .05), 0 -5px 15px rgba(154, 162, 181, .14);
+        }
+
+        .amwishlist-button.-addtolist {
+            flex-basis: 100%;
+            margin: @amwishlist__indent__m @amwishlist__indent / 2 0 @amwishlist__indent / 2;
+            height: @amwishlist__indent__l * 2;
+        }
+
+        .amwishlist-button.-link {
+            flex-basis: auto;
+            justify-content: flex-start;
+            margin-right: auto;
+            min-width: 70px;
+        }
+
+        .amwishlist-button {
+            flex-basis: ~'calc(100% / 3 - @{amwishlist__indent})';
+            margin: 0 @amwishlist__indent / 2;
+            padding: 0;
+            min-width: 100px;
+            height: 32px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amwishlist-toolbar-block.-mass-action {
+        & {
+            position: initial;
+            z-index: initial;
+            flex-wrap: nowrap;
+            padding: 0 0 35px;
+            box-shadow: none;
+        }
+
+        .amwishlist-button {
+            height: @amwishlist__indent__l * 2;
+        }
+
+        .amwishlist-button.-link {
+            margin: 0 @amwishlist__indent__l 0 0;
+        }
+
+        .amwishlist-button:not(.-link) {
+            & {
+                min-width: 190px;
+            }
+
+            &:not(:last-child) {
+                flex-basis: auto;
+                margin: 0 @amwishlist__indent 0 0;
+            }
+        }
+
+        .amwishlist-button.-addtolist {
+            flex-basis: 230px;
+            margin: 0 0 0 auto;
+        }
+    }
+}

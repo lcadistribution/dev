@@ -1,0 +1,23 @@
+<!--@subject {{trans "Email notification for prices change"}} @-->
+<!--@vars
+{
+"var customer_name":"name",
+"var wishlist_items|raw":"items",
+"var unsubscribe_url":"url"
+}
+@-->
+
+{{template config_path="design/email/header_template"}}
+
+<h2>{{trans "Hello, %customer_name" customer_name=$customer_name}}</h2>
+
+<p>{{trans "Some products in your wishlists have changed their prices recently. Please find the new prices below:"}}</p>
+
+{{var wishlist_items|raw}}
+
+<div class="amwishlist-email-unsubscribe">
+    <p>{{trans "Do not want to receive our newsletter anymore?"}}</p>
+    <p>{{trans "You can unsubscribe"}} <a href="{{var unsubscribe_url}}">{{trans "here"}}</a></p>
+</div>
+
+{{template config_path="design/email/footer_template"}}

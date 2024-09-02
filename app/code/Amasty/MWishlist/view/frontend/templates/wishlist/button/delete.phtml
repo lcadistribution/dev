@@ -1,0 +1,9 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Button\Delete $block */
+?>
+<button type="button" title="<?= $block->escapeHtmlAttr(__('Delete Wish List')) ?>" data-mwishlist-delete data-mwishlist-ajax='<?= $block->escapeHtml($block->getPostData()) ?>' class="action remove"><span><?= $block->escapeHtml(__('Delete Wish List')) ?></span></button>

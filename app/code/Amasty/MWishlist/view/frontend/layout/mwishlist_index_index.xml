@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <attribute name="class" value="amwishlist-wishlist-index" />
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="mwishlist.list.contrainer" template="Amasty_MWishlist::wishlist/list/container.phtml">
+                <block class="Amasty\MWishlist\Block\Account\Wishlist\WishlistList\Tabs" name="mwishlist.tabs" as="tabs">
+                    <arguments>
+                        <argument name="tabs_helper" xsi:type="object">Amasty\MWishlist\ViewModel\Tabs</argument>
+                    </arguments>
+                </block>
+                <block class="Amasty\MWishlist\Block\Account\Wishlist\NewWishlist" name="mwishlist.new" as="new">
+                    <arguments>
+                        <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                    </arguments>
+                </block>
+                <block class="Amasty\MWishlist\Block\Account\Wishlist\WishlistList" name="mwishlist.list" as="list" cacheable="false">
+                    <arguments>
+                        <argument name="tabs_helper" xsi:type="object">Amasty\MWishlist\ViewModel\Tabs</argument>
+                    </arguments>
+                    <block class="Amasty\MWishlist\Block\Account\Wishlist\WishlistList\Tab" name="mwishlist.list.tab" as="tab" cacheable="false">
+                        <arguments>
+                            <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                            <argument name="tabs_helper" xsi:type="object">Amasty\MWishlist\ViewModel\Tabs</argument>
+                            <argument name="pagination_helper" xsi:type="object">Amasty\MWishlist\ViewModel\Pagination</argument>
+                        </arguments>
+                        <block class="Amasty\MWishlist\Block\Pager" name="mwishlist.pager" as="pager">
+                            <arguments>
+                                <argument name="path" xsi:type="string">mwishlist</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard" name="customer.account.link.back" template="Magento_Customer::account/link/back.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

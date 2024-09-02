@@ -1,0 +1,77 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\MWishlist\Api\Data\WishlistInterface" type="Amasty\MWishlist\Model\Wishlist" />
+    <preference for="Amasty\MWishlist\Api\Data\WishlistItemInterface" type="Amasty\MWishlist\Model\WishlistItem" />
+    <preference for="Amasty\MWishlist\Api\Data\WishlistItemDataInterface" type="Amasty\MWishlist\Model\WishlistItemData" />
+    <preference for="Amasty\MWishlist\Api\WishlistRepositoryInterface" type="Amasty\MWishlist\Model\Repository\WishlistRepository" />
+    <preference for="Amasty\MWishlist\Api\WishlistProviderInterface" type="Amasty\MWishlist\Controller\WishlistProvider" />
+    <preference for="Amasty\MWishlist\Api\WishlistItemRepositoryInterface" type="Amasty\MWishlist\Model\Repository\WishlistItemRepository" />
+
+    <type name="Magento\MultipleWishlist\Helper\Data">
+        <plugin name="Amasty_MWishlist::disable-magento-multiple" type="Amasty\MWishlist\Plugin\MultipleWishlist\Helper\DataPlugin" />
+    </type>
+
+    <!-- add childs sku in parent index for search. work for MySQL & elastic engines -->
+    <type name="Magento\CatalogSearch\Model\Indexer\Fulltext\Action\DataProvider">
+        <plugin name="Amasty_MWishlist::IndexChildsSku" type="Amasty\MWishlist\Plugin\CatalogSearch\Model\Indexer\Fulltext\Action\DataProviderPlugin" />
+    </type>
+
+    <virtualType name="mwishlistItemCollectionFactory" type="Magento\Wishlist\Model\ResourceModel\Item\CollectionFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">Amasty\MWishlist\Model\ResourceModel\Wishlist\Item\Collection</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- section source emails -->
+    <virtualType name="Amasty\MWishlist\Model\Source\Email\PriceAlertNotificationTemplate" type="Amasty\MWishlist\Model\Source\Email\AbstractTemplate">
+        <arguments>
+            <argument name="origTemplateCode" xsi:type="string">amasty_mwishlist_customer_notifications_email_template</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\MWishlist\Model\Wishlist">
+        <arguments>
+            <argument name="wishlistCollectionFactory" xsi:type="object">mwishlistItemCollectionFactory</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="amasty_mwishlist_purchased_listing_data_source"
+                      xsi:type="string">Amasty\MWishlist\Model\ResourceModel\Purchased\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\MWishlist\Model\ResourceModel\Purchased\Grid\Collection">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Amasty\MWishlist\Model\ResourceModel\Purchased\Collection</argument>
+            <argument name="mainTable" xsi:type="string">amasty_wishlist_most_purchased</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\GroupedProduct\Model\Product\Type\Grouped">
+        <plugin name="Amasty_MWishlist::grouped_from_wishlist"
+                type="Amasty\MWishlist\Plugin\GroupedProduct\Model\Product\Type\GroupedPlugin" />
+    </type>
+
+    <type name="Magento\Wishlist\Model\Item">
+        <plugin name="Amasty_MWishlist::disable-delete-for-requisition" type="Amasty\MWishlist\Plugin\Wishlist\Model\ItemPlugin" />
+    </type>
+
+    <type name="Magento\Elasticsearch\Model\Adapter\Index\Builder">
+        <plugin name="Amasty_MWishlist::add-new-custom-analyzer"
+                type="Amasty\MWishlist\Plugin\Elasticsearch\Model\Adapter\Index\Builder\CreateNewAnalyzer"
+                sortOrder="999"/>
+    </type>
+
+    <type name="Magento\Elasticsearch\Model\Adapter\FieldMapper\ProductFieldMapper">
+        <plugin name="Amasty_MWishlist::add-analyzer-for-mwishlist-sku-mapping"
+                type="Amasty\MWishlist\Plugin\Elasticsearch\Model\FieldMapper\ProductFieldMapper\AddAnalyzerForMWishlistSku" />
+    </type>
+
+    <type name="Magento\Elasticsearch\Elasticsearch5\Model\Adapter\FieldMapper\ProductFieldMapperProxy">
+        <plugin name="Amasty_MWishlist::add-analyzer-for-mwishlist-sku"
+                type="Amasty\MWishlist\Plugin\Elasticsearch\Elasticsearch5\Model\Adapter\FieldMapper\ProductFieldMapperProxy\AddAnalyzerForMWishlistSku" />
+    </type>
+</config>

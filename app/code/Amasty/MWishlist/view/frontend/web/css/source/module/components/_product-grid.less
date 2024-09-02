@@ -1,0 +1,206 @@
+//
+//  Magento Product Grid styles Override
+//  _____________________________________
+
+//
+//  Imports
+//  -------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-product-grid {
+        > .amwishlist-items {
+            .am-flex(center, flex-start, wrap);
+
+            padding: 0;
+        }
+
+        > .amwishlist-items > .amwishlist-item {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0 @amwishlist__indent @amwishlist__indent__l;
+            padding: @amwishlist__indent__m;
+            max-width: 275px;
+            width: 100%;
+        }
+
+        > .amwishlist-items > .amwishlist-item.-active {
+            background: #f4f5fa;
+        }
+
+        .amwishlist-image-block {
+            display: block;
+            margin: 0 0 @amwishlist__indent;
+        }
+
+        .product-image-container {
+            min-width: 100%;
+        }
+
+        .product-item-tooltip {
+            padding: 0 0 @amwishlist__indent;
+        }
+
+        .amwishlist-inner {
+            z-index: 4;
+            opacity: 1;
+        }
+
+        .amwishlist-info {
+            & {
+                width: 100%;
+            }
+
+            &:hover {
+                border-bottom-color: transparent;
+            }
+        }
+
+        .amwishlist-toolbar-block {
+            .am-flex(space-between);
+
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 3;
+            box-sizing: border-box;
+            padding: @amwishlist__indent__xl;
+            width: 100%;
+        }
+
+        .amwishlist-select-block {
+            right: 45px;
+        }
+
+        .amwishlist-name {
+            display: block;
+            margin: 0 0 @amwishlist__indent;
+            color: #000;
+            letter-spacing: normal;
+            font-size: 14px;
+            line-height: normal;
+        }
+
+        .amwishlist-field {
+            margin: 0 0 @amwishlist__indent__m 0;
+        }
+
+        .product-reviews-summary {
+            margin-bottom: @amwishlist__indent;
+        }
+
+        .amwishlist-input.-qty {
+            max-width: 54px;
+            color: #333;
+            text-align: center;
+        }
+
+        .amwishlist-label {
+            display: block;
+            margin: 0 0 @amwishlist__indent / 2;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: normal;
+        }
+
+        .product-item-comment {
+            &:extend(.amwishlist-input:not([disabled]) .amwishlist-input.-textarea all);
+
+            color: #5f5f5f;
+        }
+
+        .reviews-actions {
+            margin-left: @amwishlist__indent__m;
+            color: #006bb4;
+            line-height: normal;
+        }
+
+        .reviews-actions .action {
+            font-size: 12px;
+        }
+
+        .amwishlist-button.-tocart {
+            font-size: 13px;
+        }
+
+        .field.comment-box > .label {
+            display: none;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amwishlist-product-grid .product-item-tooltip.wrapper.tooltip {
+        margin-left: 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amwishlist-product-grid > .amwishlist-items {
+        & {
+            margin: 0 -@amwishlist__indent__l;
+        }
+
+        > .amwishlist-item {
+            width: ~'calc(50% - @{amwishlist__indent__l})';
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-product-grid {
+        .amwishlist-inner {
+            position: absolute;
+            right: 0;
+            left: 0;
+            z-index: -1;
+            visibility: hidden;
+            padding: 0 @amwishlist__indent__m @amwishlist__indent__m;
+            background: #f4f5fa;
+            opacity: 0;
+        }
+
+        > .amwishlist-items {
+            justify-content: flex-start;
+        }
+
+        > .amwishlist-items > .amwishlist-item.-active {
+            background: #fff;
+        }
+
+        > .amwishlist-items > .amwishlist-item {
+            & {
+                width: ~'calc(25% - @{amwishlist__indent__l})';
+            }
+
+            &:hover {
+                position: relative;
+                z-index: 3;
+                background: #f4f5fa;
+            }
+
+            &:hover .amwishlist-inner {
+                z-index: 4;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\WishlistList\Tab $block */
+
+$wishlists = $block->getWishlists();
+?>
+
+<?php /** @var \Amasty\MWishlist\Model\Wishlist $wishlist */ ?>
+<section class="amwishlist-content-tab <?= /** @noEscape */ $block->isActiveTab() ? '-active' : '' ?>"
+         data-amwishlist-js="content-tab"
+         data-tab-id="<?= /** @noEscape */ $block->getListType() ?>">
+    <?php if ($wishlists->getSize()): ?>
+        <ul class="amwishlist-list">
+            <?php foreach ($wishlists as $wishlist): ?>
+                <li class="amwishlist-item">
+                    <a href="<?= $block->escapeHtml($block->getViewUrl($wishlist->getWishlistId())) ?>"
+                       title="<?= $block->escapeHtml(__('Go to wishlist page')) ?>">
+                        <?php $images = $block->getItemImages($wishlist) ?>
+                        <figure class="amwishlist-preview-block <?= empty($images) ? '-empty' : '' ?>"
+                                data-label="<?= $block->escapeHtml(__('The folder is empty')) ?>">
+                            <?php foreach ($images as $image): ?>
+                                <img class="amwishlist-image"
+                                     src="<?= $block->escapeUrl($image) ?>"
+                                     alt="<?= $block->escapeHtml(__('Product Image')) ?>">
+                            <?php endforeach; ?>
+                        </figure>
+                    </a>
+                    <article>
+                        <section class="amwishlist-title">
+                            <p class="amwishlist-name"><?= $block->escapeHtml($block->renderName($wishlist->getName())) ?></p>
+                            <button class="amwishlist-button -more -clear"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    data-mage-init='{"dropdown":{}}'
+                                    title="<?= $block->escapeHtml(__('Open list of actions')) ?>"
+                                    type="button">
+                            </button>
+
+                            <ul class="amwishlist-select-block" data-target="dropdown" aria-hidden="true">
+                                <li class="amwishlist-item">
+                                    <a class="amwishlist-button -clear"
+                                       href="<?= $block->escapeHtml($block->getViewUrl($wishlist->getWishlistId())) ?>"
+                                       title="<?= $block->escapeHtml(__('View wishlist')) ?>">
+                                        <?= $block->escapeHtml(__('View')) ?>
+                                    </a>
+                                </li>
+                                <?php if ($block->isDeleteable($wishlist->getWishlistId())): ?>
+                                    <li class="amwishlist-item -error">
+                                        <a class="amwishlist-button -clear"
+                                           data-mwishlist-delete
+                                           data-mwishlist-ajax='<?= /** @noEscape */
+                                           $block->getDeleteData($wishlist->getWishlistId()) ?>'
+                                           title="<?= $block->escapeHtml(__('Delete wishlist')) ?>"
+                                           href="#">
+                                            <?= $block->escapeHtml(__('Delete')) ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </section>
+
+                        <span class="amwishlist-desc">
+                            <?= $block->escapeHtml(__('%1 items', $wishlist->getItemCollection()->getSize())) ?>
+                        </span>
+                        <a class="amwishlist-button -fill -primary -add"
+                           href="#"
+                           title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                           data-post='<?= /** @noEscape */ $block->getAddToCartData($wishlist->getWishlistId()) ?>'>
+                            <?= $block->escapeHtml(__('Add to Cart')) ?>
+                        </a>
+                    </article>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <?= $block->getPagerHtml() ?>
+    <?php else: ?>
+        <div class="message info empty"><span><?= $block->escapeHtml($block->getEmptyMessage()) ?></span></div>
+    <?php endif ?>
+</section>

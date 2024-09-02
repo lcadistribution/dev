@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\MassActions $block */
+?>
+
+<div class="amwishlist-toolbar-block -mass-action">
+    <button class="amwishlist-button -clear -link" type="button" data-amwishlist-js="select-all">
+        <?= $block->escapeHtml(__('Select All')) ?>
+    </button>
+    <button class="amwishlist-button -empty -disabled" type="button" data-amwishlist-js="copy" data-mwishlist-ajax='<?= /* @noEscape */ $block->getCopyData() ?>'>
+        <?= $block->escapeHtml(__('Copy Selected')) ?>
+    </button>
+    <button class="amwishlist-button -empty -disabled" type="button" data-amwishlist-js="move" data-mwishlist-ajax='<?= /* @noEscape */ $block->getMoveData() ?>'>
+        <?= $block->escapeHtml(__('Move Selected')) ?>
+    </button>
+    <button class="amwishlist-button -fill -primary -addtolist" type="button" data-post='<?= /** @noEscape */ $block->getAddToCartData() ?>'>
+        <?= $block->escapeHtml(__('Add All to Cart')) ?>
+    </button>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_MWishlist::wishlist_item" title="Amasty Multiple Wishlist" module="Amasty_MWishlist" parent="Magento_Reports::report" sortOrder="160" resource="Amasty_MWishlist::wishlist_item" />
+        <add id="Amasty_MWishlist::wishlist_popular_items" title="Most Wanted Items in Lists" module="Amasty_MWishlist" parent="Amasty_MWishlist::wishlist_item" resource="Amasty_MWishlist::wishlist_popular_items" action="mwishlist/item/popular" sortOrder="10" />
+        <add id="Amasty_MWishlist::wishlist_most_purchased_items" title="Most Purchased Items from Lists" module="Amasty_MWishlist" parent="Amasty_MWishlist::wishlist_item" resource="Amasty_MWishlist::wishlist_most_purchased_items" action="mwishlist/item/purchased" sortOrder="20" />
+    </menu>
+</config>

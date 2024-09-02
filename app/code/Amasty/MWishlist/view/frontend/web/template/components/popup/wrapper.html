@@ -1,0 +1,37 @@
+<!--
+/**
+ * Amasty Popup Component
+ *
+ * @desc Popup Component For Multiple Wishlist Module
+ *
+ * @copyright 2009-2020 Amasty Ltd
+ * @license   https://amasty.com/license.html
+ */
+-->
+
+<div data-bind="attr: { class: '-' + type() + ' amwishlist-popup' }">
+    <div class="amwishlist-toolbar -header">
+        <button data-bind="attr: {
+                                class: classes + ' amwishlist-button -close -clear'
+                           },
+                           visible: closeButton(),
+                           click: hide">
+        </button>
+    </div>
+    <div class="amwishlist-title">
+        <h5 class="amwishlist-header" data-bind="visible: header, html: header"></h5>
+        <p class="amwishlist-desc" data-bind="visible: description, html: description"></p>
+    </div>
+    <!-- ko if: contentTmpl -->
+        <div class="amwishlist-content">
+             <!-- ko template: contentTmpl --><!-- /ko -->
+        </div>
+    <!-- /ko -->
+    <div class="amwishlist-toolbar -footer" data-bind="foreach: buttons, visible: buttons">
+        <button data-bind="i18n: text,
+                           attr: { class: classes + ' amwishlist-button' },
+                           css: { '-disabled': !disableDependency() },
+                           click: callback">
+        </button>
+    </div>
+</div>

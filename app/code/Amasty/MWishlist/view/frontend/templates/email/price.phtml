@@ -1,0 +1,47 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var $block \Amasty\MWishlist\Block\Email\PriceAlert */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<?php if ($block->getItemsToNotify()): ?>
+    <?php foreach ($block->getItemsToNotify() as $wishlist): ?>
+        <div class="amwishlist-wishlist-block">
+            <a class="amwishlist-title"
+               href="<?= $escaper->escapeUrl($block->getViewUrl($wishlist['wishlist']->getWishlistId())) ?>"
+               target="_blank">
+                <?= $escaper->escapeHtml($wishlist['wishlist']->getName()) ?>
+            </a>
+
+            <ol class="amwishlist-wishlist-items products items product-items">
+                <?php foreach ($wishlist['items'] as $wishlistItem): ?>
+                    <?php $product = $wishlistItem->getProduct(); ?>
+                    <li class="item product product-item">
+                        <div class="product-item-info">
+                            <a href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>"
+                               target="_blank"
+                               class="product photo product-item-photo">
+                                <img class="amwishlist-image"
+                                     src="<?= $escaper->escapeUrl($block->getImageUrl($product)) ?>"
+                                     alt="<?= $escaper->escapeHtml($product->getName()) ?>">
+                            </a>
+                            <div class="product details product-item-details">
+                                <a class="amwishlist-product-name"
+                                   target="_blank"
+                                   href="<?= $escaper->escapeUrl($product->getProductUrl()) ?>">
+                                    <?= $escaper->escapeHtml($product->getName()) ?>
+                                </a>
+
+                                <?= /* @noEscape */ $block->getProductPriceHtml($product) ?>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

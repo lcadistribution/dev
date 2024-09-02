@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\WishlistList $block */
+
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\WishlistList\Tab $tab */
+$tab = $block->getChildBlock('tab');
+?>
+<?php if ($tab): ?>
+    <section class="amwishlist-list-grid amwishlist-tabs-block -block">
+        <?php foreach ($block->getTabs() as $tabId => $tabName): ?>
+            <?= $tab->setIsActiveTab($block->isActiveTab($tabId))->setListType($tabId)->toHtml() ?>
+        <?php endforeach; ?>
+    </section>
+<?php endif; ?>

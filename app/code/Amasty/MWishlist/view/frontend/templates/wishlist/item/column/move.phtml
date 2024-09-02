@@ -1,0 +1,15 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Move $block */
+?>
+
+<a class="amwishlist-button -clear"
+   title="<?= $block->escapeHtmlAttr(__('Move Item')) ?>"
+   data-mwishlist-ajax='<?= /** @noEscape */ $block->getPostData() ?>'
+   data-amwishlist-js="item-move">
+    <?= $block->escapeHtml(__('Move')) ?>
+</a>

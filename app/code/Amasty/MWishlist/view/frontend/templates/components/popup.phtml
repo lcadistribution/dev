@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+?>
+
+<aside class="amwishlist-popup-block"
+       data-ampopup-js="popup"
+       data-bind="
+            scope:'ampopup',
+            mageInit: {
+             'Magento_Ui/js/core/app': <?= $block->escapeHtml($block->getJsLayout()) ?>
+            }"
+       aria-hidden="true">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</aside>

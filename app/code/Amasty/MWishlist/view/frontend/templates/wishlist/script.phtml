@@ -1,0 +1,21 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Script $block */
+?>
+
+<script type="text/x-magento-init">
+{
+    "body": {
+        "Amasty_MWishlist/js/multiple-wishlist": {
+            <?php if (!$block->isLoggedCustomer()): ?>
+            "loginUrl": "<?= $block->escapeUrl($block->getLoginUrl()) ?>",
+            <?php endif; ?>
+            "addItemUrl": "<?= $block->escapeUrl($block->getAddItemUrl()) ?>"
+        }
+    }
+}
+</script>

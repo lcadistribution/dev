@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block class="Amasty\MWishlist\Block\Account\Wishlist\WishlistList" name="mwishlist.list">
+            <block class="Amasty\MWishlist\Block\Pager" name="mwishlist.pager" as="pager">
+                <arguments>
+                    <argument name="path" xsi:type="string">mwishlist</argument>
+                </arguments>
+            </block>
+        </block>
+    </body>
+</page>

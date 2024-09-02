@@ -1,0 +1,22 @@
+<button if="isAllowed() && isMWishlistEnabled()"
+        attr="'data-mwishlist-popup': 'open', 'data-mwishlist-ajax': getDataPost($row()), title: getLabel()"
+        class="action towishlist"
+        data-action="add-to-wishlist">
+    <span translate="getLabel()"></span>
+</button>
+
+<a if="isAllowed() && isWishlistAjax() && !isMWishlistEnabled()"
+   attr="'data-post-ajax': getDataPost($row()), title: getLabel()"
+   class="action towishlist"
+   data-action="add-to-wishlist">
+    <span translate="getLabel()"></span>
+</a>
+
+<button if="isAllowed() && !isMWishlistEnabled() && !isWishlistAjax()"
+        attr="'data-post': getDataPost($row()),
+               title: getLabel()"
+        class="action towishlist"
+        data-action="add-to-wishlist">
+    <span translate="getLabel()"></span>
+</button>
+

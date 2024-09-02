@@ -1,0 +1,90 @@
+//
+//  Amasty Qty Component Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-qty-block {
+        & {
+            .am-flex(space-around, center);
+
+            position: relative;
+        }
+
+        &.-disabled {
+            & {
+                opacity: .8;
+                pointer-events: none;
+            }
+
+            .amwishlist-button {
+                display: none;
+            }
+
+            .amwishlist-input {
+                opacity: .8;
+                pointer-events: none;
+            }
+        }
+
+        .amwishlist-input:not([disabled]) {
+            box-sizing: border-box;
+            margin: 0 @amwishlist__indent__m;
+            width: 54px;
+            text-align: center;
+        }
+
+        .amwishlist-input.-error {
+            border-color: @amwishlist__color__error;
+        }
+
+        .amwishlist-msg.-error {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: 2px 0 0;
+            color: @amwishlist__color__error;
+            text-align: center;
+            font-size: 12px;
+        }
+    }
+
+    .amwishlist-button.-incr,
+    .amwishlist-button.-decr {
+        & {
+            max-width: 12px;
+            width: 100%;
+            height: 12px;
+            color: #adadad;
+        }
+
+        &:before {
+            .am-flex(center, center);
+
+            font-size: 24px;
+            line-height: 0;
+        }
+
+        &:hover {
+            color: @amwishlist__hover__color__primary;
+        }
+
+        &:focus,
+        &:active {
+            color: @amwishlist__focus__color__primary;
+        }
+    }
+
+    .amwishlist-button.-incr:before {
+        content: '+';
+    }
+
+    .amwishlist-button.-decr:before {
+        content: '-';
+        transform: translateY(-2px) scaleX(1.8);
+    }
+}

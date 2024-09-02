@@ -1,0 +1,173 @@
+<button class="amwishlist-button -clear -prev"
+        type="button"
+        data-bind="i18n: 'Back',
+                    event: {
+                        click: function(){ window.location.href = $data.backUrl }
+                    }">
+</button>
+
+<div class="amwishlist-title-block">
+    <div class="amwishlist-field-block -editable -title"
+         data-bind="css: {
+                        '-active': isEditNameActive(),
+                        '-error': errors.length
+                    }">
+        <div class="amwishlist-field">
+            <input class="amwishlist-input -clear"
+                   name="wishlist[name]"
+                   type="text"
+                   data-bind="value: listName,
+                              hasFocus: isEditNameActive(),
+                              event: {
+                                    input: function(ui, event) {
+                                        listName(event.target.value);
+                                    }
+                              }"
+            >
+            <button class="amwishlist-button -clear -remove"
+                    type="button"
+                    data-bind="visible: listName().length && isEditNameActive(),
+                               event: {
+                                     click: function () {
+                                        listName('');
+                                     }
+                               }">
+            </button>
+        </div>
+        <button class="amwishlist-button -primary -fill -save"
+                name="do"
+                type="submit"
+                data-bind="
+                   css: {
+                        '-disabled': errors.length || !listName().length || !isNameValid()
+                   },
+                   visible: isEditNameActive(),
+                   i18n: 'Save'">
+        </button>
+        <button class="amwishlist-button -clear -edit"
+                data-bind="
+                    event: {
+                       click: function () {
+                           isEditNameActive(true);
+                       }
+                    },
+                    visible: !isEditNameActive()">
+        </button>
+    </div>
+    <ul class="amwishlist-messages-list" data-bind="foreach: errors, visible: errors().length">
+        <li class="amwishlist-item" html="$data"></li>
+    </ul>
+    <div class="amwishlist-toolbar" data-bind="css: { '-deletable': !isDeleteable() }">
+        <button class="amwishlist-button -clear -update"
+                data-bind="i18n: 'Update List'"
+                name="do"
+                type="submit">
+        </button>
+
+        <!-- ko ifnot: $data.isSocials() -->
+            <button class="amwishlist-button -clear -share"
+                    data-bind="i18n: 'Share List'"
+                    name="save_and_share"
+                    type="submit">
+            </button>
+        <!-- /ko-->
+
+        <!-- ko if: $data.isSocials() -->
+            <div class="amwishlist-sharesocials-container" data-amwishlist-js="socials">
+                <div class="amwishlist-sharesocials-dropdown"
+                     data-bind="css: {'-opened': isOpened}">
+                    <button class="amwishlist-button amwishlist-social -clear -mail"
+                            data-bind="attr: { 'title': $t('Via Mail') }"
+                            name="save_and_share"
+                            type="submit">
+                    </button>
+                    <!-- ko if: $data.facebook -->
+                        <a class="amwishlist-social -facebook"
+                           target="popup"
+                           data-bind="click: openShareWindow(event, $data.facebook), attr: {
+                               'title': $t('Via Facebook'),
+                               'href': $data.facebook
+                            }"></a>
+                    <!-- /ko-->
+                    <!-- ko if: $data.twitter -->
+                        <a class="amwishlist-social -twitter"
+                           target="popup"
+                           data-bind="click: openShareWindow(event, $data.twitter), attr: {
+                               'title': $t('Via Twitter'),
+                               'href': $data.twitter
+                           }"></a>
+                    <!-- /ko-->
+                    <!-- ko if: $data.pinterest -->
+                    <a class="amwishlist-social -pinterest"
+                       target="popup"
+                       data-bind="click: openShareWindow(event, $data.pinterest), attr: {
+                               'title': $t('Via Pinterest'),
+                               'href': $data.pinterest
+                           }"></a>
+                    <!-- /ko-->
+                    <!-- ko if: $data.linkedin -->
+                    <a class="amwishlist-social -linkedin"
+                       target="popup"
+                       data-bind="click: openShareWindow(event, $data.linkedin), attr: {
+                               'title': $t('Via Linkedin'),
+                               'href': $data.linkedin
+                           }"></a>
+                    <!-- /ko-->
+                    <!-- ko if: $data.line -->
+                    <a class="amwishlist-social -line"
+                       target="popup"
+                       data-bind="click: openShareWindow(event, $data.line), attr: {
+                               'title': $t('Via Line'),
+                               'href': $data.line
+                           }"></a>
+                    <!-- /ko-->
+                    <!-- ko if: $data.telegram -->
+                    <a class="amwishlist-social -telegram"
+                       target="popup"
+                       data-bind="click: openShareWindow(event, $data.telegram), attr: {
+                               'title': $t('Via Telegram'),
+                               'href': $data.telegram
+                           }"></a>
+                    <!-- /ko-->
+                </div>
+                <button class="amwishlist-button -clear -share"
+                        data-bind="
+                            i18n: 'Share List',
+                            click: toggleSocials(event)"
+                        name="open_dropdown">
+                </button>
+            </div>
+        <!-- /ko-->
+
+        <!-- ko if: $data.isDeleteable() -->
+            <button class="amwishlist-button -clear -basket"
+                    data-bind="i18n: 'Delete List', attr: { 'data-mwishlist-ajax': deleteAjaxParam }"
+                    data-mwishlist-delete
+                    name="save_and_share"
+                    type="button">
+            </button>
+        <!-- /ko-->
+    </div>
+    <span class="amwishlist-counter" data-bind="text: itemsQty() + ' ' + $t('items')"></span>
+    <aside class="amwishlist-overlay-block"
+           data-bind="css: {
+                        '-active': isEditNameActive()
+                  },
+                  event: {
+                     click: function () {
+                        clickOverlay();
+                     }
+                  }">
+    </aside>
+</div>
+
+<div class="amwishlist-types-checker" data-bind="foreach: types">
+    <label class="amwishlist-label">
+        <input class="amwishlist-input"
+               type="radio"
+               name="wishlist[type]"
+               data-bind="attr: { checked: $index() == $parent.selectedType }, value: $index"
+        >
+        <span data-bind="i18n: $data"></span>
+    </label>
+</div>

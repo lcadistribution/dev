@@ -1,0 +1,62 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+/** @var \Amasty\MWishlist\Block\Account\Wishlist\Items $block */
+
+$columns = $block->getColumns();
+?>
+
+<div class="amwishlist-product-grid products-grid wishlist">
+    <?php if (count($block->getItems())): ?>
+    <ol class="amwishlist-items">
+        <?php foreach ($block->getItems() as $item): ?>
+            <li id="item_<?= $block->escapeHtmlAttr($item->getId()) ?>"
+                class="amwishlist-item"
+                data-row="amwishlist-item product-item"
+                data-amwishlist-js="product-item">
+                <div class="amwishlist-toolbar-block" data-container="product-grid">
+                    <label class="amwishlist-checkbox-block">
+                        <input class="amwishlist-input"
+                               type="checkbox"
+                               name="selected[<?= /** @noEscape */ $item->getId() ?>]"
+                               data-amwishlist-js="item-checkbox" />
+                        <span class="amwishlist-checker"></span>
+                    </label>
+
+                    <button class="amwishlist-button -more -clear"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            data-mage-init='{"dropdown":{}}'
+                            type="button">
+                    </button>
+
+                    <ul class="amwishlist-select-block" data-target="dropdown" aria-hidden="true">
+                        <li class="amwishlist-item">
+                            <?= $block->getChildBlock('edit')->setItem($item)->toHtml() ?>
+                        </li>
+                        <li class="amwishlist-item">
+                            <?= $block->getChildBlock('copy')->setItem($item)->toHtml() ?>
+                        </li>
+                        <li class="amwishlist-item">
+                            <?= $block->getChildBlock('move')->setItem($item)->toHtml() ?>
+                        </li>
+                        <li class="amwishlist-item -error">
+                             <?= $block->getChildBlock('remove')->setItem($item)->toHtml() ?>
+                        </li>
+                    </ul>
+                </div>
+                <?php foreach ($columns as $column): ?>
+                    <?= $column->setItem($item)->toHtml();?>
+                <?php endforeach; ?>
+            </li>
+        <?php endforeach; ?>
+    </ol>
+    <?php else: ?>
+        <div class="amwishlist-message message info empty">
+            <span><?= $block->escapeHtml(__('This Wish List has no Items')) ?></span>
+        </div>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */
+?>
+
+<section class="amwishlist-page-title"
+         data-bind="scope:'ampagetitle',
+                    mageInit: {
+                       'Magento_Ui/js/core/app': <?= $block->escapeHtml($block->getJsLayout()) ?>
+                    }">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</section>

@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Multiple Wishlist for Magento 2
+ */-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="wishlist_index_index"/>
+    <update handle="mwishlist_customer_account"/>
+    <body>
+        <attribute name="class" value="amwishlist-wishlist-index" />
+
+        <referenceContainer name="content">
+            <block name="customer.wishlist" class="Amasty\MWishlist\Block\Account\Wishlist\Wishlist" template="Amasty_MWishlist::wishlist/view.phtml">
+                <arguments>
+                    <argument name="helper_context" xsi:type="object">Amasty\MWishlist\ViewModel\HelperContext</argument>
+                    <argument name="pagination" xsi:type="object">Amasty\MWishlist\ViewModel\Pagination</argument>
+                </arguments>
+                <block class="Amasty\MWishlist\Block\Pager" name="wishlist_item_pager" />
+                <block name="customer.wishlist.items" as="items" class="Amasty\MWishlist\Block\Account\Wishlist\Items" template="Amasty_MWishlist::wishlist/item/list.phtml">
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Edit" name="customer.wishlist.item.edit" as="edit" template="Amasty_MWishlist::wishlist/item/column/edit.phtml" group="dropdown-options" cacheable="false"/>
+                    <block class="Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Copy" name="customer.wishlist.item.copy" as="copy" template="Amasty_MWishlist::wishlist/item/column/copy.phtml" group="dropdown-options" cacheable="false">
+                        <arguments>
+                            <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                        </arguments>
+                    </block>
+                    <block class="Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Move" name="customer.wishlist.item.move" as="move" template="Amasty_MWishlist::wishlist/item/column/move.phtml" group="dropdown-options" cacheable="false">
+                        <arguments>
+                            <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                        </arguments>
+                    </block>
+                    <block class="Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Remove" name="am.customer.wishlist.item.remove" as="remove" template="Amasty_MWishlist::wishlist/item/column/remove.phtml" group="dropdown-options" cacheable="false">
+                        <arguments>
+                            <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Image" name="customer.wishlist.item.image" template="Amasty_MWishlist::wishlist/item/column/image.phtml" cacheable="false"/>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info" name="customer.wishlist.item.name" template="Amasty_MWishlist::wishlist/item/column/name.phtml" cacheable="false"/>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column" name="customer.wishlist.item.review" template="Magento_Wishlist::item/column/review.phtml" cacheable="false"/>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.price" template="Magento_Wishlist::item/column/price.phtml" cacheable="false">
+                        <block class="Magento\Catalog\Pricing\Render" name="product.price.render.wishlist">
+                            <arguments>
+                                <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                                <argument name="price_type_code" xsi:type="string">wishlist_configured_price</argument>
+                                <argument name="price_label" xsi:type="boolean">false</argument>
+                                <argument name="zone" xsi:type="string">item_list</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Options" name="customer.wishlist.item.options" cacheable="false"/>
+                    </block>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Actions" name="customer.wishlist.item.inner" template="Magento_Wishlist::item/column/actions.phtml" cacheable="false">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">amwishlist-inner</argument>
+                        </arguments>
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Comment" name="customer.wishlist.item.comment" template="Magento_Wishlist::item/column/comment.phtml" cacheable="false">
+                            <arguments>
+                                <argument name="title" translate="true" xsi:type="string">Product Details and Comment</argument>
+                            </arguments>
+                        </block>
+                        <block class="Amasty\MWishlist\Block\Account\Wishlist\Item\Column\Cart" name="customer.wishlist.item.cart" template="Amasty_MWishlist::wishlist/item/column/cart.phtml">
+                            <arguments>
+                                <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                                <argument name="allowedQuantityViewModel" xsi:type="object">Amasty\MWishlist\ViewModel\AllowedQuantity</argument>
+                                <argument name="title" translate="true" xsi:type="string">Add to Cart</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+                <block class="Amasty\MWishlist\Block\Account\Wishlist\Title" name="customer.mwishlist.title">
+                    <arguments>
+                        <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                        <argument name="pagination_helper" xsi:type="object">Amasty\MWishlist\ViewModel\Pagination</argument>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="ampagetitle" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MWishlist/js/components/page/title</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">Amasty_MWishlist/components/page/title</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Amasty\MWishlist\Block\Account\Wishlist\Search" name="customer.mwishlist.search.product">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="search" xsi:type="array">
+                                    <item name="component" xsi:type="string">Amasty_MWishlist/js/components/search</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="search_placeholder" xsi:type="string" translate="true">Search by SKU or Product Name</item>
+                                        <item name="template" xsi:type="string">Amasty_MWishlist/components/search</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block name="customer.mwishlist.mass.actions" class="Amasty\MWishlist\Block\Account\Wishlist\MassActions" as="mass_actions">
+                    <arguments>
+                        <argument name="post_helper" xsi:type="object">Amasty\MWishlist\ViewModel\PostHelper</argument>
+                    </arguments>
+                </block>
+            </block>
+            <container name="mwishlist.customer.container" htmlTag="div" htmlClass="amwishlists-container" />
+            <block class="Amasty\MWishlist\Block\Account\Wishlist\RecentlyList" name="customer.mwishlist.recently.list" after="-">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="ampage.recently.list" xsi:type="array">
+                                <item name="component" xsi:type="string">Amasty_MWishlist/js/components/page/recently-list</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Amasty_MWishlist/components/page/recently_list</item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="customer.wishlist" destination="mwishlist.customer.container" />
+
+        <referenceBlock name="customer-account-navigation-wish-list-link">
+            <arguments>
+                <argument name="is_highlighted" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="customer.wishlist.item.actions" remove="true" />
+    </body>
+</page>

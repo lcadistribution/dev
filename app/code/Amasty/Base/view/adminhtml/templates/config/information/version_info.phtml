@@ -1,0 +1,23 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/** @var \Amasty\Base\Block\Adminhtml\System\Config\InformationBlocks\VersionInfo $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<?php if ($block->getCurrentVersion()): ?>
+    <?php $isVersionLast = $block->isLastVersion(); ?>
+    <?php $class = $isVersionLast ? 'last-version' : ''; ?>
+    <div class="amasty-module-version">
+        <div>
+            <span class="version-title">
+                <?= $escaper->escapeHtml($block->getConfigModuleName()) ?>
+            </span>
+        </div>
+        <?php if (!$isVersionLast && !$block->isOriginMarketplace()): ?>
+
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

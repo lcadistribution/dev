@@ -1,0 +1,80 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/amasty_mWishlist/wishlist" method="POST">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/:wishlistId" method="PUT">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/:wishlistId" method="DELETE">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist" method="GET">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/all" method="GET">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Amasty_MWishlist::config" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/:wishlistId/add_product" method="POST">
+        <service class="Amasty\MWishlist\Api\WishlistRepositoryInterface" method="addProductToWishlist" />
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/:wishlistId/remove_item/:itemId" method="DELETE">
+        <service class="Amasty\MWishlist\Api\WishlistItemRepositoryInterface" method="deleteItemFromWishlist" />
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/move_product_to_cart/:itemId" method="POST">
+        <service class="Amasty\MWishlist\Api\WishlistItemRepositoryInterface" method="addProductToCartFromWishlist" />
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/amasty_mWishlist/wishlist/move_product_from_cart/:cartItemId" method="POST">
+        <service class="Amasty\MWishlist\Api\WishlistItemRepositoryInterface" method="addProductFromCartToWishlist" />
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+</routes>

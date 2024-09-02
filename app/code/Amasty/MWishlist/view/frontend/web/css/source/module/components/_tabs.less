@@ -1,0 +1,71 @@
+//
+//  Tabs
+//  _____________________________________
+
+//
+//  Imports
+//  -------------------------------------
+
+@import '../_mixins';
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amwishlist-tabs-block.-title {
+        & {
+            .am-flex();
+
+            margin: 0 0 @amwishlist__indent__m * 2;
+            padding: 0;
+            border-bottom: 1px solid #d1d1d1;
+            list-style: none;
+        }
+
+        .amwishlist-item {
+
+
+            margin: 0;
+            padding: 10px 12px;
+            text-transform: none ;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .amwishlist-item:hover,
+        .amwishlist-item.-active {
+            font-weight: 600;
+        }
+
+        .amwishlist-item.-active {
+            background: @amwishlist__color__primary;
+            color: white;
+        }
+    }
+
+    .amwishlist-content-tab:not(.-active) {
+        display: none;
+    }
+
+    .amwishlist-tabs-block.-block .amwishlist-list {
+        & {
+            padding: 0;
+            list-style: none;
+        }
+
+        &.-active {
+            .am-flex(center, none, wrap);
+        }
+    }
+}
+
+//
+//  Tablet
+//  -------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .amwishlist-tabs-block.-block .amwishlist-list.-active {
+        justify-content: flex-start;
+    }
+}

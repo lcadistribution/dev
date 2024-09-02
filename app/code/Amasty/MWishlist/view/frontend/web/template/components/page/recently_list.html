@@ -1,0 +1,14 @@
+<h4 class="amwishlist-title" data-bind="i18n: 'Recently Updated Lists'"></h4>
+<ul class="amwishlist-list -active" data-bind="foreach: list">
+    <li class="amwishlist-item"
+        data-bind="attr: {
+                    'data-label': !items_count ? $t('The folder is empty') : $t(name[0])
+               },
+               css: {
+                    '-empty': !items_count
+               },
+               click: function() { window.location = url }">
+        <span class="amwishlist-name" data-bind="i18n: name"></span>
+        <span class="amwishlist-desc" data-bind="text: items_count + ' ' + $t('items')"></span>
+    </li>
+</ul>
