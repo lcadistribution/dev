@@ -1,0 +1,258 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ConfigureGridView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+#mpcpgv-detail-title {
+  position: relative;
+  height: 50px;
+}
+
+#mpcpgv-detail-title > h3 {
+  position: absolute;
+}
+
+.mpcpgv-reset {
+  position: absolute;
+  right: 0;
+}
+
+#mpcpgv-detail-total {
+  margin-left: 2%;
+  height: 40px;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.mpcpgv-detail-label {
+  position: absolute;
+  left: 0;
+}
+
+.mpcpgv-detail-qty, .mpcpgv-detail-sum {
+  position: absolute;
+  right: 6%;
+}
+
+#mpcpgv-detail-total > div {
+  display: block;
+}
+
+#mpcpgv-attribute-table {
+  display: none;
+  text-align: left;
+  padding: 10px 0;
+  min-width: 460px;
+}
+
+.mp-title {
+  font-weight: bold;
+  margin: 1% 0;
+}
+
+.mp-cgv-control {
+  width: 80%;
+}
+
+#mpcpgv-attribute-table > thead > tr {
+  font-weight: bold;
+}
+
+#mpcpgv-attribute-inactive > div {
+  display: grid;
+}
+
+#mpcpgv-number {
+  display: inline-grid;
+  position: absolute;
+  right: 8px;
+  cursor: pointer;
+  height: 32px;
+}
+
+.mpcpgv-input {
+  width: 100%;
+  min-width: 50px;
+  max-height: 32px;
+}
+
+#mpcpgv-number > div {
+  background: white;
+  text-align: center;
+  line-height: 15px;
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid #c2c2c2;
+}
+
+.mpcpgv-inc {
+  height: 15px;
+  border-bottom: none;
+}
+
+.mpcpgv-inc:before{
+  content: '';
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 33%;
+  background: url('Mageplaza_ConfigureGridView::images/angle-up-solid.svg') no-repeat;
+}
+
+.mpcpgv-dec:before{
+  content: '';
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 33%;
+  background: url('Mageplaza_ConfigureGridView::images/angle-down-solid.svg') no-repeat;
+}
+
+.mpcpgv-qty {
+  position: relative;
+  width: 50px;
+  min-width: 50px;
+}
+
+#mpcpgv-overflow {
+  max-height: 350px;
+  overflow-x: hidden;
+}
+
+#mpcpgv-simple-product {
+  margin: 3% 0;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+#mpcpgv-attribute-table td {
+  padding: 11px 8px;
+}
+
+#mpcpgv-simple-product thead {
+  font-weight: bold;
+}
+
+.mpcpgv-simple > .attributes > div {
+  pointer-events: none;
+}
+
+.mpcpgv-delete-detail {
+  cursor: pointer;
+  text-align: right;
+}
+
+#mpcpgv-detail {
+  display: none;
+}
+
+.mpcpgv-icon {
+  height: 15px;
+  width: 15px;
+  display: unset;
+  margin-left: 5px;
+}
+
+
+.mpcpgv-delete-detail:after{
+    content: '\e604';
+    font-size: 18px;
+    color: #757575;
+    font-family: 'luma-icons';
+}
+
+.mpcpgv-reset:before{
+  content: '';
+  height: 13px;
+  width: 13px;
+  position: absolute;
+  left: 7px;
+  top: 9px;
+  background: url('Mageplaza_ConfigureGridView::images/reset.svg') no-repeat;
+}
+
+.mpcpgv-tooltip {
+  position: absolute;
+  min-width: 170px;
+  background-color: var(--primary-site-color);
+  z-index: 6;
+  top: 90px;
+  right: 0;
+  border: 0;
+  border-radius: 6px;
+  text-align: right;
+  padding: 5px;
+  color: white;
+}
+
+.mpcpgv-price {
+  position: relative;
+}
+
+.mpcpgv-reset span {
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
+.mpcpgv-tocart {
+  font-size: 1.8rem;
+  margin-bottom: 0;
+  margin-right: 1%;
+  width: 125px;
+  height: 50px;
+}
+
+.mpcpgv-special {
+  text-decoration: line-through;
+  font-size: smaller;
+  margin-top:-8px
+}
+
+.mpcpgv-style-total{
+  font-size: 2.2rem;
+}
+
+#mpquickview-popup #product-options-wrapper {
+    overflow-x: auto;
+    padding: 5px;
+}
+
+.mpcpgv-attribute-sort {
+    cursor: pointer;
+    display: flex;
+}
+
+.mpcpgv-sort:before {
+    font-family: 'luma-icons';
+    padding: 0 2px;
+}
+
+.mpcpgv-sort-asc:before {
+    content: '\e614';
+}
+
+.mpcpgv-sort-asc, .mpcpgv-sort-desc {
+    display: none;
+    font-size: 12px;
+}
+
+.mpcpgv-sort-desc:before {
+    content: '\e613';
+}

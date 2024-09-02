@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" type="Magedelight\Customerprice\Model\CustomerpriceRepository"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceInterface" type="Magedelight\Customerprice\Model\Customerprice"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" type="Magedelight\Customerprice\Model\CustomerpriceDiscountRepository"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceDiscountInterface" type="Magedelight\Customerprice\Model\CustomerpriceDiscount"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceDiscountSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" type="Magedelight\Customerprice\Model\CustomerpriceCategoryRepository"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceCategoryInterface" type="Magedelight\Customerprice\Model\CustomerpriceCategory"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceCategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" type="Magedelight\Customerprice\Model\CustomerpriceSpecialpriceRepository"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceSpecialpriceInterface" type="Magedelight\Customerprice\Model\CustomerpriceSpecialprice"/>
+	<preference for="Magedelight\Customerprice\Api\Data\CustomerpriceSpecialpriceSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Magedelight\Customerprice\Model\ResourceModel\CustomerpriceSpecialprice\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">md_customerprice_customerspecialprice</argument>
+            <argument name="resourceModel" xsi:type="string">Magedelight\Customerprice\Model\ResourceModel\CustomerpriceSpecialprice\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="md_customerprice_customerspecialprice_listing_data_source" xsi:type="string">Magedelight\Customerprice\Model\ResourceModel\CustomerpriceSpecialprice\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magedelight\Customerprice\Model\Calculation\Calculator\CalculatorInterface" type="Magedelight\Customerprice\Model\Calculation\CalculationService" />
+
+    <type name="Magento\Catalog\Model\Product\PriceModifier\Composite">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="ppc_rule" xsi:type="string">Magedelight\Customerprice\Model\Product\PriceModifier</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Pricing\Adjustment\Collection">
+        <arguments>
+            <argument name="adjustments" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="const">Magedelight\Customerprice\Pricing\Adjustment::ADJUSTMENT_CODE</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Pricing\Adjustment\Pool">
+        <arguments>
+            <argument name="adjustments" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="array">
+                    <item name="className" xsi:type="string">Magedelight\Customerprice\Pricing\Adjustment</item>
+                    <item name="sortOrder" xsi:type="string">999</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+        <arguments>
+            <argument name="prices" xsi:type="array">
+                <item name="ppc_rule_price" xsi:type="string">Magedelight\Customerprice\Pricing\Price\PpcRulePrice</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Bundle\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+        <arguments>
+            <argument name="prices" xsi:type="array">
+                <item name="ppc_rule_price" xsi:type="string">Magedelight\Customerprice\Pricing\Price\PpcRulePrice</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- used during add to cart process -->
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Magedelight_after_final_price" type="Magedelight\Customerprice\Plugin\ChangeTierPrice" sortOrder="999"  />
+    </type>
+
+    <!-- display price as per configuration -->
+    <type name="Magento\Catalog\Pricing\Price\FinalPrice">
+        <plugin name="Magedelight_after_final_price_info" type="Magedelight\Customerprice\Plugin\ChangeTierPriceInfo" sortOrder="999"   />
+    </type>
+
+    <!-- configurable price issue at cart order summary  -->
+    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable\Price">
+        <plugin name="Magedelight_before_final_price" type="Magedelight\Customerprice\Plugin\CartTierPrice" sortOrder="999"   />
+    </type>
+
+    <type name="Magento\Bundle\Pricing\Price\BundleSelectionPrice">
+        <arguments>
+            <argument name="excludeAdjustment" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="const">Magedelight\Customerprice\Pricing\Adjustment::ADJUSTMENT_CODE</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Pricing\Price\CustomOptionPrice">
+        <arguments>
+            <argument name="excludeAdjustment" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="const">Magedelight\Customerprice\Pricing\Adjustment::ADJUSTMENT_CODE</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\Price">
+        <arguments>
+            <argument name="excludeAdjustments" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="string">pricepercustomer</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Bundle\Ui\DataProvider\Product\Listing\Collector\BundlePrice">
+        <arguments>
+            <argument name="excludeAdjustments" xsi:type="array">
+                <item name="pricepercustomer" xsi:type="string">pricepercustomer</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option">
+        <plugin name="Magedelight_bundle_after_price" type="Magedelight\Customerprice\Plugin\Block\Catalog\Product\View\Type\Bundle\Option" sortOrder="999"   />
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="Magedelight_configurable_after_jsonconfig" type="Magedelight\Customerprice\Plugin\Block\Product\View\Type\Configurable" sortOrder="999"   />
+    </type>
+
+    <preference for="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" type="Magedelight\Customerprice\Model\CustomerGroupPriceRepository"/>
+    <preference for="Magedelight\Customerprice\Api\Data\CustomerGroupPriceInterface" type="Magedelight\Customerprice\Model\CustomerGroupPrice"/>
+    <preference for="Magedelight\Customerprice\Api\Data\CustomerGroupPriceSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    
+</config>

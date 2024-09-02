@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+
+// phpcs:disable Magento2.Security.IncludeFile.FoundIncludeFile
+// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceBeforeOpenBracket
+?>
+<?php if ($block->getCollection()->getSize()) :?>
+    <?php $widget = $this->helper(\Magento\Framework\Json\Helper\Data::class)->jsonDecode($block->getWidgetOptionsJson());
+        $widgetOptions = $this->helper(\Magento\Framework\Json\Helper\Data::class)->jsonEncode($widget['productListToolbarForm']);
+    ?>
+    <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":<?= /* @noEscape */ $widgetOptions ?>}'>
+        <?php if ($block->isExpanded()) :?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+        <?php endif; ?>
+
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+        <?= $block->getPagerHtml() ?>
+		<div class="grid-mode-show-type-products">
+            <?php
+                $mode_show = (isset($_GET['mode-show']) && $_GET['mode-show']) ? $_GET['mode-show'] : 4;
+            ?>
+            <a class="my-tooltip-top tooltip-center grid-mode-2 <?= ($mode_show == 2)?'actived':''; ?>" href="#" data-grid-mode="2">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="10.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                </svg>
+                <span class="tooltip-content no-wrap"><?= $block->escapeHtml(__('2 Columns')) ?></span>
+            </a>
+			<a class="my-tooltip-top tooltip-center grid-mode-3 <?= ($mode_show == 3)?'actived':''; ?>" href="#" data-grid-mode="3">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="8.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="12.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                </svg>
+                <span class="tooltip-content no-wrap"><?= $block->escapeHtml(__('3 Columns')) ?></span>
+            </a>
+			<a class="my-tooltip-top tooltip-center grid-mode-4 <?= ($mode_show == 4)?'actived':''; ?>" href="#" data-grid-mode="4">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="6.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="10.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="14.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                </svg>
+                <span class="tooltip-content no-wrap"><?= $block->escapeHtml(__('4 Columns')) ?></span>
+            </a>
+			<a class="my-tooltip-top tooltip-center grid-mode-5 <?= ($mode_show == 5)?'actived':''; ?>" href="#" data-grid-mode="5">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="4.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="8.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="12.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                    <rect x="16.25" y="2.75" width="1.5" height="12.5" rx="0.75" fill="#000000"></rect>
+                </svg>
+                <span class="tooltip-content no-wrap"><?= $block->escapeHtml(__('5 Columns')) ?></span>
+            </a>
+		</div>
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+
+        <?php if ($block->isExpanded()) :?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php endif; ?>
+    </div>
+<?php endif ?>

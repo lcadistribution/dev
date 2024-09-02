@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customerprice>
+            <general>
+            	<enable>0</enable>
+            	<hide_price>0</hide_price>
+            	<ajax_price>0</ajax_price>
+            	<ask_specialprice>0</ask_specialprice>
+                <display_ask_specialprice_button_label>Ask Special Price</display_ask_specialprice_button_label>
+                <approve_email_template>customerprice_general_approve_email_template</approve_email_template>
+                <disapprove_email_template>customerprice_general_disapprove_email_template</disapprove_email_template>
+                <enable_customer_groupprice>0</enable_customer_groupprice>
+                <advanceprice>0</advanceprice>
+                <title>Offers just for you</title>
+                <top_enable>0</top_enable>
+                <footer_enable>0</footer_enable>
+            </general>
+            <cron>
+            	<import_category>0</import_category>
+            	<import_product>0</import_product>
+            	<export_category>0</export_category>
+            	<export_product>0</export_product>
+            </cron>
+        </customerprice>
+    </default>
+</config>

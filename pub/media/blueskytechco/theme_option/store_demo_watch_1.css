@@ -1,0 +1,177 @@
+/* Custom Data 2022-10-03 01:19:10: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Syne', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Syne', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Syne', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Syne', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+			--topbarbg: #000000;
+			--topbarcolor: #FFFFFF;
+				
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+--button__text_transform: uppercase;
+--button__font-size: 14px;
+--heading__letter-spacing: 1.5px;
+--heading__text-transform: uppercase;
+--bls_elementor-static-menu-title--text-transform: uppercase;
+--button__letter-spacing: 1px;
+--bls_elementor-static-menu-title--font-size: 14px;
+--button__font-weight: 700;
+ --fluid-container-width: 1700px;
+--product-name-grid-item-align: center;
+}
+.header-container{
+    --fluid-container-width: 1820px;
+}
+.page-header,
+.link-on-bottom{
+    --counter_qty-bg: #000;
+    --counter_qty-color: #fff;
+}
+@media only screen and (min-width: 768px){
+:root{
+--module_title-size: 3.4rem;
+}
+}
+@media only screen and (min-width: 1440px){
+:root{
+--navigation-desktop-level0-item__padding: 0 15px;
+}
+}
+@media only screen and (min-width: 1200px){
+.show_search-form .top-search{
+--button__border-radius: 0;
+border-width:0 0 2px;
+padding: 0;
+    border-radius: 0;
+}
+}
+
+.widget-category-thumbnail-image .style_2{
+    --heading__font-weight__base: 700;
+--category_item_title-text-transform: uppercase;
+    --category_item_title-letter-spacing: 1px;
+}
+.widget-category-thumbnail-image .style_2 .category-count{
+    --heading__font-weight__base: 400;
+}
+[data-content-type="newsletter"]{
+    --border-color: transparent;
+    --form-subscribe-background: transparent;
+--button__background:  transparent;
+border-bottom: 2px solid #fff;
+}
+.elementor-newsletter-wrapper .actions-subscribe button{
+padding: 0;
+    font-size: 14px;
+    background: transparent;
+    box-shadow: none !important;
+    color: #fff;
+    border: 0;
+}
+[data-content-type="newsletter"] button:after{
+display: none;
+}
+.elementor-newsletter-wrapper .field-newsletter{
+padding-left: 0;
+}
+.elementor-newsletter-wrapper .field-newsletter:before{
+display: none;
+}
+.elementor-newsletter-wrapper .field-newsletter input{
+padding-left: 0;
+font-size: 16px;
+color: #fff;
+}
+.elementor-newsletter-wrapper .field-newsletter input::-webkit-input-placeholder { /* Edge */
+color: #fff;
+}
+
+.elementor-newsletter-wrapper .field-newsletter input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: #fff;
+}
+
+.elementor-newsletter-wrapper .field-newsletter input::placeholder {
+color: #fff;
+}
+@media (min-width: 1199px){
+.container-fluid[data-content-type='row'][data-appearance='full-width'] > .row-full-width-inner{
+    width: 100%;
+}
+.container-fluid[data-content-type='row'][data-appearance='full-bleed'] {
+    --fluid-container-width: 1700px;
+    max-width: var(--fluid-container-width, 1720px);
+    --bs-gutter-x: 15px;
+}
+}
+
+@media (min-width: 768px)
+.page-main-full-width [data-content-type='row'][data-appearance='full-width'] > .row-full-width-inner,
+ .page-main-full-width .column.main > [data-content-type='row'][data-appearance='contained'] {
+    width: 100%;
+}
+
+
+
+

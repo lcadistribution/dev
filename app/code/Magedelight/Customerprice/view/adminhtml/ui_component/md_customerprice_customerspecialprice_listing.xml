@@ -1,0 +1,187 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>md_customerprice_customerspecialprice_columns</spinner>
+		<deps>
+			<dep>md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_listing_data_source</dep>
+		</deps>
+		<buttons/>
+	</settings>
+	<dataSource name="md_customerprice_customerspecialprice_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">customerspecialprice_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Magedelight_Customerprice::CustomerpriceSpecialprice</aclResource>
+		<dataProvider name="md_customerprice_customerspecialprice_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>customerspecialprice_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+		<massaction name="listing_massaction">
+	        <action name="approve">
+	            <settings>
+	                <url path="md_customerprice/customerspecialprice/approve"/>
+	                <type>approve</type>
+	                <label translate="true">Approve</label>
+	            </settings>
+	        </action>
+	        <action name="disapprove">
+	            <settings>
+	                <url path="md_customerprice/customerspecialprice/disapprove"/>
+	                <type>disapprove</type>
+	                <label translate="true">Disapprove</label>
+	            </settings>
+	        </action>
+    	</massaction>
+	</listingToolbar>
+	<columns name="md_customerprice_customerspecialprice_columns">
+		<settings>
+			<!-- <editorConfig>
+				<param name="selectProvider" xsi:type="string">md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">customerspecialprice_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="md_customerprice/CustomerSpecialprice/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig> -->
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_listing.md_customerprice_customerspecialprice_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>customerspecialprice_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="customerspecialprice_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="email">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Customer Email</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Customer Name</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="pname">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Product Name</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="actual_price">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Product Price</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="quantity">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Quantity</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="special_price">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Special Price</label>
+				<!-- <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor> -->
+			</settings>
+		</column>
+		<column name="approve">
+		    <argument name="data" xsi:type="array">
+		        <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+		        <item name="config" xsi:type="array">
+		            <item name="filter" xsi:type="string">select</item>
+		            <item name="label" translate="true" xsi:type="string">Approve</item>
+		            <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+		            <item name="dataType" xsi:type="string">select</item>
+		        </item>
+		    </argument>
+		</column>
+		<actionsColumn name="actions" class="Magedelight\Customerprice\Ui\Component\Listing\Column\CustomerSpecialpriceActions">
+			<settings>
+				<indexField>customerspecialprice_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

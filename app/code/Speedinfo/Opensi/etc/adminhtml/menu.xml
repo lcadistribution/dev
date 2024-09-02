@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * 2003-2017 OpenSi Connect
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Speedinfo
+ * @package     Speedinfo_Opensi
+ * @copyright   Copyright (c) 2017 Speedinfo SARL (http://www.speedinfo.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Speedinfo_Opensi::opensi" title="OpenSi" module="Speedinfo_Opensi" sortOrder="9999" resource="Speedinfo_Opensi::create"/>
+		<add id="Speedinfo_Opensi::opensiconnect" title="OpenSi Connect" module="Speedinfo_Opensi" sortOrder="10" parent="Speedinfo_Opensi::opensi" resource="Speedinfo_Opensi::opensi"/>
+		<add id="Speedinfo_Opensi::presentation" title="Presentation" module="Speedinfo_Opensi" sortOrder="10" parent="Speedinfo_Opensi::opensiconnect" action="opensi/presentation/index" resource="Speedinfo_Opensi::presentation"/>
+		<add id="Speedinfo_Opensi::configuration" title="Configuration" module="Speedinfo_Opensi" sortOrder="20" parent="Speedinfo_Opensi::opensiconnect" action="adminhtml/system_config/edit/section/opensi_configuration" resource="Speedinfo_Opensi::configuration"/>
+		<add id="Speedinfo_Opensi::preferences" title="Preferences" module="Speedinfo_Opensi" sortOrder="30" parent="Speedinfo_Opensi::opensiconnect" action="adminhtml/system_config/edit/section/opensi_preferences" resource="Speedinfo_Opensi::preferences"/>
+		<add id="Speedinfo_Opensi::validation" title="Data Validation" module="Speedinfo_Opensi" sortOrder="40" parent="Speedinfo_Opensi::opensiconnect" action="opensi/validation/index" resource="Speedinfo_Opensi::validation"/>
+	</menu>
+</config>

@@ -1,0 +1,246 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+?>
+
+<div class="admin__page-section-title">
+    <strong class="title"><?= /* @noEscape */ $block->getHeaderText() ?></strong>
+    <div class="actions">
+        <button class="action-secondary action-add" id="customer_price_add_product"
+                onclick="showProductGrid();"
+                type="button"><span><?= __("Add Products");?></span>
+        </button>
+      
+    </div>
+</div>
+<form id="edit_form" data-form="edit_form" method="post" enctype="multipart/form-data" >
+	<?= /* @noEscape */ $block->getChildHtml('customerprice_grid') ?>
+    <div class="box">
+        <label><?= __("Discount on all products");?></label>
+        <?php
+        $discount = $block->getDiscountByCustomerId($block->getRequest()->getParam("id"));
+
+        if ($discount === null) {
+            ?>
+            (<strong>%</strong>)
+            <input type="text" data-form-part="customer_form" name="product[discount]" placeholder="%"
+            class="input-text validate-greater-than-zero
+            validate-digits-range digits-range-1-100 validate-percents"
+            value="">
+        <?php } else { ?>
+            (<strong>%</strong>)
+            <input type="text" data-form-part="customer_form" name="product[discount]" placeholder="%"
+            class="input-text validate-greater-than-zero
+            validate-digits-range digits-range-1-100 validate-percents"
+            value="<?= /* @noEscape */ $discount->getValue(); ?>">
+            <input type="hidden" name="product[customerpricediscount_id]" data-form-part="customer_form" value="<?= /* @noEscape */ $discount->getCustomerpricediscountId(); ?>">
+        <?php } ?>
+        <input type="hidden" data-form-part="customer_form" name="customer[customer_id]"
+        value="<?= /* @noEscape */ $block->getRequest()->getParam("id") ?>">
+    </div>
+</form>
+<script>
+
+    require(["jquery", "mage/calendar"], function($){
+
+        var cid = '<?=$block->getRequest()->getParam("id");?>';
+        $(document).on('focus',".datepicker", function(){
+            $(this).datepicker({dateFormat:'yy-mm-dd',           
+            changeMonth: true,          
+            changeYear: true,                    
+            showMonthAfterYear: false,
+            minDate: 0});
+        });
+
+        $('.col-edit_action').click(function(e){
+            
+            var qtyVal = $(this).parent().find('.col-qty').text();
+            var priceVal = $(this).parent().find('.col-new_price').text();
+            var dateVal = $(this).parent().find('.col-expiry_date').text();
+            var id = $.trim($(this).parent().find('.col-customerprice_id').text());
+            var websiteVal = $(this).parent().find('.col-website_id').text();
+            var pidVal = $(this).parent().find('.col-product_id').text();
+            var pnameVal = $(this).parent().find('.col-product_name').text();
+            
+
+            $(this).parent().find('.col-qty').html('<input type="textbox" data-form-part="customer_form" class="input-text admin__control-text qty required-entry validate-greater-than-zero" name="option[value]['+id+'][qty]" value='+qtyVal+'/>');
+
+            $(this).parent().find('.col-new_price').html('<input type="textbox" data-form-part="customer_form" class="required-entry validate-zero-or-greater input-text admin__control-text required-entry _required" name="option[value]['+id+'][newprice]" value='+priceVal+'/>');
+
+            $(this).parent().find('.col-expiry_date').html('<input type="textbox" data-form-part="customer_form" class="input-text admin__control-text datepicker" name="option[value]['+id+'][date]" value='+dateVal+'/>');
+
+            $(this).parent().find('.col-product_id').append('<input type="hidden"  data-form-part="customer_form" name="option[value]['+id+'][pid]" value='+pidVal+'/>');
+            
+            $(this).parent().find('.col-product_id').append('<input type="hidden" data-form-part="customer_form" name="option[value]['+id+'][cid]"  value="'+cid+'" />');
+
+            $(this).css('cursor', 'default').css('text-decoration', 'none').css('pointer-events','none');
+        });
+    });
+
+    function showProductGrid() {
+        $('product-search').show();
+        var el = $('customer_price_add_product');
+        window.setTimeout(function () {
+            el.hide();
+        }, 10);
+    }
+
+    var templateText =
+            '<tr class="option-row">' +
+            '<td><\/td>'+
+            '<td><select class="admin__control-select" name="option[value][{{id}}][website]" data-form-part="customer_form"><?php echo "{{website}}"?></select></td>'+
+            '<td><span><?= /* @noEscape */ "{{pid}}" ?></span><input data-form-part="customer_form" type="hidden" name="option[value][{{id}}][pid]" value="{{pid}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+            '<td><span><?= /* @noEscape */ "{{pname}}" ?></span><input data-form-part="customer_form" type="hidden" name="option[value][{{id}}][pname]" value="{{pname}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+            '<td><span><?= /* @noEscape */ "{{price}}" ?></span><input data-form-part="customer_form" type="hidden" name="option[value][{{id}}][price]" value="{{price}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+            '<td><input data-form-part="customer_form" style="width:50%;" class="required-entry validate-zero-or-greater input-text admin__control-text required-entry _required {{css_class}}" type="text" name="option[value][{{id}}][newprice]" value="{{newprice}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/>&nbsp;{{sign}}<\/td>' +
+            '<td><input data-form-part="customer_form" style="width:20px;" class="input-text admin__control-text qty required-entry validate-greater-than-zero" type="text" name="option[value][{{id}}][qty]" value="{{qty}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/> and above <\/td>' +
+            '<td><input data-form-part="customer_form" class="datepicker input-text admin__control-text" type="text" name="option[value][{{id}}][date]" value="{{date}}" /><\/td>' +
+            '<td id="delete_button_container_{{id}}">' +
+            '<input data-form-part="customer_form" type="hidden" class="delete-flag" name="option[value][{{id}}][del]" value="" />' +
+            '<input data-form-part="customer_form" type="hidden" class="delete-flag" name="option[value][{{id}}][cid]" value="{{cid}}" />' +
+            '<button class="action-delete delete-option" type="button"><span>Remove Product</span><\/button>' +
+            '<\/td>' +
+            '<td><\/td>'+
+            '<\/tr>';
+
+
+    var attributeOption = {
+        table: jQuery('#customerprice_id_table'),
+        templateSyntax: /(^|.|\r|\n)({{(\w+)}})/,
+        templateText: templateText,
+        itemCount: 0,
+        producttype: '<?= /* @noEscape */ __('Bundle Product') ?>',
+        totalItems: 0,
+        totalRows: 0,
+        isReadOnly: false,
+        add: function (data) {
+            this.template = new Template(this.templateText, this.templateSyntax);
+            var isNewOption = false;
+            var refTab = document.getElementById("customerprice_product_search_grid_table").
+            getElementsByTagName('tbody')[0];
+            for (var i = 0; row = refTab.rows[i]; i++) {
+                row = refTab.rows[i];
+                if (row.cells[0].children[0].down().checked) {
+                    for (var j = 0; col = row.cells[j]; j++) {
+                        data.pid = row.cells[1].firstChild.nodeValue;
+                        data.pname = row.cells[2].firstChild.nodeValue;
+                        data.price = row.cells[4].firstChild.nodeValue;
+                        data.newprice = "";
+                        var product_type = row.cells[5].firstChild.nodeValue;
+                        data.sign = '';
+                        data.css_class = '';
+                        if (product_type.replace(/^\s+|\s+$/g, '') == this.producttype) {
+                            data.sign = '%';
+                            data.css_class = 'validate-greater-than-zero validate-percents';
+                        }
+                        data.website = '<?php echo $block->getWebsiteHtml() ?>';
+                        data.cid = '<?= /* @noEscape */ $block->getRequest()->getParam("id") ?>';
+                    }
+                    data.id = 'option_' + this.itemCount;
+                    isNewOption = true;
+
+                    //Element.insert(this.table, {after: this.template.evaluate(data)});
+
+                    jQuery('#customerprice_id_table').append(this.template.evaluate(data));
+                    this.itemCount++;
+                    row.cells[0].children[0].down().checked = false;
+                    this.totalRows++;
+                    /*if ($('no-product')) {
+                        $('no-product').hide();
+                    }*/
+                    
+                }
+
+            }
+
+            if (isNewOption && !this.isReadOnly) {
+                this.enableNewOptionDeleteButton(data.id);
+            }
+            this.bindRemoveButtons();
+            //this.itemCount++;
+            this.totalItems++;
+            attributeOption.hideProductGrid();
+        },
+        remove: function (event) {
+            var element = $(Event.findElement(event, 'tr')); // !!! Button already
+            // have table parent in safari
+            // Safari workaround
+            element.ancestors().each(function (parentItem) {
+                if (parentItem.hasClassName('option-row')) {
+                    element = parentItem;
+                    throw $break;
+                } else if (parentItem.hasClassName('box')) {
+                    throw $break;
+                }
+            });
+
+
+            if (element) {
+                var elementFlags = element.getElementsByClassName('delete-flag');
+                if (elementFlags[0]) {
+                    elementFlags[0].value = 1;
+                }
+
+                element.addClassName('no-display');
+                element.addClassName('template');
+                element.hide();
+                
+                jQuery(element).find("input").removeClass("required-entry");
+                jQuery(element).find("input").removeClass("validate-zero-or-greater");
+                
+                this.totalItems--;
+                this.totalRows--;
+
+                /*if (this.totalRows == 0) {
+                    $('no-product').show();
+                    
+                }*/
+            }
+        },
+        
+        enableNewOptionDeleteButton: function (id) {
+            $$('#delete_button_container_' + id + ' button').each(function (button) {
+                //button.enable();
+                button.removeClassName('disabled');
+            });
+        },
+        bindRemoveButtons: function () {
+            var buttons = $$('.delete-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!$(buttons[i]).binded) {
+                    $(buttons[i]).binded = true;
+                    Event.observe(buttons[i], 'click', this.remove.bind(this));
+                }
+            }
+        },
+        bindRemoveButtonsOnLoad: function () {
+            var buttons = jQuery('.delete-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!buttons[i].binded) {
+                    buttons[i].binded = true;
+                    jQuery(buttons[i]).bind("click", function (event) {
+                        attributeOption.remove(event);
+                    });
+                }
+                this.totalRows++;
+                
+            }
+        },
+        hideProductGrid: function () {
+            $('product-search').hide();
+            $('customer_price_add_product').show();
+        }
+
+    }
+
+    function addSelectedProduct()
+    {
+        attributeOption.add(attributeOption);
+    }
+    attributeOption.bindRemoveButtonsOnLoad();
+
+
+</script>

@@ -1,0 +1,30 @@
+{
+    "name": "ghoster/changecustomerpassword",
+    "description": "Change customer password from admin side like old fashion way Magento 1",
+    "require": {
+        "php": "^7.3||^7.4||^8.1||^8.2"
+    },
+    "authors": [
+        {
+            "name": "Tuyen Nguyen",
+            "homepage": "https://www.thinghost.info/",
+            "role": "Magento Developer"
+        }
+    ],
+    "suggest": {
+    },
+    "type": "magento2-module",
+    "version": "1.0.6",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "GhoSter\\ChangeCustomerPassword\\": ""
+        }
+    }
+}

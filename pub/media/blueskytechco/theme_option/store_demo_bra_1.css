@@ -1,0 +1,103 @@
+/* Custom Data 2022-08-27 11:15:05: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Prata', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 600;
+			
+	/* Other Font */
+		--other_font_family: 'Prata', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #AF593C; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+	
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+					}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+  --navigation-level0-item__text-transform: uppercase;
+--bls_elementor-static-menu-title--font-size: 14px;
+--bls_elementor-static-menu-title-font-weight: 600;
+}
+.navigation.horizontal .level0 > a .menu-thumb-icon{
+    max-width: 11rem;
+}
+.page-header{
+    --counter_qty-bg: #000;
+    --counter_qty-color: #fff;
+}
+footer .header-static-menu{
+--heading__font-family__base: var(--font-family-name__base);
+}
+[data-content-type="newsletter"]{
+    --border-color: transparent;
+    --form-subscribe-background: transparent;
+--button__background:  transparent;
+border-bottom: 2px solid #000;
+}
+[data-content-type="newsletter"] button{
+padding-right: 0;
+}
+.elementor-newsletter-wrapper .field-newsletter{
+padding-left: 0;
+}
+.elementor-newsletter-wrapper .field-newsletter:before{
+display: none;
+}
+.elementor-newsletter-wrapper .field-newsletter input{
+padding-left: 0;
+font-size: 16px;
+}
+.unvisible {
+    display: none; 
+}

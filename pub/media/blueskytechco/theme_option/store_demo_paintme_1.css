@@ -1,0 +1,141 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Rubik', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Rubik', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Rubik', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --fluid-container-width: 1700px;
+    --module_title-font-weight: 500;
+    --bls_image-box-title-font-size: 18px;
+    --module_margin_bottom: 7rem;
+}
+
+.page-header {
+    --counter_qty-bg: #000;
+}
+
+.header-container {
+    --fluid-container-width: 1820px;
+}
+
+.link-absolute [data-content-type='buttons'] {
+    bottom: 45px;
+}
+
+.testimonial-rating .rating-summary .rating-result>span:before {
+    color: #f4c829;
+}
+
+.w-460 {
+    max-width: 460px;
+}
+
+.w-1440 {
+    --layout__max-width: 1470px;
+}
+
+.logo-f img {
+    width: 165px;
+}
+
+input[type="checkbox"] {
+    top: 0
+}
+
+.elementor-newsletter-wrapper input {
+    height: 45px;
+}
+
+.elementor-image-box-img {
+    margin-top: 8px !important;
+}
+
+.elementor-image-box-description {
+    --text__color: #777;
+}
+
+.testimonial-style-2 .widget-testimonial.widget-testimonial-slider-default {
+    --bls_testimonial-content-size: 16px;
+}
+
+.border-top-footer .pagebuilder-column-group {
+    border-top: 1px solid #eee;
+}
+
+.price-box .price {
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 992px) {
+    :root {
+        --module_margin_bottom: 3rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .margin_item--30 .slick-list .slick-slide>div {
+        margin-bottom: 45px;
+    }
+ul.social-link{
+margin-top: 25px;
+}
+}

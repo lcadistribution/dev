@@ -1,0 +1,69 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_SdcpCustomize
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+/** @var \Bss\Simpledetailconfigurable\Pricing\Render\FinalPrice $block */
+/** @var \Magento\Catalog\Api\Data\ProductInterface|\Magento\Catalog\Model\Product $childByPreselect */
+$childByPreselect = $block->getChildByPreselect();
+
+/** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
+
+/** @var \Magento\Framework\Pricing\Price\PriceInterface $_priceModel */
+$priceModel = $block->getPriceType('regular_price');
+
+/** @var \Magento\Framework\Pricing\Price\PriceInterface $_finalPriceModel */
+$finalPriceModel = $block->getPriceType('final_price');
+$idSuffix = $block->getIdSuffix() ?: '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+if ($childByPreselect && $childByPreselect->getPriceInfo() && $schema) {
+    $finalPriceModel = $childByPreselect->getPriceInfo()->getPrice('final_price');
+    $priceModel =  $childByPreselect->getPriceInfo()->getPrice('regular_price');
+}
+?>
+    <span class="normal-price">
+    <?= /* @noEscape */ $block->renderAmount($finalPriceModel->getAmount(), [
+        'display_label' => __('From'),
+        'price_id' => $block->getPriceId('product-price-' . $idSuffix),
+        'price_type' => 'finalPrice',
+        'include_container' => true,
+        'schema' => $schema,
+    ]);
+    ?>
+</span>
+
+<?php if (!$block->isProductList() && $block->hasSpecialPrice()) : ?>
+    <span class="old-price sly-old-price no-display">
+        <?= /* @noEscape */ $block->renderAmount($priceModel->getAmount(), [
+            'display_label'     => __('Regular Price'),
+            'price_id'          => $block->getPriceId('old-price-' . $idSuffix),
+            'price_type'        => 'oldPrice',
+            'include_container' => true,
+            'skip_adjustments'  => true
+        ]); ?>
+    </span>
+<?php endif; ?>
+
+<?php if ($block->showMinimalPrice()) : ?>
+    <?php if ($block->getUseLinkForAsLowAs()) :?>
+        <a href="<?= $block->escapeUrl($block->getSaleableItem()->getProductUrl()) ?>" class="minimal-price-link">
+            <?= /* @noEscape */ $block->renderAmountMinimal() ?>
+        </a>
+    <?php else :?>
+        <span class="minimal-price-link">
+            <?= /* @noEscape */ $block->renderAmountMinimal() ?>
+        </span>
+    <?php endif?>
+<?php endif; ?>

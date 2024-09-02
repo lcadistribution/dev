@@ -1,0 +1,112 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Poppins', sans-serif;
+			--font-size__base: 15px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Poppins', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Poppins', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Poppins', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--heading__text-transform: uppercase;
+--product-name-text-transform: uppercase;
+--bls_border-height: 2px;
+--button__font-size: 1.4rem;
+--button__font-weight: 700;
+--navigation-level0-item__text-transform: uppercase;
+--post_info-text-align: center;
+--fluid-container-width: 1750px;
+}
+
+.header-container{
+    --fluid-container-width: 1950px;
+}
+
+.hover-link a.pagebuilder-button-link{
+--bls_border-height: 2px;
+}
+.elementor__header{
+--heading__letter-spacing: 1.5px;
+}
+@media (min-width: 768px){
+:root{
+--module_title-size: 3.4rem;
+}
+}
+@media (min-width: 1200px){
+:root{
+--product_detail_title-font-size: 3.2rem;
+}
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light .logo img{
+       -webkit-filter: invert(100%);
+      filter: invert(100%);
+  }
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light{
+     --counter_qty-bg: #fff;
+    --counter_qty-color: #000;
+   }
+}
+.post-title{
+--post_item_title-size: 1.6rem;
+--post_item_title-weight: 700;
+--heading__letter-spacing: 0.5px;
+}

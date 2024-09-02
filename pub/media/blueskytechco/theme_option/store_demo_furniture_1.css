@@ -1,0 +1,85 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'CerebriSans', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'CerebriSans', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'CerebriSans', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'CerebriSans', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--bls_elementor-static-menu-title-font-weight: 500;
+}
+.border-top-footer .pagebuilder-column-group{
+border-top: 1px solid #e6e6e6;
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper input{
+    height: 45px;
+}
+.header_style-2:not(.layout-7) .header_middle{
+    --header_padding: 10px;
+}
+[data-image-box-position="left"] .elementor-image-box-img{
+margin-top: 7px;
+}
+.for-full-width-menu .level0.fullwidth {
+    --fluid-container-width: 1240px;
+}

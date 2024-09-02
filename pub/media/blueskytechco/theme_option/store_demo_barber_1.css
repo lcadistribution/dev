@@ -1,0 +1,175 @@
+/* Custom Data 2022-11-15 08:32:04: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1920px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Roboto Condensed', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Roboto Condensed', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Roboto Condensed', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Roboto Condensed', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #000000; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+				--button__color: #000000;
+	--button-primary__color: #000000;
+		 
+	--button-secondary-bg: #FFFFFF;
+	--button__background: #FFFFFF;
+	--button-primary__background: #FFFFFF;
+			--button__hover__background: #927D5F;
+	--button-primary__hover__background: #927D5F;
+			--button__hover__color: #FFFFFF;
+	--button-primary__hover__color: #FFFFFF;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	.minicart-wrapper .block-content .actions .secondary .action.viewcart:not(:hover){
+		--heading__color__base: #000000;
+	}
+ 
+	button, .cart.table-wrapper .actions-toolbar > .action, .action-gift{
+		border: 1px solid var(--button__background);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --navigation-level0-item__text-transform: uppercase;
+    --bls_elementor-static-menu-title--font-size: 16px;
+    --bls_elementor-static-menu-title--text-transform: uppercase; 
+    --product-name-text-transform: uppercase;
+--heading__text-transform: uppercase;
+--layout__max-width: 1650px;
+    --footer-links-color: #666;
+    --link__color: #666;
+--headings__font-weight-secondary: 700;
+    --product_item-size: 1.5rem;
+}
+.products-grid .product-item-details {
+    text-align: center;
+}
+.products-grid .product-item-details .price-box {
+    justify-content: center;
+}
+div:not(.widget-product-advanced-list) .products.wrapper.list .product-item-actions .tocart.primary,
+.buynow-button .action.primary{
+    background: var(--button-primary__hover__background);
+    border: 1px solid var(--button-primary__hover__background);
+    color: var(--button-primary__hover__color);
+}
+.widget-blog-posts-slider-carousel .post-image {
+   margin: 0 0 1.2rem;
+}
+.widget-blog-posts-slider-carousel .post-categories a {
+    font-size: 12px;
+color: #927D5F;
+}
+footer .elementor-static-menu-title {
+    font-weight: 700 !important;
+}
+.fs_12 {
+font-size: 12px;
+}
+ul.social-link li a {
+    color: #000;
+}
+[data-layout=style_2] .elementor-newsletter-wrapper input {
+    border: 2px solid #000;
+}
+[data-layout=style_2] .elementor-newsletter-wrapper .actions-subscribe button {
+    background: #000;
+    border-color: #000;
+}
+[data-layout=style_2] {
+    max-width: 650px;
+}
+.max-width-700 {
+    max-width: 700px;
+    margin: auto;
+}
+.h4_ls {
+    letter-spacing: -1px;
+    color: #927d5f;
+}
+.banner_button .pagebuilder-button-primary {
+background: #927D5F;
+    color: white;
+}
+.catalog-product-view .page-footer {
+margin-top: 50px;
+}
+
+@media (min-width: 1200px){
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light .logo img{
+       -webkit-filter: invert(100%);
+      filter: invert(100%);
+  }
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light{
+     --counter_qty-bg: #fff;
+    --counter_qty-color: #000;
+   }
+}
+.cms-index-index .header-container:not(.header_scroll_up) .header__action-default .minicart-wrapper .action.showcart .counter.qty, 
+.cms-index-index .header-container:not(.header_scroll_up) .header__action-default li .counter.qty {
+    background-color: #fff;
+    color: #000;
+}
+
+@media (min-width: 992px), print {
+.product__style-2 .products-grid .product-item {
+    padding: 15px;
+}
+}
+

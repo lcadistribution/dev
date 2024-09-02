@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+ 
+$customHelper = $block->helper('Magedelight\Customerprice\Helper\Data');
+$customerPriceIsEnabled = $customHelper->getConfig('customerprice/general/enable');
+$_categories = $block->getCategories();
+if ($block->getmoduleStatus()) { ?>
+<div class="block filter">
+        <div class="content">
+            <strong class="subtitle"><?= /* @noEscape */ __('Shopping Options') ?></strong>
+            <dl class="options" id="narrow-by-list2">
+                <dt class="block-title"><?= /* @noEscape */ __('Category') ?></dt>
+                <dd>
+                    <ol class="items">
+                        <?php foreach ($_categories as $category):
+                            $_category = $block->getCategory($category->getCategoryId());
+                            ?>
+                            <?php if ($_category->getIsActive()): ?>
+                                <li class="item <?php /* @escapeNotVerified */
+                                if ($_category->getId() == $block->getRequest()->getParam('catid')) {
+                                    echo " active"; } ?>">
+                                    <a href="<?= /* @noEscape */ $block->getUrl('priceforcustomer', ['_query'=>
+                                        ['catid'=>$_category->getId()]]) ?>">
+                                    <?= /* @noEscape */ $block->escapeHtml($_category->getName()) ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>
+<?php } ?>
+<style>
+.md-customerprice-index-offers .options ol li a {
+    padding: 10px 12px;
+    border-bottom: #ddd solid 1px;
+    display: block;
+}
+.md-customerprice-index-offers .options ol li a:hover {
+    background: #1979c3;
+    color: #fff;
+}
+.md-customerprice-index-offers .options ol .active {
+    background: #1979c3;
+    
+}
+.md-customerprice-index-offers .options ol .active a {
+    color: #fff;
+}
+.md-customerprice-index-offers .options ol li {
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    margin: 0;
+}
+.md-customerprice-index-offers .options ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.md-customerprice-index-offers .options ol li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+.md-customerprice-index-offers .options .block-title {
+    border-bottom: 1px solid #ccc;
+    background-color: #f4f4f4;
+    color: #636363;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    margin-bottom: 0;
+}
+.md-customerprice-index-offers .options {
+    border: #ddd solid 1px;
+    border-radius: 4px;
+}
+.md-customerprice-index-offers .options dd {
+   margin-bottom: 0px;
+}
+</style>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+?>
+<div id="customerprice_id" data-grid-id="customerprice_id">
+	<div id="product-search" style="display: none" class="admin__page-section product-search-items">
+		<?= /* @noEscape */ $block->getChildHtml('search') ?>
+	</div>
+	<section id="md-customerprice-items" class="admin__page-section md-customerprice-items" data-mage-init='{"loader": {}}'>
+		<?= /* @noEscape */ $block->getChildHtml('items') ?>
+	</section>
+</div>

@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magedelight_Base::root" title="Magedelight" sortOrder="51">
+					<resource id="Magedelight_Base::md_modules">
+						<resource id="Magedelight_Customerprice::root" title="Magedelight Price Per Customer" sortOrder="10" >
+							<resource id="Magedelight_Customerprice::CustomerpriceSpecialprice" title="Customer Special Price" sortOrder="10" >
+								<resource id="Magedelight_Customerprice::actions" title="Actions" translate="title" sortOrder="10">
+									<resource id="Magedelight_Customerprice::CustomerpriceSpecialprice_delete" title="Delete Customer Special Price" sortOrder="20"/>
+									<resource id="Magedelight_Customerprice::CustomerpriceSpecialprice_approve" title="Approve Customer Special Price" sortOrder="30"/>
+									<resource id="Magedelight_Customerprice::CustomerpriceSpecialprice_disapprove" title="Disapprove Customer Special Price" sortOrder="40"/>
+								</resource>
+							</resource>
+							<resource id="Magedelight_Customerprice::customerprice_report" title="Customer price Report" sortOrder="20">
+								<resource id="Magedelight_Customerprice::customerPriceProductReport" title="Date wise Customer Special Price - Products" sortOrder="10"/>
+								<resource id="Magedelight_Customerprice::customerPriceCategoyReport" title="Date wise Customer Special Price - Category" sortOrder="20"/>	
+							</resource>
+							<resource id="Magedelight_Customerprice::config_root" title="Price Per Customer Configuration" sortOrder="30" />
+							<resource id="Magedelight_Customerprice::useful_links" title="Useful Links" sortOrder="40">
+								<resource id="Magedelight_Customerprice::documentation" title="Documentation" sortOrder="10" />
+							</resource>
+						</resource>
+					</resource>
+				</resource>
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Magedelight_Base::config_root">
+								<resource id="Magedelight_Customerprice::config_customerprice" title="Price Per Customer" sortOrder="90" />
+							</resource>
+						</resource>
+					</resource>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

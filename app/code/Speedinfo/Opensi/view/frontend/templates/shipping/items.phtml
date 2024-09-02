@@ -1,0 +1,59 @@
+<?php $order = $block->getOrder(); ?>
+<div class="order-details-items shipments">
+  <?php if ($block->getDeliveryNotesConfig() && $order->getOpensiAfter() && count($block->getOpensiDocuments($order->getIncrementId())) == 0): ?>
+    <?php echo __('No shipment available...'); ?>
+  <?php else: ?>
+    <a href="#" class="action track" title="<?php echo __('Track all shipments'); ?>" data-mage-init='{"popupWindow": {"windowURL":"<?php echo $block->trackAllShipments($order); ?>","windowName":"trackorder","width":800,"height":600,"left":0,"top":0,"resizable":1,"scrollbars":1}}'>
+      <?php echo __('Track all shipments'); ?>
+    </a>
+
+    <br />
+
+    <?php foreach ($order->getShipmentsCollection() as $shipment): ?>
+      <br />
+      <h2><?php echo __('Shipment #') ?><?php echo $shipment->getIncrementId(); ?></h2>
+      <?php if (!($block->getDeliveryNotesConfig() && $order->getOpensiAfter())): ?>
+        <a href="<?php echo $block->getPrintShipmentUrl($shipment) ?>"><?php echo __('Print Shipment') ?></a>
+      <?php endif; ?>
+
+      <table class="data table table-order-items shipment">
+        <thead>
+          <tr>
+            <th class="col name"><?php echo __('Date'); ?></th>
+            <th class="col"><?php echo __('Shipment'); ?></th>
+            <th class="col"><?php echo __('Tracking number(s)'); ?></th>
+            <?php if ($block->getDeliveryNotesConfig() && $order->getOpensiAfter()): ?>
+              <!-- Display OpenSi deliverynotes -->
+              <th class="col"><?php echo __('Delivery note(s)'); ?></th>
+            <?php endif; ?>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col name"><?php echo $block->getDateFormat($shipment->getCreatedAt()); ?></td>
+            <td class="col"><?php echo __('Shipment #').$shipment->getIncrementId(); ?></td>
+            <td><?php echo implode(', ', $block->getTrackingNumbers($shipment)); ?></td>
+            <?php if ($block->getDeliveryNotesConfig() && $order->getOpensiAfter()): ?>
+              <!-- Display OpenSi deliverynotes -->
+              <td><?php echo implode(', ', $block->getOpenSiDeliveryNotes($order->getIncrementId(), $shipment)); ?></td>
+            <?php endif; ?>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4><?php echo __('Shipped product(s)'); ?></h4>
+      <div class="table-wrapper">
+        <table class="data table table-order-items">
+          <tfoot>
+            <tr>
+              <th class="col"><?php echo __('Product Name'); ?></th>
+              <th class="col"><?php echo __('SKU'); ?></th>
+              <th class="col"><?php echo __('Qty Shipped'); ?></th>
+            </tr>
+            <?php echo $block->getShipmentItems($shipment); ?>
+          </tfoot>
+        </table>
+      </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</div>

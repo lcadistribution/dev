@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src='Magedelight_Customerprice::css/custom.css'/>
+    </head>
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link-new"  after="-">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+                </arguments>
+            </block>
+            <block class="Magedelight\Customerprice\Block\Toplink" name="add.customerprice.top" after="-" />  
+        </referenceBlock>
+        <referenceBlock name="register-link" remove="true"/>
+        <referenceBlock name="footer_links">
+            <block class="Magedelight\Customerprice\Block\Footerlink" name="add.customerprice.footer" >
+                
+            </block>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer-special-price-js" template="Magedelight_Customerprice::specialpriceformjs.phtml" after="-" ifconfig="customerprice/general/enable" />
+        </referenceContainer>
+    </body>
+</page>

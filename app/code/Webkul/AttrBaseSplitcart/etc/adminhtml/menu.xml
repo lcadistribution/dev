@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_AttrBaseSplitcart
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webkul_AttrBaseSplitcart::attrbasesplitcart" 
+            title="Attribute Base Splitcart" 
+            action="admin/system_config/edit/section/attrbasesplitcart" 
+            module="Webkul_AttrBaseSplitcart" 
+            sortOrder="10" 
+            resource="Webkul_AttrBaseSplitcart::attrbasesplitcart"/>
+        
+        <add id="Webkul_AttrBaseSplitcart::config_attrbasesplitcart" 
+            title="Configuration Settings" 
+            module="Webkul_AttrBaseSplitcart" 
+            sortOrder="100" 
+            parent="Webkul_AttrBaseSplitcart::attrbasesplitcart" 
+            action="admin/system_config/edit/section/attrbasesplitcart" 
+            resource="Webkul_AttrBaseSplitcart::config_attrbasesplitcart"/>
+    </menu>
+</config>

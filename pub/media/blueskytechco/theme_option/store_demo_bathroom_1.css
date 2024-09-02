@@ -1,0 +1,151 @@
+/* Custom Data 2022-08-27 07:19:41: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Gordita', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Gordita', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Gordita', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Livvic', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+}
+.header-container{
+--fluid-container-width: 100%;
+}
+.page-header,
+.link-on-bottom{
+    --counter_qty-bg: #000;
+}
+.category-slider-7 .category-thumbnail_img {
+    border-radius: 50% !important;
+    max-width: 190px;
+    margin: auto;
+
+}
+.category-slider-7 .category-thumbnail_img  .category-thumbnail__image{
+--aspect-ratio: 1 !important;
+}
+.widget-category-thumbnail-image.category-slider-7{
+    --category_item_title-size: 20px;
+}
+.elementor-newsletter-wrapper .form-subscribe{
+    border: 2px solid #ededed;
+    border-radius: 0;
+}
+
+.custom1 .tp-bullet{
+color:#fff;
+}
+.custom1 .tp-bullet.selected:after{
+    border: 1px solid #fff;
+}
+strong.product-item-name.bold.uppercase {
+    text-transform: capitalize;
+}
+a.pagebuilder-button-secondary,
+.hover-link a.pagebuilder-button-link {
+    font-size: 14px;
+}
+.footer-title h3, .footer-title h4, .footer-title h5, .elementor-static-menu-title{
+--bls_elementor-static-menu-title--font-size:  18px;
+}
+[data-content-type="staticmenu-item"] > *{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+.grouped-item .item-order-count span{
+border: 2px solid #eee;
+    font-size: 1.4rem;
+}
+.fs_40 h3{
+    line-height: 1.228;
+}
+.icon a.pagebuilder-button-secondary{
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='13' fill='none'%3E%3Cpath d='M6.786.792c.164-.146.319-.146.464 0l5.715 5.742c.164.146.164.292 0 .438L7.25 12.714c-.145.146-.3.146-.464 0l-.547-.547a.296.296 0 0 1-.082-.219.4.4 0 0 1 .082-.246l4.238-4.238H1.153c-.219 0-.328-.11-.328-.328V6.37c0-.218.109-.328.328-.328h9.324L6.239 1.804c-.146-.164-.146-.32 0-.465l.547-.547Z' fill='%23000'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 87% 50%;
+    padding-right: 50px;
+}
+.icon a.pagebuilder-button-secondary:hover{
+
+}
+
+@media only screen and (max-width: 576px){
+.fs_40 {
+    font-size: 2.2rem;
+}
+}
+

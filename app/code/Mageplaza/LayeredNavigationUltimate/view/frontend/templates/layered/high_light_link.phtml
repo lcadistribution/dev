@@ -1,0 +1,100 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_LayeredNavigationUltimate
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+<?php
+/** @var \Mageplaza\LayeredNavigationUltimate\Helper\Data $helperData */
+$helperData = $this->helper(\Mageplaza\LayeredNavigation\Helper\Data::class);
+$color = $helperData->getColorCode();
+?>
+<style>
+    #layered-filter-block input[type=checkbox]:checked:before,
+    #layered-filter-block input[type=radio]:checked:before {
+        content: "";
+        position: absolute;
+        width: 0.9rem;
+        height: 0.9rem;
+        margin: 0.2rem;
+        border-radius: 0.2rem;
+        background: <?= /** @noEscape */$color; ?>;
+    }
+
+    #layered-filter-block input[type=radio]:checked:before {
+        border-radius: 1.2rem;
+    }
+
+    #layered-filter-block input[type=checkbox], #layered-filter-block input[type=radio] {
+        -webkit-appearance: none;
+        min-width: 1.5rem;
+        min-height: 1.5rem;
+        cursor: pointer;
+        border: 0.1rem solid #cacaca;
+    }
+
+    #layered-filter-block input[type=radio] {
+        border-radius: 1rem;
+    }
+
+    #layered-filter-block input[type=checkbox]:checked + a,
+    #layered-filter-block input[type=checkbox]:checked + a .count,
+    #layered-filter-block input[type=radio]:checked + a,
+    #layered-filter-block input[type=radio]:checked + a .count{
+        color: <?= /** @noEscape */ $color; ?>
+    }
+
+    .filter-options-content .rating-summary.selected,
+    .filter-options-content .rating-summary:hover,
+    .swatch-option:hover,
+    .swatch-option.selected ,
+    .swatch-attribute-options a:hover > .swatch-option,
+    .ln_slider_container input:hover,
+    .ln_slider_container input.focus-visible,
+    .chosen-container .search-choice
+    {
+        outline: 2px solid<?= /** @noEscape */$color; ?>!important;
+    }
+
+    .filter-current ol.items .filter-label,
+    .filter-current ol.items .filter-value,
+    .filter-current ol.items .action.remove::before,
+    .block-actions.filter-actions .action.clear.filter-clear,
+    .filter-options-content .rating-summary.selected,
+    .filter-options-content .rating-summary.selected .count,
+    .filter-options-content .rating-summary:hover,
+    .filter-options-content .rating-summary .count:hover,
+    .filter-options-content a:hover,
+    .filter-options-content a:hover > .count,
+    .swatch-option.selected ~ .swatch-option-text,
+    .ln_slider_container input:hover,
+    .ln_slider_container input.focus-visible,
+    .chosen-container .search-choice span,
+    .chosen-container .active-result.highlighted
+    {
+        color: <?= /** @noEscape */$color; ?>!important;
+    }
+
+    .filter-options-content .rating-summary.selected,
+    .filter-options-content .rating-summary.selected .count,
+    .filter-options-content .rating-summary:hover,
+    .filter-options-content .rating-summary:hover > .count {
+        font-size: large;
+        font-weight: bold;
+    }
+</style>

@@ -1,0 +1,25 @@
+{
+  "name": "mage_delight/customerprice_module",
+  "description": "Price Per Customer module in Magento2",
+  "require": {
+    "php": ">=5.6",
+    "mage_delight/base": "*"
+  },
+  "type": "magento2-module",
+  "license": "GPL-3.0",
+  "version": "3.0.1",
+  "authors": [
+    {
+      "name": "MD",
+      "email": "info@Magedelight.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Magedelight\\Customerprice\\": ""
+    }
+  }
+}

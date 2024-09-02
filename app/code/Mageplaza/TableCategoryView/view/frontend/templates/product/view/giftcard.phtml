@@ -1,0 +1,135 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableCategoryView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+<?php /* @var $block \Mageplaza\TableCategoryView\Block\CatalogProduct\View\Giftcard */?>
+<?php $giftcardBlock = $block->getGiftCardBlock(); ?>
+<?php $_product = $giftcardBlock->getProduct(); ?>
+<?php $_id = $_product->getId(); ?>
+<div class="giftcard form" data-container-for="giftcard_info">
+    <?php if ($_product->isSaleable() && $giftcardBlock->isConfigured($_product)) : ?>
+        <fieldset class="fieldset giftcard send">
+            <legend class="legend">
+                <span><?= /* @noEscape */ __('Gift Card Information') ?></span>
+            </legend><br>
+            <?php if ($block->checkDisplayAmount($_product)) : ?>
+                <div class="field giftcard-amount required">
+                    <label for="giftcard-amount-input" id="giftcard-amount-input" class="label"><span>
+                            <?= /* @noEscape */ __('Amount in %1', $giftcardBlock->getCurrentCurrency()) ?></span></label>
+                    <div class="control">
+                        <input type="text"
+                               id="giftcard-amount-input"
+                               name="custom_giftcard_amount"
+                               class="required-entry input-text"
+                               data-validate="{number: true,required: true
+                                <?php if ($_product->getOpenAmountMin()) :?>
+                                    <?= /* @noEscape */ __(',min: %1', $_product->getOpenAmountMin()) ?>
+                                <?php endif;?>
+                                <?php if ($_product->getOpenAmountMax()) :?>
+                                    <?= /* @noEscape */ __(',max: %1', $_product->getOpenAmountMax()) ?>
+                                <?php endif;?>
+                                }"
+                        />
+                        <?php if ($_product->getOpenAmountMin() || $_product->getOpenAmountMax()) : ?>
+                            <?php $min = $block->convertAndFormatCurrency($_product->getOpenAmountMin(), false); ?>
+                            <?php $max = $block->convertAndFormatCurrency($_product->getOpenAmountMax(), false); ?>
+                            <p class="note">
+                                <?php if ($_product->getOpenAmountMax() && $_product->getOpenAmountMin()) : ?>
+                                    <span><?= /* @noEscape */ __('Minimum: %1', $min) ?></span>
+                                    <span><?= /* @noEscape */ __('Maximum: %1', $max) ?></span>
+                                <?php elseif ($_product->getOpenAmountMin()) : ?>
+                                    <span><?= /* @noEscape */ __('Minimum: %1', $min) ?></span>
+                                <?php elseif ($_product->getOpenAmountMax()) : ?>
+                                    <span><?= /* @noEscape */ __('Maximum: %1', $max) ?></span>
+                                <?php endif; ?>
+                            </p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="field sender required">
+                <label for="giftcard_sender_name" class="label">
+                    <span><?= /* @noEscape */ __('Sender Name') ?></span>
+                </label>
+                <div class="control">
+                    <input type="text"
+                           id="giftcard_sender_name"
+                           name="giftcard_sender_name"
+                           class="required-entry input-text"
+                           value="<?= $block->escapeHtml($giftcardBlock->getDefaultSenderName()) ?>" />
+                </div>
+            </div>
+            <?php if ($giftcardBlock->isEmailAvailable($_product)) : ?>
+                <div class="field sender email required">
+                    <label for="giftcard_sender_email" class="label"><span><?= /* @noEscape */ __('Sender Email') ?></span></label>
+                    <div class="control">
+                        <input type="email"
+                               id="giftcard_sender_email"
+                               name="giftcard_sender_email"
+                               class="validate-email required-entry input-text"
+                               value="<?= $block->escapeHtml($giftcardBlock->getDefaultSenderEmail()) ?>"/>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="field recipient required">
+                <label for="giftcard_recipient_name" class="label"><span><?= /* @noEscape */ __('Recipient Name') ?></span></label>
+                <div class="control">
+                    <input type="text"
+                           id="giftcard_recipient_name"
+                           name="giftcard_recipient_name"
+                           class="required-entry input-text"
+                           value="<?= $block->escapeHtml($giftcardBlock->getDefaultValue('giftcard_recipient_name')) ?>" />
+                </div>
+            </div>
+            <?php if ($giftcardBlock->isEmailAvailable($_product)) : ?>
+                <div class="field recipient email required">
+                    <label for="giftcard_recipient_email" class="label"><span><?= /* @noEscape */ __('Recipient Email') ?></span></label>
+                    <div class="control">
+                        <input type="email"
+                               id="giftcard_recipient_email"
+                               name="giftcard_recipient_email"
+                               class="validate-email required-entry input-text"
+                               value="<?= $block->escapeHtml($giftcardBlock->getDefaultValue('giftcard_recipient_email')) ?>" />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($giftcardBlock->isMessageAvailable($_product)) : ?>
+                <div class="field text">
+                    <label for="giftcard-message" class="label"><span><?= /* @noEscape */ __('Message') ?></span></label>
+                    <div class="control">
+                        <textarea name="giftcard_message" id="giftcard-message"
+                                  class="input-text giftcard-message-max-length"
+                            <?php if ($giftcardBlock->getMessageMaxLength()) {
+                                $errorMessage = "'" . __('Maximum length of the message is %1 characters.', $giftcardBlock->getMessageMaxLength()) . "'"; ?>
+                                <?= /* @noEscape */ 'data-validate="{maxlength:' . $giftcardBlock->getMessageMaxLength()
+                                . ',messages:{maxlength:' . $errorMessage . '}}"' ?>
+                            <?php } ?>
+                            cols="5" rows="3"><?=
+                            $block->escapeHtml($giftcardBlock->getDefaultValue('giftcard_message'))
+                            ?></textarea>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </fieldset>
+    <?php elseif ($_product->isAvailable() && $giftcardBlock->isConfigured($_product)) : ?>
+        <?= /* @noEscape */ $giftcardBlock->getProductPrice($_product) ?>
+    <?php endif; ?>
+</div>

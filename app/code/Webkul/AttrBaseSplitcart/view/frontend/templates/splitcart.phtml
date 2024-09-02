@@ -1,0 +1,341 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_AttrBaseSplitcart
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+/**  @var $block \Magento\Checkout\Block\Cart\Grid */
+?>
+<?php
+$viewModel = $block->getCartViewModel();
+$splitBlock = $viewModel->getBlock();
+$mergedCells = $viewModel->displayCartBothPrices();
+$defaultShippingAddress = $splitBlock->getAddressData();
+$symbol = $splitBlock->getSymbol();
+$rate = $splitBlock->getCurrentCurrencyRate();
+$defaultCountry = '';
+$defaultState = '';
+$defaultPostCode = '';
+
+?>
+<?= /* @noEscape */
+$block->getChildHtml("form_before") ?>
+<?php
+$config = $block
+    ->getLayout()
+    ->createBlock(\Magento\Config\Block\System\Config\Form::class);
+$blockObj = $block
+    ->getLayout()
+    ->createBlock(\Magento\Checkout\Block\Cart\Shipping::class);
+$blockCountry = $block
+    ->getLayout()
+    ->createBlock(\Webkul\AttrBaseSplitcart\Block\Index::class);
+$countryList = $blockCountry->getCountries();
+$countryListOptions = substr($countryList, 105, strlen($countryList) - 114);
+$regionList = $blockCountry->getRegion();
+$regionListOptions = substr($regionList, 95, strlen($regionList) - 104);
+$activeShipping = $blockCountry->getActiveShippingMethod();
+$globalgift = $config->getConfigValue("sales/gift_options/allow_items");
+if ($splitBlock->getAttributesplitcartEnable()) {
+    $cartData = $splitBlock->getCartDataByAttribute();
+    $cartDatabis = $splitBlock->getCartDataByAttribute();
+    $totalItemsCount = $cartData['totalitemscount'];
+
+    $asprecommande = 0;
+    $asstock = 0;
+    foreach ($cartDatabis as $attrValueIdz => $cartItem2) {
+        if ($attrValueIdz == "totalitemscount") {
+            continue;
+        }
+        if($cartItem2["attr_detail"]["value"] == 'Oui'){
+            $asprecommande = 1;
+        }
+        if($cartItem2["attr_detail"]["value"] != 'Oui'){
+            $asstock = 1;
+        }
+
+    }
+    ?>
+
+    <?php
+    if($asprecommande && $asstock){ ?>
+
+        <div class="message error">
+
+            Votre panier a été divisé en deux parties car il contient à la fois des produits en précommande et des produits en stock.
+        </div>
+
+
+    <?php }
+    ?>
+
+
+    <?php
+    foreach ($cartData as $attrValueId => $cartItem) {
+        if ($attrValueId == "totalitemscount") {
+            continue;
+        }
+        if ($cartItem["attr_detail"]["label"] == "Allow Gift Message" &&
+            $cartItem["attr_detail"]["value"] == "Use config"
+        ) {
+            $cartItem["attr_detail"]["value"] = $globalgift ? "Yes" : "No";
+        } ?>
+
+        <?php
+
+        if($cartItem["attr_detail"]["value"] == 'Oui'){
+
+            ?>
+
+            <div class="split-details message success">
+                Commande produits En Precommande
+            </div>
+            <?php
+        } else if($cartItem["attr_detail"]["value"] != 'Oui' && $asprecommande == 1) { ?>
+
+            <div class="split-details message success">
+                Commande produits En Stock
+            </div>
+        <?php }
+        ?>
+
+
+        <form action="<?= /* @noEscape */
+        $block->getUrl("checkout/cart/updatePost") ?>"
+              method="post"
+              id="form-validate-<?= /* @noEscape */
+              $attrValueId ?>"
+              data-mage-init='{"validation":{}}'
+              class="form form-cart">
+            <?= /* @noEscape */
+            $block->getBlockHtml("formkey") ?>
+            <div class="wk-mpsplit-wrapper">
+                <div class="cart table-wrapper<?= /* @noEscape */
+                $mergedCells == 2
+                    ? " detailed"
+                    : "" ?>">
+                    <table id="shopping-cart-table-<?= /* @noEscape */
+                    $attrValueId ?>"
+                           class="cart items data table"
+                           data-mage-init='{"shoppingCart":{"emptyCartButton": "action.clear",
+                "updateCartActionContainer": "#update_cart_action_container"}}'>
+                        <caption role="heading" aria-level="2" class="table-caption">
+                            <?= /* @noEscape */
+                            __("Shopping Cart Items") ?>
+                        </caption>
+                        <thead>
+                        <tr>
+                            <th class="col item" scope="col">
+                            <span>
+                            <?= /* @noEscape */
+                            __("Item") ?>
+                            </span>
+                            </th>
+                            <th class="col price" scope="col">
+                            <span>
+                            <?= /* @noEscape */
+                            __("Price") ?>
+                            </span>
+                            </th>
+                            <th class="col qty" scope="col">
+                            <span>
+                            <?= /* @noEscape */
+                            __("Qty") ?>
+                            </span>
+                            </th>
+                            <th class="col subtotal" scope="col">
+                            <span>
+                            <?= /* @noEscape */
+                            __("Subtotal") ?>
+                            </span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <?php foreach ($block->getItems() as $_item): ?>
+                            <?php if (array_key_exists($_item->getId(), $cartItem)): ?>
+                                <?= /* @noEscape */
+                                $block->getItemHtml($_item) ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <div class="cart main actions">
+                    <?php if ($block->getContinueShoppingUrl()): ?>
+                        <a class="action continue"
+                           href="<?= /* @noEscape */
+                           $escaper->escapeUrl($block->getContinueShoppingUrl()) ?>"
+                           title="<?= /* @noEscape */
+                           $escaper->escapeHtml(__("Continue Shopping")) ?>">
+            <span>
+                <?= /* @noEscape */
+                __("Continue Shopping") ?>
+            </span>
+                        </a>
+                    <?php endif; ?>
+                    <button type="submit"
+                            id="form-update-btn-<?= /* @noEscape */
+                            $attrValueId ?>"
+                            name="update_cart_action"
+                            data-cart-item-update=""
+                            value="update_qty"
+                            title="<?= /* @noEscape */
+                            $escaper->escapeHtml(__("Update Shopping Cart")) ?>"
+                            class="action update">
+            <span>
+            <?= /* @noEscape */
+            __("Update Shopping Cart") ?>
+            </span>
+                    </button>
+                    <input type="hidden"
+                           value=""
+                           id="update_cart_action_container-<?= /* @noEscape */
+                           $attrValueId ?>"
+                           data-cart-item-update=""/>
+                </div>
+            </div>
+        </form>
+        <form action="<?= /* @noEscape */
+        $block->getUrl("attrbasesplitcart/cartover/proceedtocheckout") ?>"
+              method="post"
+              id="checkout-validate-<?= /* @noEscape */
+              $attrValueId ?>"
+              data-mage-init='{"validation":{}}'
+              class="form form-checkout">
+            <?= /* @noEscape */
+            $block->getBlockHtml("formkey") ?>
+            <div class="cart-summary" id="cart-summary-<?= /* @noEscape */
+            $attrValueId ?>">
+                <input type="hidden"
+                       name="attrsplitcart_attribute"
+                       class="wk-attr-id"
+                       value="<?= /* @noEscape */
+                       $splitBlock->getSelectedAttribute() ?>">
+                <div data-bind="scope:'giftOptionsCart'" id="gift-options-cart"></div>
+                <div class="cart-summary1">
+                    <strong class="summary title"><?= /* @noEscape */
+                        __("Summary") ?></strong>
+
+                    <div data-bind="scope:'block-totals'"
+                         class="cart-totals"
+                         id="cart-totals-<?= /* @noEscape */
+                         $attrValueId ?>">
+                        <div data-bind="blockLoader: isLoading" class="table-wrapper">
+                            <table class="data table totals">
+                                <caption class="table-caption"><?= /* @noEscape */
+                                    __("Total") ?></caption>
+                                <tbody>
+                                <tr class="totals sub">
+                                    <th scope="row" colspan="1" class="mark">
+                                        <?= /* @noEscape */
+                                        __("Subtotal") ?>
+                                    </th>
+                                    <td data-th="Subtotal" class="amount">
+                                    <span class="price">
+                                    <?= /* @noEscape */
+                                    $cartItem["row_total"] ?>
+                                    </span>
+                                    </td>
+                                </tr>
+                                <?php if (isset($cartItem['dis_amount'])) { ?>
+                                    <tr class="totals">
+                                        <th colspan="1" style="" class="mark" scope="row">
+                                            <span class="title" data-bind="text: getTitle()">Discount</span>
+                                        </th>
+                                        <td class="amount" data-bind="attr: {'data-th': title}" data-th="Discount">
+                                        <span>
+                                            <span class="price">
+                                                -<?= /* @noEscape */
+                                                $cartItem['dis_amount']; ?>
+                                            </span>
+                                        </span>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                                <tr id="shipping_<?= /* @noEscape */
+                                $attrValueId ?>"
+                                    class="totals shipping excl">
+
+                                </tr>
+                                <tr id="tax_<?= /* @noEscape */
+                                $attrValueId ?>" class="totals-tax">
+
+                                </tr>
+                                <tr class="grand totals">
+                                    <th scope="row" colspan="1" class="mark">
+                                        <strong data-bind="text: title">
+                                            <?= /* @noEscape */
+                                            __("Order Total") ?>
+                                        </strong>
+                                    </th>
+                                    <td data-th="Order Total" class="amount">
+                                        <strong>
+                                    <span grand="<?= /* @noEscape */
+                                    $cartItem['totalWithoutFormat'] ?>"
+                                          id="grand_<?= /* @noEscape */
+                                          $attrValueId ?>"
+                                          class="price">
+                                    <?= /* @noEscape */
+                                    $cartItem["formatted_total"] ?>
+                                    </span>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <ul class="checkout methods items checkout-methods-items">
+                        <li class="item">
+                            <button class="action primary checkout mp-btn-checkout"
+                                    title="Go to Checkout"
+                                    data-role="proceed-to-checkout"
+                                    type="submit"
+                                    value='<?= /* @noEscape */
+                                    $attrValueId ?>'
+                                    name="attrsplitcart_value">
+                                <span><?= /* @noEscape */
+                                    __("Go to Checkout") ?></span>
+                            </button>
+                        </li>
+                        <?php
+                        $url = "attrbasesplitcart/cartover/checkoutwithmultipleaddress";
+                        $param = [
+                            "attrsplitcart_attribute" => $splitBlock->getSelectedAttribute(),
+                            "attrsplitcart_value" => $attrValueId,
+                        ];
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </form>
+
+        <?php
+    }
+}
+$checkoutSession = $viewModel->checkoutSession();
+$json = $viewModel->jsonData();
+?>
+
+
+
+<?= /* @noEscape */
+$block->getChildHtml("shopping.cart.table.after") ?>
+<?php $shippingBlock = $block
+    ->getLayout()
+    ->createBlock(\Magento\Checkout\Block\Cart\Shipping::class); ?>
+<script text="x-magento-init">
+    window.checkoutConfig = <?= /* @noEscape */ $json->serialize(
+        $shippingBlock->getCheckoutConfig()
+    ) ?>;
+</script>
+
+<style>
+    .cart-container .form-cart {
+        order: 0;
+    }
+</style>

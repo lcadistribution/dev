@@ -1,0 +1,195 @@
+/* Custom Data 2022-10-28 09:09:31: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Roboto Slab', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Roboto Slab', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Roboto Slab', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 400;
+			
+	/* Other Font */
+		--other_font_family: 'Roboto Slab', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #383531; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+			--footer-title-color: #FFFFFF;
+			--footer-links-color: #999999;
+			
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	footer{
+		--footer-links-color: #999999;
+		--link__color: #999999;
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+/* Custom Footer */
+footer.page-footer{
+	}
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --header_padding: 14px;
+    --sticky_padding: 14px;
+    --button__text_transform: uppercase;
+--button-primary__hover__background: #383531;
+}
+@media (min-width: 1200px){
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light .logo img{
+       -webkit-filter: invert(100%);
+      filter: invert(100%);
+  }
+  .cms-index-index .header-container:not(.header_scroll_up) .header_light{
+     --counter_qty-bg: #fff;
+    --counter_qty-color: #000;
+   }
+}
+.header-container .header__action-default .minicart-wrapper .action.showcart .counter.qty, .header-container .header__action-default li .counter.qty {
+    background-color: #B64708;
+    color: #fff;
+}
+.max-width-430 {
+  max-width: 430px;
+  margin-left: auto;
+    margin-right: auto;
+}
+.fs_110 {
+    font-size: 110px;
+}
+.ls_10 {
+    letter-spacing: 10px;
+}
+.banner_button .pagebuilder-button-primary {
+    background-color: #b64708;
+    border-color: #b64708;
+}
+.banner_button .pagebuilder-button-primary:hover {
+    box-shadow: 0 0 0 0.2rem #b64708;
+}
+.page-builder-gallery-container .elementor-img-item {
+opacity: 0.4;
+}
+.page-builder-gallery-container .elementor-img-item:hover {
+opacity: 1;
+}
+.products-grid .product-item-details {
+    text-align: center;
+}
+.products-grid .product-item-details .price-box {
+    justify-content: center;
+}
+.text-center .flex-layout {
+    justify-content: center;
+}
+.text_heading_primary {
+color: #383531;
+    font-weight: 400;
+    max-width: 770px;
+    margin: auto;
+    line-height: 4.8rem;
+        margin-bottom: 52px;
+}
+.widget-category-thumbnail-image.category-slider-4 .elementor-category-thumbnail-image-item {
+    max-width: 170px;
+}
+footer [data-content-type="heading"] {
+    text-transform: uppercase;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+color: #fff;
+    border-color: #504d48;
+    background-color:  #504d48;
+}
+.elementor-newsletter-wrapper .actions-subscribe button {
+background: transparent;
+    color: white;
+}
+.elementor-newsletter-wrapper .actions-subscribe button:hover {
+box-shadow: none;
+}
+.elementor-newsletter-wrapper .field-newsletter:before {
+ color: white;
+}
+.elementor-newsletter-wrapper .form-subscribe .field-newsletter input,
+.elementor-newsletter-wrapper .form-subscribe .field-newsletter input::placeholder {
+color: white;
+}
+
+
+@media (min-width: 1440px) {
+.widget-category-thumbnail-image.category-slider-4 {
+max-width: 1440px;
+    margin: auto;
+}
+}
+
+@media (max-width: 767px)  {
+.mb_30 {
+margin-top: 30px !important;
+}
+.fs_110 {
+    font-size: 38px;
+}
+.max-width-430 {
+    padding: 0 15px;
+}
+
+.text_heading_primary {
+    line-height: 3.3rem;
+    margin-bottom: 30px;
+}
+.banner_show_mb {
+justify-content: center;
+min-height: 400px !important;
+}
+}
+

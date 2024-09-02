@@ -1,0 +1,122 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Poppins', sans-serif;
+			--font-size__base: 15px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Poppins', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Poppins', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+--naviation-level0-item__font-size: 1.4rem;
+--navigation-level0-item__font-weight: 700;
+--bls_elementor-static-menu-title-font-weight: 700;
+-bls_elementor-static-menu-title--font-size: 1.4rem;
+--module_title-font-weight: 800;
+--button__font-weight: 700;
+--topbar-size: 1.4rem;
+--button__text_transform: uppercase;
+--bls_border-height: 2px;
+}
+.hover-link a.pagebuilder-button-link{
+--bls_border-height: 2px;
+}
+b, strong{
+--headings__font-weight-secondary: 700;
+}
+a.pagebuilder-button-link,
+a.pagebuilder-button-secondary{
+    letter-spacing: 0.5px;
+    font-size: 1.4rem;
+}
+.border-top-footer .pagebuilder-column-group{
+border-top: 1px solid #d8d8d8;
+
+}
+.product-item .product-item-details{
+text-align: center;
+}
+.product-item .product-item-details .price-box{
+    justify-content: center;
+}
+.logo-f img{
+width: 165px;
+}
+.elementor__headline{
+letter-spacing: 2px;
+}
+.action.primary, .action-primary{
+    font-size: 14px;
+}
+.elementor-image-box-img{
+    margin-top: 8px !important;
+}
+ul.social-link li a{
+    font-size: 20px;
+}
+footer .elementor-static-menu-title{
+    letter-spacing: 0.5px;
+}
+.show_search-form-2 .header-search-form{
+    color: #666;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+

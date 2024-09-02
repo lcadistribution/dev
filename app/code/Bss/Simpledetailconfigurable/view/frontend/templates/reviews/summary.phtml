@@ -1,0 +1,79 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_Simpledetailconfigurable
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2022 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+/**
+ * @var \Bss\Simpledetailconfigurable\Block\Product\Reviews $block
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php if ($block->isReviewEnabled() && $block->getReviewsCount()): ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+    <div class="product-reviews-summary<?= !$rating ? ' no-rating' : '' ?>" itemprop="aggregateRating" itemscope
+         itemtype="http://schema.org/AggregateRating">
+        <?php if ($rating):?>
+            <div class="rating-summary">
+                <span class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span>
+                <div class="rating-result"
+                     title="<?= $block->escapeHtmlAttr($rating); ?>%"
+                     style="width: <?= $block->escapeHtmlAttr($rating) . "%" ?> "
+                >
+                 <span>
+                     <span>
+                         <span itemprop="ratingValue"><?= $block->escapeHtml($rating); ?>
+                         </span>% of <span itemprop="bestRating">100</span>
+                     </span>
+                 </span>
+                </div>
+            </div>
+            <?= /* @noEscape */ $secureRenderer->renderStyleAsTag(
+    "width:" . "100" . "%",
+    'div.rating-summary div.rating-result>span:first-child'
+) ?>
+        <?php endif;?>
+        <div class="reviews-actions">
+            <a class="action view" onclick="showReviews()">
+                <span itemprop="reviewCount"><?= $block->escapeHtml($block->getReviewsCount()) ?></span>&nbsp;
+                <span><?= ($block->getReviewsCount() == 1) ? $block->escapeHtml(__('Review')) :
+                        $block->escapeHtml(__('Reviews')) ?>
+                </span>
+            </a>
+            <a class="action add" onclick="addReview()">
+                <?= $block->escapeHtml(__('Add Your Review')) ?>
+            </a>
+        </div>
+    </div>
+<?php elseif ($block->isReviewEnabled() && $block->getDisplayIfEmpty() || ($block->isReviewEnabled() && $block->getReviewsCount() == 0)): ?>
+    <div class="product-reviews-summary empty">
+        <div class="reviews-actions">
+            <a class="action add" onclick="addReview()">
+                <?= $block->escapeHtml(__('Be the first to review this product')) ?>
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    function addReview() {
+        document.getElementById('tab-label-reviews').click();
+        window.location.href = '#review-form'
+    }
+
+    function showReviews() {
+        document.getElementById('tab-label-reviews').click();
+        window.location.href = '#reviews'
+    }
+</script>

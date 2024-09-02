@@ -1,0 +1,265 @@
+/* Custom Data 2022-11-11 10:56:28: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1200px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Be Vietnam Pro', sans-serif;
+			--font-size__base: 15px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Be Vietnam Pro', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Be Vietnam Pro', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Be Vietnam Pro', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #000000; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 23px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+--button__text_transform: uppercase;
+    --button_padding: 13px 42px;
+}
+.page-footer .max-width-500 {
+    margin: auto;
+}
+.product__style-3 .products-grid .product-item-actions_middle .action:not(:hover), .product__style-4 .products-grid .product-item-actions_middle .action:not(:hover) {
+    background: #222;
+    border-color: #222;
+    color: #fff;
+}
+#html-body [data-pb-style=JD8K15N] {
+    color: #000;
+}
+.column_relative {
+    position: relative;
+}
+.navigation.horizontal .horizontal-list .level0 > a {
+    text-transform: uppercase;
+}
+.minimog-image {
+    right: -54px;
+    width: auto;
+    top: 50%;
+    position: absolute;
+    margin-top: -54px;
+    z-index: 1;
+}
+.column_relative a.pagebuilder-button-primary, 
+.column_relative a.pagebuilder-button-primary:hover {
+background: #fff;
+color: #000;
+border-color: #fff;
+box-shadow: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3em;
+}
+.heading_primary_title {
+font-size: 80px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.26em;
+    letter-spacing: 5px;
+    -webkit-text-fill-color: rgba(0,0,0,0);
+    -webkit-text-stroke-width: 3px;
+    color: #fff;
+}
+.header-container .header__action-default .minicart-wrapper .action.showcart .counter.qty, .header-container .header__action-default li .counter.qty {
+    background-color: #C02C30;
+}
+.cms-index-index.product__style-3 .products-grid .product-item {
+    padding-right: 0;
+    padding-left: 0;
+    box-shadow: none;
+}
+.product__style-3 .products-grid .product-item-actions_middle button {
+    width: auto;
+    padding: 13px 42px;
+}
+.products-grid .product-item-details {
+    text-align: center;
+}
+.products-grid .product-item-details .price-box {
+    justify-content: center;
+}
+.products-grid .product-item-details .swatch-option {
+    float: none;
+    display: inline-block;
+}
+.product__style-3 .products-grid .product-item:hover .product_item_images .product-item-actions_middle,
+.product__style-3 .products-grid .product-item-actions_middle {
+    right: auto;
+left: 50%;
+-moz-transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+-o-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+transform: translateX(-50%);
+}
+.price_countdown_simple .product-countdown-layout3 .product-item-info-time .product-item-name {
+display: none !important;
+}
+.max-width-380{
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cms-index-index.product__style-3 .elementor__header {
+    border: none;
+    padding: 0;
+}
+
+.cms-index-index .header-daily-deal-container .container-countdown-time {
+    border-radius: 23px;
+    background-color: #c02c30;
+}
+.cms-index-index .header-daily-deal-container {
+    --module_margin_bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+   justify-content: space-between;
+margin-bottom: 25px;
+}
+ .cms-index-index.product__style-3 .products-grid .slick-slider {
+    border-bottom: none;
+    border-right: none;
+}
+.banner_button a.pagebuilder-button-link {
+    color: #fff;
+}
+.banner_button a.pagebuilder-button-link:hover:after,
+.banner_button  a.pagebuilder-button-link:before {
+background-color: #fff;
+}
+.banner_flex .pagebuilder-banner-wrapper .pagebuilder-overlay {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.product__style-3 .banner_count_down .products-grid .product-item {
+    background: transparent;
+}
+.elementor-image-box-wrapper .elementor-image-box-content .elementor-image-box-title {
+margin-bottom: 5px;
+}
+.fs_sub_title {
+font-weight: 500;
+}
+.fs_title {
+    max-width: 267px;
+margin-bottom: 60px;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+    flex-direction: column;
+}
+[data-layout=style_2] .elementor-newsletter-wrapper input {
+    border-top-right-radius: 23px;
+    border-bottom-right-radius: 23px;
+    border-right-width: 1px;
+}
+[data-layout=style_2] .elementor-newsletter-wrapper .actions-subscribe button {
+    border-top-left-radius: 23px;
+    border-bottom-left-radius: 23px;
+    border-left-width: 1px;
+    padding: 13px 42px;
+}
+[data-layout=style_2] .elementor-newsletter-wrapper .form-subscribe .actions-subscribe {
+text-align: center;
+    margin-top: 20px;
+}
+
+
+@media (min-width: 1600px) {
+.heading_primary_title {
+font-size: 120px;
+}
+}
+
+@media (min-width: 1200px) {
+.fs_32 {
+font-size: 32px;
+}
+}
+@media (min-width: 992px), print {
+.product__style-3 .product-item-actions_middle .action:not(:hover) span, .product__style-4 .product-item-actions_middle .action:not(:hover) span {
+    color: #fff;
+}
+}
+
+@media (max-width: 767px)  {
+.mb_400 {
+    min-height: 400px !important;
+}
+.product__style-3 .price_countdown_simple .products-grid .product-item {
+    padding: 0;
+}
+.mb_des {
+    margin-bottom: 10px;
+}
+.mb_buton {
+    margin: 10px 15px 0 15px;
+}
+.mb_20 {
+    margin-bottom: 20px;
+}
+}
+
+@media only screen and (max-width: 575px) {
+.column_relative .btn__full-width--mb {
+    width: auto;
+}
+}

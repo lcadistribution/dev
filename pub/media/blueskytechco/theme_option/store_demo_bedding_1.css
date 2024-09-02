@@ -1,0 +1,99 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Butler', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+				
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+.rokan-title .short_description, 
+	.elementor__header .short_description,
+	.rokan-title .short_description .action.select{
+	  font-style: italic;
+	}
+:root {
+      --navigation-level0-item__text-transform: uppercase;
+--navigation-desktop__font-size:1.5rem;
+--navigation-level0-item__font-family:Jost;
+    --fluid-container-width: 1850px;
+    --layout__max-width: 1440px;
+--bls_elementor-static-menu-title--font-size:2.4rem;
+
+}
+.header-container {
+    --fluid-container-width: 1920px;
+}
+div[data-content-type="tabs"], .pagebuilder-content-type.pagebuilder-tabs {
+    --tab_font-size: 4rem;
+--tab_font-weight:300;
+font-family:Butler;
+}
+div[data-content-type="tabs"] .tabs-navigation li.tab-header a.tab-title::after {
+    background: none;
+}
+[data-content-type="staticmenu-item"] > * {
+      font-weight: 500;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+    --border-color: #d4d4d4;
+}
+
+

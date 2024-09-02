@@ -1,0 +1,36 @@
+<?php
+/** @var \LCA\ProductRulesPrice\Block\Adminhtml\Prices $block */
+?>
+
+<?php $data = $block->getPriceData(); ?>
+
+<table class="data-grid">
+    <thead>
+        <tr>
+            <th class="data-grid-th"><?= __('Price list'); ?></th>
+            <th class="data-grid-th"><?= __('Type'); ?></th>
+            <th class="data-grid-th"><?= __('Reduction'); ?></th>
+            <th class="data-grid-th"><?= __('Customers'); ?></th>
+            <th class="data-grid-th"><?= __('Price'); ?></th>
+        </tr>
+    </thaed>
+    <tbody>
+        <?php foreach ($data as $row) { ?>
+            <tr>
+                <td><?= $row['catalog_rule']; ?></td>
+                <td><?= $row['type']; ?></td>
+                <td><?= $row['reduction']; ?></td>
+                <td><?= $row['customers']; ?></td>
+                <td><?= $row['price']; ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
+
+<style>
+    .admin__field-complex .admin__field-complex-content {
+        max-width: 100%;
+        overflow: hidden;
+    }
+</style>

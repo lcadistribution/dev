@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+	<!-- customer price apis -->
+	<route url="/V1/magedelight-customerprice/customerprice" method="POST">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerprice/search" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerprice/:customerpriceId" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerprice/:customerpriceId" method="PUT">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerprice/:customerpriceId" method="DELETE">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricediscount" method="POST">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+
+	<!-- customer price discount apis -->
+	<route url="/V1/magedelight-customerprice/customerpricediscount/search" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricediscount/:customerpricediscountId" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricediscount/:customerpricediscountId" method="PUT">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricediscount/:customerpricediscountId" method="DELETE">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceDiscountRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+
+	<!-- customer category price discount apis -->
+	<route url="/V1/magedelight-customerprice/customerpricecategory" method="POST">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricecategory/search" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricecategory/:customerpricecategoryId" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricecategory/:customerpricecategoryId" method="PUT">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricecategory/:customerpricecategoryId" method="DELETE">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceCategoryRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+
+	<!--customer special price apis -->
+	<route url="/V1/magedelight-customerprice/customerpricespecialprice" method="POST">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::CustomerpriceSpecialprice"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricespecialprice/search" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::CustomerpriceSpecialprice"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricespecialprice/:customerpricespecialpriceId" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::CustomerpriceSpecialprice"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricespecialprice/:customerpricespecialpriceId" method="PUT">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::CustomerpriceSpecialprice"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customerpricespecialprice/:customerpricespecialpriceId" method="DELETE">
+		<service class="Magedelight\Customerprice\Api\CustomerpriceSpecialpriceRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::CustomerpriceSpecialprice_delete"/>
+		</resources>
+	</route>
+	<!-- lowest price for single product -->
+    <route method="POST" url="/V1/magedelight-customerprice/productprice">
+        <service class="Magedelight\Customerprice\Api\CustomerpriceRepositoryInterface" method="getPrice"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/magedelight-customerprice/customergroupprice" method="POST">
+		<service class="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customergroupprice/search" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customergroupprice/:customergrouppriceId" method="GET">
+		<service class="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customergroupprice/:customergrouppriceId" method="PUT">
+		<service class="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+	<route url="/V1/magedelight-customerprice/customergroupprice/:customergrouppriceId" method="DELETE">
+		<service class="Magedelight\Customerprice\Api\CustomerGroupPriceRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Magedelight_Customerprice::root"/>
+		</resources>
+	</route>
+</routes>

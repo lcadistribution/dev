@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * 2003-2017 OpenSi Connect
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Speedinfo
+ * @package     Speedinfo_Opensi
+ * @copyright   Copyright (c) 2017 Speedinfo SARL (http://www.speedinfo.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="opensi" translate="label" sortOrder="510">
+			<label>OpenSi Connect</label>
+		</tab>
+		<section id="opensi_configuration" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Configuration</label>
+			<tab>opensi</tab>
+			<resource>Speedinfo_Opensi::configuration</resource>
+			<group id="identification" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Identification</label>
+				<comment><![CDATA[<div class='opensi-notification'><strong>Warning</strong>, please do not change the module configuration without prior contact with OpenSi...</div>]]></comment>
+				<field id="login" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>OpenSi Login</label>
+				</field>
+				<field id="password" translate="label" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Password</label>
+					<comment><![CDATA[To access OpenSi management software e-commerce (business, accounting, CRM), you need to have an account. If you do not already have one, you can create one at <a href='http://www.opensi.fr/logiciel-ecommerce/essai-opensi-ecommerce-1' target='_blank'>this address</a>.]]></comment>
+				</field>
+				<field id="websitecode" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Website Code</label>
+					<comment><![CDATA[Code identifying the store with OpenSi. If you have multiple stores, this code will not be the same.]]></comment>
+					<tooltip><![CDATA[Attention, do not change this value without having also changed in OpenSi !]]></tooltip>
+				</field>
+			</group>
+			<group id="attributes" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>Attributes Mapping</label>
+				<comment><![CDATA[The Magento attributes can be synchronized with OpenSi.<br />The idea is to create an OpenSi attribute (name defined by you) and to match it with a Magento attribute.]]></comment>
+				<field id="enable_attributes" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable attributes management</label>
+					<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+				</field>
+				<field id="attributes_mapping" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Attributes</label>
+					<comment><![CDATA[If the OpenSi attribute name doesn't exists, it will be automatically created in OpenSi (max. 30 chars).]]></comment>
+					<frontend_model>Speedinfo\Opensi\Block\Adminhtml\Form\Field\AttributesMapping</frontend_model>
+					<backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="volume" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Volume</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="height" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Height</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="length" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Length</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="width" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Width</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="barcode" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Barcode</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="manufacturer_reference" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Manufacturer reference</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="date_availability" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Date availability</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="expiration_date" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Expiration date (DLC)</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="restocking_time" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Restocking time</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="direct_supplier" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Direct supplier</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="abc_class" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>ABC Class</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+        <field id="conditioning" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Conditioning</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+				<field id="picking_zone" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Picking zone</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_attributes">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="order_statuses" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Order Statuses Mapping</label>
+				<comment><![CDATA[Statutes and orders Magento OpenSi can be interfaced.<br />The principle is to select from the dropdown lists below Magento statutes to match with those of OpenSi.]]></comment>
+        <group id="order_statuses_standard" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			    <label>Standard order statuses</label>
+          <field id="validated" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Validated order</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="validated_active" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained once the order is payed by CB or validated in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+          <field id="processing" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Processing order</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="processing_active" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained when the preparation status is enabled in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+          <field id="partially_shipped" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Partially shipped</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="partially_shipped_active" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained when a partial shipement is enabled in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+          <field id="complete" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Completed order</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="complete_active" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained when a delivery is made in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+          <field id="cancel" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Canceled order</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="cancel_active" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained once the order canceled in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+        </group>
+        <group id="order_statuses_optionnal" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+			    <label>Optionnal order statuses</label>
+          <field id="partially_paid" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order partially paid</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="partially_paid_active" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained when the order is partially paid in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+          <field id="totally_paid" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order totally paid</label>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusOptions</source_model>
+          </field>
+          <field id="totally_paid_active" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>-</label>
+            <comment><![CDATA[Status obtained when the order is totally paid in OpenSi.]]></comment>
+            <source_model>Speedinfo\Opensi\Model\Config\Source\OrderStatusEnableDisableOptions</source_model>
+          </field>
+        </group>
+			</group>
+			<group id="shipping_methods" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Shipping Methods Mapping - Tracking numbers</label>
+				<comment><![CDATA[Shipping Methods can be interfaced too.<br />The principle is to select from the dropdown lists below Magento shipping methods to match with those of OpenSi.<br />Therefore, when a tracking number is returned, OpenSi will correctly give the carrier.]]></comment>
+				<field id="shipping_methods_enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable shipping methods management</label>
+					<comment><![CDATA[Change this setting to enable/disable shipping methods management.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+				</field>
+				<field id="shipping_methods_mapping" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Shipping methods configuration</label>
+					<frontend_model>Speedinfo\Opensi\Block\Adminhtml\Form\Field\ShippingMethods</frontend_model>
+					<backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+					<depends>
+						<field id="shipping_methods_enable">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="bank_transactions" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Bank transactions</label>
+				<group id="bank_transactions_standard" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			    <label>Standard parameters</label>
+					<field id="payment_methods_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Type</label>
+						<comment><![CDATA[Please select the type of payment methods.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentMethodsTypeOptions</source_model>
+					</field>
+					<field id="payment_methods_active" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Active payment methods</label>
+						<comment><![CDATA[Please select all the payment methods that should generate bank transactions.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentMethodsActiveOptions</source_model>
+						<depends>
+							<field id="payment_methods_type">1</field>
+						</depends>
+					</field>
+					<field id="payment_methods" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>All payment methods</label>
+						<comment><![CDATA[Please select all the payment methods that should generate bank transactions.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentMethodsOptions</source_model>
+						<depends>
+							<field id="payment_methods_type">2</field>
+						</depends>
+					</field>
+					<field id="payment_methods_used" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Used payment methods</label>
+						<comment><![CDATA[Please select all the payment methods that should generate bank transactions.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentMethodsUsedOptions</source_model>
+						<depends>
+							<field id="payment_methods_type">3</field>
+						</depends>
+					</field>
+				</group>
+				<group id="bank_transactions_advanced" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+			    <label>Advanced parameters</label>
+					<field id="payment_txn_types" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Transaction types (txn_type)</label>
+						<comment><![CDATA[Please select all the txn types to take into account in the bank transactions.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentTxnTypeOptions</source_model>
+					</field>
+				</group>
+			</group>
+		</section>
+		<section id="opensi_preferences" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Preferences</label>
+			<tab>opensi</tab>
+			<resource>Speedinfo_Opensi::preferences</resource>
+			<group id="manage_orders" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage orders</label>
+				<field id="comments" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Customer comments</label>
+					<comment><![CDATA[You can choose to use sync the order comments with OpenSi (or not).]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\CommentsOptions</source_model>
+				</field>
+				<field id="comments_titles" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Sync comments titles</label>
+					<comment><![CDATA[You can choose to sync the comments titles with OpenSi (or not).]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="comments" separator="|">1|2</field>
+					</depends>
+				</field>
+				<field id="expedition_rule" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Expedition Rule</label>
+					<comment><![CDATA[You can send an information to OpenSi telling it to generate multiple shipments if a product reference is part of the order. For this, fill in the product references (separated by a comma).]]></comment>
+				</field>
+				<field id="ip_address" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>IP address synchronization</label>
+					<comment><![CDATA[You can choose to sync the IP address on each order with OpenSi.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+      <group id="manage_shipments" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage shipments</label>
+				<field id="multi_shipments" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Multi-shipments</label>
+					<comment><![CDATA[It is sometimes possible that you have several packages to send for a single order.<br />If this is the case, you can activate the option «multi-shipment» which will create not only one but several shipments on the order in Magento.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="manage_products" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage products</label>
+				<field id="products" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Synchronize products with</label>
+					<comment><![CDATA[OpenSi allows you to choose how you want to synchronize your products (enabled products, disabled or simply the both).]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\ProductsOptions</source_model>
+				</field>
+				<field id="description" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Long description based on</label>
+					<comment><![CDATA[You can choose to use the description with either the normal description or a custom attribute on the shop.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\DescriptionOptions</source_model>
+				</field>
+				<field id="description_custom" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label></label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="description">1</field>
+					</depends>
+				</field>
+				<field id="product_id" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Synchronize the product ID</label>
+					<comment><![CDATA[You can synchronize the ID of each item in a specific attribute.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="product_id_label" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label></label>
+					<comment><![CDATA[Attribute's label in OpenSi (named «Product ID» by default if not defined).]]></comment>
+					<depends>
+						<field id="product_id">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="manage_stocks" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage stocks</label>
+				<field id="stocks" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Update stocks with</label>
+					<comment><![CDATA[OpenSi allows you to choose how you want to manage your shop stocks (updated with the stock available, the real stock, the availability with your supplier, a percentage of the stock available or simply by combining some informations).]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\StocksOptions</source_model>
+				</field>
+				<field id="stock_percentage" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label></label>
+					<comment><![CDATA[Max. percentage 100%]]></comment>
+					<depends>
+						<field id="stocks">6</field>
+					</depends>
+				</field>
+        <field id="supplier_attribute" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Supplier stock attribute</label>
+          <source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<comment><![CDATA[OpenSi allows you to update the Magento quantity with the stocks available and add the supplier quantity in the custom attribute you selected above.]]></comment>
+					<depends>
+						<field id="stocks">8</field>
+					</depends>
+				</field>
+			</group>
+			<group id="manage_prices" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage prices</label>
+				<field id="prices" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Selling price based on</label>
+					<comment><![CDATA[You can choose what price you prefer to send to OpenSi.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\PricesOptions</source_model>
+				</field>
+				<field id="wholesale_prices" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Wholesale price based on</label>
+					<comment><![CDATA[You can choose to update the wholesale price on the shop with either the wholesale price or the cost price from OpenSi.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\WholesalePricesOptions</source_model>
+				</field>
+				<field id="retail_price" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Retail price based on</label>
+					<comment><![CDATA[You can choose to update the retail price with either the manufacturer's suggested retail price (MSRP) or a custom attribute on the shop.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\RetailPricesOptions</source_model>
+				</field>
+				<field id="retail_price_custom" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label></label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="retail_price">1</field>
+					</depends>
+				</field>
+				<field id="parent_price" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Update of the price of configurable products</label>
+					<comment><![CDATA[Change this setting to update the price of configurable products.<br /><strong>Warning</strong>, these products must absolutely have children with identical prices.<br />If these children have different prices, do not enable this option (price of the configurable products can not be updated).]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="manage_downloadable_documents" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage downloadable documents</label>
+				<field id="invoices" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Invoices / Credit memos</label>
+					<comment><![CDATA[You can choose to use OpenSi invoices/credit memos. The customer can then download the document from his personal account.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\InvoicesOptions</source_model>
+				</field>
+				<field id="display_invoices" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Display OpenSi invoices</label>
+					<comment><![CDATA[Allows to display the OpenSi invoices in the customer's account.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="invoices">1</field>
+					</depends>
+				</field>
+				<field id="display_credit_memos" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Display OpenSi credit memos</label>
+					<comment><![CDATA[Allows to display the OpenSi credit memos in the customer's account.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="invoices">1</field>
+					</depends>
+				</field>
+				<field id="deliverynotes" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Delivery notes</label>
+					<comment><![CDATA[You can choose to use OpenSi delivery notes. The customer could then download one from his personal account.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\DeliverynotesOptions</source_model>
+				</field>
+				<field id="display_deliverynotes" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Display OpenSi deliverynotes</label>
+					<comment><![CDATA[Allows to display the OpenSi deliverynotes in the customer's account.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="deliverynotes">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="manage_customers" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage customers</label>
+				<field id="notification" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Notify by email the new customers created in OpenSi</label>
+					<comment><![CDATA[OpenSi allows you to create customer accounts and assign them identifiers so they can login on the store in the future. You can choose to send them directly their credentials by e-mail (or not).]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="newsletter" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Automatically register new customers to the newsletter</label>
+					<comment><![CDATA[For the new customer accounts, you can choose if you prefer to automatically register them (or not) to the newsletter.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="manage_marketplaces" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage marketplaces</label>
+				<comment><![CDATA[Some marketplaces like Amazon do not want you to communicate directly with the customer.<br />The solution we advocate is not to send the email of the delivery address OpenSi. Please note that it is possible to configure the modules list that should not send email to OpenSi.]]></comment>
+				<field id="marketplaces_emails" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable marketplaces email management</label>
+					<comment><![CDATA[Change this setting to enable/disable the email management.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="all_modules" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Marketplaces</label>
+					<comment><![CDATA[Please select all the modules that should not send the shipping email to OpenSi.]]></comment>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\PaymentMethodsOptions</source_model>
+					<depends>
+						<field id="marketplaces_emails">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="manage_customs" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage customs</label>
+				<comment><![CDATA[OpenSi allows you to manage customs for your products<br/>You will need to map some fields to Magento attributes once this option is activated in order to be taken account in the synchronizations.]]></comment>
+				<field id="enable_customs" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable customs management</label>
+					<comment><![CDATA[Change this setting to enable/disable the customs management.]]></comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="nc8_code" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>NC8 code</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_customs">1</field>
+					</depends>
+				</field>
+				<field id="country_code_manufacture" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Country code of manufacture</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_customs">1</field>
+					</depends>
+				</field>
+				<field id="net_weight" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Net weight</label>
+					<source_model>Speedinfo\Opensi\Model\Config\Source\AttributeOptions</source_model>
+					<depends>
+						<field id="enable_customs">1</field>
+					</depends>
+				</field>
+			</group>
+			<group id="manage_flux" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Manage webservices streams</label>
+				<comment><![CDATA[OpenSi allows you to customize the synchronization fields.<br />For the catalog streams, you can select the fields you want to synchronize with OpenSi.<br /><br />Please find below the synchronization direction :<br />&bull;&nbsp;&nbsp;Product creation : store › OpenSi<br />&bull;&nbsp;&nbsp;Product update : store › OpenSi<br />&bull;&nbsp;&nbsp;Logistics product : OpenSi › store<br />&bull;&nbsp;&nbsp;Products prices : OpenSi › store]]></comment>
+				<group id="products_creation" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Products creation</label>
+					<fieldset_css>opensi-group-section</fieldset_css>
+					<frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+					<field id="fields_sync" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Synchronisation</label>
+						<comment><![CDATA[Change this setting to choose what fields you want to sync (or not) with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsOptions</source_model>
+					</field>
+					<field id="fields_to_sync" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Fields to synchronize</label>
+						<comment><![CDATA[Select all fields you want to sync with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsProductsCreationOptions</source_model>
+						<depends>
+							<field id="fields_sync">1</field>
+						</depends>
+					</field>
+				</group>
+				<group id="products_update" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Products update</label>
+					<fieldset_css>opensi-group-section</fieldset_css>
+					<frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+					<field id="fields_sync" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Synchronisation</label>
+						<comment><![CDATA[Change this setting to choose what fields you want to sync (or not) with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsOptions</source_model>
+					</field>
+					<field id="fields_to_sync" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Fields to synchronize</label>
+						<comment><![CDATA[Select all fields you want to sync with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsProductsUpdateOptions</source_model>
+						<depends>
+							<field id="fields_sync">1</field>
+						</depends>
+					</field>
+				</group>
+				<group id="logistic_informations" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Logistic informations</label>
+					<fieldset_css>opensi-group-section</fieldset_css>
+					<frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+					<field id="fields_sync" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Synchronization</label>
+						<comment><![CDATA[Change this setting to choose what fields you want to sync (or not) with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsOptions</source_model>
+					</field>
+					<field id="fields_to_sync" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Fields to synchronize</label>
+						<comment><![CDATA[Select all fields you want to sync with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsLogisticInformationsOptions</source_model>
+						<depends>
+							<field id="fields_sync">1</field>
+						</depends>
+					</field>
+				</group>
+				<group id="products_price" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Products prices</label>
+					<fieldset_css>opensi-group-section</fieldset_css>
+					<frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+					<field id="fields_sync" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Synchronisation</label>
+						<comment><![CDATA[Change this setting to choose what fields you want to sync (or not) with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsOptions</source_model>
+					</field>
+					<field id="fields_to_sync" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Fields to synchronize</label>
+						<comment><![CDATA[Select all fields you want to sync with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsProductsPriceOptions</source_model>
+						<depends>
+							<field id="fields_sync">1</field>
+						</depends>
+					</field>
+				</group>
+				<group id="products_stock" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Products stocks</label>
+					<fieldset_css>opensi-group-section</fieldset_css>
+					<frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+					<field id="fields_sync" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Synchronisation</label>
+						<comment><![CDATA[Change this setting to choose what fields you want to sync (or not) with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsOptions</source_model>
+					</field>
+					<field id="fields_to_sync" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Fields to synchronize</label>
+						<comment><![CDATA[Select all fields you want to sync with OpenSi.]]></comment>
+						<source_model>Speedinfo\Opensi\Model\Config\Source\StreamsProductsStockOptions</source_model>
+						<depends>
+							<field id="fields_sync">1</field>
+						</depends>
+					</field>
+				</group>
+			</group>
+		</section>
+	</system>
+</config>

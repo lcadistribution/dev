@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_AttrBaseSplitcart
+* @author    Webkul Software Private Limited
+* @copyright Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <tab id="webkul" translate="label" sortOrder="10" class="wk-config-tab-class">
+            <label>Webkul</label>
+        </tab>
+        <section id="attrbasesplitcart" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Attribute Base Splitcart</label>
+            <tab>webkul</tab>
+            <resource>Webkul_AttrBaseSplitcart::config_attrbasesplitcart</resource>
+            <group id="general_settings" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="active" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="attribute" translate="label comment" sortOrder="2" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Split by attribute</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <source_model>Webkul\AttrBaseSplitcart\Model\Config\ProductAttribute</source_model>
+                </field>
+            </group>
+             <group id="product_support_information" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Show Product Information</label>
+                <field id="author" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Webkul\AttrBaseSplitcart\Block\Config\Source\Version</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

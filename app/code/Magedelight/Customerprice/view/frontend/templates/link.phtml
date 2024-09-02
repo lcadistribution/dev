@@ -1,0 +1,15 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+if ($block->getmoduleStatus()) {
+    ?>
+<li>  
+   <a <?= /* @noEscape */ $block->getLinkAttributes() ?>><?= /* @noEscape */ $block->escapeHtml($block->getLabel())?>  
+     <?= /* @noEscape */($block->getCounter()) ? '<span class="counter qty">' .
+        $block->escapeHtml($block->getCounter()) . '</span>' : ''; ?>
+   </a>  
+ </li>  
+<?php } ?>

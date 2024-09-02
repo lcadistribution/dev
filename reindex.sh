@@ -1,0 +1,2 @@
+/opt/cpanel/ea-php81/root/usr/bin/php /home/lcanetwork/public_html/dev/dev/bin/magento indexer:reindex
+/opt/cpanel/ea-php81/root/usr/bin/php /home/lcanetwork/public_html/dev/dev/bin/magento cache:clean

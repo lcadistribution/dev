@@ -1,0 +1,15 @@
+
+#edit_form .validation-advice {
+  background: #fffbbb none repeat scroll 0 0;
+  border: 1px solid #ee7d7d;
+  box-sizing: border-box;
+  color: #555;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0.2rem 0 0;
+  padding: 0.8rem 1rem 0.9rem;
+}
+.mage-error { color: red;}
+

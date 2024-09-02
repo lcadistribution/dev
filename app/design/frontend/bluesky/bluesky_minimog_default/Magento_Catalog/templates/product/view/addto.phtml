@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View*/
+?>
+<?php
+$_product = $block->getProduct();
+?>
+<div class="product-addto-links" data-role="add-to-links">
+    <?= $block->getChildHtml() ?>
+</div>
+<div class="product-share-links">
+	<div class="share-links"><a href="#share-popup" class="share-links-click"><i class="far fa-share-alt"></i><?= __('share') ?></a></div>
+    <div id="share-popup" class="max-width-450 radius_as_form m-auto bg-white mfp-with-anim mfp-hide">
+        <div class="bls_popup-content p-5">
+            <div class="form-control mb-4 pb-2">
+                <label class="heading_color medium d-block mb-3 pointer"><?= $block->escapeHtml('Copy link') ?></label>
+                <input type="text" class="heading_color fs_14 ps-3" readonly="" disabled="" value="<?= $_product->getProductUrl() ?>">
+            </div>
+            <div class="share-dialog">
+                <label class="heading_color medium d-block mb-3"><?= $block->escapeHtml('Share') ?></label>
+                <div class="share-list">
+                    <a class="my-tooltip-top px-3 pe-3" href="#" onclick=" window.open( 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=436,height=436'); return false;"><span class="icon fab fa-facebook-f"><span class="tooltip-content no-wrap"><?= $block->escapeHtmlAttr(__('Facebook')) ?></span></span></a>
+                    <a class="my-tooltip-top px-3 pe-3" href="#" onclick=" window.open( 'http://twitter.com/home/?status='+encodeURIComponent(location.href), 'twitter-share-dialog', 'width=436,height=436'); return false;"><span class="icon fab fa-twitter"><span class="tooltip-content no-wrap"><?= $block->escapeHtmlAttr(__('Twitter')) ?></span></span></a>
+                    <a class="my-tooltip-top px-3 pe-3" href="#" onclick=" window.open( 'http://pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href), 'pinterest-share-dialog', 'width=436,height=436'); return false;"><span class="icon fab fa-pinterest"><span class="tooltip-content no-wrap"><?= $block->escapeHtmlAttr(__('Pinterest')) ?></span></span></a>
+                    <a class="my-tooltip-top px-3 pe-3" href="#" onclick=" window.open( 'https://plus.google.com/share?url='+encodeURIComponent(location.href), 'twitter-share-dialog', 'width=436,height=436'); return false;"><span class="icon fab fa-google"><span class="tooltip-content no-wrap"><?= $block->escapeHtmlAttr(__('Google')) ?></span></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(['jquery',
+        'Blueskytechco_QuickviewProduct/js/model/jquery.magnific-popup.min',
+		], function ($, magnificPopup) {
+            $( document ).ready(function() {
+                $('.share-links-click').magnificPopup({
+                    type:'inline',
+                    midClick: true,
+                    removalDelay: 500,
+                    mainClass: 'mfp-zoom-in'
+                });
+            });
+    });
+</script>

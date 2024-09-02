@@ -1,0 +1,499 @@
+<!-- Resume -->
+<table class="opensi-resume">
+  <tr>
+    <td>
+      <?php if ($block->getProductsWithoutSku()->getSize() > 0): ?>
+        <span class="icon-error"></span>
+      <?php else: ?>
+        <span class="icon-valid"></span>
+      <?php endif; ?>
+      <div class="title"><?php echo __('Products without SKU'); ?></div>
+      <div class="total"><?php echo $block->getProductsWithoutSku()->getSize(); ?></div>
+    </td>
+    <td>
+      <?php if ($block->getProductsWithSpace()->getSize() > 0): ?>
+        <span class="icon-error"></span>
+      <?php else: ?>
+        <span class="icon-valid"></span>
+      <?php endif; ?>
+      <div class="title"><?php echo __('Products with space'); ?></div>
+      <div class="total"><?php echo $block->getProductsWithSpace()->getSize(); ?></div>
+    </td>
+    <td>
+      <?php if ($block->getProductsWithDuplicateSkuCount() > 0): ?>
+        <span class="icon-error"></span>
+      <?php else: ?>
+        <span class="icon-valid"></span>
+      <?php endif; ?>
+      <div class="title"><?php echo __('Products with duplicate SKU'); ?></div>
+      <div class="total"><?php echo $block->getProductsWithDuplicateSkuCount(); ?></div>
+    </td>
+    <td>
+      <?php if ($block->getProductsWithoutWholesalePrice()->getSize() > 0): ?>
+        <span class="icon-warning"></span>
+      <?php else: ?>
+        <span class="icon-valid"></span>
+      <?php endif; ?>
+      <div class="title"><?php echo __('Products without wholesale price'); ?></div>
+      <div class="total"><?php echo $block->getProductsWithoutWholesalePrice()->getSize(); ?></div>
+    </td>
+    <td>
+      <?php if ($block->getProductsWithoutTax()->getSize() > 0): ?>
+        <span class="icon-warning"></span>
+      <?php else: ?>
+        <span class="icon-valid"></span>
+      <?php endif; ?>
+      <div class="title"><?php echo __('Products without tax'); ?></div>
+      <div class="total"><?php echo $block->getProductsWithoutTax()->getSize(); ?></div>
+    </td>
+    <td>
+      <span class="icon-ecotax"></span>
+      <div class="title"><?php echo __('Ecotax'); ?></div>
+      <div class="total"><?php echo $block->checkEcotax(); ?></div>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Checking-->
+<?php if (!$this->checkSoap()): ?>
+	<div class="opensi-error">
+		<?php echo __('Warning, Soap extension for PHP is not enable!'); ?>
+	</div>
+<?php endif; ?>
+
+<?php if (!$this->checkStocksSources()): ?>
+	<div class="opensi-error">
+		<?php echo __('Warning, you store have more than one source enabled for the inventory. OpenSi is not compatible with Magento 2 Multi-Source Inventory (MSI)! You should only keep the default source...'); ?>
+	</div>
+<?php endif; ?>
+
+<?php if ($this->getShippingTax() == 0): ?>
+	<div class="opensi-error">
+		<?php echo __('The shipping has no tax!') ?>
+	</div>
+<?php endif; ?>
+
+<?php if ($this->checkBarcode()): ?>
+	<div class="opensi-notification">
+		<?php echo __('Warning, the barcode/EAN seems to be not selected in the OpenSi extension. Please check if this is normal...'); ?>
+	</div>
+<?php endif; ?>
+
+<?php if ($this->checkPriceConfiguration()): ?>
+	<div class="opensi-notification">
+		<?php echo __('Warning, your Magento instance has more than one store but the catalog price scope is set as « Global » and not as « Website ». Please check if this is normal...') ?>
+	</div>
+<?php endif; ?>
+
+<?php if ($this->getTaxRateToCreate()->count() > 0): ?>
+	<div class="opensi-notification">
+		<?php echo __('Tax rate to create in OpenSi') ?>
+		<ul>
+			<?php foreach($this->getTaxRateToCreate() as $rate): ?>
+				<li><?php echo __('VAT').' '.round($rate['rate'], 2) ?>%</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+
+<!-- Tables -->
+<div  class="admin__scope-old">
+  <div class="entry-edit form-inline">
+
+    <!-- Global -->
+    <div class="entry-edit form-inline">
+      <fieldset class="fieldset admin__fieldset">
+        <legend class="admin__legend legend">
+          <span><?php echo __('General'); ?></span>
+        </legend>
+        <?php echo __('You are currently on the shop').' "<strong>'.$block->getStore()->getName().'</strong>" (Store ID '.$block->getStore()->getStoreId().').<br /><br />'; ?>
+        <table class="data-grid" data-role="grid">
+          <thead>
+            <tr>
+              <th class="data-grid-th"><?php echo __('About the products'); ?></th>
+              <th class="data-grid-th"><?php echo __('Total'); ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+        			<td><?php echo __('Number of products on the shop'); ?></td>
+        			<td><?php echo $block->getTotalProducts(); ?></td>
+        		</tr>
+            <tr class="_odd-row">
+            	<td><?php echo __('Including products without sku'); ?></td>
+        			<td><?php echo $block->getProductsWithoutSku()->getSize(); ?></td>
+        		</tr>
+            <tr>
+              <td><?php echo __('Including products with a space before or after the sku'); ?></td>
+        			<td><?php echo $block->getProductsWithLongSku()->getSize(); ?></td>
+            </tr>
+            <tr class="_odd-row">
+            	<td><strong><?php echo __('Number of products which can be sync with OpenSi'); ?></strong></td>
+        			<td><strong><?php echo $block->getProductsToSyncCollection(); ?></strong></td>
+        		</tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+
+
+    <!-- Ecotax -->
+    <div class="entry-edit form-inline">
+      <fieldset class="fieldset admin__fieldset">
+        <legend class="admin__legend legend">
+          <span><?php echo __('Ecotax management'); ?></span>
+        </legend>
+        <?php echo $block->ecotaxConfiguration(); ?>
+        <br /><br />
+        <a href="<?php echo $block->getEcotaxUrl(); ?>" class="action-secondary"><?php echo __('Manage ecotax'); ?></a>
+        <a href="<?php echo $block->getTaxRulesUrl(); ?>" class="action-secondary"><?php echo __('Manage tax rules'); ?></a>
+      </fieldset>
+    </div>
+
+
+    <!-- Products without SKU -->
+    <div class="entry-edit form-inline">
+      <fieldset class="fieldset admin__fieldset">
+        <legend class="admin__legend legend">
+          <span><?php echo __('Products without SKU'); ?> (<?php echo $block->getProductsWithoutSku()->getSize(); ?>)</span>
+        </legend>
+        <?php if ($block->getProductsWithoutSku()->getSize() > 0 ): ?>
+          <br /><div class="opensi-error"><?php echo __('Your catalog has %1 product(s) with no sku. Any product without sku will not be synchronized with OpenSi.', $block->getProductsWithoutSku()->getSize()); ?></div>
+        <?php endif; ?>
+        <table class="data-grid" data-role="grid">
+          <thead>
+            <tr>
+              <th class="data-grid-th"><?php echo __('ID'); ?></th>
+              <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+              <th class="data-grid-th"><?php echo __('Name'); ?></th>
+              <th class="data-grid-th"><?php echo __('Type'); ?></th>
+              <th class="data-grid-th"><?php echo __('Status'); ?></th>
+              <th class="data-grid-th"><?php echo __('Visibility'); ?></th>
+              <th class="data-grid-th"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($this->getProductsWithoutSku()->getSize() > 0): ?>
+              <?php $i = 0; ?>
+        			<?php foreach($this->getProductsWithoutSku() as $product): ?>
+                <?php $i++; ?>
+        				<tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+        					<td align="right"><?php echo $product->getId() ?></td>
+        					<td><?php echo $product->getSku() ?></td>
+        					<td><?php echo $product->getName() ?></td>
+        					<td><?php echo __('Product').' '.$product->getTypeID(); ?></td>
+        					<td><?php echo $product->getAttributeText('status'); ?></td>
+        					<td><?php echo $product->getAttributeText('visibility'); ?></td>
+        					<td class="data-grid-actions-cell"><a href="<?php echo $block->getProductUrl($product->getId()); ?>" target="_blank"><?php echo __('Edit'); ?></a></td>
+        				</tr>
+        			<?php endforeach; ?>
+        		<?php else: ?>
+        			<tr class="data-grid-tr-no-data">
+        				<td class="empty-text" colspan="7"><?php echo __('No records found.'); ?></td>
+        			</tr>
+        		<?php endif; ?>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+
+
+    <!-- Products with long SKU (> 40 chars) -->
+    <div class="entry-edit form-inline">
+      <fieldset class="fieldset admin__fieldset">
+        <legend class="admin__legend legend">
+          <span><?php echo __('Products with long SKU'); ?> (<?php echo $block->getProductsWithLongSku()->getSize(); ?>)</span>
+        </legend>
+        <?php if ($block->getProductsWithLongSku()->getSize() > 0 ): ?>
+          <br /><div class="opensi-error"><?php echo __('Your catalog has %1 product(s) with too long sku (> 40 chars). Any product with too long sku will not be synchronized with OpenSi.', $block->getProductsWithLongSku()->getSize()); ?></div>
+        <?php endif; ?>
+        <table class="data-grid" data-role="grid">
+          <thead>
+            <tr>
+              <th class="data-grid-th"><?php echo __('ID'); ?></th>
+              <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+              <th class="data-grid-th"><?php echo __('Name'); ?></th>
+              <th class="data-grid-th"><?php echo __('Type'); ?></th>
+              <th class="data-grid-th"><?php echo __('Status'); ?></th>
+              <th class="data-grid-th"><?php echo __('Visibility'); ?></th>
+              <th class="data-grid-th"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($this->getProductsWithLongSku()->getSize() > 0): ?>
+              <?php $i = 0; ?>
+        			<?php foreach($this->getProductsWithLongSku() as $product): ?>
+                <?php $i++; ?>
+        				<tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+        					<td align="right"><?php echo $product->getId(); ?></td>
+        					<td><?php echo $product->getSku(); ?></td>
+        					<td><?php echo $product->getName(); ?></td>
+        					<td><?php echo __('Product').' '.$product->getTypeID(); ?></td>
+        					<td><?php echo $product->getAttributeText('status'); ?></td>
+        					<td><?php echo $product->getAttributeText('visibility'); ?></td>
+        					<td class="data-grid-actions-cell"><a href="<?php echo $block->getProductUrl($product->getId()); ?>" target="_blank"><?php echo __('Edit'); ?></a></td>
+        				</tr>
+        			<?php endforeach; ?>
+        		<?php else: ?>
+        			<tr class="data-grid-tr-no-data">
+        				<td class="empty-text" colspan="7"><?php echo __('No records found.'); ?></td>
+        			</tr>
+        		<?php endif; ?>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+
+
+    <!-- Products with space -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Products with space'); ?> (<?php echo $block->getProductsWithSpace()->getSize(); ?>)</span>
+      </legend>
+      <?php if ($block->getProductsWithSpace()->getSize() > 0 ): ?>
+        <br /><div class="opensi-error"><?php echo __('Your catalog has %1 product(s) with a space before or after the sku. Any product with a space before or after the sku will not be synchronized with OpenSi.', $block->getProductsWithSpace()->getSize()); ?></div>
+      <?php endif; ?>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('ID'); ?></th>
+            <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+            <th class="data-grid-th"><?php echo __('Name'); ?></th>
+            <th class="data-grid-th"><?php echo __('Type'); ?></th>
+            <th class="data-grid-th"><?php echo __('Status'); ?></th>
+            <th class="data-grid-th"><?php echo __('Visibility'); ?></th>
+            <th class="data-grid-th"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($this->getProductsWithSpace()->getSize() > 0): ?>
+            <?php $i = 0; ?>
+      			<?php foreach($this->getProductsWithSpace() as $product): ?>
+              <?php $i++; ?>
+      				<tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+      					<td align="right"><?php echo $product->getId(); ?></td>
+      					<td><?php echo $product->getSku(); ?></td>
+      					<td><?php echo $product->getName(); ?></td>
+      					<td><?php echo __('Product').' '.$product->getTypeID(); ?></td>
+      					<td><?php echo $product->getAttributeText('status'); ?></td>
+      					<td><?php echo $product->getAttributeText('visibility'); ?></td>
+      					<td class="data-grid-actions-cell"><a href="<?php echo $block->getProductUrl($product->getId()); ?>" target="_blank"><?php echo __('Edit'); ?></a></td>
+      				</tr>
+      			<?php endforeach; ?>
+      		<?php else: ?>
+      			<tr class="data-grid-tr-no-data">
+      				<td class="empty-text" colspan="7"><?php echo __('No records found.'); ?></td>
+      			</tr>
+      		<?php endif; ?>
+        </tbody>
+      </table>
+    </fieldset>
+
+
+    <!-- Products with duplicate SKU -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Products with duplicate SKU'); ?> (<?php echo $block->getProductsWithDuplicateSkuCount(); ?>)</span>
+      </legend>
+      <?php if ($block->getProductsWithDuplicateSkuCount() > 0 ): ?>
+        <br /><div class="opensi-error"><?php echo __('Your catalog has %1 product(s) with a duplicate sku. You must correct these errors in order to properly synchronize your catalog.', $block->getProductsWithDuplicateSkuCount()); ?></div>
+      <?php endif; ?>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+            <th class="data-grid-th"><?php echo __('Duplicate SKU'); ?></th>
+            <th class="data-grid-th"><?php echo __('Total'); ?></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($this->getProductsWithDuplicateSkuCount() > 0): ?>
+            <?php $i = 0; ?>
+      			<?php foreach($this->getProductsWithDuplicateSku() as $product): ?>
+              <?php $i++; ?>
+              <tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+                <td><?php echo $product->getSku(); ?></td>
+                <td>
+                  <?php $duplicate_products = explode('||', $product->getProductsList()); ?>
+                  <?php foreach ($duplicate_products as $dp): ?>
+										<?php $val = explode('|', $dp) ?>
+										<a href="<?php echo $block->getProductUrl($val[0]); ?>" target="_blank"><?php echo $val[1]; ?></a> (ID <?php echo $val[0]; ?>)<br />
+									<?php endforeach; ?>
+                </td>
+                <td><?php echo $product->getDuplicate(); ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+      			<tr class="data-grid-tr-no-data">
+      				<td class="empty-text" colspan="3"><?php echo __('No records found.'); ?></td>
+      			</tr>
+      		<?php endif; ?>
+        </tbody>
+      </table>
+    </fieldset>
+
+
+    <!-- Products without wholesale price -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Products without wholesale price'); ?> (<?php echo $block->getProductsWithoutWholesalePrice()->getSize(); ?>)</span>
+      </legend>
+      <?php if ($block->getProductsWithoutWholesalePrice()->getSize() > 0 ): ?>
+        <br /><div class="opensi-notification"><?php echo __('Your catalog has %1 product(s) with no wholesale price. This is not a blocking point, however, it is recommended to fill them.<br />Indeed, in order to develop your first OpenSi inventory, the purchase price will be used.<br />If the purchase price is not correctly filled (or not filled), your first stock valuation and calculation of margins in OpenSi be biased.', $block->getProductsWithoutWholesalePrice()->getSize()); ?></div>
+        <?php if ($block->getProductsWithoutWholesalePrice()->getSize() > 100): ?>
+          <div class="opensi-notification"><?php echo __('<strong>Warning</strong>, this table display only 100 results!'); ?></div>
+        <?php endif; ?>
+      <?php endif; ?>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('ID'); ?></th>
+            <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+            <th class="data-grid-th"><?php echo __('Name'); ?></th>
+            <th class="data-grid-th"><?php echo __('Type'); ?></th>
+            <th class="data-grid-th"><?php echo __('Status'); ?></th>
+            <th class="data-grid-th"><?php echo __('Visibility'); ?></th>
+            <th class="data-grid-th"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($this->getProductsWithoutWholesalePrice()->getSize() > 0): ?>
+            <?php $i = 0; ?>
+      			<?php foreach($this->getProductsWithoutWholesalePrice() as $product): ?>
+              <?php $i++; ?>
+              <tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+      					<td align="right"><?php echo $product->getId(); ?></td>
+      					<td><?php echo $product->getSku(); ?></td>
+      					<td><?php echo $product->getName(); ?></td>
+      					<td><?php echo __('Product').' '.$product->getTypeID(); ?></td>
+      					<td><?php echo $product->getAttributeText('status'); ?></td>
+      					<td><?php echo $product->getAttributeText('visibility'); ?></td>
+      					<td class="data-grid-actions-cell"><a href="<?php echo $block->getProductUrl($product->getId()); ?>" target="_blank"><?php echo __('Edit'); ?></a></td>
+      				</tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+      			<tr class="data-grid-tr-no-data">
+      				<td class="empty-text" colspan="7"><?php echo __('No records found.'); ?></td>
+      			</tr>
+      		<?php endif; ?>
+        </tbody>
+      </table>
+    </fieldset>
+
+
+    <!-- Products without tax -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Products without tax'); ?> (<?php echo $block->getProductsWithoutTax()->getSize(); ?>)</span>
+      </legend>
+      <?php if ($block->getProductsWithoutTax()->getSize() > 0 ): ?>
+        <br /><div class="opensi-notification"><?php echo __('Your catalog has %1 product(s) with no tax. This is not a blocking point, however, thank you verify that everything is normal.', $block->getProductsWithoutTax()->getSize()); ?></div>
+        <?php if ($block->getProductsWithoutTax()->getSize() > 100): ?>
+          <div class="opensi-notification"><?php echo __('<strong>Warning</strong>, this table display only 100 results!'); ?></div>
+        <?php endif; ?>
+      <?php endif; ?>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('ID'); ?></th>
+            <th class="data-grid-th"><?php echo __('SKU'); ?></th>
+            <th class="data-grid-th"><?php echo __('Name'); ?></th>
+            <th class="data-grid-th"><?php echo __('Type'); ?></th>
+            <th class="data-grid-th"><?php echo __('Status'); ?></th>
+            <th class="data-grid-th"><?php echo __('Visibility'); ?></th>
+            <th class="data-grid-th"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($this->getProductsWithoutTax()->getSize() > 0): ?>
+            <?php $i = 0; ?>
+      			<?php foreach($this->getProductsWithoutTax() as $product): ?>
+              <?php $i++; ?>
+              <tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+      					<td align="right"><?php echo $product->getId(); ?></td>
+      					<td><?php echo $product->getSku(); ?></td>
+      					<td><?php echo $product->getName(); ?></td>
+      					<td><?php echo __('Product').' '.$product->getTypeID(); ?></td>
+      					<td><?php echo $product->getAttributeText('status'); ?></td>
+      					<td><?php echo $product->getAttributeText('visibility'); ?></td>
+      					<td class="data-grid-actions-cell"><a href="<?php echo $block->getProductUrl($product->getId()); ?>" target="_blank"><?php echo __('Edit'); ?></a></td>
+      				</tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+      			<tr class="data-grid-tr-no-data">
+      				<td class="empty-text" colspan="7"><?php echo __('No records found.'); ?></td>
+      			</tr>
+      		<?php endif; ?>
+        </tbody>
+      </table>
+    </fieldset>
+
+    <!-- Taxes -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Taxes'); ?> (<?php echo $block->getTaxRateList()->getSize(); ?>)</span>
+      </legend>
+      <br /><div class="opensi-notification"><?php echo __('Please find below the list of the taxes defined on shops.<br />In OpenSi, only french taxes are managed and only the 20% tax exists by default. You need to create all other taxes.'); ?></div>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('ID'); ?></th>
+            <th class="data-grid-th"><?php echo __('Country'); ?></th>
+            <th class="data-grid-th"><?php echo __('State/Region'); ?></th>
+            <th class="data-grid-th"><?php echo __('Rate'); ?></th>
+            <th class="data-grid-th"><?php echo __('Product Tax Class'); ?></th>
+            <th class="data-grid-th"><?php echo __('Number of products'); ?></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($this->getTaxRateList()->getSize() > 0): ?>
+            <?php $i = 0; ?>
+      			<?php foreach($this->getTaxRateList() as $tax): ?>
+              <?php $i++; ?>
+              <tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+      					<td align="right"><?php echo $tax['tax_calculation_rate_id']; ?></td>
+      					<td><?php echo $this->getCountryname($tax['tax_country_id']); ?></td>
+      					<td><?php echo $this->getRegionName($tax['tax_region_id']); ?></td>
+      					<td><?php echo $tax['rate']; ?></td>
+      					<td><?php echo $tax['class_name']; ?></td>
+      					<td><?php echo $tax['numProducts']; ?></td>
+      				</tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+      			<tr class="data-grid-tr-no-data">
+      				<td class="empty-text" colspan="6"><?php echo __('No records found.'); ?></td>
+      			</tr>
+      		<?php endif; ?>
+        </tbody>
+      </table>
+    </fieldset>
+
+
+    <!-- Versions -->
+    <fieldset class="fieldset admin__fieldset">
+      <legend class="admin__legend legend">
+        <span><?php echo __('Versions'); ?></span>
+      </legend>
+      <table class="data-grid" data-role="grid">
+        <thead>
+          <tr>
+            <th class="data-grid-th"><?php echo __('Name'); ?></th>
+            <th class="data-grid-th"><?php echo __('Version'); ?></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Magento</td>
+            <td><?php echo $this->getMagentoVersion(); ?></td>
+          </tr>
+          <tr class="_odd-row">
+            <td>OpenSi Connect</td>
+            <td><?php echo $this->getExtensionVersion(); ?></td>
+      		</tr>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+</div>

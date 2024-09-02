@@ -1,0 +1,116 @@
+/* Custom Data 2022-10-26 10:30:10: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'GeneralSans', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Butler', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'GeneralSans', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'GeneralSans', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --button_padding: 13px 40px;
+    --button__text_transform: uppercase;
+    --theme__color__primary: #000;
+}
+.page-builder-gallery-container .elementor-img-item {
+opacity: 0.4;
+}
+.page-builder-gallery-container .elementor-img-item:hover {
+opacity: 1;
+}
+.fs_30.tabs__content {
+font-family: "Butler",Sans-serif;
+    line-height: 45px;
+    color: #222;
+    margin: 0 auto;
+    max-width: 780px;
+    margin-bottom:  60px;
+}
+.bg_white a.pagebuilder-button-primary:hover,
+.bg_white a.pagebuilder-button-primary {
+    background: #fff;
+    border: 1px solid  #fff;
+    color: #222;
+    box-shadow: none;
+}
+.up-down .control input, .updown-quantity .control input {
+    height: 48px;
+}
+.navigation.horizontal .horizontal-list .level0 > a {
+    text-transform: uppercase;
+}
+
+
+@media only screen and (max-width: 1199px) {
+.header-container .header_padding {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+}
+@media only screen and (max-width: 767px) {
+.fs_30.tabs__content {
+    line-height: 1.428;
+}
+#html-body [data-pb-style=PGK86RA] {
+    min-height: 400px !important
+}
+}

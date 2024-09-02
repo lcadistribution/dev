@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableCategoryView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mptablecategory>
+            <general>
+                <enabled>1</enabled>
+                <customer_group>0,1,2,3</customer_group>
+                <is_default>1</is_default>
+            </general>
+            <display>
+                <add_button>0</add_button>
+                <button_text>Add</button_text>
+                <button_color>#ffffff</button_color>
+                <button_background>#006bb4</button_background>
+                <table_options>1,</table_options>
+                <is_mp_cpgv>0</is_mp_cpgv>
+                <review_label>No Review</review_label>
+                <popup>simple,grouped,bundle,virtual,downloadable,configurable</popup>
+            </display>
+        </mptablecategory>
+        <catalog>
+            <frontend>
+                <table_per_page_values>5,10,15,20,25</table_per_page_values>
+                <table_per_page>10</table_per_page>
+            </frontend>
+        </catalog>
+    </default>
+</config>

@@ -1,0 +1,68 @@
+<?php
+
+$helper = $block->getHelper();
+$productPrice = $block->getFinalPriceInBaseCurrency();
+$productName = $block->getProductName();
+?>
+<?php if ($block->isSpecialpriceFormEnable()):?>
+    <div>
+        <div class="md-success" style="color: green;font-weight: bold;margin-bottom: 10px;"></div>
+        <div class="md-error" style="color: red;font-weight: bold;margin-bottom: 10px;"></div>
+        <div class="form-content">
+            <form class="form specialprice-form"
+                  action="<?= $block->escapeUrl($block->getUrl('md_customerprice/customerspecialprice/save')) ?>"
+                  method="post"
+                  id="specialprice-form"
+                  data-mage-init='{"validation":{}}'>
+                <?= $block->getBlockHtml('formkey') ?>
+                <input type="hidden" id="pid" name="pid" value="" data-validate="{required:true}"/>
+                <input type="hidden" name="pname" value="<?= $block->escapeHtmlAttr($productName) ?>" data-validate="{required:true}"/>
+                <input type="hidden" id="name" name="name" value="<?= $block->escapeHtmlAttr($helper->getUserName()) ?>" data-validate="{required:true}"/>
+                <input type="hidden" id="email" name="email" value="<?= $block->escapeHtmlAttr($helper->getUserEmail()) ?>" data-validate="{required:true}"/>
+                <fieldset class="fieldset" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+                    <div class="field price required">
+                        <label class="label" for="price"><span><?= $block->escapeHtml(__('Regular Price')) ?></span></label>
+                        <div class="control">
+                            <input name="actual_price" value="<?= $block->escapeHtmlAttr($productPrice) ?>" autocomplete="off"
+                                   id="price" type="text" class="input-text"
+                                   title="<?= $block->escapeHtmlAttr(__('Price')) ?>"
+                                   data-mage-init='{"mage/trim-input":{},"validation":{}}'
+                                   data-validate="{required:true}" readonly />
+                        </div>
+                    </div>
+                    <div class="field sprice required">
+                        <label class="label" for="sprice"><span><?= $block->escapeHtml(__('Special Price')) ?></span></label>
+                        <div class="control">
+                            <input name="special_price" value="" autocomplete="off"
+                                   id="specialprice" type="text" class="validate-not-negative-number validate-number input-text"
+                                   title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                                   data-mage-init='{"mage/trim-input":{},"validation":{}}'
+                                   data-validate="{required:true}" />
+                        </div>
+                    </div>
+                    <div class="field qty required">
+                        <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                        <div class="control">
+                            <input name="quantity" value="" autocomplete="off"
+                                   id="qty" type="text" class="validate-greater-than-zero validate-not-negative-number <?php if($this->getQtyIsDecimals()):?> validate-number <?php else:?> validate-digits <?php endif;?> input-text"
+                                   title="<?= $block->escapeHtmlAttr(__('Quantity')) ?>"
+                                   data-mage-init='{"mage/trim-input":{},"validation":{}}'
+                                   data-validate="{required:true}" />
+                        </div>
+                    </div>                
+                    <div class="actions-toolbar">
+                        <div class="primary"><button type="submit" class="action primary" name="submit" id="specialprice"><span><?= $block->escapeHtml(__('Submit')) ?></span></button></div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+<?php endif;?>
+
+<script type="text/x-magento-init">
+    {
+        "#specialprice-form": {
+            "validation": {}
+        }
+    }
+</script>

@@ -1,0 +1,161 @@
+
+# Copyright © Magento, Inc. All rights reserved.
+# See COPYING.txt for license details.
+
+type Query {
+    customerprice: [Customerprice] @resolver(class: "Magedelight\\Customerprice\\Model\\Resolver\\Customerprice") @doc(description: "Get list of Customer Price") @cache(cacheable: false)
+    categoryprice (pageSize: Int = 5 @doc(description: "How many items should show on the page"),
+    currentPage: Int = 1 @doc(description: "Allows to ussing paging it start with 1"),) : [Categoryprice] @resolver( class: "Magedelight\\Customerprice\\Model\\Resolver\\Categoryprice") @doc(description: "Get list of Category Price")
+    customerspecialprice: [Customerspecialprice] @resolver(class: "Magedelight\\Customerprice\\Model\\Resolver\\Customerspecialprice") @doc(description: "Get list of Customer Speical Price") @cache(cacheable: false)
+    customergroupprice: [Customergroupprice] @resolver(class: "Magedelight\\Customerprice\\Model\\Resolver\\Customergroupprice") @doc(description: "Get list of Customer Group Price") @cache(cacheable: false)
+}
+
+type Customerprice {
+    customerprice_id : Int @doc(description: "customerprice_id")
+    customer_id : Int @doc(description: "customer_id")
+    customer_name : String @doc(description: "customer name")
+    customer_email : String @doc(description: "customer email")
+    product_id : Int @doc(description: "product id")
+    product_name : String @doc(description: "product name")
+    price : Float @doc(description: "price")
+    log_price : String @doc(description: "log price")
+    new_price : Float @doc(description: "new price")
+    qty : Float @doc(description: "price")
+    website_id : Int @doc(description: "Website Id")
+    expiry_date : String @doc(description: "customer price expiry date")
+}
+
+type Categoryprice {
+    customerpricecategory_id : Int @doc(description: "customerpricecategory_id")
+    customer_id : Int @doc(description: "customer_id")
+    customer_name : String @doc(description: "customer name")
+    customer_email : String @doc(description: "customer email")
+    category_id : Int @doc(description: "category id")
+    category_name : String @doc(description: "category name")
+    discount : Float @doc(description: "discount")
+    expiry_date : String @doc(description: "customer category expiry date")
+}
+
+type Customerspecialprice {
+    customerspecialprice_id : Int @doc(description: "customerspecialprice_id")
+    name : String @doc(description: "customer name")
+    email : String @doc(description: "customer email")
+    actual_price : Float @doc(description: "actual_price")
+    quantity : Float @doc(description: "quantity")
+    special_price : Float @doc(description: "special_price")
+    pname : String @doc(description: "product name")
+    pid : Int @doc(description: "product id")
+    approve : Int @doc(description: "approve")
+    customerprice_id : Int @doc(description: "customerprice id")
+    expiry_date : String @doc(description: "customer special price expiry date")
+    created_at : String @doc(description: "customer special price created at date")
+}
+
+type Customergroupprice {
+    customergroupprice_id : Int @doc(description: "customergroupprice id")
+    group_id : Int @doc(description: "group id")
+    value : String @doc(description: "value")
+    price_type : Int @doc(description: "price type")
+}
+
+type Mutation {
+    createCustomerPrice (input: CreateCustomerPriceInput!): CreateCustomerPriceOutput @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\CreateCustomerprice") @doc(descriptio:"Create customer price")
+    deleteCustomerPrice (customerprice_id: Int!): Boolean @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\DeleteCustomerprice") @doc(description:"Delete a customer price")
+    createCategoryPrice (input: CreateCategoryPriceInput!): CreateCategoryPriceOutput @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\CreateCategoryprice") @doc(description:"Create category price")
+    deleteCategoryPrice (customerpricecategory_id: Int!): Boolean @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\DeleteCategoryprice") @doc(description:"Delete a category price")
+    createCustomerDiscount (input: CreateCustomerDiscountInput!): CreateCustomerDiscountOutput @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\CreateCustomerdiscount") @doc(description:"Create customer discount")
+    deleteCustomerDiscount (customerpricediscount_id: Int!): Boolean @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\DeleteCustomerdiscount") @doc(description:"Delete a customer discount")
+    createCustomerSpeicalPrice (input: CreateCustomerSpecialPriceInput!): CreateCustomerSpecialPriceOutput @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\CreateCustomerSpecialPrice") @doc(descriptio:"Create customer special price")
+    deleteCustomerSpeicalPrice (customerspecialprice_id: Int!): Boolean @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\DeleteCustomerSpecialPrice") @doc(description:"Delete a customer special price")
+    createCustomerGroupPrice (input: CreateCustomerGroupPriceInput!): CreateCustomerGroupPriceOutput @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\CreateCustomerGroupPrice") @doc(descriptio:"Create customer Group price")
+    deleteCustomerGroupPrice (customergroupprice_id: Int!): Boolean @resolver(class: "\\Magedelight\\Customerprice\\Model\\Resolver\\DeleteCustomerGroupPrice") @doc(description:"Delete a customer Group price")
+    }
+
+input CreateCustomerPriceInput {
+    customerprice_id : Int @doc(description: "customerprice_id")
+    customer_id : Int @doc(description: "customer_id")
+    customer_name : String @doc(description: "customer name")
+    customer_email : String @doc(description: "customer email")
+    product_id : Int @doc(description: "product id")
+    product_name : String @doc(description: "product name")
+    price : Float @doc(description: "price")
+    new_price : String @doc(description: "new price")
+    qty : Float @doc(description: "price")
+    website_id : Int @doc(description: "Website Id")
+    expiry_date : String @doc(description: "customer price expiry date")
+}
+
+type CreateCustomerPriceOutput {
+    customer_price: Customerprice
+}
+
+input CreateCategoryPriceInput {
+    customerpricecategory_id : Int @doc(description: "customerpricecategory_id")
+    customer_id : Int @doc(description: "customer_id")
+    customer_name : String @doc(description: "customer name")
+    customer_email : String @doc(description: "customer email")
+    category_id : Int @doc(description: "category id")
+    category_name : String @doc(description: "category name")
+    discount : Float @doc(description: "discount")
+    expiry_date : String @doc(description: "customer category expiry date")
+}
+
+type CreateCategoryPriceOutput {
+    category_price: Categoryprice
+}
+
+input CreateCustomerDiscountInput {
+    customerpricediscount_id : Int @doc(description: "customerpricediscount_id")
+    customer_id: Int @doc(description: "customer_id")
+    value : Float @doc(description: "value")
+} 
+
+type CreateCustomerDiscountOutput {
+    customer_discount: CustomerpriceDiscountItems
+}
+
+type CustomerpriceDiscountItems {
+    customerpricediscount_id : Int @doc(description: "customerpricediscount_id")
+    customer_id : Int @doc(description: "customer id")
+    value : String @doc(description: "value")
+}
+
+input CreateCustomerSpecialPriceInput {
+    customerspecialprice_id : Int @doc(description: "customerspecialprice_id")
+    name : String @doc(description: "customer name")
+    email : String @doc(description: "customer email")
+    actual_price : Float @doc(description: "price")
+    quantity : Float @doc(description: "quantity")
+    special_price : Float @doc(description: "special price")
+    pid : Int @doc(description: "product id")
+    pname : String @doc(description: "product name")
+    approve : Int @doc(description: "Approve")
+    customerprice_id : Int @doc(description: "Customerprice Id")
+    expiry_date : String @doc(description: "customer special price expiry date")   
+}
+
+type CreateCustomerSpecialPriceOutput {
+    customer_specialprice: Customerspecialprice
+}
+
+input CreateCustomerGroupPriceInput {
+    customergroupprice_id : Int @doc(description: "customerspecialprice_id")
+    group_id : Int @doc(description: "customer group_id")
+    value : String @doc(description: "customer group price discount value")
+    price_type : Int @doc(description: "Customer Group Price Type")   
+}
+
+type CreateCustomerGroupPriceOutput {
+    customer_groupprice: Customergroupprice
+}
+
+
+
+
+
+
+
+
+
+
+

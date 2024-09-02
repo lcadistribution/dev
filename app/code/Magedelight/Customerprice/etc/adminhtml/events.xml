@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='urn:magento:framework:Event/etc/events.xsd'>
+    <event name='catalog_product_save_after'>
+        <observer name='customerprice' instance='Magedelight\Customerprice\Observer\Backend\ProductSaveAfter'/>
+    </event>
+    <event name='adminhtml_customer_save_after'>
+        <observer name='customerprice' instance='Magedelight\Customerprice\Observer\Backend\CustomerSaveAfter'/>
+    </event>
+    <event name='catalog_category_save_after'>
+        <observer name='customerprice' instance='Magedelight\Customerprice\Observer\Backend\CategorySaveAfter'/>
+    </event>
+    <!-- <event name='catalog_product_get_final_price'>
+        <observer name='Magedelight\Customerprice\Observer\ProcessFinalPrice' instance='Magedelight\Customerprice\Observer\ProcessFinalPrice'/>
+    </event> -->
+</config>

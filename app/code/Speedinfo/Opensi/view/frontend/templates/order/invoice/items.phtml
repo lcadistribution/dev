@@ -1,0 +1,80 @@
+<?php $order = $block->getOrder(); ?>
+<div class="order-details-items invoice">
+  <?php if ($block->getInvoicesConfig() && $order->getOpensiAfter() && count($block->getOpensiDocuments($order->getIncrementId())) == 0): ?>
+    <?php echo __('No invoice available...'); ?>
+  <?php else: ?>
+    <table class="data table table-order-items invoice">
+      <thead>
+        <tr>
+          <th class="col name"><?php echo __('Date'); ?></th>
+          <th class="col">
+            <?php if ($block->getInvoicesConfig() && $order->getOpensiAfter()): // OpenSi invoices/credit memos ?>
+              <?php echo __('Invoice/Credit memo'); ?>
+            <?php else: // Magento invoices ?>
+              <?php echo __('Invoice'); ?>
+            <?php endif; ?>
+          </th>
+          <th class="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($block->getInvoicesConfig() && $order->getOpensiAfter()): // OpenSi invoices/credit memos ?>
+          <?php foreach ($block->getOpensiDocuments($order->getIncrementId()) as $document): ?>
+            <tr>
+              <td class="col name"><?php echo $block->getDateFormat($document->getCreatedAt()); ?></td>
+              <td><?php echo $block->getDocumentTypeText($document->getDocumentType()).$document->getDocumentNumber(); ?></td>
+              <td>
+                <a href="<?php echo $block->getDocumentUrl($document->getDocumentId(), md5($document->getDocumentKey())); ?>">
+                  <?php if ($document->getDocumentType() == 'F'): ?>
+                    <?php echo __('Print Invoice') ?>
+                  <?php else: ?>
+                    <?php echo __('Print Document') ?>
+                  <?php endif; ?>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <?php foreach ($order->getInvoiceCollection() as $invoice): // Magento invoices ?>
+            <tr>
+              <td class="col name"><?php echo $block->getDateFormat($invoice->getCreatedAt()); ?></td>
+              <td><?php echo __('Invoice #').$invoice->getIncrementId(); ?></td>
+              <td><a href="<?php echo $block->getPrintInvoiceUrl($invoice); ?>"><?php echo __('Print Invoice') ?></a></td>
+            </tr>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </body>
+    </table>
+  <?php endif; ?>
+
+  <?php if (count($block->getOpensiDocuments($order->getIncrementId())) > 0): ?>
+    <?php $i = 0; ?>
+    <?php foreach ($order->getInvoiceCollection() as $invoice): ?>
+      <?php if ($block->getInvoicesConfig() && $order->getOpensiAfter()): ?>
+        <?php $i++; ?>
+        <?php if ($i == 1): ?>
+          <br /><h2><?php echo __('Invoiced product(s)'); ?></h2>
+        <?php endif; ?>
+      <?php else: ?>
+        <br /><h2><?php echo __('Invoice #').$invoice->getIncrementId(); ?></h2>
+        <a href="<?php echo $block->getPrintInvoiceUrl($invoice); ?>"><?php echo __('Print Invoice') ?></a>
+        <br /><br />
+      <?php endif; ?>
+
+      <div class="table-wrapper">
+        <table class="data table table-order-items">
+          <tfoot>
+            <tr>
+              <th class="col"><?php echo __('Product Name'); ?></th>
+              <th class="col"><?php echo __('SKU'); ?></th>
+              <th class="col"><?php echo __('Qty Invoiced'); ?></th>
+              <th class="col"><?php echo __('Price'); ?></th>
+              <th class="col"><?php echo __('Subtotal'); ?></th>
+            </tr>
+            <?php echo $block->getInvoiceDetails($invoice); ?>
+          </tfoot>
+        </table>
+      </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</div>

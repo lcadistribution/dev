@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <!--  Start Patch For Enterprise Edition  -->
+    <preference for="Magento\Catalog\Model\ResourceModel\Layer\Filter\Price" type="Magedelight\Customerprice\Model\ResourceModel\Layer\Filter\Price" />
+    <!--  End Patch For Enterprise Edition  -->
+
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="md-customer-app-action-dispatchController-context-plugin" type="Magedelight\Customerprice\Plugin\App\Action\Context" sortOrder="15"/>
+    </type>
+    <type name="Magento\Framework\App\Http\Context">
+        <plugin name="md-customer-context-plugin" type="Magedelight\Customerprice\Plugin\App\Action\CustomerContext" sortOrder="15"/>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\Resolver">
+        <arguments>
+            <argument name="layersPool" xsi:type="array">
+                <item name="category" xsi:type="string">Magento\Catalog\Model\Layer\Category</item>
+                <item name="search" xsi:type="string">Magento\Catalog\Model\Layer\Search</item>
+                <item name="mdlayer" xsi:type="string">Magedelight\Customerprice\Model\Layer</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="mdFilterList" type="Magedelight\Customerprice\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filterableAttributes" xsi:type="object">Magedelight\Customerprice\Model\Layer\FilterableAttributeList</argument>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Magedelight\Customerprice\Model\Layer\Filter\Attribute</item>
+                <item name="category" xsi:type="string">Magedelight\Customerprice\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- <virtualType name="Magedelight\Customerprice\Block\Navigation\Mdnavigation" type="Magento\LayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">mdFilterList</argument>
+        </arguments>
+    </virtualType> -->
+    <virtualType name="Magedelight\Customerprice\Model\Layer\Context" type="Magento\Catalog\Model\Layer\Context">
+        <arguments>
+            <argument name="collectionProvider" xsi:type="object">Magedelight\Customerprice\Model\Layer\ItemCollectionProvider</argument>
+            <argument name="stateKey" xsi:type="object">Magedelight\Customerprice\Model\Layer\StateKey</argument>
+            <argument name="collectionFilter" xsi:type="object">Magedelight\Customerprice\Model\Layer\CollectionFilter</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magedelight\Customerprice\Model\Layer">
+        <arguments>
+            <argument name="context" xsi:type="object">Magedelight\Customerprice\Model\Layer\Context</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="customerprice" xsi:type="array">
+                    <item name="class" xsi:type="string">Magedelight\Customerprice\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">22</item>
+                </item>
+            </argument>
+        </arguments>
+    </type> 
+
+    <preference for="Magento\Catalog\Pricing\Render\FinalPriceBox" 
+        type="Magedelight\Customerprice\Pricing\Render\FinalPriceBox" />
+
+    <!-- <preference for="Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox" 
+        type="Magedelight\Customerprice\Pricing\Render\Configurable\FinalPriceBox" /> -->
+        
+    <preference for="Magento\Bundle\Pricing\Render\FinalPriceBox" 
+        type="Magedelight\Customerprice\Pricing\Render\Bundle\FinalPriceBox" />     
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="Magedelight_Customerprice::ListProduct" type="Magedelight\Customerprice\Plugin\Catalog\Product\ListProduct" />
+    </type>
+
+    <type name="Magento\Catalog\Model\Config">
+        <plugin name="magedelight_customerprice_price_sorting" type="Magedelight\Customerprice\Plugin\Model\Config"/>
+    </type>
+
+
+</config>

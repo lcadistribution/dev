@@ -1,0 +1,113 @@
+/* Custom Data 2022-06-28 10:24:38: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1370px;
+	
+	/* Body Font */
+		--font-family-name__base: 'GeneralSans', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'GeneralSans', sans-serif;
+			--heading__font-weight__base: 600;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		--button__border-radius: 25px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+	
+	/* Custom Footer */
+	
+	/* Custom Menu */
+			--navigation-level0-item__color: #FFFFFF;
+			--navigation__background: #000000;
+				
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+						--navigation__background: #000000;
+					}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+								--navigation-level0-item__color: #FFFFFF;
+						--navigation-desktop-level0-item__hover__color: var(--navigation-level0-item__color);
+					}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+--navigation-level0-item__font-weight: 600;
+--naviation-level0-item__font-size: 1.4rem;
+--bls_elementor-static-menu-title-font-weight: 600;
+--bls_image-box-title-font-size:1.6rem;
+--button__font-weight: 600;
+}
+.elementor-blog-post-item .data-bgset-image-wrapper{ 
+        --aspect-ratio: 1.708 !important;
+}
+.post-title{
+--post_item_title-weight: 600;
+}
+.elementor__heading strong{
+--headings__font-weight-secondary: 600;
+}
+.elementor-image-box-wrapper{
+--heading__font-weight__base : 600;
+}
+.product-label{
+top: 10px;
+    left: 10px;
+}
+.elementor-image-box-description p{
+    line-height: 1;
+   max-width: 200px;
+    margin-top: 7px;
+}
+.product__style-7 .products-grid .product-item:before{
+--button__border-radius: 5px;
+}
+@media only screen and (min-width: 1440px){
+:root {
+       --navigation-desktop-level0-item__padding: 0 40px;
+}
+}
+@media only screen and (max-width: 992px){
+.margin_item--30 .slick-list .slick-slide > div{
+    margin-bottom: 15px;
+}
+}
+
+
+

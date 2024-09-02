@@ -1,0 +1,122 @@
+/* Custom Data 2022-08-11 07:01:19: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Butler', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+					
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #000000; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --bls_elementor-static-menu-title--font-size: 2.4rem;
+}
+.header-container {
+    --fluid-container-width: 1920px;
+}
+@media (min-width: 1200px) {
+.cms-index-index .header-container:not(.header_scroll_up) .header_light {
+  --navigation-level0-item__color: #000;
+ --header-icons-color: #000;
+ --navigation-desktop-level0-item__hover__color: #000;
+}
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper input {
+    --border-color: #000000;
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper .actions-subscribe button {
+    border-left-width: 1px;
+   font-size: 16px;
+    --button__font-weight: 500;
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper .actions-subscribe button:not(:hover) {
+        background: transparent;
+        color: #000;
+}
+@media (min-width: 992px) {
+.product__style-1 .products-grid .product-item-details {
+    text-align: center;
+}
+.product__style-1 .products-grid .product-item-details .price-box { 
+    justify-content: center;
+}
+.product__style-1 .products-grid .product-item .product-item-details div[class*="swatch-opt-"] { 
+  display: inline-flex;
+}
+}
+.header-static-menu + .elementor-content-static-menu {
+    font-weight: 500;
+}
+.section-top-header .ls_2{
+    letter-spacing: 0;
+}
+

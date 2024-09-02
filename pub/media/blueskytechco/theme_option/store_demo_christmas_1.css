@@ -1,0 +1,122 @@
+/* Custom Data 2022-09-10 01:55:15: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1200px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Sentient', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #C02C30; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+.header-container {
+    --fluid-container-width: 1440px;
+}
+.lh-1 h3{
+    line-height: 1;
+}
+.semibold strong{
+    --headings__font-weight-secondary: 600;
+}
+.category-slider-7 .category-thumbnail_img {
+    border-radius: 50% !important;
+    max-width: 160px;
+    margin: auto;
+
+}
+.category-slider-7 .category-thumbnail__image{
+    border-radius: 50%;
+}
+
+
+.category-slider-7 .category-thumbnail_img  .category-thumbnail__image{
+--aspect-ratio: 1 !important;
+}
+.widget-category-thumbnail-image.category-slider-7{
+    --category_item_title-size: 20px;
+}
+.underline{
+border-bottom: 1px solid;
+}
+.w-500 {
+    max-width: 500px;
+    margin: auto;
+}
+.price-custom p span:first-child {
+    text-decoration: line-through;
+}
+.shadow{
+box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.04);
+}
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_AttrBaseSplitcart
+* @author    Webkul Software Private Limited
+* @copyright Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="webkul_attrbasesplitcart_layout_generate_blocks_after_observer" instance="Webkul\AttrBaseSplitcart\Observer\RemoveSummary" />
+    </event>
+    <event name="customer_logout">
+        <observer name="webkul_attrbasesplitcart_customer_logout" instance="Webkul\AttrBaseSplitcart\Observer\CustomerLogOutObserver" />
+    </event>
+    <event name="controller_action_predispatch_cms_index_index">
+        <observer name="webkul_attrbasesplitcart_controller_action_predispatch" instance="Webkul\AttrBaseSplitcart\Observer\BeforeOrderPlaced" />
+    </event>
+</config>

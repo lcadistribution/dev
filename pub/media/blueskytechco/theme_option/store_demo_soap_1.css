@@ -1,0 +1,93 @@
+/* Custom Data 2023-01-18 09:17:00: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Outfit', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Outfit', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Outfit', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 30px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+--navigation-level0-item__text-transform:uppercase;
+    --button_padding: 13.5px 55px;
+}
+@media (min-width: 1200px) {
+.cms-index-index .header-container:not(.header_scroll_up) .header_light {
+    --navigation-level0-item__color: #000;
+    --header-icons-color: #000;
+    --navigation-desktop-level0-item__hover__color: #000;
+}
+}
+[data-image-box-position=top] .elementor-image-box-img {
+    margin: 0;
+    width: 45px;
+}
+.elementor-newsletter-wrapper .actions-subscribe button:not(:hover) {
+    color: #000;
+    background-color: #fff;
+}
+.widget-category-thumbnail-image.category-slider-4 .elementor-category-thumbnail-image-item {
+    padding: 20px;
+}
+.border-top-custom .pagebuilder-column-group {
+    border-top: 1px solid #eee;
+}

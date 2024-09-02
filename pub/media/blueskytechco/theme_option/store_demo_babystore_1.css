@@ -1,0 +1,171 @@
+/* Custom Data 2022-08-11 03:44:53: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1200px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Jost', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #E1927F; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+				--button__color: #FFFFFF;
+	--button-primary__color: #FFFFFF;
+		 
+	--button-secondary-bg: #E1927F;
+	--button__background: #E1927F;
+	--button-primary__background: #E1927F;
+			--button__hover__background: #000000;
+	--button-primary__hover__background: #000000;
+			--button__hover__color: #FFFFFF;
+	--button-primary__hover__color: #FFFFFF;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+			--topbarbg: #FFFFFF;
+			--topbarcolor: #000000;
+				
+	/* Custom Footer */
+			--footer-title-color: #000000;
+			--footer-links-color: #666666;
+			
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	footer{
+		--footer-links-color: #666666;
+		--link__color: #666666;
+	}
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+/* Custom Footer */
+footer.page-footer{
+	}
+
+
+
+
+
+
+/* Customization Style */
+.header-container {
+    --fluid-container-width: 1270px;
+}
+:root {
+    --module_margin_bottom: 5.7rem;
+--button__border-radius: 23px;
+--bls_elementor-static-menu-title-font-weight:600;
+}
+
+.elementor__header {
+       position: relative;
+}
+.elementor__header .elementor__headline {
+        background: #fff;
+    position: relative;
+    padding: 0 40px;
+    z-index: 1;
+    display: inline-block;
+}
+.elementor__header:after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    border-top: 1px dashed #c7c7c7;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.elementor_primary_wrap .elementor__header .elementor__headline {
+        background-color: #f7f2f2;
+}
+@media (min-width: 1200px) {
+.show_search-form .top-search {
+    border-radius: 30px;
+}
+}
+.recommendation .widget-category-thumbnail-image .style_2 {
+    --category_thumbnail_info-padding: 2.5rem 0 0;
+    --category_item_title-size: 1.8rem;
+    justify-content: center;
+}
+.elementor-testimonial-item {
+    --bls_testimonial-padding: 4.5rem 2rem;
+     background: #fff;
+    border-radius:5px;
+    --bls_testimonial-content-size: 1.6rem;
+
+}
+.testimonial-style-2 .widget-testimonial.widget-testimonial-slider-default .testimonial-job {
+    font-size: 1.5rem;
+    color: #a9c5b9;
+    font-weight: 500;
+    
+}
+.testimonial-style-2 .widget-testimonial.widget-testimonial-slider-default .elementor__header {
+max-width:1170px;
+margin-left: auto;
+ margin-right: auto;
+   --module_margin_bottom: 5.7rem;
+}
+.testimonial-style-2 .widget-testimonial.widget-testimonial-slider-default .elementor__header .elementor__headline {
+    background-color: #eaf1f0;
+}
+.product__style-2{
+    --product-name-text-transform: none;
+}
+.product-info-main .price-final_price *,
+ .product-item .price-final_price *,
+ .product-info-main .price-configured_price *,
+ .product-item .price-configured_price *{
+color: var(--theme__color__primary);
+}
+.elementor-show__category a{
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.rating-summary .rating-result > span:before{
+color: var(--theme__color__primary);
+}

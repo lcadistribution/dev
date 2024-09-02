@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_LayeredNavigation
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<requests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:framework:Search/etc/search_request.xsd">
+    <request query="quick_search_container" index="catalogsearch_fulltext">
+        <dimensions>
+            <dimension name="scope" value="default"/>
+        </dimensions>
+        <queries>
+            <query xsi:type="boolQuery" name="quick_search_container" boost="1">
+                <queryReference clause="must" ref="rating_summary_range"/>
+            </query>
+            <query xsi:type="filteredQuery" name="rating_summary_range">
+                <filterReference clause="must" ref="rating_summary_range_filter"/>
+            </query>
+        </queries>
+        <filters>
+            <filter xsi:type="rangeFilter" name="rating_summary_range_filter" field="rating_summary_range_filter" from="$rating_summary_range.from$" to="$rating_summary_range.to$"  />
+        </filters>
+        <aggregations>
+            <bucket name="rating_summary_range_bucket" field="rating_summary_range" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+        </aggregations>
+    </request>
+    <request query="catalog_view_container" index="catalogsearch_fulltext">
+        <dimensions>
+            <dimension name="scope" value="default"/>
+        </dimensions>
+        <queries>
+            <query xsi:type="boolQuery" name="catalog_view_container" boost="1">
+                <queryReference clause="must" ref="rating_summary_range"/>
+            </query>
+            <query xsi:type="filteredQuery" name="rating_summary_range">
+                <filterReference clause="must" ref="rating_summary_range_filter"/>
+            </query>
+        </queries>
+        <filters>
+            <filter xsi:type="rangeFilter" name="rating_summary_range_filter" field="rating_summary_range" from="$rating_summary_range.from$" to="$rating_summary_range.to$"  />
+        </filters>
+        <aggregations>
+            <bucket name="rating_summary_range_bucket" field="rating_summary_range" xsi:type="termBucket">
+                <metrics>
+                    <metric type="count"/>
+                </metrics>
+            </bucket>
+        </aggregations>
+    </request>
+</requests>

@@ -1,0 +1,16 @@
+@md-customerprice-icons-admin__font-name-path: '@{baseDir}Magedelight_Customerprice/fonts/icon';
+@md-customerprice-icons-admin__font-name : 'Customerprice';
+.lib-font-face(
+  @family-name:@md-customerprice-icons-admin__font-name,
+  @font-path: @md-customerprice-icons-admin__font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+.admin__menu .item-customerprice-root-commonlyvisible > a:before,
+.admin__menu .item-customerprice-root.parent.level-0 .submenu > .submenu-title:before,
+.config-nav-block .md_section_customerprice a:before {
+  font-family: @md-customerprice-icons-admin__font-name;
+  content: "\e900";
+  padding-right: 8px;
+}
+.ppc-admin-table .action-delete::before {content: '\e630';font-size: 2rem; }

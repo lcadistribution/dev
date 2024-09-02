@@ -1,0 +1,120 @@
+/* Custom Data 2023-01-18 06:50:07: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Roboto Condensed', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'WorthbitesRough', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Roboto Condensed', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Roboto Condensed', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+				--button__color: #FFFFFF;
+	--button-primary__color: #FFFFFF;
+		 
+	--button-secondary-bg: #D22727;
+	--button__background: #D22727;
+	--button-primary__background: #D22727;
+			--button__hover__background: #D22727;
+	--button-primary__hover__background: #D22727;
+			--button__hover__color: #FFFFFF;
+	--button-primary__hover__color: #FFFFFF;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	.minicart-wrapper .block-content .actions .secondary .action.viewcart:not(:hover){
+		--heading__color__base: #FFFFFF;
+	}
+ 
+	button, .cart.table-wrapper .actions-toolbar > .action, .action-gift{
+		border: 1px solid var(--button__background);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --navigation-level0-item__text-transform: uppercase;
+    --headings__font-weight-secondary: 700;
+--sidebar_widget_title-size: 24px;
+}
+.elementor-image-box-title {
+--bls_image-box-title-font-size: 1.8rem;
+    font-family: inherit;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.minicart-wrapper .block-content .subtotal{
+font-size: 24px;
+}
+.products-grid .product-items .product-item-info .field.choice.related .label:before,
+.product-info-main .action.tocompare{
+--button__color: #222;
+}
+footer .elementor-static-menu-title {
+    font-family: inherit;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+ul.social-link li a {
+   --social__link__size:2rem;
+}
+.elementor-newsletter-wrapper input {
+    height: 46px;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+    padding: 0;
+}
+.col.sticky_atc_info .product-item-name{
+font-size: 24px;
+}

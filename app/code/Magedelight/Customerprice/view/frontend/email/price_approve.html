@@ -1,0 +1,20 @@
+<!--@subject {{trans "Special Price Approve from %store_name" store_name=$store.getFrontendName()}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-info">
+        <td><p>Dear {{var name}},</p></td>
+    </tr>
+    <tr>
+        <td>
+        	<p>You have requested a special price for {{var pname}} and your suggested price was {{var special_price}} on {{var date}}.</p>
+        	<p>Admin has confirmed price {{var special_price}} so now you can make purchase of the same product by logging into <a href='{{config path="web/secure/base_url"}}'>{{config path="web/secure/base_url"}}</a>.</p>
+        </td>
+    </tr>
+    <tr>
+        <td><p>Thank you.</p></td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

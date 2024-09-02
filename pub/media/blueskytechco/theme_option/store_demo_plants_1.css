@@ -1,0 +1,140 @@
+/* Custom Data 2022-08-04 03:32:36: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Poppins', sans-serif;
+			--font-size__base: 15px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Poppins', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Livvic', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #CD783E; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+				--button__color: #FFFFFF;
+	--button-primary__color: #FFFFFF;
+		 
+	--button-secondary-bg: #CD783E;
+	--button__background: #CD783E;
+	--button-primary__background: #CD783E;
+			--button__hover__background: #CD783E;
+	--button-primary__hover__background: #CD783E;
+			--button__hover__color: #FFFFFF;
+	--button-primary__hover__color: #FFFFFF;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+.rokan-title .short_description, 
+	.elementor__header .short_description,
+	.rokan-title .short_description .action.select{
+	  font-style: italic;
+	}
+:root {
+ --fluid-container-width: 1750px;
+--button__border-radius: 0;
+--button__font-weight:600;
+}
+.header-container {
+    --fluid-container-width: 1820px;
+}
+.brown-button .pagebuilder-button-primary {
+    --heading__color__base: #CD783E;
+    --button_padding: 14px 30px;
+}
+div[data-content-type="tabs"], .pagebuilder-content-type.pagebuilder-tabs {
+    --tab_font-size: 1.6rem;
+    --tab-color: #000000;
+    --tab_font-weight: 600;
+    --tab_active-color: #CD783E;
+    --tab-title-spacing: 40px;
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper input {
+    height: 45px;
+    border: none;
+}
+[data-layout="style_2"] .elementor-newsletter-wrapper .actions-subscribe button {
+    text-transform: capitalize;
+}
+@media (min-width: 992px) {
+.product__style-1 .products-grid .product-item-details {
+    text-align: center;
+}
+.product__style-1 .products-grid .product-item-details .price-box { 
+    justify-content: center;
+}
+.product__style-1 .products-grid .product-item .product-item-details div[class*="swatch-opt-"] { 
+  display: inline-flex;
+}
+}
+@media (min-width: 1400px) {
+body:not(.product__style-3):not(.product__style-4) .slick-prev{
+left: 0;
+}
+body:not(.product__style-3):not(.product__style-4) .slick-next{
+    right: 0;
+}
+}
+
+div[data-content-type='tabs'] .tabs-content{
+    overflow: unset;
+}
+

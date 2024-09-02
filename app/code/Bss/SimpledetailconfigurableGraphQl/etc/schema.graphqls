@@ -1,0 +1,150 @@
+# BSS Commerce Co.
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the EULA
+# that is bundled with this package in the file LICENSE.txt.
+# It is also available through the world-wide-web at this URL:
+# http://bsscommerce.com/Bss-Commerce-License.txt
+#
+# @category   BSS
+# @package    Bss_SimpledetailconfigurableGraphQl
+# @author     Extension Team
+# @copyright  Copyright (c) 2020-2021 BSS Commerce Co. ( http://bsscommerce.com )
+# @license    http://bsscommerce.com/Bss-Commerce-License.txt
+
+type Query {
+    getConfiguration (
+        store_id: Int! @doc(description: "Store ID")
+    ): Configuration
+        @doc(description: "Simple detail on configurable product module configuration")
+        @resolver(class: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\Configuration")
+        @cache(cacheIdentity: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\SimpleDetail\\ConfigurationIdentity")
+    getProductData (
+        sku: String! @doc(description: "Product SKU")
+        store_id: Int! @doc(description: "Store ID")
+    ): ProductDataOutput
+        @doc(description: "Simple detail on configurable product module product data")
+        @resolver(class: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\ProductData")
+        @cache(cacheIdentity: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\SimpleDetail\\ProductDataIdentity")
+    getPreselect (
+        sku: String! @doc(description: "Product SKU")
+        store_id: Int! @doc(description: "Store ID")
+        preselect: [PreselectAttributes] @doc(description: "Preselect attributes input")
+    ): ChildProductDataOutput
+        @doc(description: "Simple detail on configurable product get child data selected by pre select")
+        @resolver(class: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\Preselect")
+        @cache(cacheIdentity: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\SimpleDetail\\PreSelect")
+    getPreselectByConfig(
+        sku: String! @doc(description: "Product SKU")
+        store_id: Int! @doc(description: "Store ID")
+    ): ChildProductDataOutput
+        @doc(description: "Simple detail on configurable product get child data selected by pre select config")
+        @resolver(class: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\PreselectByConfig")
+        @cache(cacheIdentity: "Bss\\SimpledetailconfigurableGraphQl\\Model\\Resolver\\SimpleDetail\\PreselectByConfig")
+}
+
+input PreselectAttributes {
+    code: String @doc(description: "Attribute Code Name")
+    value: String @doc(description: "Attribute Value as Name")
+}
+
+type Configuration {
+    is_enabled: Boolean @doc(description: "Is module enabled or disabled.")
+    display_sku: Boolean @doc(description: "Display SKU or not")
+    display_name: Boolean @doc(description: "Display name or not")
+    display_desc: Boolean @doc(description: "Display desc or not")
+    display_tier_price: Boolean @doc(description: "Display tier price or not")
+    display_stock: Boolean @doc(description: "Display stock or not")
+    display_images: String @doc(description: "Type of display images")
+    display_child_image: String @doc(description: "Type of display child images")
+    display_additional_info: Boolean @doc(description: "Display additional information or not")
+    display_meta_data: Boolean @doc(description: "Display meta data or not")
+    display_child_options: Boolean @doc(description: "Display child options or not")
+    enable_custom_url: Boolean @doc(description: "Enabled custom url or not")
+    enable_preselect: Boolean @doc(description: "Enabled preselect or not")
+    enable_url_sitemap: Boolean @doc(description: "Enabled url site map or not")
+}
+
+type ProductDataOutput {
+    enable_module_on_product: Boolean @doc(description: "Did product enable module?")
+    enable_ajax_on_product: Boolean @doc(description: "Enabled ajax load or not?")
+    sku: String @doc(description: "Product SKU")
+    stock_data: ProductStockData @doc(description: "Product Stock Data")
+    url: String @doc(description: "Product Url")
+    meta_data: ProductMetaData @doc(description: "Product Meta Data")
+    name: String @doc(description: "Product name")
+    preselect: [ProductPreselectData] @doc(description: "Product Preselect Data")
+    price: Float @doc(description: "Product Price")
+    images: [ProductImageData] @doc(description: "Product Images Data")
+    desc: String @doc(description: "Product description")
+    items: [ChildProductDataOutput] @doc(description: "Product Child Items")
+    additional_info: [ProductAdditionalInfoData] @doc(description: "Product Additional Info Data")
+}
+
+type ChildProductDataOutput {
+    entity: Int @doc(description: "Product Entity ID")
+    sku: String @doc(description: "Product SKU")
+    name: String @doc(description: "Product Name")
+    desc: String @doc(description: "Product Description")
+    tier_price: [TierPriceData] @doc(description: "Product Tier Price")
+    stock_data: ProductStockData @doc(description: "Product Stock Data")
+    images: [ProductImageData] @doc(description: "Product Images Data")
+    meta_data: ProductMetaData @doc(description: "Product Meta Data")
+    review_count: Int @doc(description: "Review count of child product")
+    reviews: [ReviewData] @doc(description: "Reviews list of child product")
+    additional_info: [ProductAdditionalInfoData] @doc(description: "Product Additional Info Data")
+}
+
+type ProductStockData {
+    is_in_stock: Boolean @doc(description: "Is Product In Stock?")
+    salable_qty: Float @doc(description: "Salable Qty Number")
+}
+
+type ProductMetaData {
+    meta_description: String @doc(description: "Meta Description of Product")
+    meta_keyword: String @doc(description: "Meta Keyword of Product")
+    meta_title: String @doc(description: "Meta Title of Product")
+}
+
+type ProductPreselectData {
+    attribute_id: Int @doc(description: "Attribute ID which Selected by Config")
+    selected_value: Int @doc(description: "Attribute Value ID which Selected by Config")
+}
+
+type ProductImageData {
+    caption: String @doc(description: "Product Image Caption")
+    full: String @doc(description: "Product Image Full Link")
+    img: String @doc(description: "Product Image Link")
+    is_main: Boolean @doc(description: "Is Product Image Main?")
+    position: Int @doc(description: "Product Image Position")
+    thumb: String @doc(description: "Product Thumb Link")
+    type: String @doc(description: "Product Image Type")
+    video_url: String @doc(description: "Product Video Url")
+}
+
+type ReviewData {
+    review_id: Int @doc(description: "Review ID")
+    created_at: String @doc(description: "Created At")
+    status_id: Int @doc(description: "Status ID")
+    title: String @doc(description: "Review Title")
+    detail: String @doc(description: "Review Detail")
+    nickname: String @doc(description: "Review Nickname")
+    customer_id: Int @doc(description: "Customer ID")
+}
+
+type ProductAdditionalInfoData {
+    code: String @doc(description: "Additional Attribute Code")
+    label: String @doc(description: "Additional Attribute Label")
+    value: String @doc(description: "Additional Attribute Value")
+}
+
+type TierPriceData {
+    qty: Float @doc(description: "Tier Price Qty")
+    final: Float @doc(description: "Tier Price Final Price")
+    value: Float @doc(description: "Tier Price Value")
+    base: Float @doc(description: "Tier Price Base")
+    final_discount: Float @doc(description: "Tier Price Final Discount")
+    base_discount: Float @doc(description: "Tier Price Base Discount")
+    percent: Float @doc(description: "Tier Price Percent")
+}

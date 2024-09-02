@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="wsdl.xsl"?>
+<!--
+/**
+ * 2003-2019 OpenSi Connect
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ * for more details.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to http://www.prestashop.com for more information.
+ *
+ * @author Speedinfo SARL
+ * @copyright 2003-2019 Speedinfo SARL
+ * @contact contact@speedinfo.fr
+ * @url http://www.speedinfo.fr
+ *
+ */
+ -->
+<wsdl:definitions targetNamespace="http://www.opensi.fr"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:wsdlns="http://www.opensi.fr"
+  xmlns:typens="http://www.opensi.fr"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsdns="http://www.opensi.fr/xsd"
+					attributeFormDefault="qualified" elementFormDefault="qualified"
+					targetNamespace="http://www.opensi.fr">
+			<xsd:import namespace="http://www.opensi.fr/xsd"
+						schemaLocation="opensi.xsd" />
+			<xsd:element name="Header">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="key"	type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getVersionRequest">
+				<xsd:complexType>
+					<xsd:sequence></xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getVersionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="return" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getDatetimeRequest">
+				<xsd:complexType>
+					<xsd:sequence></xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getDatetimeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="return" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProductsRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getProductsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Product_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProductsUpdateRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getProductsUpdateResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:ProductUpdate_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProductComponentsRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getProductComponentsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:ProductComponent_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProductImagesRequest" type="xsdns:getProductImagesRequest" />
+			<xsd:element name="getProductImagesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:ProductImage_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getProductSupplierReferencesRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getProductSupplierReferencesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:ProductSupplierReference_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getInventoryRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getInventoryResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Inventory_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getPublicationRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getPublicationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Publication_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getOrdersRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getOrdersResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Order_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getOrdersUpdateRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getOrdersUpdateResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:OrderUpdate_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getOrdersBalancedRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getOrdersBalancedResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:OrdersBalanced_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getBankTransactionsRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getBankTransactionsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:BankTransaction_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+      <xsd:element name="getOrderCreditNotesRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getOrderCreditNotesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:OrderCreditNote_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getOrderReturnsRequest" type="xsdns:getOrdersRequest" />
+			<xsd:element name="getOrderReturnsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:OrderReturn_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getCustomersRequest" type="xsdns:getCustomersRequest" />
+			<xsd:element name="getCustomersResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Customer_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+      <xsd:element name="getPricesRequest" type="xsdns:getProductsRequest" />
+			<xsd:element name="getPricesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xsdns:Price_fromStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setShippingMethodsRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="ShippingMethod"	nillable="true" type="xsdns:ShippingMethod_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setShippingMethodsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setProductsLogisticRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="ProductLogistic"	nillable="true" type="xsdns:ProductLogistic_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setProductsLogisticResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setProductSupplierReferencesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="ProductSupplierReference"	nillable="true" type="xsdns:ProductSupplierReference_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setProductSupplierReferencesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setCustomersRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="xsdns:Customer_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setCustomersResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setStocksRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Stock" nillable="true" type="xsdns:Stock_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setStocksResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setStatesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="State" nillable="true" type="xsdns:State_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setStatesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setPricesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Price" nillable="true" type="xsdns:Price_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setPricesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderShipmentsRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="OrderShipment" nillable="true" type="xsdns:OrderShipment_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderShipmentsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderTrackingCodesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="OrderTrackingCode" nillable="true" type="xsdns:OrderTrackingCode_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderTrackingCodesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setInvoicesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Invoice" nillable="true" type="xsdns:Invoice_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setInvoicesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setDeliveryNotesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="DeliveryNote" nillable="true" type="xsdns:DeliveryNote_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setDeliveryNotesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setCommentsRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="xsdns:Comment_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setCommentsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderReturnStatesRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="OrderReturnState" nillable="true" type="xsdns:OrderReturnState_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderReturnStatesResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderReturnDocumentsRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" type="xsd:string" />
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="OrderReturnDocument" nillable="true" type="xsdns:OrderReturnDocument_toStore" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="setOrderReturnDocumentsResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element minOccurs="1" maxOccurs="unbounded" name="return" type="xsdns:referenceResponse" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="fault">
+				<xsd:complexType>
+					<xsd:sequence></xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="HeaderRequest">
+		<wsdl:part name="Header" element="typens:Header" />
+	</wsdl:message>
+	<wsdl:message name="getVersion">
+		<wsdl:part name="parameters" element="typens:getVersionRequest" />
+	</wsdl:message>
+	<wsdl:message name="getVersionResponse">
+		<wsdl:part name="parameters" element="typens:getVersionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getDatetime">
+		<wsdl:part name="parameters" element="typens:getDatetimeRequest" />
+	</wsdl:message>
+	<wsdl:message name="getDatetimeResponse">
+		<wsdl:part name="parameters" element="typens:getDatetimeResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProducts">
+		<wsdl:part name="parameters" element="typens:getProductsRequest" />
+	</wsdl:message>
+	<wsdl:message name="getProductsResponse">
+		<wsdl:part name="parameters" element="typens:getProductsResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProductsUpdate">
+		<wsdl:part name="parameters" element="typens:getProductsUpdateRequest" />
+	</wsdl:message>
+	<wsdl:message name="getProductsUpdateResponse">
+		<wsdl:part name="parameters" element="typens:getProductsUpdateResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProductComponents">
+		<wsdl:part name="parameters" element="typens:getProductComponentsRequest" />
+	</wsdl:message>
+	<wsdl:message name="getProductComponentsResponse">
+		<wsdl:part name="parameters" element="typens:getProductComponentsResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProductImages">
+		<wsdl:part name="parameters" element="typens:getProductImagesRequest" />
+	</wsdl:message>
+	<wsdl:message name="getProductImagesResponse">
+		<wsdl:part name="parameters" element="typens:getProductImagesResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProductSupplierReferences">
+		<wsdl:part name="parameters" element="typens:getProductSupplierReferencesRequest" />
+	</wsdl:message>
+	<wsdl:message name="getProductSupplierReferencesResponse">
+		<wsdl:part name="parameters" element="typens:getProductSupplierReferencesResponse" />
+	</wsdl:message>
+	<wsdl:message name="getInventory">
+		<wsdl:part name="parameters" element="typens:getInventoryRequest" />
+	</wsdl:message>
+	<wsdl:message name="getInventoryResponse">
+		<wsdl:part name="parameters" element="typens:getInventoryResponse" />
+	</wsdl:message>
+	<wsdl:message name="getPublication">
+		<wsdl:part name="parameters" element="typens:getPublicationRequest" />
+	</wsdl:message>
+	<wsdl:message name="getPublicationResponse">
+		<wsdl:part name="parameters" element="typens:getPublicationResponse" />
+	</wsdl:message>
+	<wsdl:message name="getOrders">
+		<wsdl:part name="parameters" element="typens:getOrdersRequest" />
+	</wsdl:message>
+	<wsdl:message name="getOrdersResponse">
+		<wsdl:part name="parameters" element="typens:getOrdersResponse" />
+	</wsdl:message>
+	<wsdl:message name="getOrdersUpdate">
+		<wsdl:part name="parameters" element="typens:getOrdersUpdateRequest" />
+	</wsdl:message>
+	<wsdl:message name="getOrdersUpdateResponse">
+		<wsdl:part name="parameters" element="typens:getOrdersUpdateResponse" />
+	</wsdl:message>
+	<wsdl:message name="getOrdersBalanced">
+		<wsdl:part name="parameters" element="typens:getOrdersBalancedRequest" />
+	</wsdl:message>
+	<wsdl:message name="getOrdersBalancedResponse">
+		<wsdl:part name="parameters" element="typens:getOrdersBalancedResponse" />
+	</wsdl:message>
+	<wsdl:message name="getBankTransactions">
+		<wsdl:part name="parameters" element="typens:getBankTransactionsRequest" />
+	</wsdl:message>
+	<wsdl:message name="getBankTransactionsResponse">
+		<wsdl:part name="parameters" element="typens:getBankTransactionsResponse" />
+	</wsdl:message>
+  <wsdl:message name="getOrderCreditNotes">
+		<wsdl:part name="parameters" element="typens:getOrderCreditNotesRequest" />
+	</wsdl:message>
+	<wsdl:message name="getOrderCreditNotesResponse">
+		<wsdl:part name="parameters" element="typens:getOrderCreditNotesResponse" />
+	</wsdl:message>
+	<wsdl:message name="getOrderReturns">
+		<wsdl:part name="parameters" element="typens:getOrderReturnsRequest" />
+	</wsdl:message>
+	<wsdl:message name="getOrderReturnsResponse">
+		<wsdl:part name="parameters" element="typens:getOrderReturnsResponse" />
+	</wsdl:message>
+	<wsdl:message name="getCustomers">
+		<wsdl:part name="parameters" element="typens:getCustomersRequest" />
+	</wsdl:message>
+	<wsdl:message name="getCustomersResponse">
+		<wsdl:part name="parameters" element="typens:getCustomersResponse" />
+	</wsdl:message>
+  <wsdl:message name="getPrices">
+		<wsdl:part name="parameters" element="typens:getPricesRequest" />
+	</wsdl:message>
+	<wsdl:message name="getPricesResponse">
+		<wsdl:part name="parameters" element="typens:getPricesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setShippingMethods">
+		<wsdl:part name="parameters" element="typens:setShippingMethodsRequest" />
+	</wsdl:message>
+	<wsdl:message name="setShippingMethodsResponse">
+		<wsdl:part name="parameters" element="typens:setShippingMethodsResponse" />
+	</wsdl:message>
+	<wsdl:message name="setProductsLogistic">
+		<wsdl:part name="parameters" element="typens:setProductsLogisticRequest" />
+	</wsdl:message>
+	<wsdl:message name="setProductsLogisticResponse">
+		<wsdl:part name="parameters" element="typens:setProductsLogisticResponse" />
+	</wsdl:message>
+	<wsdl:message name="setProductSupplierReferences">
+		<wsdl:part name="parameters" element="typens:setProductSupplierReferencesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setProductSupplierReferencesResponse">
+		<wsdl:part name="parameters" element="typens:setProductSupplierReferencesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setCustomers">
+		<wsdl:part name="parameters" element="typens:setCustomersRequest" />
+	</wsdl:message>
+	<wsdl:message name="setCustomersResponse">
+		<wsdl:part name="parameters" element="typens:setCustomersResponse" />
+	</wsdl:message>
+	<wsdl:message name="setStocks">
+		<wsdl:part name="parameters" element="typens:setStocksRequest" />
+	</wsdl:message>
+	<wsdl:message name="setStocksResponse">
+		<wsdl:part name="parameters" element="typens:setStocksResponse" />
+	</wsdl:message>
+	<wsdl:message name="setStates">
+		<wsdl:part name="parameters" element="typens:setStatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setStatesResponse">
+		<wsdl:part name="parameters" element="typens:setStatesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setPrices">
+		<wsdl:part name="parameters" element="typens:setPricesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setPricesResponse">
+		<wsdl:part name="parameters" element="typens:setPricesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setOrderShipments">
+		<wsdl:part name="parameters" element="typens:setOrderShipmentsRequest" />
+	</wsdl:message>
+	<wsdl:message name="setOrderShipmentsResponse">
+		<wsdl:part name="parameters" element="typens:setOrderShipmentsResponse" />
+	</wsdl:message>
+	<wsdl:message name="setOrderTrackingCodes">
+		<wsdl:part name="parameters" element="typens:setOrderTrackingCodesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setOrderTrackingCodesResponse">
+		<wsdl:part name="parameters" element="typens:setOrderTrackingCodesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setInvoices">
+		<wsdl:part name="parameters" element="typens:setInvoicesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setInvoicesResponse">
+		<wsdl:part name="parameters" element="typens:setInvoicesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setDeliveryNotes">
+		<wsdl:part name="parameters" element="typens:setDeliveryNotesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setDeliveryNotesResponse">
+		<wsdl:part name="parameters" element="typens:setDeliveryNotesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setComments">
+		<wsdl:part name="parameters" element="typens:setCommentsRequest" />
+	</wsdl:message>
+	<wsdl:message name="setCommentsResponse">
+		<wsdl:part name="parameters" element="typens:setCommentsResponse" />
+	</wsdl:message>
+	<wsdl:message name="setOrderReturnStates">
+		<wsdl:part name="parameters" element="typens:setOrderReturnStatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="setOrderReturnStatesResponse">
+		<wsdl:part name="parameters" element="typens:setOrderReturnStatesResponse" />
+	</wsdl:message>
+	<wsdl:message name="setOrderReturnDocuments">
+		<wsdl:part name="parameters" element="typens:setOrderReturnDocumentsRequest" />
+	</wsdl:message>
+	<wsdl:message name="setOrderReturnDocumentsResponse">
+		<wsdl:part name="parameters" element="typens:setOrderReturnDocumentsResponse" />
+	</wsdl:message>
+	<wsdl:message name="faultMessage">
+		<wsdl:part name="fault" element="typens:fault" />
+	</wsdl:message>
+	<wsdl:portType name="opensiPortType">
+		<wsdl:operation name="getVersion">
+			<wsdl:input message="wsdlns:getVersion" />
+			<wsdl:output message="wsdlns:getVersionResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getDatetime">
+			<wsdl:input message="wsdlns:getDatetime" />
+			<wsdl:output message="wsdlns:getDatetimeResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getProducts">
+			<wsdl:input message="wsdlns:getProducts" />
+			<wsdl:output message="wsdlns:getProductsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getProductsUpdate">
+			<wsdl:input message="wsdlns:getProductsUpdate" />
+			<wsdl:output message="wsdlns:getProductsUpdateResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getProductComponents">
+			<wsdl:input message="wsdlns:getProductComponents" />
+			<wsdl:output message="wsdlns:getProductComponentsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getProductImages">
+			<wsdl:input message="wsdlns:getProductImages" />
+			<wsdl:output message="wsdlns:getProductImagesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getProductSupplierReferences">
+			<wsdl:input message="wsdlns:getProductSupplierReferences" />
+			<wsdl:output message="wsdlns:getProductSupplierReferencesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getInventory">
+			<wsdl:input message="wsdlns:getInventory" />
+			<wsdl:output message="wsdlns:getInventoryResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getPublication">
+			<wsdl:input message="wsdlns:getPublication" />
+			<wsdl:output message="wsdlns:getPublicationResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getOrders">
+			<wsdl:input message="wsdlns:getOrders" />
+			<wsdl:output message="wsdlns:getOrdersResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getOrdersUpdate">
+			<wsdl:input message="wsdlns:getOrdersUpdate" />
+			<wsdl:output message="wsdlns:getOrdersUpdateResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getOrdersBalanced">
+			<wsdl:input message="wsdlns:getOrdersBalanced" />
+			<wsdl:output message="wsdlns:getOrdersBalancedResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getBankTransactions">
+			<wsdl:input message="wsdlns:getBankTransactions" />
+			<wsdl:output message="wsdlns:getBankTransactionsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+    <wsdl:operation name="getOrderCreditNotes">
+			<wsdl:input message="wsdlns:getOrderCreditNotes" />
+			<wsdl:output message="wsdlns:getOrderCreditNotesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getOrderReturns">
+			<wsdl:input message="wsdlns:getOrderReturns" />
+			<wsdl:output message="wsdlns:getOrderReturnsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="getCustomers">
+			<wsdl:input message="wsdlns:getCustomers" />
+			<wsdl:output message="wsdlns:getCustomersResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+    <wsdl:operation name="getPrices">
+			<wsdl:input message="wsdlns:getPrices" />
+			<wsdl:output message="wsdlns:getPricesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setShippingMethods">
+			<wsdl:input message="wsdlns:setShippingMethods" />
+			<wsdl:output message="wsdlns:setShippingMethodsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setProductsLogistic">
+			<wsdl:input message="wsdlns:setProductsLogistic" />
+			<wsdl:output message="wsdlns:setProductsLogisticResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setProductSupplierReferences">
+			<wsdl:input message="wsdlns:setProductSupplierReferences" />
+			<wsdl:output message="wsdlns:setProductSupplierReferencesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setCustomers">
+			<wsdl:input message="wsdlns:setCustomers" />
+			<wsdl:output message="wsdlns:setCustomersResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setStocks">
+			<wsdl:input message="wsdlns:setStocks" />
+			<wsdl:output message="wsdlns:setStocksResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setStates">
+			<wsdl:input message="wsdlns:setStates" />
+			<wsdl:output message="wsdlns:setStatesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setPrices">
+			<wsdl:input message="wsdlns:setPrices" />
+			<wsdl:output message="wsdlns:setPricesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setOrderShipments">
+			<wsdl:input message="wsdlns:setOrderShipments" />
+			<wsdl:output message="wsdlns:setOrderShipmentsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setOrderTrackingCodes">
+			<wsdl:input message="wsdlns:setOrderTrackingCodes" />
+			<wsdl:output message="wsdlns:setOrderTrackingCodesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setInvoices">
+			<wsdl:input message="wsdlns:setInvoices" />
+			<wsdl:output message="wsdlns:setInvoicesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setDeliveryNotes">
+			<wsdl:input message="wsdlns:setDeliveryNotes" />
+			<wsdl:output message="wsdlns:setDeliveryNotesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setComments">
+			<wsdl:input message="wsdlns:setComments" />
+			<wsdl:output message="wsdlns:setCommentsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setOrderReturnStates">
+			<wsdl:input message="wsdlns:setOrderReturnStates" />
+			<wsdl:output message="wsdlns:setOrderReturnStatesResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+		<wsdl:operation name="setOrderReturnDocuments">
+			<wsdl:input message="wsdlns:setOrderReturnDocuments" />
+			<wsdl:output message="wsdlns:setOrderReturnDocumentsResponse" />
+			<wsdl:fault message="wsdlns:faultMessage" name="fault" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="opensiBinding" type="wsdlns:opensiPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getVersion">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getDatetime">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProducts">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProductsUpdate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProductComponents">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProductImages">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getProductSupplierReferences">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getInventory">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getPublication">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getOrders">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getOrdersUpdate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getOrdersBalanced">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getBankTransactions">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+    <wsdl:operation name="getOrderCreditNotes">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getOrderReturns">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getCustomers">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+    <wsdl:operation name="getPrices">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setShippingMethods">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setProductsLogistic">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal"
+							 part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setProductSupplierReferences">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal"
+							 part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setCustomers">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setStocks">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setStates">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setPrices">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setOrderShipments">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setOrderTrackingCodes">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setInvoices">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setDeliveryNotes">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setComments">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setOrderReturnStates">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setOrderReturnDocuments">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+				<soap:header message="typens:HeaderRequest" use="literal" part="Header" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="opensiService">
+		<wsdl:port name="opensiPort" binding="wsdlns:opensiBinding">
+			<soap:address location="http://prestashop2.loc/modules/opensi/webservices/soap.php" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

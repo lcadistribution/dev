@@ -1,0 +1,123 @@
+/* Custom Data 2022-08-04 12:52:49: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Gilroy', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Gilroy', sans-serif;
+			--heading__font-weight__base: 600;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+				--button__color: #FFFFFF;
+	--button-primary__color: #FFFFFF;
+		 
+	--button-secondary-bg: #549263;
+	--button__background: #549263;
+	--button-primary__background: #549263;
+				
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	.minicart-wrapper .block-content .actions .secondary .action.viewcart:not(:hover){
+		--heading__color__base: #FFFFFF;
+	}
+ 
+	button, .cart.table-wrapper .actions-toolbar > .action, .action-gift{
+		border: 1px solid var(--button__background);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+.rokan-title .short_description, 
+	.elementor__header .short_description,
+	.rokan-title .short_description .action.select{
+	  font-style: italic;
+	}
+
+:root {
+    --fluid-container-width: 1440px;
+   --button__border-radius: 10px;
+--bls_elementor-static-menu-title--font-size:2.4rem;
+}
+.white-button .pagebuilder-button-primary {
+    --button_padding: 14px 38px;
+    --button-primary__background: #fff;
+    --button-primary__color: #549263;
+}
+.green-button .pagebuilder-button-primary {
+    --button_padding: 14px 50px;
+}
+.grey-button .pagebuilder-button-primary {
+   --button-primary__background: #f2f2f2;
+    --button-primary__color: #549263;
+    --button_padding: 14px 50px;
+}
+.header-static-menu + .elementor-content-static-menu {
+font-weight:600;
+}
+@media (max-width: 1400px){
+.pagebuilder-column.colum-video{
+padding-left: 50px !important;}
+}
+
+
+

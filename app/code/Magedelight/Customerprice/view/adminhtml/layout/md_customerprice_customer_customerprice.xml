@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+    	<block class="Magento\Backend\Block\Template" template="Magedelight_Customerprice::customer/product/price/data.phtml" name="data">
+	        <block class="Magedelight\Customerprice\Block\Adminhtml\Customer\Product\Price\Search" template="customer/product/price/abstract.phtml" name="search">
+                <block class="Magedelight\Customerprice\Block\Adminhtml\Customer\Product\Price\Search\ProductGrid" name="customer_product_search_grid" as="customer_product_search_grid"/>
+            </block>
+            <block class="Magedelight\Customerprice\Block\Adminhtml\Customer\Customerprice\Items" template="customer/customerprice/items.phtml" name="items">
+	            <block class="Magedelight\Customerprice\Block\Adminhtml\Customer\Customerprice\Grid\CustomerpriceGrid" name="customerprice_grid"/>
+	        </block>
+        </block>
+    </container>
+</layout>

@@ -1,0 +1,14 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+?>
+<div class="admin__field-complex">
+    <span class="title"><?= /* @noEscape */ $block->getHeaderText() ?></span>
+    <?php if ($block->getButtonsHtml()): ?>
+        <div class="admin__field-complex-elements"><?= /* @noEscape */ $block->getButtonsHtml() ?></div>
+    <?php endif; ?>
+</div>
+<?= /* @noEscape */ $block->getChildHtml('', true) ?>

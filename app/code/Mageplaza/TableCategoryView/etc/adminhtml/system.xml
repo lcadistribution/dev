@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableCategoryView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mptablecategory" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Table Category View</label>
+            <tab>mageplaza</tab>
+            <resource>Mageplaza_TableCategoryView::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to enable this module]]></comment>
+                </field>
+                <field id="customer_group" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Allow Customer Groups</label>
+                    <source_model>Magento\Customer\Model\ResourceModel\Group\Collection</source_model>
+                </field>
+                <field id="is_default" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use Table View As Default</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to enable default]]></comment>
+                </field>
+            </group>
+            <group id="display" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display Settings</label>
+                <field id="add_button" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Add To Cart Button</label>
+                    <source_model>Mageplaza\TableCategoryView\Model\Config\Source\AddButton</source_model>
+                </field>
+                <field id="button_text" translate="label comment" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Button Text</label>
+                </field>
+                <field id="button_color" translate="label comment" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Button Text Color</label>
+                    <frontend_model>Mageplaza\Core\Block\Adminhtml\System\Config\ColorPicker</frontend_model>
+                </field>
+                <field id="button_background" translate="label comment" type="text" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Button Background Color</label>
+                    <frontend_model>Mageplaza\Core\Block\Adminhtml\System\Config\ColorPicker</frontend_model>
+                </field>
+                <field id="table_options" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Table Options</label>
+                    <source_model>Mageplaza\TableCategoryView\Model\Config\Source\TableOptions</source_model>
+                </field>
+                <field id="review_label" translate="label comment" type="text" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>"No Review" Label</label>
+                </field>
+                <field id="is_mp_cpgv" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Configurable Product Grid View</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Select <b>Yes</b> to display grid view with the configurable products
+                    <br> If the Configurable Product Grid View is not installed, you can download
+                    <a href="https://www.mageplaza.com/magento-2-configurable-product-grid-view/" target='_blank'>here</a>]]></comment>
+                </field>
+                <field id="popup" translate="label comment" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Popup Options For</label>
+                    <source_model>Mageplaza\TableCategoryView\Model\Config\Source\PopupOption</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="catalog" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="frontend" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="table_per_page_values" translate="label comment" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Products per Page on Table Allowed Values</label>
+                    <comment>Comma-separated.</comment>
+                    <validate>validate-per-page-value-list required-entry</validate>
+                </field>
+                <field id="table_per_page" translate="label comment" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Products per Page on Table Default Value</label>
+                    <comment>Must be in the allowed values list.</comment>
+                    <validate>validate-per-page-value</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

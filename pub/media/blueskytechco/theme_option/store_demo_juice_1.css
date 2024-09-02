@@ -1,0 +1,122 @@
+/* Custom Data 2022-08-19 07:20:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Gilroy', sans-serif;
+			--font-size__base: 14px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Gilroy', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Gilroy', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+			--navigation-level0-item__font-weight: 600;
+			
+	/* Other Font */
+		--other_font_family: 'Livvic', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+}
+.page-header{
+    --counter_qty-bg: #000;
+}
+
+.cms-index-index .header-container:not(.header_scroll_up) .header_light {
+    --navigation-level0-item__color: #000;
+    --header-icons-color: #000;
+    --navigation-desktop-level0-item__hover__color: #000;
+}
+.product__style-2{
+--product-name-text-transform: capitalize;
+}
+.page-footer ul.social-link li a{
+    color: #fff;
+}
+.elementor-newsletter-wrapper .form-subscribe{
+    max-width: 546px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 3px;
+    padding-right: 10px;
+}
+.page-footer .elementor__heading.fs_48{
+max-width: 400px;
+}
+.footer-title h3, .footer-title h4, .footer-title h5, .elementor-static-menu-title{
+--bls_elementor-static-menu-title--font-size: 2.4rem;
+}
+[data-content-type="staticmenu-item"] > *{
+font-size: 1.6rem;
+}
+@media only screen and (max-width: 991px){
+.hover-link  [data-content-type="image"] {
+    margin-bottom: 10px !important;
+}
+}
+
+
+

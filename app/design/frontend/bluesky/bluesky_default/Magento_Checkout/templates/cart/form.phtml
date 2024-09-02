@@ -1,0 +1,224 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/**  @var $block \Magento\Checkout\Block\Cart\Grid */
+$qty = 1;
+
+$viewModel = $block->getCartViewModel();
+$splitBlock = $viewModel->getBlock();
+
+if ($splitBlock->getAttributesplitcartEnable()) {
+    $cartData = $splitBlock->getCartDataByAttribute();
+
+}
+
+foreach ($cartData as $attrValueId => $cartItem) {
+if ($attrValueId == "totalitemscount") {
+    continue;
+}
+
+
+echo $attrValueId;
+
+
+?>
+<?php $mergedCells = ($this->helper(Magento\Tax\Helper\Data::class)->displayCartBothPrices() ? 2 : 1); ?>
+<?= $block->getChildHtml('form_before') ?>
+<form action="<?= $block->escapeUrl($block->getUrl('checkout/cart/updatePost')) ?>"
+          method="post"
+          id="form-validate"
+          data-mage-init='{"Magento_Checkout/js/action/update-shopping-cart":
+              {"validationURL" : "<?= $block->escapeUrl($block->getUrl('checkout/cart/updateItemQty')) ?>",
+              "updateCartActionContainer": "#update_cart_action_container"}
+          }'
+          class="form form-cart">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div class="cart table-wrapper<?= $mergedCells == 2 ? ' detailed' : '' ?>">
+        <?php if ($block->getPagerHtml()) :?>
+            <div class="cart-products-toolbar cart-products-toolbar-top toolbar"
+                 data-attribute="cart-products-toolbar-top"><?= $block->getPagerHtml() ?>
+            </div>
+        <?php endif ?>
+        <table id="shopping-cart-table"
+               class="cart items data table"
+               data-mage-init='{"shoppingCart":{"emptyCartButton": ".action.clear",
+               "updateCartActionContainer": "#update_cart_action_container"}}'>
+            <caption class="table-caption"><?= $block->escapeHtml(__('Shopping Cart Items')) ?></caption>
+            <thead>
+                <tr>
+                    <th class="col item" scope="col"><span><?= $block->escapeHtml(__('Item')) ?></span></th>
+                    <th class="col price" scope="col"><span><?= $block->escapeHtml(__('Price')) ?></span></th>
+                    <th class="col qty" scope="col"><span><?= $block->escapeHtml(__('Qty')) ?></span></th>
+                    <th class="col subtotal" scope="col"><span><?= $block->escapeHtml(__('Subtotal')) ?></span></th>
+                </tr>
+            </thead>
+            <?php foreach ($block->getItems() as $_item) :?>
+        <?php if (array_key_exists($_item->getId(), $cartItem)): ?>
+                <?= $block->getItemHtml($_item) ?>
+                <?php endif ?>
+            <?php endforeach ?>
+        </table>
+        <?php if ($block->getPagerHtml()) :?>
+            <div class="cart-products-toolbar cart-products-toolbar-bottom toolbar"
+                 data-attribute="cart-products-toolbar-bottom"><?= $block->getPagerHtml() ?>
+            </div>
+        <?php endif ?>
+    </div>
+    <div class="cart main actions">
+        <?php if ($block->getContinueShoppingUrl()) :?>
+            <a class="action continue"
+               href="<?= $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+               title="<?= $block->escapeHtmlAttr(__('Continue Shopping')) ?>">
+                <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+            </a>
+        <?php endif; ?>
+        <button type="button"
+                name="update_cart_action"
+                data-cart-empty=""
+                value="empty_cart"
+                title="<?= $block->escapeHtmlAttr(__('Clear Shopping Cart')) ?>"
+                class="action clear" id="empty_cart_button">
+            <span><?= $block->escapeHtml(__('Clear Shopping Cart')) ?></span>
+        </button>
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-item-update=""
+                value="update_qty"
+                title="<?= $block->escapeHtmlAttr(__('Update Shopping Cart')) ?>"
+                class="action update">
+            <span><?= $block->escapeHtml(__('Update Shopping Cart')) ?></span>
+        </button>
+        <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+    </div>
+</form>
+    <form action="<?= /* @noEscape */
+    $block->getUrl("attrbasesplitcart/cartover/proceedtocheckout") ?>"
+          method="post"
+          id="checkout-validate-<?= /* @noEscape */
+          $attrValueId ?>"
+          data-mage-init='{"validation":{}}'
+          class="form form-checkout">
+        <?= /* @noEscape */
+        $block->getBlockHtml("formkey") ?>
+        <div class="cart-summary" id="cart-summary-<?= /* @noEscape */
+        $attrValueId ?>">
+            <input type="hidden"
+                   name="attrsplitcart_attribute"
+                   class="wk-attr-id"
+                   value="<?= /* @noEscape */
+                   $splitBlock->getSelectedAttribute() ?>">
+            <div data-bind="scope:'giftOptionsCart'" id="gift-options-cart"></div>
+            <div class="cart-summary1">
+                <strong class="summary title"><?= /* @noEscape */
+                    __("Summary") ?></strong>
+
+                <div data-bind="scope:'block-totals'"
+                     class="cart-totals"
+                     id="cart-totals-<?= /* @noEscape */
+                     $attrValueId ?>">
+                    <div data-bind="blockLoader: isLoading" class="table-wrapper">
+                        <table class="data table totals">
+                            <caption class="table-caption"><?= /* @noEscape */
+                                __("Total") ?></caption>
+                            <tbody>
+                            <tr class="totals sub">
+                                <th scope="row" colspan="1" class="mark">
+                                    <?= /* @noEscape */
+                                    __("Subtotal") ?>
+                                </th>
+                                <td data-th="Subtotal" class="amount">
+                                    <span class="price">
+                                    <?= /* @noEscape */
+                                    $cartItem["row_total"] ?>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php if (isset($cartItem['dis_amount'])) { ?>
+                                <tr class="totals">
+                                    <th colspan="1" style="" class="mark" scope="row">
+                                        <span class="title" data-bind="text: getTitle()">Discount</span>
+                                    </th>
+                                    <td class="amount" data-bind="attr: {'data-th': title}" data-th="Discount">
+                                        <span>
+                                            <span class="price">
+                                                -<?= /* @noEscape */
+                                                $cartItem['dis_amount']; ?>
+                                            </span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <tr id="shipping_<?= /* @noEscape */
+                            $attrValueId ?>"
+                                class="totals shipping excl">
+
+                            </tr>
+                            <tr id="tax_<?= /* @noEscape */
+                            $attrValueId ?>" class="totals-tax">
+
+                            </tr>
+                            <tr class="grand totals">
+                                <th scope="row" colspan="1" class="mark">
+                                    <strong data-bind="text: title">
+                                        <?= /* @noEscape */
+                                        __("Order Total") ?>
+                                    </strong>
+                                </th>
+                                <td data-th="Order Total" class="amount">
+                                    <strong>
+                                    <span grand="<?= /* @noEscape */
+                                    $cartItem['totalWithoutFormat'] ?>"
+                                          id="grand_<?= /* @noEscape */
+                                          $attrValueId ?>"
+                                          class="price">
+                                    <?= /* @noEscape */
+                                    $cartItem["formatted_total"] ?>
+                                    </span>
+                                    </strong>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <ul class="checkout methods items checkout-methods-items">
+                    <li class="item">
+                        <button class="action primary checkout mp-btn-checkout"
+                                title="Go to Checkout"
+                                data-role="proceed-to-checkout"
+                                type="submit"
+                                value='<?= /* @noEscape */
+                                $attrValueId ?>'
+                                name="attrsplitcart_value">
+                                <span><?= /* @noEscape */
+                                    __("Go to Checkout") ?></span>
+                        </button>
+                    </li>
+                    <?php
+                    $url = "attrbasesplitcart/cartover/checkoutwithmultipleaddress";
+                    $param = [
+                        "attrsplitcart_attribute" => $splitBlock->getSelectedAttribute(),
+                        "attrsplitcart_value" => $attrValueId,
+                    ];
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+<?php
+}
+?>
+<?= $block->getChildHtml('checkout.cart.order.actions') ?>
+<?= $block->getChildHtml('shopping.cart.table.after') ?>
+
+<style>
+    .cart-container .form-cart {
+        order: 0;
+    }
+</style>

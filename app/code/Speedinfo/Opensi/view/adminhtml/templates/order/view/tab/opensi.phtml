@@ -1,0 +1,56 @@
+<!-- Sync informations -->
+<?php $order = $block->getOrder(); ?>
+<section class="admin__page-section">
+  <div class="admin__page-section-title">
+      <span class="title"><?php echo __('Synchronization informations'); ?></span>
+  </div>
+  <?php if ($order->getOpensiSync()): ?>
+    <?php echo __('The order has been <strong>synchronized with OpenSi</strong> the').' '.$block->getDateFormat($order->getOpensiSyncAt()); ?>
+    <?php if ($order->getOpensiReference()): ?>
+      <br><strong><?php echo __('Order number in OpenSi'); ?></strong> : <?php echo $order->getOpensiReference(); ?>
+    <?php endif; ?>
+  <?php else: ?>
+    <?php echo __('The order is <strong>not yet synchronized with OpenSi</strong>.'); ?>
+  <?php endif; ?>
+</section>
+
+<?php if ($order->getOpensiSync()): ?>
+  <!-- Documents -->
+  <section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo __('OpenSi documents'); ?></span>
+    </div>
+    <table class="data-grid" data-role="grid">
+      <thead>
+        <tr>
+          <th class="data-grid-th"><?php echo __('Date'); ?></span></th>
+          <th class="data-grid-th"><?php echo __('Document number'); ?></span></th>
+          <th class="data-grid-th"><?php echo __('Document type'); ?></span></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($this->getDocuments($order->getIncrementId())->getSize() > 0): ?>
+          <?php $i = 0; ?>
+          <?php foreach ($block->getDocuments($order->getIncrementId()) as $document): ?>
+            <?php $i++; ?>
+            <tr class="<?php echo ($i % 2 == 0?'_odd-row':''); ?>">
+              <td><?php echo $block->getDateFormat($document->getCreatedAt()); ?></td>
+              <td><?php echo $document->getDocumentNumber(); ?></td>
+              <td><?php echo $block->getDocumentType($document->getDocumentType()); ?></td>
+              <td class="data-grid-actions-cell">
+                <a href="<?php echo $block->getDocumentUrl($document->getDocumentId(), md5($document->getDocumentKey())); ?>" target="_blank">
+                  <?php echo __('Download'); ?>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <tr class="data-grid-tr-no-data">
+            <td class="empty-text" colspan="4"><?php echo __('No records found.'); ?></td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </section>
+<?php endif; ?>

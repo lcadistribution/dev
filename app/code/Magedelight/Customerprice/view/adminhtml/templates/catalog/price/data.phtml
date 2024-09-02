@@ -1,0 +1,40 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+?>
+<div id="customerprice_id" data-grid-id="customerprice_id">
+    <div class="admin__fieldset-wrapper-content _show" >
+        <fieldset class="admin__fieldset" data-bind="foreach: {data: elems, as: 'element'}">
+            <div class="fieldset-wrapper" id="customerpricet_container" data-block="product-custom-options">
+                <form data-form="quick-view-form" data-role="tocart-form"  name="customerprice-option"
+                      id="customerprice_save_form" method="post" enctype="multipart/form-data" validate="validate">
+
+                    <div class="fieldset-wrapper-title">
+                       
+                        <div class="page-actions">
+                            <button class="action-primary" id="save_customerprice" onclick="closeCustomerpricePopup()"
+                                    type="button" data-role="action"><span><?= /* @noEscape */ __("Done"); ?></span>
+
+                            </button>
+                        </div>
+                    </div>
+                    <div class="fieldset-wrapper-content" id="customerprice-options-content"
+                         data-role="customerprice-options-content">
+                        <fieldset class="admin__fieldset">
+
+                            <div id="customer-search" style="display: none" class="admin__page-section customer-search-items">
+                                <?= /* @noEscape */ $block->getChildHtml('customer_search') ?>
+                            </div>
+                            <section id="md-customerprice-items" class="admin__page-section md-customerprice-items" data-mage-init='{"loader": {}}'>
+                                <?= /* @noEscape */ $block->getChildHtml('product_items') ?>
+                            </section>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>

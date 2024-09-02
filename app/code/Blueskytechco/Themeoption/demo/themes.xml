@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<root>
+  <themes>
+    <id><![CDATA[38953490]]></id>
+    <name><![CDATA[Minimog MG - The High Converting Magento Theme]]></name>
+    <des><![CDATA[You need install theme before use importer. Importing demo data is the easiest way to setup your theme. It will allow you to quickly edit everything. You can select import theme for each store view. Reload storefront after imported.]]></des>
+    <home>
+      <title><![CDATA[Home Megastore]]></title>
+      <identifier><![CDATA[demo_megastore_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_megastore_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_megastore_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Megamog]]></title>
+      <identifier><![CDATA[demo_megamog_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_megamog_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_megamog_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Supergear]]></title>
+      <identifier><![CDATA[demo_supergear_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_supergear_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_supergear_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Dexons]]></title>
+      <identifier><![CDATA[demo_electronic_2]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_electronic_2.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_electronic_2/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion Default]]></title>
+      <identifier><![CDATA[demo_fashion_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Fashion 2]]></title>
+      <identifier><![CDATA[demo_fashion_2]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_2.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_2/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 3]]></title>
+      <identifier><![CDATA[demo_fashion_3]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_3.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_3/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 4]]></title>
+      <identifier><![CDATA[demo_fashion_4]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_4.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_4/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Fashion 5]]></title>
+      <identifier><![CDATA[demo_fashion_5]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_5.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_5/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 6]]></title>
+      <identifier><![CDATA[demo_fashion_6]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_6.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_6/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 7]]></title>
+      <identifier><![CDATA[demo_fashion_7]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_7.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_7/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 8]]></title>
+      <identifier><![CDATA[demo_fashion_8]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_8.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_8/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 9]]></title>
+      <identifier><![CDATA[demo_fashion_9]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_9.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_9/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 10]]></title>
+      <identifier><![CDATA[demo_fashion_10]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_10.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_10/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 11]]></title>
+      <identifier><![CDATA[demo_fashion_11]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_11.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_11/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 12]]></title>
+      <identifier><![CDATA[demo_fashion_12]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_12.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_12/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Fashion 13]]></title>
+      <identifier><![CDATA[demo_fashion_13]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_fashion_13.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_fashion_13/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Activewear]]></title>
+      <identifier><![CDATA[demo_activewear_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_activewear_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_activewear_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Bra]]></title>
+      <identifier><![CDATA[demo_bra_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bra_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bra_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Backpack]]></title>
+      <identifier><![CDATA[demo_backpack_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_backpack_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_backpack_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Paintme]]></title>
+      <identifier><![CDATA[demo_paintme_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_paintme_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_paintme_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Houseware]]></title>
+      <identifier><![CDATA[demo_houseware_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_houseware_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_houseware_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Furniture]]></title>
+      <identifier><![CDATA[demo_furniture_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_furniture_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_furniture_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home case Phone]]></title>
+      <identifier><![CDATA[demo_case_phone_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_case_phone_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_case_phone_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Socks]]></title>
+      <identifier><![CDATA[demo_socks_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_socks_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_socks_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Bedding]]></title>
+      <identifier><![CDATA[demo_bedding_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bedding_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bedding_1/]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Home Sneaker]]></title>
+      <identifier><![CDATA[demo_sneaker_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_sneaker_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_sneaker_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Jewelry]]></title>
+      <identifier><![CDATA[demo_jewelry_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_jewelry_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_jewelry_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Watch]]></title>
+      <identifier><![CDATA[demo_watch_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_watch_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_watch_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Bag]]></title>
+      <identifier><![CDATA[demo_bag_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bag_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bag_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Hat]]></title>
+      <identifier><![CDATA[demo_hat_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_hat_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_hat_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Coffee]]></title>
+      <identifier><![CDATA[demo_coffee_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_coffee_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_coffee_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Handsantizer]]></title>
+      <identifier><![CDATA[demo_handsantizer_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_handsantizer_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_handsantizer_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Plants]]></title>
+      <identifier><![CDATA[demo_plants_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_plants_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_plants_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Living]]></title>
+      <identifier><![CDATA[demo_living_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_living_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_living_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Glasses]]></title>
+      <identifier><![CDATA[demo_glasses_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_glasses_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_glasses_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Baby]]></title>
+      <identifier><![CDATA[demo_babystore_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_babystore_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_babystore_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Book MG]]></title>
+      <identifier><![CDATA[demo_bookstore_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bookstore_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bookstore_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Mirror MG]]></title>
+      <identifier><![CDATA[demo_mirror_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_mirror_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_mirror_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Electronic]]></title>
+      <identifier><![CDATA[demo_electronic_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_electronic_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_electronic_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Juice ]]></title>
+      <identifier><![CDATA[demo_juice_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_juice_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_juice_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Home Stationery ]]></title>
+      <identifier><![CDATA[demo_stationery_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_stationery_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_stationery_1/]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Bathroom]]></title>
+      <identifier><![CDATA[demo_bathroom_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bathroom_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bathroom_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Toy]]></title>
+      <identifier><![CDATA[demo_toy_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_toy_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_toy_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Pet]]></title>
+      <identifier><![CDATA[demo_pet_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_pet_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_pet_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Organic]]></title>
+      <identifier><![CDATA[demo_organic_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_organic_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_organic_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Christmas]]></title>
+      <identifier><![CDATA[demo_christmas_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_christmas_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_christmas_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Gym]]></title>
+      <identifier><![CDATA[demo_gym_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_gym_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_gym_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Paint]]></title>
+      <identifier><![CDATA[demo_paint_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_paint_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_paint_1]]></linkpreview>
+    </home>
+	 <home>
+      <title><![CDATA[Cake]]></title>
+      <identifier><![CDATA[demo_cake_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_cake_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_cake_1]]></linkpreview>
+    </home>
+	 <home>
+      <title><![CDATA[Surfboard]]></title>
+      <identifier><![CDATA[demo_surfboard_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_surfboard_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_surfboard_1]]></linkpreview>
+    </home>
+	<home>
+      <title><![CDATA[Smart Light]]></title>
+      <identifier><![CDATA[demo_smart_light_1]]></identifier>
+
+       <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_smart_light_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_smart_light_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Pet Clothes]]></title>
+      <identifier><![CDATA[demo_pet_clothes_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_pet_clothes_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_pet_clothes_1]]></linkpreview>
+    </home>
+     <home>
+      <title><![CDATA[Floral]]></title>
+      <identifier><![CDATA[demo_floral_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_floral_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_floral_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Ceramic]]></title>
+      <identifier><![CDATA[demo_ceramic_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_ceramic_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_ceramic_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[camping]]></title>
+      <identifier><![CDATA[demo_camping_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_camping_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_camping_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[BFCM]]></title>
+      <identifier><![CDATA[demo_bfcm_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_bfcm_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_bfcm_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Barber]]></title>
+      <identifier><![CDATA[demo_barber_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_barber_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_barber_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Pizza]]></title>
+      <identifier><![CDATA[demo_pizza_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_pizza_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_pizza_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Pan]]></title>
+      <identifier><![CDATA[demo_pan_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_pan_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_pan_1]]></linkpreview>
+    </home>
+    <home>
+      <title><![CDATA[Soap]]></title>
+      <identifier><![CDATA[demo_soap_1]]></identifier>
+      <image><![CDATA[blueskytechmage.com/minimog/preview/minimog/demo_soap_1.jpg]]></image>
+      <linkpreview><![CDATA[blueskytechmage.com/minimog/demo_soap_1]]></linkpreview>
+    </home>
+  </themes>
+</root>

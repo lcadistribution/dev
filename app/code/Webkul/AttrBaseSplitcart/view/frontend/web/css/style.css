@@ -1,0 +1,36 @@
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_AttrBaseSplitcart
+* @author    Webkul Software Private Limited
+* @copyright Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+.cart-container .form-cart{
+    margin-bottom: 50px;
+}
+.cart-summary1 > .title {
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin: 12px 0;
+    display: block;
+}
+@media only screen and (max-width: 767px) {
+    .cart-summary1 > .title {
+        margin: 12px;
+    }
+}
+.cart-summary{
+    position: static;
+}
+.form-cart .actions.main .clear,.actions.main .continue{
+    display: none;
+}
+
+.form-cart .actions.main {
+    text-align: right;
+}
+.split-details {
+    width: 50%;
+}

@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Template for displaying grouped product price
+ */
+?>
+
+
+<?php
+
+/*
+ * Show combined price instead of minimal price for grouped products.
+ */
+
+$products = $block->getSaleableItem()->getTypeInstance()->getAssociatedProducts($block->getSaleableItem());
+
+$priceForAll = 0;
+$priceForAllOriginal = 0;
+foreach ($products as $product) {
+    $priceForAll += $product->getFinalPrice();
+    $priceForAllOriginal += $product->getPrice('regular_price');
+}
+
+?>
+
+<div class="price-box price-final_price" data-role="priceBox" data-product-id="284">
+<span class="price-container price-final_price tax weee">
+        <span id="product-price-284" data-price-amount="<?php echo $priceForAll?>" data-price-type="finalPrice" class="price-wrapper ">
+            <span class="price"><?php echo number_format($priceForAll,2,',','.')?> €</span>
+        </span>
+</span>
+    <span class="old-price">
+        <span id="product-price-284" data-price-amount="<?php echo $priceForAllOriginal?>" data-price-type="oldPrice" class="price-wrapper ">
+            <span class="price"><?php echo number_format($priceForAllOriginal,2,',','.')?> €</span>
+        </span>
+</span>
+
+</div>

@@ -1,0 +1,42 @@
+"No products selected","No products selected"
+"Error when adding the product to cart","Error when adding the product to cart"
+"We can't add %1 to your shopping cart right now.","We can't add %1 to your shopping cart right now."
+"Add to cart successfully","Add to cart successfully"
+"You must login or register to add items to your wishlist.","You must login or register to add items to your wishlist."
+"Page not found.","Page not found."
+"We can't specify a product.","We can't specify a product."
+"We can't add the item to Wish List right now: %1.","We can't add the item to Wish List right now: %1."
+"We can't add the item to Wish List right now.","We can't add the item to Wish List right now."
+Active,Active
+Inactive,Inactive
+"Stock Qty","Stock Qty"
+"Product SKU","Product SKU"
+Subtotal,Subtotal
+"Unit Price","Unit Price"
+"Tier Price","Tier Price"
+"Special Price","Special Price"
+"Mageplaza Grid View","Mageplaza Grid View"
+"Choose Active to allow the attribute to be shown on Configurable Products Grid View","Choose Active to allow the attribute to be shown on Configurable Products Grid View"
+"Add to Cart","Add to Cart"
+Qty,Qty
+"Total Summary","Total Summary"
+Reset,Reset
+SKU,SKU
+Attribute,Attribute
+"Total Qty","Total Qty"
+Total,Total
+Adding...,Adding...
+Added,Added
+"Configurable Product Grid View","Configurable Product Grid View"
+General,General
+Enable,Enable
+"Select <b>Yes</b> to enable this module","Select <b>Yes</b> to enable this module"
+"Allow Customer Groups","Allow Customer Groups"
+"Enable Sort With Attribute","Enable Sort With Attribute"
+Display,Display
+"Display Information on Mobile","Display Information on Mobile"
+"The active attributes and the price of the child product will be displayed in the grid by default","The active attributes and the price of the child product will be displayed in the grid by default"
+"Display Information on Tablet","Display Information on Tablet"
+"Display Information on Desktop","Display Information on Desktop"
+"Show Out Of Stock Products","Show Out Of Stock Products"
+"Show the summary of all selected options, total qty and total value.","Show the summary of all selected options, total qty and total value."

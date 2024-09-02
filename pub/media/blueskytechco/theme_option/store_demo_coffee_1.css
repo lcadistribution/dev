@@ -1,0 +1,119 @@
+/* Custom Data 2022-08-04 04:23:15: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Butler', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Livvic', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+.rokan-title .short_description, 
+	.elementor__header .short_description,
+	.rokan-title .short_description .action.select{
+	  font-style: italic;
+	}
+:root {
+ --fluid-container-width: 1440px;
+--theme__color__primary: #000;
+}
+.header-container {
+    --fluid-container-width: 1510px;
+}
+@media (min-width: 1200px) {
+:root {
+    --header_padding: 20px;
+}
+.cms-index-index .header-container:not(.header_scroll_up) .header_light {
+  --navigation-level0-item__color: #000;
+ --header-icons-color: #000;
+ --navigation-desktop-level0-item__hover__color: #000;
+}
+}
+.widget-category-thumbnail-image.category-slider-5{
+    --category_thumbnail_info-text-align: center;
+}
+.footer-title h3, .footer-title h4, .footer-title h5, .elementor-static-menu-title {
+font-family:var(--font-family-name__base);
+--bls_elementor-static-menu-title--font-size:2rem;
+--bls_elementor-static-menu-title-font-weight:400;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+padding:0;
+}
+.elementor-newsletter-wrapper input{
+    height: 43px;
+}
+[data-content-type="newsletter"] button {
+    --button__background:#857251;
+    --button__color: #fff;
+   border-radius: 0 var(--button__border-radius)  var(--button__border-radius) 0;
+    padding: 8px 13px;
+}

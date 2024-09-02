@@ -1,0 +1,24 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 5.0.3 --------------------------------------
+    - fixed issues
+    
+-------------------------------- Version 5.0.2 --------------------------------------
+    + Compatible with magento 2.4.6
+    - fixed issues
+
+-------------------------------- Version 5.0.1 --------------------------------------
+    - fixed issues
+   
+-------------------------------- Version 5.0.0 --------------------------------------
+    + Compatible with magento 2.4.x
+ 
+-------------------------------- Version 3.0.0 --------------------------------------
+    + Compatible with magento 2.3.x
+
+-------------------------------- Version 2.0.0 --------------------------------------
+    + Admin can set attribute in config.
+    + Split cart according value of set attribute.

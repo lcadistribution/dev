@@ -1,0 +1,62 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ConfigureGridView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var $block \Mageplaza\ConfigureGridView\Block\Product\View */ ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()) : ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity() && !$block->isEnable()) : ?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?= /* @noEscape */ __('Qty') ?></span></label>
+                    <div class="control">
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               min="0"
+                               value="<?= /* @noEscape */ $block->getProductDefaultQty() * 1 ?>"
+                               title="<?= /* @noEscape */ __('Qty') ?>"
+                               class="input-text qty"
+                               data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                        />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="<?= $block->isEnable() ? 'button' : 'submit' ?>"
+                        title="<?= /* @noEscape */ $buttonTitle ?>"
+                        class="action primary <?= $block->isEnable() ? 'mpcpgv-tocart' : 'tocart' ?>"
+                        id="product-addtocart-button" disabled="disabled">
+                    <span><?= /* @noEscape */ $buttonTitle ?></span>
+                </button>
+                <?= $block->getChildHtml() ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>

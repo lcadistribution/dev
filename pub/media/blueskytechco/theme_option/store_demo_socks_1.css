@@ -1,0 +1,115 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'ClashGrotesk', sans-serif;
+			--font-size__base: 14px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'ClashGrotesk', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'ClashGrotesk', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+			--footer-title-color: #000000;
+			--footer-links-color: #696969;
+			--footer__background-color: #F3F3F3;
+		
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+/* Custom Footer */
+footer.page-footer{
+	}
+
+
+
+
+
+
+/* Customization Style */
+.rokan-title .short_description, 
+	.elementor__header .short_description,
+	.rokan-title .short_description .action.select{
+	  font-style: italic;
+	}
+:root {
+    --module_title-size: 4.8rem;
+   --module_title-font-weight:500;
+--bls_elementor-static-menu-title--font-size:2rem;
+--social__link__size:2.1rem;
+    --fluid-container-width: 1850px;
+}
+.header-container {
+    --fluid-container-width: 1920px;
+}
+.header-container.layout-7 .header_middle {
+--header_padding:22px;
+}
+footer.page-footer{
+	font-size: 15px;
+        font-weight:500;
+}
+.elementor-newsletter-wrapper .form-subscribe {
+--border-color :#000000;
+}
+@media only screen and (max-width: 767px) {
+	:root {
+		--module_title-size: 2.6rem;
+	}
+}
+.marquee-body{
+   --color-marquee:#000000;
+    --marquee-height: 4.8rem;
+    --font-size-marquee:4.8rem;
+--marquee-animation-duration:20s;
+}
+.marquee-header{
+   --color-marquee:#000000;
+    --marquee-height: 4rem;
+    --font-size-marquee:1.4rem;
+--marquee-animation-duration:30s;
+--padding-marquee:6rem;
+    text-transform: uppercase;
+
+}

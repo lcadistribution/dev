@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+
+        <!-- validate ask special price expiry date -->
+        <job name="update_customer_specialprice_status" instance="Magedelight\Customerprice\Cron\ChangeSpecialPriceStatus" method="execute">
+            <schedule>0 0 * * *</schedule>
+        </job>
+
+        <!-- import export feature start -->
+        <job name="import_productcategory_customerprice" instance="Magedelight\Customerprice\Cron\ImportCustomerPrice" method="execute">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job name="export_productcategory_customerprice" instance="Magedelight\Customerprice\Cron\ExportCustomerPrice" method="execute">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <!-- import export feature end -->
+
+        <!-- customer special price expiry date -->
+        <job name="update_customer_product_category_price_status" instance="Magedelight\Customerprice\Cron\ChangeCustomerPriceStatus" method="execute">
+            <schedule>0 0 * * *</schedule>
+        </job>     
+    </group>
+</config>

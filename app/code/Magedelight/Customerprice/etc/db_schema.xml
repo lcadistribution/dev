@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="md_customerprice_customerprice" resource="default" engine="innodb" comment="md_customerprice_customerprice Table">
+		<column xsi:type="int" name="customerprice_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="customerprice_id"/>
+		</constraint>
+		<column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer Id"/>
+		<column name="customer_name" nullable="false" xsi:type="varchar" comment="Customer Name" length="255"/>
+		<column name="customer_email" nullable="false" xsi:type="varchar" comment="Customer Email" length="255"/>
+		<column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Product ID" />
+		<column name="product_name" nullable="false" xsi:type="varchar" comment="Product Name" length="255"/>
+		<column name="price" nullable="false" xsi:type="decimal" comment="Price" precision="12" scale="4"/>
+		<column name="log_price" nullable="false" xsi:type="varchar" comment="Log Price" />
+		<column name="new_price" nullable="false" xsi:type="decimal" comment="New Price" precision="12" scale="4"/>
+		<column name="qty" nullable="false" xsi:type="decimal" comment="Quantity" default="1" precision="12" scale="4"/>
+		<column name="website_id" nullable="false" xsi:type="int" comment="Website Id" default="0" identity="false"/>
+		<column name="expiry_date" nullable="true" xsi:type="date" comment="Product Price Expiry Date"/>
+		<constraint xsi:type="unique" referenceId="CUSTOMERPRICE_CUSTOMER_ID_PRODUCT_ID_QTY">
+	      <column name="customer_id"/>
+	      <column name="product_id"/>
+	      <column name="qty"/>
+	      <column name="website_id"/>
+    	</constraint>
+    	<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICE_PRODUCT_ID" table="md_customerprice_customerprice" column="product_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+    	<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICE_CUSTOMER_ID" table="md_customerprice_customerprice" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+	</table>
+	<table name="md_customerprice_customerpricediscount" resource="default" engine="innodb" comment="md_customerprice_customerpricediscount Table">
+		<column xsi:type="int" name="customerpricediscount_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="customerpricediscount_id"/>
+		</constraint>
+		<column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer Id"/>
+		<column name="value" nullable="false" xsi:type="decimal" comment="Discount Value" scale="4" precision="12"/>
+		<constraint xsi:type="unique" referenceId="CUSTOMERPRICE_PRODUCTDISCOUNT_CUSTOMER_ID">
+			<column name="customer_id"/>
+		</constraint>
+		<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICEDISCOUNT_CUSTOMER_ID" table="md_customerprice_customerpricediscount" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+	</table>
+	<table name="md_customerprice_customerpricecategory" resource="default" engine="innodb" comment="md_customerprice_customerpricecategory Table">
+		<column xsi:type="int" name="customerpricecategory_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="customerpricecategory_id"/>
+		</constraint>
+		<column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer Id"/>
+		<column name="customer_name" nullable="false" xsi:type="varchar" comment="Customer Name" length="255"/>
+		<column name="customer_email" nullable="false" xsi:type="varchar" comment="Customer Email" length="255"/>
+		<column xsi:type="int" name="category_id" unsigned="true" nullable="false" comment="Category Id"/>
+		<column name="category_name" nullable="false" xsi:type="varchar" comment="Category_Name" length="255"/>
+		<column name="discount" nullable="false" xsi:type="decimal" comment="Discount" scale="4" precision="12"/>
+		<column name="expiry_date" nullable="true" xsi:type="date" comment="Date"/>
+		<constraint xsi:type="unique" referenceId="CUSTOMERPRICE_CUSTOMER_ID_CATEGORY_ID">
+	      <column name="customer_id"/>
+	      <column name="category_id"/>
+    	</constraint>
+    	<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICECATEGORY_CUSTOMER_ID" table="md_customerprice_customerpricecategory" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+    	<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICECATEGORY_CATEGORY_ID" table="md_customerprice_customerpricecategory" column="category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE" />
+	</table>
+	<table name="md_customerprice_customerspecialprice" resource="default" engine="innodb" comment="md_customerprice_customerspecialprice Table">
+		<column xsi:type="int" name="customerspecialprice_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="customerspecialprice_id"/>
+		</constraint>
+		<column name="name" nullable="false" xsi:type="varchar" comment="Customer Name" length="255"/>
+		<column name="email" nullable="false" xsi:type="varchar" comment="Customer Email" length="255"/>
+		<column name="actual_price" nullable="false" xsi:type="decimal" comment="Actual Price" precision="12" scale="4"/>
+		<column name="special_price" nullable="false" xsi:type="decimal" comment="Special Price" precision="12" scale="4"/>
+		<column name="pid" nullable="false" xsi:type="int" comment="Product Id" identity="false"/>
+		<column name="pname" nullable="false" xsi:type="varchar" comment="Product Name" length="255"/>
+		<column name="quantity" nullable="false" xsi:type="decimal" comment="Quantity" default="1" precision="12" scale="4"/>
+		<column name="approve" nullable="false" xsi:type="boolean" comment="Approve" default="0"/>
+		<column name="customerprice_id" nullable="true" xsi:type="int" unsigned="true" comment="customerprice_id" identity="false"/>
+		<column name="expiry_date" nullable="true" xsi:type="date" comment="expiry_date"/>
+		<column name="created_at" nullable="false" xsi:type="datetime" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERSPECIALPRICE_PRICEID" table="md_customerprice_customerspecialprice" column="customerprice_id" referenceTable="md_customerprice_customerprice" referenceColumn="customerprice_id" onDelete="CASCADE" />
+	</table>
+	<table name="md_customerprice_customergroupprice" resource="default" engine="innodb" comment="md_customerprice_customergroupprice Table">
+		<column xsi:type="int" name="customergroupprice_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="customergroupprice_id"/>
+		</constraint>
+		<column xsi:type="int" name="group_id"  unsigned="true" nullable="false" comment="Group ID" identity="false"/>
+		<constraint xsi:type="unique" referenceId="CUSTOMERPRICE_GROUP_ID">
+	      <column name="group_id"/>
+    	</constraint>
+    	<constraint xsi:type="foreign" referenceId="MD_CUSTOMERPRICE_CUSTOMERPRICEGROUP" table="md_customerprice_customergroupprice" column="group_id" referenceTable="customer_group" referenceColumn="customer_group_id" onDelete="CASCADE"/>
+		<column name="value" nullable="false" xsi:type="varchar" comment="value" length="255"/>
+		<column name="price_type" nullable="false" xsi:type="boolean" comment="Price Type" default="0"/>
+	</table>
+</schema>

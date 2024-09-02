@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var $block \Magento\Swatches\Block\Product\Renderer\Listing\Configurable */
+$productId = $block->getProduct()->getId();
+?>
+<div class="swatch-opt-<?= /* @noEscape */ $productId ?>"
+     data-role="swatch-option-<?= /* @noEscape */ $productId ?>"></div>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=swatch-option-<?= /* @noEscape */ $productId ?>]": {
+            "Magento_Swatches/js/swatch-renderer": {
+                "selectorProduct": ".product-item-details",
+                "onlySwatches": true,
+                "enableControlLabel": true,
+                "numberToShow": <?= /* @noEscape */ $block->getNumberSwatchesPerProduct() ?>,
+                "jsonConfig": <?= /* @noEscape */ $block->getJsonConfig() ?>,
+                "jsonSwatchConfig": <?= /* @noEscape */ $block->getJsonSwatchConfig() ?>,
+                "mediaCallback": "<?= /* @noEscape */ $block->getMediaCallback() ?>",
+                "jsonSwatchImageSizeConfig": <?= /* @noEscape */ $block->getJsonSwatchSizeConfig() ?>
+            }
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "[data-role=priceBox][data-price-box=product-id-<?= /* @noEscape */ $productId ?>]": {
+            "priceBox": {
+                "priceConfig": {
+                    "priceFormat": <?= /* @noEscape */ $block->getPriceFormatJson() ?>,
+                    "prices": <?= /* @noEscape */ $block->getPricesJson() ?>
+                }
+            }
+        }
+    }
+</script>

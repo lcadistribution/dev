@@ -1,0 +1,127 @@
+@opensi-icons-admin__font-name-path: '@{baseDir}fonts/Opensi/Opensi';
+@opensi-icons-admin__font-name : 'Opensi';
+
+.lib-font-face(
+	@family-name:@opensi-icons-admin__font-name,
+	@font-path: @opensi-icons-admin__font-name-path,
+	@font-weight: normal,
+	@font-style: normal
+);
+.admin__menu .item-opensi.parent.level-0 > a:before {
+	font-family: @opensi-icons-admin__font-name;
+	content: "\e900";
+}
+.admin__menu .item-opensi>a:after {
+	background-color: #736963;
+	content: '';
+	display: block;
+	height: 1px;
+	left: 0;
+	margin-left: 16%;
+	position: absolute;
+	top: 0;
+	width: 68%;
+}
+#opensi_configuration_order_statuses tr tr:nth-child(even) td.label span,
+#row_opensi_preferences_manage_products_description_custom td.label span,
+#row_opensi_preferences_manage_stocks_stock_percentage td.label span,
+#row_opensi_preferences_manage_prices_retail_price_custom td.label span,
+#row_opensi_preferences_manage_products_product_id_label td.label span {
+	display: none;
+}
+.opensi-notification {
+	background: #F8FCFE;
+	border: 1px solid #81CFE6;
+	border-width: 1px 0 1px 0;
+	color: #31B0D5;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+.opensi-notification ul {
+	margin: 10px 0 0 20px;
+}
+.opensi-error {
+    background: #FFE8E8;
+		border: 1px solid #FFC0C1;
+		border-width: 1px 0 1px 0;
+		color: #333;
+		padding: 10px;
+		margin-bottom: 15px;
+}
+#row_opensi_configuration_shipping_methods_shipping_methods_mapping th {
+	white-space: nowrap;
+}
+.opensi-resume {
+	width: 100%;
+	border: 0;
+	margin-bottom: 25px;
+}
+.opensi-resume td {
+	padding: 10px;
+	border: 0;
+	text-align: center;
+	width: 16.666%;
+}
+.opensi-resume td .title {
+	white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+	margin: 10px 0 5px;
+}
+.opensi-resume td .total {
+  font-size: 20px;
+}
+.opensi-resume .icon-valid:before,
+.opensi-resume .icon-error:before,
+.opensi-resume .icon-warning:before,
+.opensi-resume .icon-ecotax:before {
+	font-family: opensi;
+	font-size: 32px;
+	border-radius: 100%;
+	color: #FFF;
+	padding: 5px;
+}
+.opensi-resume .icon-valid:before {
+		content: '\e901';
+    background: #1ABC9C;
+}
+.opensi-resume .icon-error:before {
+		content: '\e902';
+    background: #EC644B;
+}
+.opensi-resume .icon-warning:before {
+		content: '\e904';
+    background: #3498db;
+}
+.opensi-resume .icon-ecotax:before {
+		content: '\e903';
+    background: #9B59AF;
+}
+.opensi-presentation ul {
+	margin-left: 25px;
+}
+.opensi-presentation .video {
+  position: relative;
+  max-height: 390px!important;
+  max-width: 640px;
+  padding-bottom: 390px;
+  margin: 45px auto 60px;
+}
+.opensi-presentation .benefits {
+	width: 100%;
+	margin: 30px 0;
+}
+.opensi-presentation .benefits td {
+	width: 33.333%;
+	vertical-align: top;
+}
+.opensi-presentation .benefits img {
+	margin-bottom: 15px;
+	display: block;
+}
+.data-grid .icon-valid:before {
+	font-family: opensi;
+	font-size: 18px;
+	color: #333;
+	content: '\e901';
+}

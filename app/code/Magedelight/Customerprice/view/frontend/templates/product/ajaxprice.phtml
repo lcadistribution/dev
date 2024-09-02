@@ -1,0 +1,10 @@
+<?php $helper = $this->helper('Magedelight\Customerprice\Helper\Data'); ?>
+<?php if ($helper->getUserEmail() && $helper->isCustomerPriceAllow() && $helper->getConfig('customerprice/general/ajax_price') && !$helper->getConfig('customerprice/general/hide_price')):?>
+<script type="text/x-magento-init">
+    {
+        "*" : {
+        "Magedelight_Customerprice/js/md-ajaxprice":{}
+    }
+}
+</script>
+<?php endif;?>

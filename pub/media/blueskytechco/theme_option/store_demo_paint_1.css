@@ -1,0 +1,159 @@
+/* Custom Data 2022-09-10 02:04:27: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Satoshi', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Lora', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Satoshi', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Satoshi', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 25px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+    --counter_qty-bg: #222;
+--bls_elementor-static-menu-title--font-size:3.2rem;
+--bls_elementor-static-menu-title-font-weight: 400;
+}
+.header-static-menu{
+    justify-content: center;
+}
+.footer [data-content-type="heading"] [data-element="heading_text_editer"] > *{
+justify-content: center;
+}
+.elementor-newsletter-wrapper .form-subscribe{
+border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+border-radius: 0;
+}
+[data-content-type="staticmenu-item"] > *{
+text-transform: uppercase;
+    margin: 0 0 8px;
+}
+.page-footer .footer-container{
+font-size: 14px;
+}
+.page-footer ul.social-link{
+    justify-content: center;
+}
+.page-footer ul.social-link li a{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+}
+.page-footer ul.social-link li{
+margin: 5px !important;
+    padding: 0 !important;
+}
+.w-400 > div{
+max-width: 400px;
+margin: 0 auto;
+width: 100%;
+}
+.container-max{
+    --layout__max-width: 1720px;
+}
+.post-title{
+    font-family: var(--font-family-name__base, 'Open Sans'), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.elementor-blog-post-item .post-image  .data-bgset-image-wrapper{
+        --aspect-ratio: 1.07 !important;
+}
+
+@media (max-width: 767px){
+--bls_elementor-static-menu-title--font-size:2.4rem;
+}
+@media (min-width: 1200px){
+#html-body .mb-100{
+    margin: 0 0 213px !important;
+}
+}
+
+@media (max-width: 992px){
+.order-lg {
+    order: -1;
+}
+}
+@media (min-width: 767px){
+#html-body .container-max .row-full-width-inner{
+    width: 100%;
+    padding-right: 50px;
+    padding-left:  50px;
+}
+}
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="customerprice_general_approve_email_template" label="Special Price Approve Email Template" file="price_approve.html" type="html" module="Magedelight_Customerprice" area="frontend"/>
+    <template id="customerprice_general_disapprove_email_template" label="Special Price Disapprove Email Template" file="price_disapprove.html" type="html" module="Magedelight_Customerprice" area="frontend"/>
+</config>

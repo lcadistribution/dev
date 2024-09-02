@@ -1,0 +1,88 @@
+"Please check the selection checkbox of your products before adding all to cart","Please check the selection checkbox of your products before adding all to cart"
+"No products selected","Merci de choisir des options"
+"Continue Shopping","Continue Shopping"
+"View Cart","View Cart"
+"You added %1 to your shopping cart.","You added %1 to your shopping cart."
+"Add Each Product To Cart","Add Each Product To Cart"
+"Add All To Cart","Add All To Cart"
+"-- Please Select --","-- Please Select --"
+"Product Image","Product Image"
+"Product Short Description","Product Short Description"
+"Product Review Rating","Product Review Rating"
+"Product Stock Status","Product Stock Status"
+Table,Table
+All,All
+Rating,Rating
+Review,Review
+Reviews,Reviews
+"Add to Cart","Add to Cart"
+"In stock","In stock"
+"Out of stock","Out of stock"
+"Learn More","Learn More"
+Add,Add
+Image,Image
+Name,Name
+SKU,SKU
+Options,Options
+Description,Description
+"Review Rating","Review Rating"
+Price,Price
+"Stock Status","Stock Status"
+Qty,Qty
+Action,Action
+"Select Options","Select Options"
+"No Options To Select","No Options To Select"
+"Attribute Options","Attribute Options"
+"Customizable Options","Customizable Options"
+Availability,Availability
+"No Action","No Action"
+"Cart Quote Icon","Cart Quote Icon"
+"We can't find products matching the selection.","We can't find products matching the selection."
+Select,Select
+"Gift Card Information","Gift Card Information"
+"Amount in %1","Amount in %1"
+",min: %1",",min: %1"
+",max: %1",",max: %1"
+"Minimum: %1","Minimum: %1"
+"Maximum: %1","Maximum: %1"
+"Sender Name","Sender Name"
+"Sender Email","Sender Email"
+"Recipient Name","Recipient Name"
+"Recipient Email","Recipient Email"
+Message,Message
+"Maximum length of the message is %1 characters.","Maximum length of the message is %1 characters."
+"Please log-in to create a quote request.","Please log-in to create a quote request."
+"Qty must have a value greater than 0.","Qty must have a value greater than 0."
+"Add To Cart Product List","Vos achats"
+Added,Added
+Amount,Amount
+Downloads,Downloads
+"Select Product Options","Sélectionnez les options"
+"Edit Options","Edit Options"
+"Please choose a product","Merci de choisir une option"
+"Table Category View","Table Category View"
+General,General
+Enable,Enable
+"Select <b>Yes</b> to enable this module","Select <b>Yes</b> to enable this module"
+"Allow Customer Groups","Allow Customer Groups"
+"Use Table View As Default","Use Table View As Default"
+"Select <b>Yes</b> to enable default","Select <b>Yes</b> to enable default"
+"Display Settings","Display Settings"
+"Show Add To Cart Button","Show Add To Cart Button"
+"Button Text","Button Text"
+"Button Text Color","Button Text Color"
+"Button Background Color","Button Background Color"
+"Table Options","Table Options"
+"""No Review"" Label","""No Review"" Label"
+"Show Configurable Product Grid View","Show Configurable Product Grid View"
+"Select <b>Yes</b> to display grid view with the configurable products
+                    <br> If the Configurable Product Grid View is not installed, you can download
+                    <a href=""https://www.mageplaza.com/magento-2-configurable-product-grid-view/"" target='_blank'>here</a>","Select <b>Yes</b> to display grid view with the configurable products
+                    <br> If the Configurable Product Grid View is not installed, you can download
+                    <a href=""https://www.mageplaza.com/magento-2-configurable-product-grid-view/"" target='_blank'>here</a>"
+"Enable Popup Options For","Enable Popup Options For"
+"Products per Page on Table Allowed Values","Products per Page on Table Allowed Values"
+Comma-separated.,Comma-separated.
+"Products per Page on Table Default Value","Products per Page on Table Default Value"
+"Must be in the allowed values list.","Must be in the allowed values list."
+"Use Config","Use Config"

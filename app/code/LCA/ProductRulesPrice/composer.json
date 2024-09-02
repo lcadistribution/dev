@@ -1,0 +1,30 @@
+{
+    "name": "lca/product-rules-price",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lca",
+            "email": "lca.com"
+        }
+    ],
+    "keywords": [
+        "magento2",
+        "product",
+        "catalog",
+        "catalogrule",
+        "marketing",
+        "price",
+        "finalprice"
+    ],
+    "version": "1.0.0",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "LCA\\ProductRulesPrice\\": ""
+        }
+    }
+}

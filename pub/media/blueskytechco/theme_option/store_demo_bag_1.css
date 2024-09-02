@@ -1,0 +1,84 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'NewYork', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Jost', sans-serif;
+					
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #C96E15; 
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+					--header-icons-color: #000000;
+			
+	/* Custom Footer */
+	
+	/* Custom Menu */
+			--navigation-level0-item__color: #000000;
+					
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+							}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+								--navigation-level0-item__color: #000000;
+						--navigation-desktop-level0-item__hover__color: var(--navigation-level0-item__color);
+										--header-icons-color: #000000;
+						}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+    --fluid-container-width: 1750px;
+}
+footer{
+--heading__font-family__base: var(--font-family-name__base);
+--heading__font-weight__base: 500;
+}
+.cms-index-index .header-container .topbar{
+background: transparent;
+}
+.header-container{
+    --fluid-container-width: 1820px;
+}

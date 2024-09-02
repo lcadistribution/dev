@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * 2003-2017 OpenSi Connect
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Speedinfo
+ * @package     Speedinfo_Opensi
+ * @copyright   Copyright (c) 2017 Speedinfo SARL (http://www.speedinfo.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<opensi_configuration>
+			<order_statuses>
+        <order_statuses_standard>
+          <validated>validated</validated>
+          <validated_active>1</validated_active>
+          <processing>processing</processing>
+          <processing_active>1</processing_active>
+          <partially_shipped>partially_shipped</partially_shipped>
+          <partially_shipped_active>1</partially_shipped_active>
+          <complete>complete</complete>
+          <complete_active>1</complete_active>
+          <cancel>canceled</cancel>
+          <cancel_active>1</cancel_active>
+        </order_statuses_standard>
+        <order_statuses_optionnal>
+          <partially_paid></partially_paid>
+          <partially_paid_active>0</partially_paid_active>
+          <totally_paid></totally_paid>
+          <totally_paid_active>0</totally_paid_active>
+        </order_statuses_optionnal>
+			</order_statuses>
+			<bank_transactions>
+				<bank_transactions_advanced>
+					<payment_txn_types>capture</payment_txn_types>
+				</bank_transactions_advanced>
+			</bank_transactions>
+		</opensi_configuration>
+		<opensi_preferences>
+			<manage_orders>
+				<comments>1</comments>
+				<comments_titles>1</comments_titles>
+				<ip_address>0</ip_address>
+			</manage_orders>
+			<manage_stocks>
+				<stock_percentage>100</stock_percentage>
+			</manage_stocks>
+			<manage_downloadable_documents>
+				<invoices>1</invoices>
+				<display_invoices>1</display_invoices>
+				<display_credit_memos>1</display_credit_memos>
+				<display_deliverynotes>1</display_deliverynotes>
+			</manage_downloadable_documents>
+			<manage_customers>
+				<notification>1</notification>
+				<newsletter>1</newsletter>
+			</manage_customers>
+		</opensi_preferences>
+	</default>
+</config>

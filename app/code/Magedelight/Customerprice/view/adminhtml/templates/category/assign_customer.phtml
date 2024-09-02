@@ -1,0 +1,170 @@
+<?php
+
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+ 
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+//@codingStandardsIgnoreStart
+?>
+<div class="md-customer-category-price">
+    <div>
+        <div id="md-customer-search" style="display: none;" class="admin__page-section customer-search-items">
+            <div class="admin__page-section-title">
+                <span class="title"><?= /* @noEscape */ $block->getHeaderText() ?></span>
+                <?php if ($block->getButtonsHtml()): ?>
+                    <div class="actions"><?= /* @noEscape */ $block->getButtonsHtml() ?></div>
+                <?php endif; ?>
+            </div>
+            <?= $block->getGridHtml(); ?>
+        </div>
+        <section id="customer-price-category" class="admin__page-section customer-price-category-items" data-mage-init='{"loader": {}}'>
+            <div class="admin__page-section-title">
+                <strong class="title"><?= /* @noEscape */ $block->getHeaderText() ?></strong>
+                <div class="actions">
+                    <button class="action-secondary action-add" id="customer_price_add_category"
+                            type="button"><span>Add Customer</span>
+                    </button>
+
+                </div>
+            </div>
+            <form id="edit_form" data-form="edit_form" method="post" enctype="multipart/form-data" >
+            <?= /* @noEscape */ $block->getBlockForms(); ?>
+            <input type="hidden" data-form-part="category_form" name="category_id"
+                       value="<?= /* @noEscape */ $block->getRequest()->getParam("id") ?>"
+                />
+            </form>
+        </section>
+    </div>
+</div>
+<input type="hidden" name="category_customer" id="in_category_customer" data-form-part="category_form" value="" />
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magedelight_Customerprice/customer/assign-customers": {
+                "selectedProducts": <?= /* @noEscape */ $block->getProductsJson(); ?>,
+                "gridJsObjectName": <?= /* @noEscape */ '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>
+<script>
+require(['jquery',
+        'jquery/ui',
+        'mage/mage',
+        'mage/translate',
+        'mage/calendar'
+        ], function ($) {
+        jQuery = $;    
+            jQuery(document).ready(function(){
+                var cid = '<?=$block->getRequest()->getParam("id");?>';
+                $(document).on('focus',".datepicker", function(){
+                    $(this).datepicker({dateFormat:'yy-mm-dd',           
+                    changeMonth: true,          
+                    changeYear: true,                    
+                    showMonthAfterYear: false,
+                    minDate: 0});
+                });
+
+                $('.col-edit_action').click(function(e){
+            
+                    var discountVal = $(this).parent().find('.col-discount').text();
+                    var dateVal = $(this).parent().find('.col-expiry_date').text();
+                    var id = $.trim($(this).parent().find('.col-customerpricecategory_id').text());
+                    var pidVal = $(this).parent().find('.col-customer_id').text();
+
+                    $(this).parent().find('.col-discount').html('<input type="textbox" data-form-part="category_form" class="required-entry validate-greater-than-zero input-text admin__control-text required-entry _required validate-number validate-digits-range digits-range-0-100" name="customeroption[value]['+id+'][discount]" value='+discountVal+'/>');
+
+                    $(this).parent().find('.col-expiry_date').html('<input type="textbox" data-form-part="category_form" class="input-text admin__control-text datepicker" name="customeroption[value]['+id+'][date]" value='+dateVal+'/>');
+
+                    $(this).parent().find('.col-customer_id').append('<input type="hidden"  data-form-part="category_form" name="customeroption[value]['+id+'][pid]" value='+pidVal+'/>');
+                    
+                    $(this).parent().find('.col-customer_id').append('<input type="hidden" data-form-part="category_form" name="customeroption[value]['+id+'][cid]"  value="'+cid+'" />');
+
+                    $(this).css('cursor', 'default').css('text-decoration', 'none').css('pointer-events','none');
+                });
+
+                
+                var exits = jQuery.parseJSON('<?= /* @noEscape */ $block->getexitsCustomer() ?>');
+                
+                jQuery('#customer_price_add_category').click(function(){
+                    jQuery('#md-customer-search').show();
+                    this.hide();
+                });
+                var itemCount = 0;
+                jQuery('#add_selected_customers').click(function() {
+                    jQuery('#attribute-options-table-category tbody tr.customs').remove();
+                    jQuery('#no-product').remove();
+                    if(jQuery('#in_category_customer').val()){
+                    var catString = JSON.parse(jQuery('#in_category_customer').val());
+                    
+                    jQuery.each(catString,function(index,item) {
+                        if(jQuery.inArray(item.value, exits) == -1) {
+                            var pname = item.name;
+                            var pid=  item.value;
+                            var discount = "";
+                            var sign = '';
+                            var css_class = 'customs';
+                            var cid = '<?= /* @noEscape */ $block->getRequest()->getParam("id") ?>';
+                            var id = 'option_' + itemCount;
+                            var item = generateLiTag(pname, pid, discount, sign, css_class, cid, id);
+                            jQuery(item).hide().appendTo('#customerpricecategory_id_table tbody').fadeIn(1000);
+                            itemCount++;
+                        }
+                    });
+                    }
+                    
+                    jQuery('#product_categories').val('');
+                    //jQuery('#product-categories input[type="checkbox"]').prop("checked", false);
+                    jQuery('#md-customer-search').hide();
+                    jQuery('#customer_price_add_category').show();
+                });
+                jQuery(document).on('click', '.delete-category-save', function() {
+                    var categoryVal = jQuery(this).attr('rel');
+                    jQuery.ajax({
+                        showLoader: true,
+                        url: "<?= /* @noEscape */ $block->getUrl('md_customerprice/category/delete'); ?>",
+                        data: {'id': categoryVal },
+                        type: "POST",
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if(data) {
+                            jQuery('#category-row-'+categoryVal).remove();    
+                        }
+                    });
+                });
+                jQuery(document).on('click', '.category-customer-unsaved', function(){
+                    var categoryVal = jQuery(this).attr('rel');
+                    jQuery('#'+categoryVal).remove();    
+                });
+                
+        function generateLiTag(pname, pid, discount, sign, css_class, cid, id) {
+            var randlabelnumber = getRandomInt(1, 100000);
+            var item = '<tr class="option-row ' + css_class + '" id = "category-row-'+ pid +'-'+randlabelnumber +'" >' +
+                '<td><\/td>' +
+                '<td><span>' + pid + '</span><input data-form-part="category_form" type="hidden" name="customeroption[value][' + id + '][pid]" value="' + pid + '" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+                '<td><span><?= /* @noEscape */ "' + pname + '" ?></span><input data-form-part="category_form" type="hidden" name="customeroption[value][' + id + '][pname]" value="' + pname + '" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+                '<td><input data-form-part="category_form" style="width:50%;" class="required-entry validate-zero-or-greater input-text admin__control-text required-entry _required validate-number validate-digits-range digits-range-0-100' + css_class + '" type="text" name="customeroption[value][' + id + '][discount]" value="' + discount + '" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/>&nbsp; <strong>%</strong> &nbsp;' + sign + '<\/td>' +
+                '<td><input data-form-part="category_form" style="width:50%;" class="datepicker input-text admin__control-text' + css_class + '" type="text" name="customeroption[value][' + id + '][date]" value="" /><\/td>' + 
+                '<td id="delete_button_container_' + id + '">' +
+                '<input data-form-part="category_form" type="hidden" class="delete-flag" name="customeroption[value][' + id + '][cid]" value="' + cid + '" />' +
+                '<button class="delete-option category-customer-unsaved" rel="category-row-'+ pid +'-'+randlabelnumber +'" type="button"><span>Remove Category</span><\/button>' +
+                '<\/td>' +
+                '<td><\/td>' +
+                '<\/tr>';
+            return item;
+        }
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    });      
+});
+</script>

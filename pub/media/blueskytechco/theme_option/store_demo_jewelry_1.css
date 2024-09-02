@@ -1,0 +1,114 @@
+/* Custom Data 2022-07-18 04:45:46: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Futura', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 300;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Futura', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Futura', sans-serif;
+			--naviation-level0-item__font-size: 14px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Futura', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+					--header-icons-color: #000000;
+			
+	/* Custom Footer */
+	
+	/* Custom Menu */
+			--navigation-level0-item__color: #000000;
+					
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+							}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+								--navigation-level0-item__color: #000000;
+						--navigation-desktop-level0-item__hover__color: var(--navigation-level0-item__color);
+										--header-icons-color: #000000;
+						}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--navigation-level0-item__text-transform: uppercase;
+--button__text_transform: uppercase;
+--button__font-size: 14px;
+--heading__letter-spacing: 1.5px;
+--button__letter-spacing: 1px;
+--bls_elementor-static-menu-title--font-size: 14px;
+--font-weight__regular: 300;
+}
+.page-header{
+    --counter_qty-bg: #000;
+    --counter_qty-color: #fff;
+}
+.header-container{
+--fluid-container-width: 100%;
+}
+@media only screen and (min-width: 768px){
+:root{
+--module_title-size: 3rem;
+}
+}
+@media only screen and (min-width: 1200px){
+.container-fluid[data-content-type='row'][data-appearance='full-bleed']{
+    --fluid-container-width: 1820px;
+}
+footer{
+    --fluid-container-width: 1750px;
+}
+}
+[data-content-type="newsletter"].has_border{
+    --border-color: #000;
+}
+.elementor-newsletter-wrapper .field-newsletter input{
+font-weight: 300;
+}
+.elementor-newsletter-wrapper .field-newsletter:before{
+display: none;
+}
+.elementor-newsletter-wrapper .form-subscribe .field-newsletter{
+padding-left: 0;
+}

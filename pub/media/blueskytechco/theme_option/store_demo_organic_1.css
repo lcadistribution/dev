@@ -1,0 +1,146 @@
+/* Custom Data 2022-08-27 08:06:57: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1370px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Raleway', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Raleway', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Raleway', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 700;
+			
+	/* Other Font */
+		--other_font_family: 'Raleway', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #FFDD86; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+/* Icon LazyLoad */
+img.lazyload,  
+img.lazyloading,
+img.swatch-option-loading,
+.fotorama__spinner,
+.data-bgset-image-wrapper.lazyload:after,
+.data-bgset-image-wrapper.lazyloading:after{
+	background-image: url("//azexchangeclub.com/niches_minimog/media/blueskytechco/lazyload/default/loading.gif");	background-repeat: no-repeat;
+    animation: none;
+    background-position: center;
+	--lazyload_bg_size: 100px;
+}
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--headings__font-weight-secondary: 700;
+--heading__color__base: #0F4226;
+}
+.header-container {
+    --fluid-container-width: 1380px;
+}
+.page-header,
+.link-on-bottom{
+    --counter_qty-color: #0F4226;
+}
+.elementor-category-thumbnail-image-item .category-thumbnail__image{
+--aspect-ratio: 2.907 !important;
+}
+.widget-category-thumbnail-image.category-slider-11 .category-thumbnail__info{
+    justify-content: center;
+}
+.category-thumbnail__info .category-count{
+    margin-top: 0 !important;
+}
+.widget-category-thumbnail-image.category-slider-11 .category-thumbnail__info .category-thumbnail__title{
+    max-width: 70%;
+--category_item_title-size: 22px;
+}
+.custom1 .tp-bullet.selected:after{
+border: 1px solid #fff;
+}
+.custom1 .tp-bullet{
+color:#fff;
+}
+.elementor-newsletter-wrapper .form-subscribe{
+    border-bottom: 2px solid #0f4226;
+    border-radius: 0;
+  
+}
+.page-footer  .elementor-static-menu-title{
+    font-size: 18px;
+    font-weight: 700;
+}
+.price-box .price{
+--heading__color__base: #000;
+    --headings__font-weight-secondary: 500;
+}
+.product-item-name > a{
+--heading__color__base:#000;
+}
+.product-label .onsale{
+color:#000;
+}
+
+
+@media (min-width: 992px){
+.w-380 > *{
+max-width: 380px;
+.elementor-newsletter-wrapper .form-subscribe{
+  max-width: 370px;
+}
+}
+
+
+
+
+
+
+

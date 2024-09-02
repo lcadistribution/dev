@@ -1,0 +1,883 @@
+<!--
+/**
+ * 2003-2017 OpenSi Connect
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Speedinfo
+ * @package     Speedinfo_Opensi
+ * @copyright   Copyright (c) 2017 Speedinfo SARL (http://www.speedinfo.fr)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<xsd:schema
+	attributeFormDefault="qualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.opensi.fr/xsd"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.opensi.fr/xsd"
+	>
+	<xsd:complexType name="Attributes">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the different attributes of a product (Store => OpenSi).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="Attribute" nillable="true" type="tns:Attribute" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Attribute">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending the attributes of a product in OpenSi (Store => OpenSi).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Value" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Product_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					List of the available fields for sending a new product in OpenSi (Store => OpenSi).
+					A product entry must have at least
+						- Reference
+						- Name
+						- Price
+						- VATRate
+					to be created in OpenSi (required fields).
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Brand" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ShortDescription" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Description" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ModelReference" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="IncludingVATPriceDefinition" nillable="true" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="WholesalePrice" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Price" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="RetailPrice" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Ecotax" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRate" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Barcode" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_1" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_4" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_5" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_6" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attributes" nillable="true" type="tns:Attributes" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Family_1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Family_2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Family_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Volume" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Height" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Length" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Width" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Weight" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ManufacturerReference" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="NC8Code" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="CountryCodeManufacture" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="NetWeight" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="PickingZone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ProductType" nillable="true" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductUpdate_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					List of the available fields for updating a product in OpenSi (Store => OpenSi).
+					A product entry must have at least
+						- Reference
+						- Name
+					to be updated in OpenSi (required fields).
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Brand" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Name" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ShortDescription" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Description" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_1" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_4" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_5" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attribute_6" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Attributes" nillable="true" type="tns:Attributes" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductComponent_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending components to a product in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ComponentReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductImage_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending the default image to a product in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Image" nillable="true" type="xsd:base64Binary" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductSupplierReference_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a supplier reference of a product in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SupplierReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductSupplierReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductWholesalePrice" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Inventory_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending the initial stock of a product in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Publication_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending the publication/status of a product in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Publication" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderProduct_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					List of the available fields for sending the products of an order in OpenSi (Store => OpenSi).
+					A product entry must have at least
+						- Reference
+						- Name
+						- Quantity
+						- UnitPrice
+						- VATRate
+					to be created in OpenSi (required fields).
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRate" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DiscountPercent" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Weight" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ProductComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ExpectedDeliveryDate" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Order_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					List of the available fields for sending an order in OpenSi (Store => OpenSi).
+					An order entry must have at least
+						- OrderNumber
+						- Login
+						- Identifier
+						- OrderDate
+						- Shipping (amount)
+						- VATRateShipping
+						- ShipmentMethod
+						- PaymentMethod
+						- Billing address
+							-- BillingCivility
+							-- BillingLastname
+							-- BillingFirstname
+							-- BillingCompany
+							-- BillingAddress_1
+							-- BillingZipcode
+							-- BillingCity
+							-- BillingCountryCode
+							-- BillingEmail
+						- Delivery address
+							-- DeliveryCivility
+							-- DeliveryLastname
+							-- DeliveryFirstname
+							-- DeliveryCompany
+							-- DeliveryAddress_1
+							-- DeliveryZipcode
+							-- DeliveryCity
+							-- DeliveryCountryCode
+							-- DeliveryEmail
+						- at least one product (cf. OrderProduct) to be created in OpenSi (required fields).
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="OrderReferenceNumber" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="OrderCartNumber" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="OrderReferenceMarketplace" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Identifier" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Login" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="LoginOpensi" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ActivityPole" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Title" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerGroup" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderDate" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Weight" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ExpeditionRule" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ExpectedDeliveryDate" type="xsd:string" /><!-- Date_Expedition in OpenSi -->
+			<xsd:element minOccurs="0" maxOccurs="1" name="EstimatedDeliveryDate" type="xsd:string" /><!-- Date_Livraison (estimated delivery date) in OpenSi -->
+      <xsd:element minOccurs="0" maxOccurs="1" name="EstimatedDeliveryDateEnd" type="xsd:string" /><!-- Date_Livraison_Fin (estimated delivery date end) in OpenSi -->
+			<xsd:element minOccurs="0" maxOccurs="1" name="ValidOrder" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="BlockedOrder" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="IncludedTaxEdition" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Shipping" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRateShipping" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ShippingDiscountAmount" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PaymentMethod" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ShipmentMethod" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="IntraCommunityVAT" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingFirstname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingEmail" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryFirstname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryEmail" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="WithdrawalPoint" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryInstructions" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="GiftPackage" nillable="true" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="PrintableComments" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="NonPrintableComments" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="Product" nillable="true" type="tns:OrderProduct_fromStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderUpdate_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					List of the available fields for sending an order in OpenSi (Store => OpenSi).
+					An order entry must have at least
+						- OrderNumber
+						- Login
+						- Billing address
+							-- BillingCivility
+							-- BillingLastname
+							-- BillingFirstname
+							-- BillingCompany
+							-- BillingAddress_1
+							-- BillingZipcode
+							-- BillingCity
+							-- BillingCountryCode
+							-- BillingEmail
+						- Delivery address
+							-- DeliveryCivility
+							-- DeliveryLastname
+							-- DeliveryFirstname
+							-- DeliveryCompany
+							-- DeliveryAddress_1
+							-- DeliveryZipcode
+							-- DeliveryCity
+							-- DeliveryCountryCode
+							-- DeliveryEmail
+						- at least one product (cf. OrderProduct)
+					to be updated in OpenSi (required fields).
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="OrderReferenceNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Title" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingFirstname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingEmail" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryFirstname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryEmail" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="WithdrawalPoint" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="Product" nillable="true" type="tns:OrderProduct_fromStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrdersBalanced_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending the order balanced in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BankTransaction_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a bank transaction of an order in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TransactionNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PaymentMethod" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Amount" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BankRefund_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a bank transaction of a refund in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DocumentNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderTransactionNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="RefundTransactionNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Amount" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TransactionDate" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderCreditNoteLine_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a product credit note line (avoirs) in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRate" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderCreditNote_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a credit note (avoirs) in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CreditNoteNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="IncludedTaxEdition" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Shipping" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="VATRateShipping" type="xsd:double" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Valid" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:OrderCreditNoteLine_fromStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderReturnLine_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a product return line in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderReturn_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a product return in OpenSi (Store => OpenSi). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ReturnNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Valid" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Type" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Comments" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="Product" nillable="true" type="tns:OrderReturnLine_fromStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Customer_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a customer in OpenSi (Store => OpenSi).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Login" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CustomerId" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="CustomerGroup" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Civility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Lastname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Firstname" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Company" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Address_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Address_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Address_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Zipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="City" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Phone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Fax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Email" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CountryCode" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Price_fromStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for sending a price in OpenSi (Store => OpenSi).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="IncludingVATPriceDefinition" nillable="true" type="xsd:boolean" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="VATRate" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="WholesalePrice" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Price" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="Ecotax" nillable="true" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="RetailPrice" nillable="true" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ShippingMethod_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the shipping methods available in OpenSi (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductLogistic_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to update logistic informations (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Barcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Volume" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Height" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Length" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Width" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Weight" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ManufacturerReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="RestockingTime" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DirectSupplier" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ABCClass" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Conditioning" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="NC8Code" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CountryCodeManufacture" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="NetWeight" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProductSupplierReference_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the available fields for creating a supplier reference of a product on the store (OpenSi => Store). All fields are required.]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SupplierReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductSupplierReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ProductWholesalePrice" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Customer_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to create a new customer (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Login" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Password" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingFirstname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="BillingFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingEmail" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BillingCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCivility" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryLastname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryFirstname" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCompany" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryAddress_1" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_2" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryAddress_3" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryZipcode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCity" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryPhone" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DeliveryFax" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryEmail" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryCountryCode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Active" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Stock_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to update the stock of a product (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DepositCode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="RealStock" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="AvailableStock" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VirtualStock" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SupplierAvailability" type="xsd:double" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="DateAvailability" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PickingZone" type="xsd:string" />
+			<xsd:element minOccurs="0" maxOccurs="1" name="ExpirationDate" nillable="true" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="State_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to update the status of an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PayState" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Preparation" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="LogisticState" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderState" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryNumber" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="PreparationSlipNumber" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PickUpInStore" nillable="true" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Price_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to update a product price (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRate" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WholesalePrice" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CostPrice" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CUMP" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PriceExcludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PriceIncludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Ecotax" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="RetailPrice" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderShipment_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add one or many shipments (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="SupplierNumber" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DepositCode" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Status" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="OrderShipmentDeliveryNotes" nillable="true" type="tns:OrderShipmentDeliveryNotes_toStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderShipmentDeliveryNotesDetail_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the items on a shipment sent from OpenSi to the store (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity"  type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderShipmentDeliveryNotes_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add one or many shipments (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryNoteReference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="OrderShipmentDeliveryNotesDetail" type="tns:OrderShipmentDeliveryNotesDetail_toStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderTrackingCode_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add a tracking number on an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ShippingMode" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ShippingNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TrackingNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TrackingUrl" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Carrier" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ShippingDate" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Invoice_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add an invoice on an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="InvoiceNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PriceExcludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="PriceIncludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Type" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Url" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DeliveryNote_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add a delivery note on an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="DeliveryNoteNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Url" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CreditMemo_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add one or many credit memos (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CreditMemoNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="IncludedTaxEdition" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Shipping" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRateShipping" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TotalAmountExcludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="TotalAmountIncludingVAT" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="BankRefunded" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="unbounded" name="CreditMemos" nillable="true" type="tns:CreditMemoProduct_toStore" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CreditMemoProduct_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the items on a credit memo sent from OpenSi to the store (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Reference" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Quantity"  type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="UnitPrice" type="xsd:double" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VATRate" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Comment_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add a new comment (public/private) on an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebOrderNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CommentId" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Comment" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="CommentDate" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="SendMail" type="xsd:boolean" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="VisibleForCustomer" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderReturnState_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to update the status of an order return (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="ReturnNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebReturnNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="ReturnState" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OrderReturnDocument_toStore">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[List of the fields sent from OpenSi to the store to add a return on an order (OpenSi => Store).]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="ReturnNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="WebReturnNumber" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Url" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="baseRequest" abstract="true">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Datetime_Min" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Datetime_Max" nillable="true" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Range_Min" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Range_Max" nillable="true" type="xsd:int" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Website_Code" nillable="true" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="baseRequestImage" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="tns:baseRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="All_Image" nillable="true" type="xsd:boolean" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProductToRelaunch">
+		<xsd:sequence>
+			<xsd:element name="Reference" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="getProductsRequest">
+		<xsd:complexContent>
+			<xsd:extension base="tns:baseRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:ProductToRelaunch" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="getProductImagesRequest">
+		<xsd:complexContent>
+			<xsd:extension base="tns:baseRequestImage">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="ProductImage" nillable="true" type="tns:ProductToRelaunch" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrderToRelaunch">
+		<xsd:sequence>
+			<xsd:element name="OrderNumber" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="getOrdersRequest">
+		<xsd:complexContent>
+			<xsd:extension base="tns:baseRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:OrderToRelaunch" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CustomerToRelaunch">
+		<xsd:sequence>
+			<xsd:element name="CustomerId" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="getCustomersRequest">
+		<xsd:complexContent>
+			<xsd:extension base="tns:baseRequest">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:CustomerToRelaunch" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="referenceResponse">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Code" type="xsd:string" />
+			<xsd:element minOccurs="1" maxOccurs="1" name="Message" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

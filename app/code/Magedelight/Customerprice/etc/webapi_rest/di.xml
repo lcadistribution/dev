@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	
+    <!-- used during add to cart process -->
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="magedelight_after_final_price_restapi" type="Magedelight\Customerprice\Plugin\WebapiRest\ChangeTierPrice" sortOrder="999"  />
+    </type>
+
+</config>

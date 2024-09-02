@@ -1,0 +1,13 @@
+    //
+    //sub-category-slide
+    //  _____________________________________________
+& when (@media-common =true) {
+    .sub-category-slide{
+        margin: var(--margin_gobal_value);
+    }
+}
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__l) {
+    .sub-category-slide{
+        --layout-indent__width: 15px;
+    }
+}

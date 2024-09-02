@@ -1,0 +1,23 @@
+.askprice {
+
+    margin-bottom: 15px;
+
+    display: inline-block;
+
+}
+
+.special-price-button span{
+
+    color: #006bb4;
+
+    cursor: pointer;
+
+}
+
+.special-price-button span:hover{
+
+    text-decoration: underline;
+
+}
+
+.md-tooltip{display: block;}

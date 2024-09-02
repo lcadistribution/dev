@@ -1,0 +1,178 @@
+/* Custom Data 2022-08-03 02:14:04: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Gilroy', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Gilroy', sans-serif;
+			--heading__font-weight__base: 700;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Gilroy', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 600;
+			
+	/* Other Font */
+		--other_font_family: 'Gilroy', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #322B81; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 10px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+			--topbarbg: #F1E2D6;
+			--topbarcolor: #000000;
+				
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root{
+--counter_qty-bg: var(--theme__color__primary);
+--layout__max-width: 1410px;
+--button__hover__background: #fdf397;
+  --button__hover__color: #000;
+--product_item-size: 2rem;
+--headings__font-weight-secondary: 600;
+--bls_elementor-static-menu-title-font-weight: 600;
+--navigation-level0-item__color: #000;
+--footer-title-color: var(--theme__color__primary);
+--footer-links-color: var(--theme__color__primary);
+--social__link__size: 2rem;
+}
+.header-container {
+    --fluid-container-width: 1920px;
+}
+@media only screen and (min-width: 992px) {
+:root{
+--bls_elementor-static-menu-title--font-size: 24px;
+--module_title-size: 4rem;
+}
+
+}
+.cms-index-index .mt-footer{
+margin-top: 20px !important;
+}
+ul.social-link li a{
+color: var(--theme__color__primary);
+}
+.h-80{
+min-height: 80px;
+}
+.elementor__headline,
+.elementor-heading-title{
+--heading__color__base: var(--theme__color__primary);
+}
+.widget-testimonial.widget-testimonial-slider-default{
+    --text__color: var(--theme__color__primary);
+    font-weight: 600;
+
+}
+.widget-testimonial.widget-testimonial-slider-default .testimonial-job{
+    font-size: 20px;
+    font-weight: 600;
+}
+.tm-testimonial__position{
+color: var(--text__color);
+}
+body .show_nav .slick-prev, body .show_nav .slick-next{
+    width: 64px;
+    height: 64px;
+    border: none;
+    background: #fff;
+}
+.slick-prev:before, .slick-next:before,
+ .slick-prev:after, .slick-next:after{
+    font-size: 2rem !important;
+}
+.product-info-main .price-final_price *,
+ .product-item .price-final_price *,
+ .product-info-main .price-configured_price *,
+ .product-item .price-configured_price *{
+--heading__color__base: var(--theme__color__primary);
+}
+.pagebuilder-button-link{
+--link__color: var(--theme__color__primary);
+}
+.header-search-form{
+    font-size: 15px;
+}
+.products-grid-center .price-box{
+justify-content: center;
+} 
+.products-grid-center .product-image-wrapper{
+    padding-bottom: 100% !important;
+}
+.products-grid-center .swatch-option{
+    float: none;
+display: inline-block;
+} 
+.action.primary:hover,
+ .action-primary:hover{
+    --heading__color__base: #fdf397 !important;
+    color: #000;
+    --button-primary__hover__background: #fdf397 !important;
+}
+.slick-arrow{
+--button__hover__background: var(--theme__color__primary);
+    --button__shadow: 0 0 0 0.2rem var(--theme__color__primary);
+--button__hover__color: #fff;
+}
+.products-grid .product-item .actions-secondary .action:hover,
+ .products-grid .field.choice.related .action:hover,
+ .products-grid .product-item .actions-secondary label:hover,
+ .products-grid .field.choice.related label:hover{
+background: #fdf397;
+    color: var(--link__color);
+}
+.product-items .product-item .action:hover:before{
+color: var(--link__color) !important; 
+}
+@media (max-width: 575px){
+.logo-f img{
+    width: 80px;
+}
+
+}
+
+

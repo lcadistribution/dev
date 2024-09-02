@@ -1,0 +1,136 @@
+/* Custom Data 2022-10-14 15:12:09: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Lora', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 500;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Lora', sans-serif;
+			--heading__font-weight__base: 500;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Lora', sans-serif;
+			--naviation-level0-item__font-size: 16px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Lora', sans-serif;
+	
+	/* Theme Colors */
+		--theme__color__primary: #222222; 
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --layout__max-width: 1650px;
+}
+.header-container {
+    --fluid-container-width: 1720px;
+}
+.fs_58 {
+ font-size: 58px;
+}
+.fs_31 {
+ font-size: 31px;
+}
+.max-width-368 {
+    max-width: 380px;
+}
+.products-grid .product-item-details {
+    text-align: center;
+}
+.products-grid .product-item-details .price-box {
+    justify-content: center;
+}
+.w-390 .widget-product-advanced {
+    max-width: 390px;
+    margin: auto;
+}
+.text_banner_bottom {
+font-size: 16px;
+    line-height: 1.75;
+   max-width: 570px;
+    margin: auto;
+}
+.text_headding_banner {
+    max-width: 400px;
+    font-weight: 500;
+    line-height: 1.34em;
+    margin: auto;
+text-align: center;
+    margin-bottom: 17px;
+}
+.page-builder-gallery-container .elementor-img-item {
+opacity: 0.4;
+}
+.page-builder-gallery-container .elementor-img-item:hover {
+opacity: 1;
+}
+
+@media (min-width: 768px) {
+.slider_full-right .slick-slider {
+    margin-right: calc(-1*((100vw - 95% + 30px)/2));
+}
+}
+@media (min-width: 1750px) {
+.slider_full-right .slick-slider {
+    margin-right: calc(-1*((100vw - 1620px)/2));
+}
+}
+@media only screen and (max-width: 767px) {
+.fs_58 {
+ font-size: 32px;
+}
+.fs_31 {
+ font-size: 18px;
+}
+.fs_42 {
+    margin-bottom: 25px !important;
+}
+}

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customerprice" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Price Per Customer</label>
+            <tab>magedelight</tab>
+            <class>md_section_customerprice</class>
+            <resource>Magedelight_Customerprice::config_customerprice</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="version" type="label" translate="label" sortOrder="0" showInDefault="1" showInStore="0" showInWebsite="0">
+                    <label>Version</label>
+                    <backend_model>Magedelight\Customerprice\Model\Config\Backend\Version</backend_model>
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="hide_price" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide Customer Price on listing and search</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[<span style="color:red !important; font-weight:bold;">Warning: </span>If No then This may impact webpage speed or performance.]]>
+                    </comment>
+                </field>
+                <field id="show_price" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Regular Price on listing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="hide_price">1</field>
+                    </depends>
+                </field>
+                <field id="display_button" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display "View your Price" option on listing </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="hide_price">1</field>
+                    </depends>
+                </field>
+                <field id="display_button_label" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"View your Price" button label</label>
+                    <depends>
+                        <field id="display_button">1</field>
+                        <field id="hide_price">1</field>
+                    </depends>
+                </field>
+                <field id="ajax_price" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Ajax based Price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="hide_price">0</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[Ajax will work on Catalog List Page, Magento Search Result Page and Customer Special Price Page. Ajax will only work with Magento Pagination.]]>
+                    </comment>
+                </field>
+                <field id="ask_specialprice" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ask Special Price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[Customer will see button to ask price by filling form (Name, Email, Special Price, Flat Amount or Discount)]]>
+                    </comment>
+                </field>
+                <field id="display_ask_specialprice_button_label" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Ask Special Price" button label</label>
+                    <depends>
+                        <field id="ask_specialprice">1</field>
+                    </depends>
+                </field>
+                <field id="approve_email_template" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Special Price Approve Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="ask_specialprice">1</field>
+                    </depends>
+                </field>
+                <field id="disapprove_email_template" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Special Price Disapprove Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="ask_specialprice">1</field>
+                    </depends>
+                </field>
+                <field id="enable_customer_groupprice" translate="label" type="select" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled Customer Group Prices</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="advanceprice" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply customer discount on final price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Name</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="identifier" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>URL Identifier</label>
+                    <validate>required-entry validate-identifier</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="top_enable" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Link In Top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="footer_enable" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Link In Footer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="layout" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price Per Customer Page Layout</label>
+                    <source_model>Magedelight\Customerprice\Model\Source\Layouts</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field> 
+            </group>            
+            <group id="sample" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Import Export for Product Wise</label>
+                <field id="export" translate="label" type="Magedelight\Customerprice\Block\Adminhtml\Config\Form\Field\Export" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Export</label>
+                </field>
+                <field id="import" translate="label" type="Magedelight\Customerprice\Block\Adminhtml\Config\Form\Field\Import" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Import</label>
+                    <backend_model>Magedelight\Customerprice\Model\Config\Backend\Import</backend_model>
+                    <comment>
+                        <![CDATA[<span style="color:red !important; font-weight:bold;">Warning: </span>You can not import configurable, bundle and grouped product.]]>
+                    </comment>
+                </field>
+            </group>
+            <group id="categorysimple" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Import Export For Category Wise</label>
+                <field id="export" translate="label" type="Magedelight\Customerprice\Block\Adminhtml\Config\Form\Field\Exportcategory" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Export</label>
+                </field>
+                <field id="import" translate="label" type="Magedelight\Customerprice\Block\Adminhtml\Config\Form\Field\Importcategory" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Import</label>
+                    <backend_model>Magedelight\Customerprice\Model\Config\Backend\Importcategory</backend_model>
+                </field>
+            </group>
+            <group id="cron" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Cron Settings</label>
+                <field id="import_category" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable CRON to import category</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                    <![CDATA[
+                    Please upload csv file(pricepercategory.csv) inside media directory.
+                    ]]>
+                    </comment>
+                </field>
+                <field id="import_product" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable CRON to import product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                    <![CDATA[
+                    Please upload csv file(pricepercustomer.csv) inside media directory.
+                    ]]>
+                    </comment>
+                </field>
+                <field id="export_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable CRON to export category</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                    <![CDATA[
+                    Please find exported csv file inside var directory.
+                    ]]>
+                    </comment>
+                </field>
+                <field id="export_product" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable CRON to export product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                    <![CDATA[
+                    Please find exported csv file inside var directory.
+                    ]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

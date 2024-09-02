@@ -1,0 +1,50 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableCategoryView
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\TableCategoryView\Block\CatalogProduct\ListProduct $block */
+
+$url = $block->getReviewsUrl() . '#reviews';
+$urlForm = $block->getReviewsUrl() . '#review-form';
+?>
+<?php if ($block->isReviewEnabled() && $block->getReviewsCount()) : ?>
+    <?php $rating = $block->getRatingSummary(); ?>
+<div class="product-reviews-summary short<?= !$rating ? ' no-rating' : '' ?>">
+    <?php if ($rating) :?>
+    <div class="rating-summary">
+        <span class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span>
+        <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+            <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"><span><?= $block->escapeHtml($rating) ?>%</span></span>
+        </div>
+    </div>
+    <?php endif;?>
+    <div class="reviews-actions">
+        <a class="action view" href="<?= $block->escapeUrl($url) ?>"><?= $block->escapeHtml($block->getReviewsCount()) ?>&nbsp;<span><?= ($block->getReviewsCount() == 1) ? $block->escapeHtml(__('Review')) : $block->escapeHtml(__('Reviews')) ?></span></a>
+    </div>
+</div>
+<?php elseif ($block->isReviewEnabled() && $block->getDisplayIfEmpty()) : ?>
+<div class="product-reviews-summary short empty">
+    <div class="reviews-actions">
+        <a class="action add" href="<?= $block->escapeUrl($urlForm) ?>">
+            <?= $block->escapeHtml($block->getReviewText()) ?>
+        </a>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name='catalog_product_get_final_price'>
+        <observer name='Magedelight\Customerprice\Observer\ProcessFinalPrice' instance='Magedelight\Customerprice\Observer\ProcessFinalPrice'/>
+    </event>
+</config>

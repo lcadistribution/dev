@@ -1,0 +1,19 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+?>
+<div id="categoryprice_id" data-grid-id="categoryprice_id">
+    <div>
+        <div id="category-search" style="display: none;" class="admin__page-section category-search-items">
+            <?= /* @noEscape */ $block->getChildHtml('searchcategory') ?>
+        </div>
+        <section id="md-category-items" class="admin__page-section md-category-items" data-mage-init='{"loader": {}}'>
+        	<form id="edit_form" data-form="edit_form" method="post" enctype="multipart/form-data" >
+            	<?= /* @noEscape */ $block->getChildHtml('itemscategory') ?>
+            </form>
+        </section>
+    </div>
+</div>

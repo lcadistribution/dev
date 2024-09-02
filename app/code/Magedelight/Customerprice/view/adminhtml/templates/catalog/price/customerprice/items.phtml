@@ -1,0 +1,265 @@
+<?php
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+$productType = 'simple';
+//@codingStandardsIgnoreStart
+?>
+<div class="admin__field-complex">
+    <strong class="title"><?= /* @noEscape */
+        $block->getHeaderText() ?></strong>
+    <div class="admin__field-complex-elements">
+        <button class="action-default scalable add action-default primary" id="customer_price_add_customer"
+                onclick="showCustomerGrid();" type="button"><span>Add Customers</span></button>
+
+    </div>
+</div>
+<div class="loading-mask" id="loader" data-role="loader" style="display: none;">
+    <div class="popup popup-loading">
+        <div class="popup-inner"><img src="<?= /* @noEscape */
+            $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                                      alt="<?= /* @noEscape */
+                                         __('Loading...') ?>">Please wait...
+        </div>
+    </div>
+</div>
+<?= /* @noEscape */ $block->getChildHtml() ?>
+<script>
+
+    require(["jquery", "mage/calendar"], function($){
+
+        var pidVal = '<?=$block->getRequest()->getParam("id")?>';
+        
+        $(document).on('focus',".datepicker", function(){
+            $(this).datepicker({dateFormat:'yy-mm-dd',           
+            changeMonth: true,          
+            changeYear: true,                    
+            showMonthAfterYear: false,
+            minDate: 0});
+        });
+
+        $('.col-edit_action').click(function(e){
+            
+            var qtyVal = $(this).parent().find('.col-qty').text();
+            var priceVal = $(this).parent().find('.col-new_price').text();
+            var dateVal = $(this).parent().find('.col-expiry_date').text();
+            var id = $.trim($(this).parent().find('.col-customerprice_id').text());
+            var cidVal = $.trim($(this).parent().find('.col-customer_id').text());
+            
+
+            $(this).parent().find('.col-qty').html('<input type="textbox" data-form-part="product_form" class="input-text admin__control-text qty required-entry validate-greater-than-zero" name="option[value]['+id+'][qty]" value='+qtyVal+'/>');
+
+            $(this).parent().find('.col-new_price').html('<input type="textbox" data-form-part="product_form" class="required-entry validate-zero-or-greater input-text admin__control-text required-entry _required" name="option[value]['+id+'][newprice]" value='+priceVal+'/>');
+
+            $(this).parent().find('.col-expiry_date').html('<input type="textbox" data-form-part="product_form" class="validate-date validate-date-range date-range-task_data-from input-text admin__control-text datepicker" name="option[value]['+id+'][date]" value='+dateVal+'/>');
+
+            $(this).parent().find('.col-customer_id').append('<input type="hidden"  data-form-part="product_form" name="option[value]['+id+'][pid]" value="'+pidVal+'" />');
+            
+            $(this).parent().find('.col-customer_id').append('<input type="hidden" data-form-part="product_form" name="option[value]['+id+'][cid]"  value="'+cidVal+'" />');
+
+            $(this).css('cursor', 'default').css('text-decoration', 'none').css('pointer-events','none');
+        });
+    });
+    
+    function showCustomerGrid() {
+        $('customer-search').show();
+        var el = $('customer_price_add_customer');
+        window.setTimeout(function () {
+            el.hide();
+        }, 10);
+    }
+
+    function closeCustomerpricePopup() {
+        jQuery('#customerprice_save_form').validation();
+        if (jQuery('#customerprice_save_form').validation('isValid')) {
+            jQuery(".product_form_product_form_customerpriceModal button[data-role='closeBtn']").trigger( "click" );
+        }
+    }
+
+    var templateText =
+        '<tr class="option-row">' +
+        '<td><\/td>' +
+        '<td><select class="admin__control-select" name="option[value][{{id}}][website]" data-form-part="product_form"><?php echo "{{website}}"?></select></td>'+
+        '<td><span><?= /* @noEscape */ "{{cid}}" ?></span><input type="hidden" data-form-part="product_form" name="option[value][{{id}}][cid]" value="{{cid}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+        '<td><span><?= /* @noEscape */ "{{cname}}" ?></span><input type="hidden" data-form-part="product_form" name="option[value][{{id}}][cname]" value="{{cname}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+        '<td><span><?= /* @noEscape */ "{{email}}" ?></span><input type="hidden" data-form-part="product_form" name="option[value][{{id}}][email]" value="{{email}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/><\/td>' +
+        '<td><input data-form-part="product_form" style="width:50%;" class="required-entry validate-zero-or-greater input-text admin__control-text required-entry _required {{css_class}}" type="text" name="option[value][{{id}}][newprice]" value="{{newprice}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/>&nbsp;{{sign}}<\/td>' +
+        '<td><input data-form-part="product_form" style="width:20px;" class="input-text admin__control-text qty required-entry validate-greater-than-zero" type="text" name="option[value][{{id}}][qty]" value="{{qty}}" <?php if ($block->getReadOnly()): ?> disabled="disabled"<?php endif; ?>/> and above <\/td>' +
+        '<td><input data-form-part="product_form" class="input-text admin__control-text datepicker" type="text" name="option[value][{{id}}][date]" value="{{date}}" /><\/td>' +
+        '<td id="delete_button_container_{{id}}">' +
+        '<input data-form-part="product_form" type="hidden" class="delete-flag" name="option[value][{{id}}][del]" value="" />' +
+        '<input data-form-part="product_form" type="hidden" class="delete-flag" name="option[value][{{id}}][pid]" value="{{pid}}" />' +
+        '<button class="action-delete delete-option" type="button"><span>Remove Customer</span><\/button>' +
+        '<\/td>' +
+        '<td><\/td>' +
+        '<\/tr>';
+
+
+    var attributeOption = {
+        table: jQuery('#customerprice_id_table'),
+        templateSyntax: /(^|.|\r|\n)({{(\w+)}})/,
+        templateText: templateText,
+        itemCount: 0,
+        totalItems: 0,
+        totalRows: 0,
+        isReadOnly: false,
+        add: function (data) {
+            this.template = new Template(this.templateText, this.templateSyntax);
+            var isNewOption = false;
+
+            var refTab = document.getElementById("customerprice_customer_search_grid_table").getElementsByTagName('tbody')[0];
+            for (var i = 0; row = refTab.rows[i]; i++) {
+                row = refTab.rows[i];
+                if (row.cells[0].children[0].down().checked) {
+                    for (var j = 0; col = row.cells[j]; j++) {
+                        data.cid = row.cells[1].firstChild.nodeValue;
+                        data.cname = row.cells[2].firstChild.nodeValue;
+                        data.email = row.cells[3].firstChild.nodeValue;
+                        data.newprice = "";
+                        data.pid = '<?= /* @noEscape */ $block->getRequest()->getParam("id") ?>';
+                        data.website = '<?php echo $this->getWebsiteHtml() ?>';
+                        data.date="";
+                    }
+                    data.sign = '';
+                    data.css_class = '';
+                    <?php if ($productType == 'bundle'): ?>
+                    data.sign = '%';
+                    data.css_class = 'validate-greater-than-zero validate-percents';
+                    <?php endif; ?>
+
+
+
+                    data.id = 'option_' + this.itemCount;
+                    isNewOption = true;
+
+                    //Element.insert(this.table, {after: this.template.evaluate(data)});
+                    jQuery('#customerprice_id_table').append(this.template.evaluate(data));
+                    this.itemCount++;
+                    row.cells[0].children[0].down().checked = false;
+                    this.totalRows++;
+                    if ($('no-customer')) {
+                       // $('no-customer').hide();
+                    }
+
+                }
+
+            }
+
+            if (isNewOption && !this.isReadOnly) {
+                this.enableNewOptionDeleteButton(data.id);
+            }
+            this.bindRemoveButtons();
+            //this.itemCount++;
+            this.totalItems++;
+            //this.updateItemsCountField();
+            attributeOption.hideProductGrid();
+        },
+        remove: function (event) {
+            var element = $(Event.findElement(event, 'tr')); // !!! Button already
+            // have table parent in safari
+            // Safari workaround
+            element.ancestors().each(function (parentItem) {
+                if (parentItem.hasClassName('option-row')) {
+                    element = parentItem;
+                    throw $break;
+                } else if (parentItem.hasClassName('box')) {
+                    throw $break;
+                }
+            });
+
+
+            if (element) {
+                var elementFlags = element.getElementsByClassName('delete-flag');
+                if (elementFlags[0]) {
+                    elementFlags[0].value = 1;
+                }
+
+                element.addClassName('no-display');
+                element.addClassName('template');
+                element.hide();
+
+                jQuery(element).find("input").removeClass("required-entry");
+                jQuery(element).find("input").removeClass("validate-zero-or-greater");
+
+                this.totalItems--;
+                this.totalRows--;
+                //this.updateItemsCountField();
+
+                if (this.totalRows == 0) {
+                    //$('no-customer').show();
+                    //$('product_customer_save').hide();
+                }
+            }
+        },
+        /*updateItemsCountField: function () {
+            if (this.totalItems > 0) {
+                $('option-count-check').value = '1';
+            } else {
+                $('option-count-check').value = '';
+            }
+        },*/
+        enableNewOptionDeleteButton: function (id) {
+            $$('#delete_button_container_' + id + ' button').each(function (button) {
+                //button.enable();
+                button.removeClassName('disabled');
+            });
+        },
+        bindRemoveButtons: function () {
+            var buttons = $$('.delete-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!$(buttons[i]).binded) {
+                    $(buttons[i]).binded = true;
+                    Event.observe(buttons[i], 'click', this.remove.bind(this));
+                }
+            }
+        },
+        bindRemoveButtonsOnLoad: function () {
+            var buttons = jQuery('.delete-option');
+            if (buttons.length > 0) {
+                this.totalRows++;
+            }
+            for (var i = 0; i < buttons.length; i++) {
+                if (!buttons[i].binded) {
+                    buttons[i].binded = true;
+                    jQuery(buttons[i]).bind("click", function (event) {
+                        attributeOption.remove(event);
+                    });
+                }
+                this.totalRows++;
+                //jQuery('#product_customer_save').show();
+            }
+        },
+        hideProductGrid: function () {
+            $('customer-search').hide();
+            $('customer_price_add_customer').show();
+        }
+
+    }
+
+    function addSelectedProduct() {
+        attributeOption.add(attributeOption);
+    }
+
+    attributeOption.bindRemoveButtonsOnLoad();
+
+
+</script>
+<style>
+    div.mage-error { color: red;}
+    .required-ppc span::after {
+        margin: 0 0 0 .5rem;
+        color: #e22626;
+        content: '*';
+    }
+     .ppc-admin-table .action-delete::before {
+        content: '\e630';
+        font-size: 2rem;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Admin Icons';
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        speak: none;}
+</style>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="md_customer_category_tab" sortOrder="80">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Customer in Category</label>
+        </settings>
+        <container name="md_customer_tab" sortOrder="160">
+            <htmlContent name="html_content">
+                <block name="custom_price_block" class="Magedelight\Customerprice\Block\Adminhtml\Category\AssignCustomer"/>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

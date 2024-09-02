@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Mageplaza
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Mageplaza.com license that is
+* available through the world-wide-web at this URL:
+* https://www.mageplaza.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category Mageplaza
+* @package Mageplaza_TableCategoryView
+* @copyright Copyright (c) Mageplaza (https://www.mageplaza.com/)
+* @license https://www.mageplaza.com/LICENSE.txt
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_product_view"/>
+    <head>
+        <css src="Mageplaza_TableCategoryView::css/mptcv-style.css" />
+    </head>
+    <body>
+        <referenceContainer name="product.info.form.options">
+            <block class="Mageplaza\TableCategoryView\Block\CatalogProduct\Select"
+                   name="product.info.options.wrapper.bottom" as="product_options_wrapper_bottom">
+            </block>
+        </referenceContainer>
+        <referenceContainer name="product.info.grouped.extra">
+            <block class="Mageplaza\TableCategoryView\Block\CatalogProduct\Select"
+                   name="product.info.options.wrapper.bottom.group" as="product_options_wrapper_bottom_group">
+            </block>
+        </referenceContainer>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Mageplaza\TableCategoryView\Block\CatalogProduct\Renderer\Configurable" name="mp.table.category.view.product.info.options" before="-" />
+            <referenceBlock name="product.info.options.swatches" remove="true"/>
+        </referenceBlock>
+        <referenceContainer name="product.info.options.configurable" remove="true"/>
+        <referenceContainer name="product.info.media" remove="true"/>
+        <referenceContainer name="product.info.review" remove="true"/>
+        <referenceContainer name="reviews.tab" remove="true"/>
+        <referenceContainer name="product.info.overview" remove="true"/>
+        <referenceContainer name="product.attributes" remove="true"/>
+        <referenceContainer name="product.info.details" remove="true"/>
+        <referenceContainer name="product.info.upsell" remove="true"/>
+        <referenceContainer name="catalog.product.related" remove="true"/>
+        <referenceContainer name="product.info.addto" remove="true"/>
+        <referenceContainer name="product.info.mailto" remove="true"/>
+        <referenceContainer name="addtocart.shortcut.buttons" remove="true"/>
+        <referenceContainer name="addtocart.shortcut.buttons.additional" remove="true"/>
+        <referenceContainer name="product.info.addtocart.bundle" remove="true"/>
+        <referenceContainer name="product.info.addtocart" remove="true"/>
+        <referenceContainer name="giftregistry.product.view.customize.button" remove="true"/>
+        <referenceContainer name="product.info.amshopby.morefrom" remove="true"/>
+        <referenceContainer name="bss.sdcp.block" remove="true"/>
+        <referenceBlock name="bss.sdcp.block" remove="true"/>
+        <referenceContainer name="product.info.stock.sku" remove="true"/>
+        <referenceContainer name="view.addto.wishlist" remove="true"/>
+        <referenceContainer name="page.main.title" remove="true"/>
+        <referenceContainer name="trust.Seal" remove="true"/>
+        <referenceContainer name="upsell.stock" remove="true"/>
+        <referenceContainer name="product-category" remove="true"/>
+        <referenceContainer name="extra.popup.link" remove="true"/>
+        <referenceContainer name="product.info.price" remove="true"/>
+        <referenceContainer name="ambanners.products" remove="true"/>
+        <referenceContainer name="ambanners.products.bottom" remove="true"/>
+        <referenceContainer name="ambanners.products.belowcart" remove="true"/>
+        <referenceContainer name="header" remove="true" />
+        <referenceContainer name="footer" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_AttrBaseSplitcart
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+
+$url = $block->getLogoUrl();
+if (!empty($url)) {
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag(
+        'style',
+        [],
+        '.admin__menu .item-attrbasesplitcart>a:before{content: "" !important;background:url("'.$url.'") 
+    no-repeat 50% 50%;opacity: 0.5;} .admin__menu .item-attrbasesplitcart:hover>a:before {opacity: 1;} 
+    .admin__menu .item-attrbasesplitcart._active>a:before {opacity: 1;}',
+        false
+    ); ?>
+    <?php
+}
+?>

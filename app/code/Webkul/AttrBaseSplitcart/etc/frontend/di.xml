@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Webkul Software.
+*
+* @category  Webkul
+* @package   Webkul_AttrBaseSplitcart
+* @author    Webkul Software Private Limited
+* @copyright Webkul Software Private Limited (https://webkul.com)
+* @license   https://store.webkul.com/license.html
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="attroverexecute" type="Webkul\AttrBaseSplitcart\Plugin\Controller\Checkout\Index\Index" sortOrder="1" />
+    </type>
+    <type name="Magento\Multishipping\Controller\Checkout\Addresses">
+        <plugin name="multipleaddresscheckoutsetquote" type="Webkul\AttrBaseSplitcart\Plugin\Controller\Checkout\Addresses" sortOrder="1" />
+    </type>
+</config>

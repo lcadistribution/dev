@@ -1,0 +1,61 @@
+<?php
+/**
+ *
+ * @var $block \Magento\Catalog\Block\Product\View
+ */
+?>
+<?php
+    $_product = $block->getProduct();
+?>
+<div class="product-askquestion-buttons">
+    <a href="#askquestion-popup" class="open-askquestion-popup"><i class="far fa-question-circle"></i><?= $block->escapeHtml(__('Ask a Question')) ?></a>
+</div>
+<div id="askquestion-popup" class="max-width-500 m-auto radius_as_form bg-white mfp-with-anim mfp-hide">
+    <div class="bls_popup-content p-5">
+        <form method="post" action="<?= $block->escapeUrl($this->getUrl('askquestion/index/save')) ?>" id="ContactFormAsk" accept-charset="UTF-8" class="contact-form" data-mage-init='{"validation": {}}'>
+            <input type="hidden" name="form_type" value="contact">
+            <input type="hidden" name="product_id" value="<?= $_product->getId()?>">
+            <h3 class="fs__36 mb_32 text-center"><?= $block->escapeHtml(__('Ask a Question')) ?></h3>
+            <div class="field mb-4 pb-2 askquestion-field-customer-name required">
+                <div class="control">
+                    <input type="text" name="customer_name" id="askquestion-customer-name"
+                        class="input-text" data-validate="{required:true}" aria-required="true" placeholder="<?= $block->escapeHtml(__('Your Name *')) ?>">
+                </div>
+            </div>
+            <div class="field mb-4 pb-2 askquestion-field-customer-email required">
+                <div class="control">
+                    <input type="email" name="email" id="askquestion-customer-email"
+                        class="input-text" data-validate="{required:true, 'validate-email':true}" aria-required="true" placeholder="<?= $block->escapeHtml(__('Your Email *')) ?>">
+                </div>
+            </div>
+            <div class="field mb-4 pb-2 askquestion-field-customer-phone required">
+                <div class="control">
+                    <input type="tel" name="phone" id="askquestion-customer-phone"
+                        class="input-text" data-validate="{required:true}" pattern="[0-9\-]*" aria-required="true" placeholder="<?= $block->escapeHtml(__('Your Phone *')) ?>">
+                </div>
+            </div>
+            <div class="field mb-4 pb-2 askquestion-field-message required">
+                <div class="control">
+                    <textarea rows="10" id="askquestion-message" name="message" data-validate="{required:true}"  placeholder="<?= $block->escapeHtml(__('Your Message *')) ?>"></textarea>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="button action primary"><span><?= $block->escapeHtml(__('Submit Now')) ?></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    require(['jquery',
+        'Blueskytechco_QuickviewProduct/js/model/jquery.magnific-popup.min',
+		], function ($, magnificPopup) {
+		$( document ).ready(function() {
+            $('.open-askquestion-popup').magnificPopup({
+                type:'inline',
+                midClick: true,
+                removalDelay: 500,
+                mainClass: 'mfp-zoom-in'
+            });
+        });
+    });
+</script>

@@ -1,0 +1,61 @@
+/* Custom Data 2022-05-23 10:15:18: Do not change this file. */
+
+:root{
+	/* Page Width */
+	
+	/* Body Font */
+		--font-family-name__base: 'Jost', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Jost', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+		
+	/* Other Font */
+		--other_font_family: 'Jost', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	
+	/* Buttons Colors */
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+	
+	/* Custom Footer */
+	
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Customization Style */
+button.show_btn_pr_gallery.my-tooltip-top,
+.product-layout-1 .thumb_right .col_nav .slick-arrow{
+  display: none !important;
+}
+.products-grid .product-item .product_item_images .product-item-actions_middle .action:not(:hover){
+  background: #000;
+  border-color: #000;
+}
+.products-grid .product-item .product_item_images .product-item-actions_middle .action:not(:hover) span{
+  color: #fff;
+}

@@ -1,0 +1,175 @@
+/* Custom Data 2022-10-26 10:39:25: Do not change this file. */
+
+:root{
+	/* Page Width */
+		--layout__max-width: 1440px;
+	
+	/* Body Font */
+		--font-family-name__base: 'Roboto', sans-serif;
+			--font-size__base: 16px;
+			--text-weight: 400;
+	
+	/* Heading Font */
+			--heading__font-family__base: 'Playfair Display', sans-serif;
+			--heading__font-weight__base: 400;
+		
+	/* Menu Font */
+			--navigation-level0-item__font-family:  'Roboto', sans-serif;
+			--naviation-level0-item__font-size: 15px;
+			--navigation-level0-item__font-weight: 500;
+			
+	/* Other Font */
+		--other_font_family: 'Roboto', sans-serif;
+	
+	/* Theme Colors */
+	
+	/* Basic Colors */
+		
+	/* Buttons Colors */
+		--button__border-radius: 0px;
+				--button__color: #000000;
+	--button-primary__color: #000000;
+		 
+	--button-secondary-bg: #FFFFFF;
+	--button__background: #FFFFFF;
+	--button-primary__background: #FFFFFF;
+			--button__hover__background: #FDECF0;
+	--button-primary__hover__background: #FDECF0;
+			--button__hover__color: #823443;
+	--button-primary__hover__color: #823443;
+		
+	/* Custom Sticky Background Color */
+	
+	/* Custom Header */
+						
+	/* Custom Footer */
+			--footer-title-color: #000000;
+			--footer-links-color: #777777;
+			
+	/* Custom Menu */
+	
+	/* Page wraper */
+	}
+@media (min-width: 1200px){
+	.cms-index-index .header-absolute{
+			}
+	.cms-index-index .header-container:not(.header_scroll_up) .header_light{
+										}
+}
+
+
+	body{
+		font-weight: var(--text-weight);
+	}
+	body{
+		font-size: var(--font-size__base);
+	}
+	footer{
+		--footer-links-color: #777777;
+		--link__color: #777777;
+	}
+	.minicart-wrapper .block-content .actions .secondary .action.viewcart:not(:hover){
+		--heading__color__base: #000000;
+	}
+ 
+	button, .cart.table-wrapper .actions-toolbar > .action, .action-gift{
+		border: 1px solid var(--button__background);
+	}
+	
+
+/* Custom Header */
+header.page-header{
+	}
+
+
+
+/* Custom Footer */
+footer.page-footer{
+	}
+
+
+
+
+
+
+/* Customization Style */
+:root {
+    --link__hover__color: #999;
+--button__text_transform: uppercase;
+}
+.header-container .for-full-width-menu.blueskytechco-header.pt-xl-0.header_padding {
+    padding-bottom: 2px;
+    padding-top: 4px !important;
+    margin-top: 18px;
+    border-top: 1px solid #eee;
+}
+
+.navigation.horizontal .horizontal-list .level0 > a {
+    text-transform: uppercase;
+}
+.text-center .flex-layout {
+    justify-content: center;
+}
+.max_width_570 {
+max-width: 570px;
+}
+.max_width_440 {
+max-width: 440px;
+}
+.max_width_430 {
+max-width: 430px;
+}
+.margin_auto{
+    margin: auto;
+}
+.mobile_reverse h2 {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.327em;
+    color: #fff;
+}
+.mobile_reverse p {
+font-size: 15px;
+    line-height: 28px;
+    color: #fff;
+}
+.banner_button .pagebuilder-button-primary {
+    color: #823443;
+    border-color: #fdecf0;
+    background-color: #fdecf0;
+}
+.custom__grid_border {
+border-bottom-style: double;
+    border-bottom-width: 6px;
+    border-bottom-color: #eee;
+}
+.banner_h4 {
+    font-weight: 500;
+    font-style: italic;
+    line-height: 24px;
+    color: #823443;
+}
+[data-content-type='row'] .pagebuilder-button-link {
+font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #823443;
+--bls_border-height: 1px;
+    --bls_border-color: #823443;
+}
+[data-content-type='row'] .pagebuilder-button-link:hover {
+color: #823443;
+}
+.action.primary, .action-primary {
+border: 1px solid var(--button-primary__hover__background);
+}
+.product_item_images .action.primary, .product_item_images .action-primary {
+border: 1px solid var(--button-primary__hover__background);
+}
+
+
+@media only screen and (max-width: 767px) { 
+.mobile_reverse h2 {
+    font-size: 32px;
+}
+}

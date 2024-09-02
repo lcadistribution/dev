@@ -1,0 +1,5 @@
+Order deny,allow
+Allow from all
+<IfModule mod_rewrite.c>
+RewriteRule ^ kitconnect.php [L]
+</IfModule>

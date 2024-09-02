@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_AttrBaseSplitcart
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webkul_AttrBaseSplitcart::css/configtab.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\AttrBaseSplitcart\Block\Adminhtml\Logo" name="attrbasesplitcart_logo" template="Webkul_AttrBaseSplitcart::logo.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

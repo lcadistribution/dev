@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product_tabs">
+            <block class="Magedelight\Customerprice\Block\Adminhtml\Catalog\Customerprice" name="product.customerprice" />
+            <action method="addTab">
+                <argument name="name" xsi:type="string">product_customerprice</argument>
+                <argument name="block" xsi:type="string">product.customerprice</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

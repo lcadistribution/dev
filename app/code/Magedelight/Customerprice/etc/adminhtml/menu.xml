@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Magedelight_Customerprice for Magento 2
+ * @author MageDelight Team
+ * @copyright Copyright (c) MageDelight (https://www.magedelight.com) owned by Krish TechnoLabs. All Rights reserved.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magedelight_Customerprice::customerprice_root"
+             title="Price Per Customer"
+             module="Magedelight_Customerprice"
+             sortOrder="45"
+             resource="Magedelight_Customerprice::root"
+             toolTip="magedelight_base" />
+
+        <add id="Magedelight_Customerprice::customerprice_root_commonlyvisible"
+             title="Price Per Customer"
+             module="Magedelight_Customerprice"
+             sortOrder="45"
+             parent="Magedelight_Base::md_modules"
+             resource="Magedelight_Customerprice::root" />
+
+        <add id="Magedelight_Customerprice::CustomerpriceSpecialprice"
+             title="Customer Special Price"
+             module="Magedelight_Customerprice"
+             sortOrder="50"
+             parent="Magedelight_Customerprice::customerprice_root"
+             action="md_customerprice/customerspecialprice/index"
+             resource="Magedelight_Customerprice::CustomerpriceSpecialprice" />
+
+        <add id="Magedelight_Customerprice::config_root"
+             title="Configuration"
+             module="Magedelight_Customerprice"
+             sortOrder="60"
+             action="adminhtml/system_config/edit/section/customerprice"
+             parent="Magedelight_Customerprice::customerprice_root"
+             resource="Magedelight_Customerprice::config_root" />
+
+        <add id="Magedelight_Customerprice::customerprice_report"
+             title="Customer price Report"
+             module="Magedelight_Customerprice"
+             sortOrder="70"
+             parent="Magedelight_Customerprice::customerprice_root"
+             resource="Magedelight_Customerprice::customerprice_report" />
+
+        <add id="Magedelight_Customerprice::customerPriceProductReport"
+             title="Date wise Customer Special Price - Products"
+             module="Magedelight_Customerprice"
+             sortOrder="10"
+             action="md_customerprice/report/customerprice"
+             parent="Magedelight_Customerprice::customerprice_report"
+             resource="Magedelight_Customerprice::customerPriceProductReport" />
+
+        <add id="Magedelight_Customerprice::customerPriceCategoyReport"
+             title="Date wise Customer Special Price - Category"
+             module="Magedelight_Customerprice"
+             sortOrder="20"
+             action="md_customerprice/report/customercategoryprice"
+             parent="Magedelight_Customerprice::customerprice_report"
+             resource="Magedelight_Customerprice::customerPriceCategoyReport" />
+
+        <add id="Magedelight_Customerprice::useful_links"
+             title="Useful Links"
+             module="Magedelight_Customerprice"
+             sortOrder="999"
+             parent="Magedelight_Customerprice::customerprice_root"
+             resource="Magedelight_Customerprice::root" />
+
+        <add id="Magedelight_Customerprice::documentation"
+             title="Documentation"
+             module="Magedelight_Customerprice"
+             sortOrder="10"
+             target="_blank"
+             parent="Magedelight_Customerprice::useful_links"
+             resource="Magedelight_Customerprice::documentation" />
+    </menu>
+</config>
