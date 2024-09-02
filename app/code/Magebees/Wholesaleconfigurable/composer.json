@@ -1,0 +1,26 @@
+{
+  "name": "magebees/module-wholesaleconfigurable",
+  "description": "MageBees Wholesale Configurable Product Extension for Magento2. ",
+  "type": "magento2-module",
+  "version": "1.1.6",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "MageBees",
+      "email": "support@magebees.com",
+      "homepage": "https://www.magebees.com/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Magebees\\Wholesaleconfigurable\\": ""
+    }
+  }
+}

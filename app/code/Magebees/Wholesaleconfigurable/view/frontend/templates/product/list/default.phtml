@@ -1,0 +1,26 @@
+<?php  $helper = $this->helper('Magebees\Wholesaleconfigurable\Helper\Data'); ?>
+<?php  if($helper->moduleEnabled()){ ?>
+<?php $image_url = $block->getViewFileUrl('Magebees_Wholesaleconfigurable::images/mageb-loading.gif'); ?>
+	<div id="loadingImage">
+		<div><img src="<?php echo $image_url; ?>" alt="Loading..." /></div></div>
+	<script type="text/javascript">
+		//<![CDATA[
+		requirejs(['jquery','domReady!','wholesaleconfigurableoptions'], function($){	
+			document.getElementById('loadingImage').style['display']='none';	
+			 $('body').on('click','.magebees_options',function(e){
+				 e.preventDefault();			 
+				 document.getElementById('loadingImage').style['display']='block';
+				 var widget = $(this).wholesaleconfigurableoptions({});
+				 var url = $(this).attr('href');
+				 widget.wholesaleconfigurableoptions('productOptions',url);
+			 });	
+			
+			$('.magebees_options').each(function () {
+				$('#'+this.id).nextAll(".product-item-inner").find("div .actions-primary").hide();
+				$('#product-options-'+this.id).modal("openModal");
+				//$('#pagemessages-'+this.id+ '.messages').html('');
+			});
+		});
+		//]]>
+	</script>
+<?php } ?>

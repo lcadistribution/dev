@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<wholesaleconfigurable>
+			<setting>
+				<enabled>1</enabled>		
+				<expandno>3</expandno>		
+			    <displayattributes>availability,unitprice,subtotal</displayattributes>		
+				<hide_price_group> </hide_price_group>		
+				<customer_group>all</customer_group>		
+				<enabled_show_options>0</enabled_show_options>		
+				<enabled_add_to_cart>1</enabled_add_to_cart>		
+				<enabled_add_all_to_cart>1</enabled_add_all_to_cart>		
+				<enabled_min_qty>0</enabled_min_qty>		
+				<enabled_max_qty>0</enabled_max_qty>		
+			</setting>
+		</wholesaleconfigurable>
+    </default>
+</config>

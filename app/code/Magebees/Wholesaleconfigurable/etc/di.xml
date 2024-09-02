@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Checkout\Controller\Cart\Add" type="Magebees\Wholesaleconfigurable\Controller\Cart\Add" />
+	<preference for="Magento\Checkout\Controller\Cart\UpdateItemOptions" type="Magebees\Wholesaleconfigurable\Controller\Cart\UpdateItemOptions" />
+  <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="mageSetupProductDetailsHtml" type="Magebees\Wholesaleconfigurable\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
+    </type> 
+		
+		<!--Start for add quick view button in search page after ajax-->
+	<virtualType name="Magento\CatalogSearch\Block\SearchResult\ListProduct" type="Magento\Catalog\Block\Product\ListProduct">
+         <plugin name="mageSetupProductDetailsHtml" type="Magebees\Wholesaleconfigurable\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
+    </virtualType> 	
+	<!--End for add quick view button in search page after ajax-->
+</config>

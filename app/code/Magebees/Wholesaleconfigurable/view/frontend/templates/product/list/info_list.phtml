@@ -1,0 +1,773 @@
+<?php
+	use Magento\Framework\App\Action\Action;
+	$helper = $this->helper('Magebees\Wholesaleconfigurable\Helper\Data');
+	$productListing = $helper->productListing();
+	$moduleEnabled = $helper->moduleEnabled();
+
+	if($moduleEnabled)
+	{
+
+	$_product = $block->getProduct();
+	$productId = $block->getProduct()->getId();
+	$type = $block->getProduct()->getTypeId();
+	$obj = $helper->getObjectManager();
+	$productInfos = $obj->create('Magento\Catalog\Model\Product')->load($block->getProduct()->getId());
+	$postParams = $block->getAddToCartPostParams($productInfos);
+	$cartHelper = $this->helper('Magento\Checkout\Helper\Cart');
+	$hidePrice = $helper->getHidePrice();
+	$expandno = $helper->getExpandNo();
+	$eachRowAddtocart = $helper->eachRowAddtocart();
+	$addAlltocart = $helper->addAlltocart();
+	$groupAttribute = explode(",", $helper->getGroupAttribute());
+	$totalOption = 0;
+	if($type == 'configurable'){
+
+	$product = $obj->create('Magento\Catalog\Model\ProductRepository')
+	               ->getById($productId);
+	$configurableProduct = $obj->get('Magento\ConfigurableProduct\Helper\Data');
+	$wholesaleHelper = $helper;
+	$helper = $wholesaleHelper;
+
+	$cntprice = $obj->create('Magento\Catalog\Model\Product\Type\Price');
+
+	$productAttributes = $product->getTypeInstance(false)->getConfigurableAttributes($product);
+	$serlData = $wholesaleHelper->getChildrenInfo($product,$productAttributes);
+	$configurable_products = $helper->getserData(($serlData));
+	$disabled = '';
+	$itemsIds = array();
+	$cartIds = array();
+	$actionName = $helper->getActionName();
+	if($actionName == "checkout_cart_configure"){
+		$currentProductId = $helper->getCurrentProductId();
+		$cartProduct = $helper->getCartProduct($currentProductId);
+		if($cartProduct) {
+			$itemsIds =  $helper->getCartItems();
+			$cartIds =  $helper->getCartId();
+		}
+	}
+
+	if(!$expandno){
+		$expandno = 3;
+	}else{
+		$expandno = $expandno-1;
+	}
+	$totalOption = count($configurable_products['products']);
+	?>
+<?php if($helper->getActionName() != "catalog_product_view") { ?>
+<div id="result" class="optionmessage"> </div>
+<div class="wholesale-head">
+	<h3><?php echo $block->getProduct()->getName(); ?></h3>
+	<?php } ?>
+	<?php if($hidePrice): ?>
+	<?php if (in_array("subtotal", $groupAttribute)): ?>
+	<div class="grandtotal"><?php echo __('Total: '); ?> <span>0.00</span></div>
+	<?php endif; ?>
+	<?php endif; ?>
+	<?php if($addAlltocart): ?>
+	<div class="addalltocart">
+		<button type="submit" title="<?php echo $block->escapeHtml(__('Add All to Cart')); ?>"	class="action tocart primary"  id="savedata-<?php echo $productId ?>"  >
+		<span><?php /* @escapeNotVerified */ echo __('Add All to Cart') ?></span>
+		</button>
+	</div>
+</div>
+<form  id="saveForm-<?php echo $productId ?>"  method="post"> </form>
+<script type="text/javascript">
+	require([
+		'jquery',
+		'uiComponent',
+		'Magento_Customer/js/customer-data'
+	],
+
+	function(jQuery, Component, customerData) {
+
+		jQuery('#savedata-<?php echo $productId ?>, #savedataone-<?php echo $productId ?>').on('click', function (event){
+
+			event.stopImmediatePropagation();
+			var urldata = "<?php /* @escapeNotVerified */ echo $cartHelper->getAddUrl($block->getProduct()); ?>";
+			var dataString = jQuery('#saveForm-<?php echo $productId ?>').serialize();
+
+			jQuery.ajax({
+				url : urldata,
+				data: dataString,
+				dataType: 'json',
+				type: 'get',
+				showLoader:true,
+				success: function(res){
+					customerData.reload(['cart']);
+					customerData.reload(['messages']);
+
+				}
+			});
+			<?php if($helper->getActionName() != "catalog_product_view") { ?>
+
+			jQuery(document).ajaxComplete(function (event, xhr, settings) {
+				if (settings.url.indexOf("customer/section/load/?sections=messages") > 0) {
+					cartObj = xhr.responseJSON;
+					var res = JSON.parse(JSON.stringify(xhr));
+					var responseText = JSON.parse(res.responseText);
+					var text = 	responseText.messages.messages[0].text;
+					if(responseText.messages.messages[0].type == "success") {
+						jQuery('#result').removeClass('error');
+						jQuery('#result').addClass('success');
+					}else{
+						jQuery('#result').removeClass('success');
+						jQuery('#result').addClass('error');
+					}
+					jQuery('#result').html(text);
+				}
+				event.stopImmediatePropagation();
+			});
+		 <?php } ?>
+		});
+
+	});
+
+</script>
+<?php endif; ?>
+<?php if($totalOption > ($expandno+1)){ ?>
+<div onclick="expandCollapse('<?php echo "cwsprd-".$productId; ?>')" class="expand-collapse-top <?php echo "top-cwsprd-".$productId; ?>" align="right"><?php echo __('Expand All Options'); ?></div>
+<?php } ?>
+<div id="wholesale-configurable" class="table-wrapper">
+	<table class="configurable-product-table data-table cart-table data table">
+		<thead>
+			<tr class="first last">
+				<input type="hidden" name="configurable_grid_table" value="Yes" />
+				<input type="hidden" name="products" value="<?php echo $productId; ?>"/>
+				<?php if (in_array("image", $groupAttribute)): ?>
+				<th class="col item" scope="col"><?= /* @escapeNotVerified */ __('Image') ?></th>
+				<?php endif; ?>
+				<?php if (in_array("sku", $groupAttribute)): ?>
+				<th class="a-center Product Sku" data-th="Product Sku"><?php echo __('Sku'); ?></th>
+				<?php endif; ?>
+				<?php foreach($configurable_products['labels'] as $_label ) : ?>
+				<th class="a-center attributes" data-th="Size"><?php echo $_label; ?></th>
+				<?php endforeach ?>
+				<?php if (in_array("availability", $groupAttribute)): ?>
+				<th class="a-center avaibility" data-th="Availability"><?php echo __('Availability'); ?></th>
+				<?php endif;?>
+				<?php if($hidePrice): ?>
+				<?php if (in_array("unitprice", $groupAttribute)): ?>
+				<th class="a-center unit" data-th="Unit Price"><?php echo __('Unit Price'); ?></th>
+				<?php endif;?>
+				<?php endif;?>
+				<?php
+					$childProducts = $obj->create('Magento\ConfigurableProduct\Model\Product\Type\Configurable')->getUsedProducts($_product,null);
+
+					               foreach($childProducts as $child) {
+						$childId = $child->getId();
+						$childProduct = $obj->create('Magento\Catalog\Model\Product')->load($childId);
+						break;
+					}
+					?>
+				<?php $productInfoTh = 0; ?>
+				<th class="a-center qty" data-th="Qty"><?php echo __('Qty'); ?></th>
+				<?php if($hidePrice): ?>
+				<?php if (in_array("subtotal", $groupAttribute)): ?>
+				<th class="a-center price" data-th="Subtotal"><?php echo __('Subtotal'); ?></th>
+				<?php endif;?>
+				<?php endif;?>
+				<?php if($eachRowAddtocart) { ?>
+				<th class="a-center Action" data-th="Action"><?php echo __('Action'); ?></th>
+				<?php } ?>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $i = 0; ?>
+			<?php foreach($configurable_products['products'] as $productVal) : ?>
+			<?php
+				$childrenId = $productVal['info']['prod_id'];
+				$productInfo = $obj->create('Magento\Catalog\Model\Product')->load($childrenId);
+				$childrenName = $productInfo->getName();
+
+				$tier_price = $productVal['info']['tier_price'];
+				?>
+			<tr  <?php if($i > $expandno) { ?> class="cws-config-line toggle_container cws-<?php echo $i; ?> cwsprd-<?php echo $productId; ?>" style="display:none;" <?php }else{ ?> class="cws-config-line cws-<?php echo $i; ?> " <?php } ?>>
+				<input type="hidden" class="<?php echo "cws-".$childrenId; ?>" value="<?php echo "cws-".$i; ?>" name="row_name[<?php echo $childrenId; ?>]">
+				<?php if (in_array("image", $groupAttribute)): ?>
+				<td class="a-center">
+					<img src="<?php echo $helper->getProductImage($productInfo->getSku()) ; ?>" alt="<?php echo $productInfo->getName(); ?>" title="<?php echo $productInfo->getName();; ?>" />
+				</td>
+				<?php endif; ?>
+				<?php if (in_array("sku", $groupAttribute)): ?>
+				<td data-th="<?= $block->escapeHtml(__('Product Sku')) ?>" class="col item">
+					<strong class="product-item-name"><?= $block->escapeHtml($productInfo->getSku()) ?></strong>
+				</td>
+				<?php endif; ?>
+				<?php
+					$att_price = 0;
+					foreach($productVal['attributes'] as $att) : ?>
+				<?php $hidden_super_val = '<input type="hidden" name="super_attribute['.$childrenId.']['.$att['attribute_id'].']" class="cws-attribute-select"  value="'.$att['option_id'].'" data-label="'.$att['attribute_id'].'" data-childid ="'.$childrenId.'">';
+					?>
+				<td class="a-center attributes" data-th="Size">
+					<?php switch ($att['swatch_type']) {
+						case '3':
+						    ?>
+					<div class="swatch-option cws <?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						tabindex="-1"
+						option-type="3"
+						data-label="<?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						option-id="<?= /* @escapeNotVerified */ $att['option_id']; ?>"
+						option-label="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						option-tooltip-thumb=""
+						option-tooltip-value=""
+						></div>
+					<?php    break;
+						case '2':
+						    ?>
+					<?php
+						$swatchProduct = $obj->create('Magento\Swatches\Block\LayeredNavigation\RenderLayered');
+
+						$swatchThumbPath = $swatchProduct->getSwatchPath('swatch_thumb',  $att['swatch_value']);
+						$swatchImagePath = $swatchProduct->getSwatchPath('swatch_image',  $att['swatch_value']);
+						   ?>
+					<div class="swatch-option cws image <?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						tabindex="-1"
+						option-type="2"
+						data-label="<?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						option-id="<?= /* @escapeNotVerified */ $att['option_id']; ?>"
+						option-label="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						option-tooltip-thumb="<?= /* @escapeNotVerified */ $swatchThumbPath ?>"
+						option-tooltip-value=""
+						style="background: url(<?= /* @escapeNotVerified */ $swatchImagePath ?>) no-repeat center; background-size: initial;"></div>
+					<?php    break;
+						case '1':
+						    ?>
+					<div class="swatch-option cws color <?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						tabindex="-1"
+						data-label="<?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						option-type="1"
+						option-id="<?= /* @escapeNotVerified */ $att['option_id']; ?>"
+						option-label="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						option-tooltip-thumb=""
+						option-tooltip-value="<?= /* @escapeNotVerified */ $att['swatch_value'] ?>"
+						style="background: <?= /* @escapeNotVerified */ $att['swatch_value'] ?> no-repeat center; background-size: initial;"></div>
+					<?php    break;
+						case '0':
+						default:
+						    ?>
+					<div class="swatch-option cws text <?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						tabindex="-1"
+						data-label="<?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						option-type="0"
+						option-id="<?= /* @escapeNotVerified */ $att['option_id']; ?>"
+						option-label="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						option-tooltip-thumb=""
+						option-tooltip-value=""
+						><?= /* @escapeNotVerified */ $att['swatch_value'] ?></div>
+					<?php    break;
+						case '5':
+						                   ?>
+					<div class="select-option cws <?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						tabindex="-1"
+						data-label="<?= /* @escapeNotVerified */ $att['attribute_id']; ?>"
+						option-id="<?= /* @escapeNotVerified */ $att['option_id']; ?>"
+						option-label="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						option-tooltip-value="<?= /* @escapeNotVerified */ $att['value'] ?>"
+						><?= /* @escapeNotVerified */ $att['value'] ?></div>
+					<?php    break;
+						} ?>
+					<?php echo $hidden_super_val;?>
+				</td>
+				<?php endforeach ?>
+
+				<?php
+					$qty_label = '';
+
+					if(($productVal['info']['qty'] >= 1 && $productVal['info']['status_stock'] == 1)){
+						$qty_label =  $productVal['info']['qty'];
+						$disabled = '';
+					}elseif($productVal['info']['status_stock'] == 0){
+						$qty_label = __('Out of stock');
+						$disabled = 'readonly';
+					}else{
+						 $qty_label = __('Unlimited');
+						 $disabled = '';
+					}
+					?>
+				<?php if (in_array("availability", $groupAttribute)): ?>
+				<td class="a-center avaibility" data-th="Avaibility">
+					<?php echo $qty_label; 	?>
+				</td>
+				<?php endif; ?>
+				<!-- Start Add Unit Price -->
+				<?php
+					$att_price = 0;
+					$priceHelper = $obj->create('Magento\Framework\Pricing\Helper\Data');
+					$cartqty = '0';
+					$cartId = '';
+					if (array_key_exists($childrenId, $itemsIds)) {
+						$cartqty = $itemsIds[$childrenId];
+						$cartId = $cartIds[$childrenId];
+					}
+					if($cartqty) {
+						$subtotal = $helper->getSubTotal($cartqty,$productInfo->getId());
+					}else{
+						$subtotal = "0.00";
+					}
+					$cwsfinalprice = $priceHelper->currency($subtotal, true, false);
+					$subtotal =  $subtotal * $cartqty;
+					$finalsubtotal =  $priceHelper->currency($subtotal, true, false);
+					?>
+				<?php if($hidePrice): ?>
+				<?php if (in_array("unitprice", $groupAttribute)): ?>
+				<td class="a-center unit" data-th="Unit Price">
+					<?php echo $tier_price; ?>
+					<?php if($productInfo->getSpecialPrice()):?>
+					<p class="special-price">
+						<span class="price finalcwsprice">
+						<?php $prdPrice = number_format($helper->getHasSpecialPrice($productInfo) + $att_price,2); ?>
+						<?php echo $priceHelper->currency($prdPrice, true, false); ?>
+						</span>
+					</p>
+					<p class="old-price">
+						<span class="price">
+						<?php $prdPrices = number_format($productInfo->getPrice()+ $att_price,2); ?>
+						<?php echo $priceHelper->currency($prdPrices, true, false); ?>
+						</span>
+					</p>
+					<?php else:?>
+					<span class="regular-price">
+					<span class="price finalcwsprice">
+					<?php if($cartqty) { ?>
+					<?php echo $cwsfinalprice; ?>
+					<?php }else{ ?>
+					<?php $prdFinalPrice = number_format($productInfo->getFinalPrice() + $att_price,2); ?>
+					<?php echo $priceHelper->currency($prdFinalPrice, true, false); ?>
+					<?php } ?>
+					</span>
+					</span>
+					<?php endif;?>
+				</td>
+				<?php endif; ?>
+				<?php endif; ?>
+				<!-- End Add Unit Price -->
+				<td class="a-center qty" data-th="Qty">
+					<?php if ($qty_label != 'Out of stock'){ ?>
+					<div class="qty-box">
+						<?php
+							$arr = array();
+							foreach ($productVal['attributes'] as $productAttr) {
+								$arr[$productAttr['attribute_id']] = $productAttr['option_id'];
+							}
+
+							?>
+						<?php if($cartId) { ?>
+						<input type="hidden" value="<?php echo $cartId; ?>" name="cartid[<?php echo $childrenId; ?>]">
+						<?php }else{ ?>
+						<input type="hidden" value="add" name="cartid[<?php echo $childrenId; ?>]">
+						<?php } ?>
+						<input id="down" class="config-down-qty-button" value="-"  type="button">
+						<input type="text" min="0" data-id="<?php echo $childrenId.'_'.$_product->getId();?>" name="config_table_qty[<?php echo $childrenId; ?>]" value="<?php echo $cartqty; ?>" <?php echo $disabled; ?> id="super_group_qty_<?php echo $childrenId;?>" class="input-text qty config_qty" data-label="<?php echo $childrenId; ?>" onkeypress="javascript:return isNumber(event)" onInput="showCurrentValue(event)" form="saveForm-<?php echo $productId ?>">
+						<input id="up" class="config-up-qty-button" value="+"  type="button">
+						<input type="hidden" class="price_<?php echo $childrenId.'_'.$_product->getId();?> finalprice" value="<?php echo $att_price+ $productInfo->getFinalPrice() ?>" form="saveForm-<?php echo $productId ?>">
+						<input type="hidden" class="productid" value="<?php echo $att_price+ $productInfo->getId(); ?>" form="saveForm-<?php echo $productId ?>">
+						<input type="hidden" class="old_price_<?php echo $childrenId.'_'.$_product->getId();?>" value="<?php echo $productInfo->getPrice() + $att_price ?>" form="saveForm-<?php echo $productId ?>">
+						<input type="hidden" class="<?php echo "cws-".$childrenId; ?>" value="<?php echo "cws-".$childrenId; ?>" name="row_name[<?php echo $childrenId; ?>]" form="saveForm-<?php echo $productId ?>">
+						<input type="hidden" name="form_key" value="<?php echo $block->getFormKey() ?>" form="saveForm-<?php echo $productId ?>"/>
+						<?php $att_price = 0;
+							foreach($productVal['attributes'] as $att) {
+								$hidden_super_val = '<input type="hidden" name="super_attribute['.$childrenId.']['.$att['attribute_id'].']" class="cws-attribute-select"  value="'.$att['option_id'].'" data-label="'.$att['attribute_id'].'" data-childid ="'.$childrenId.'" form="saveForm-'.$productId.'">';
+								 echo $hidden_super_val;  } ?>
+
+
+					</div>
+					<?php if($helper->enabledMinQty() || $helper->enabledMaxQty()) { ?>
+					<div class="cws-help-icon">
+						<div class="control qty-content">
+						<?php if($helper->enabledMinQty()) { ?>
+						<?php $minSaleQty = $helper->getStockRegistry()->getStockItem($childrenId)->getMinSaleQty(); ?>
+							<span class="minsaleqty"><?php echo __('
+								Minimum '.$minSaleQty.' Qty Allowed in Shopping Cart.'); ?></span>
+							<?php } ?>
+							<?php if($helper->enabledMaxQty()) { ?>
+							<?php $maxSaleQty = $helper->getStockRegistry()->getStockItem($childrenId)->getMaxSaleQty(); ?>
+							<span class="maxsaleqty"><?php echo __('
+								Maximum '.$maxSaleQty.' Qty Allowed in Shopping Cart.'); ?></span>
+							<?php } ?>
+						</div>
+					</div>
+					<?php } ?>
+					<?php }else{
+						echo $block->escapeHtml(__('N/A'));
+						} ?>
+				</td>
+				<?php if($hidePrice): ?>
+				<?php if (in_array("subtotal", $groupAttribute)): ?>
+				<td class="a-center config-subtotal price total_<?php echo $childrenId.'_'.$_product->getId();?>" data-th="Subtotal">
+					<?php echo '<span>'.$finalsubtotal.'</span>' ?>
+				</td>
+				<?php endif; ?>
+				<?php endif; ?>
+				<?php if($eachRowAddtocart) { ?>
+				<td class="a-center cart-btn">
+					<?php if ($qty_label != 'Out of stock'){ ?>
+					<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $cartHelper->getAddUrl($block->getProduct()); ?>" method="post">
+						<?php
+							$att_price = 0;
+							foreach($productVal['attributes'] as $att) {
+								$hidden_super_val = '<input type="hidden" name="super_attribute['.$childrenId.']['.$att['attribute_id'].']" class="cws-attribute-select"  value="'.$att['option_id'].'" data-label="'.$att['attribute_id'].'" data-childid ="'.$childrenId.'">';
+								 echo $hidden_super_val;  } ?>
+						<input type="hidden" name="<?php  echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php if(isset($postParams['data'][Action::PARAM_NAME_URL_ENCODED])) { echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; } ?>" >
+						<input type="hidden" class="<?php echo "cws-".$childrenId; ?>" value="<?php echo "cws-".$childrenId; ?>" name="row_name[<?php echo $childrenId; ?>]" >
+						<input type="hidden" min="0" data-id="<?php echo $childrenId.'_'.$_product->getId();?>" name="config_table_qty[<?php echo $childrenId; ?>]" value="<?php echo $cartqty; ?>" id="super_group_qty_<?php echo $childrenId;?>_s" <?php echo $disabled; ?>  class="input-text qty config_qty" data-label="<?php echo $childrenId; ?>">
+						<input type="hidden" name="product" value="<?php if(isset($postParams['data']['product'])) { echo $postParams['data']['product']; } ?>">
+						<?php echo $block->getBlockHtml('formkey')?>
+						<button type="submit" title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"	class="action tocart primary">
+						<span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+						</button>
+					</form>
+					<script type="text/x-magento-init">
+						{
+							"[data-role=tocart-form], .form.map.checkout": {
+								"catalogAddToCart": {}
+							}
+						}
+					</script>
+					<?php }else{ ?>
+					<div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+					<?php } ?>
+				</td>
+				<?php } ?>
+			</tr>
+			<?php $i++; endforeach ?>
+		</tbody>
+	</table>
+</div>
+<?php if($totalOption > ($expandno+1)){ ?>
+<div onclick="expandCollapse('<?php echo "cwsprd-".$productId; ?>')" class="expand-collapse <?php echo "down-cwsprd-".$productId; ?>" align="right"><?php echo __('Expand All Options'); ?></div>
+<?php } ?>
+<?php if($hidePrice): ?>
+<?php if (in_array("subtotal", $groupAttribute)): ?>
+<div class="grandtotal"><?php echo __('Total: '); ?> <span>0.00</span></div>
+<?php endif; ?>
+<?php endif; ?>
+<?php }else{ ?>
+
+<?php $_product = $block->getProduct(); ?>
+<?php $_associatedProducts = $_product->getTypeInstance()->getAssociatedProducts($_product); ?>
+<?php $objGrp = $obj->create('Magento\GroupedProduct\Block\Product\View\Type\Grouped');
+	$productId = $_product->getId();
+?>
+<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+<form  id="saveForm-<?php echo $productId ?>"  method="post"> </form>
+
+<div class="addalltocart">
+		<button type="submit" title="<?php echo $block->escapeHtml(__('Add All to Cart')); ?>"	class="action tocart primary" name="saveForm-<?php echo $productId ?>" id="savedata-<?php echo $productId ?>">
+		<span><?php echo __('Add All to Cart') ?></span>
+		</button>
+</div>
+
+
+<div class="table-wrapper grouped" id="mb-group-products">
+	<?php if($addAlltocart): ?>
+
+	<script type="text/javascript">
+		require([
+			'jquery',
+			'uiComponent',
+			'Magento_Customer/js/customer-data'
+		],
+
+		function(jQuery, Component, customerData) {
+
+			jQuery('#savedata-<?php echo $productId ?>, #savedataone-<?php echo $productId ?>').on('click', function (event){
+
+				event.stopImmediatePropagation();
+				var urldata = "<?php /* @escapeNotVerified */ echo $cartHelper->getAddUrl($block->getProduct()); ?>";
+				var dataString = jQuery('#saveForm-<?php echo $productId ?>').serialize();
+
+				jQuery.ajax({
+					url : urldata,
+					data: dataString,
+					dataType: 'json',
+					type: 'get',
+					showLoader:true,
+					success: function(res){
+						customerData.reload(['cart']);
+						customerData.reload(['messages']);
+
+					}
+				});
+				<?php if($helper->getActionName() != "catalog_product_view") { ?>
+
+				jQuery(document).ajaxComplete(function (event, xhr, settings) {
+					if (settings.url.indexOf("customer/section/load/?sections=messages") > 0) {
+						cartObj = xhr.responseJSON;
+						var res = JSON.parse(JSON.stringify(xhr));
+						var responseText = JSON.parse(res.responseText);
+						var text = 	responseText.messages.messages[0].text;
+						if(responseText.messages.messages[0].type == "success") {
+							jQuery('#result').removeClass('error');
+							jQuery('#result').addClass('success');
+						}else{
+							jQuery('#result').removeClass('success');
+							jQuery('#result').addClass('error');
+						}
+						jQuery('#result').html(text);
+					}
+					event.stopImmediatePropagation();
+				});
+			 <?php } ?>
+			});
+
+		});
+
+	</script>
+
+	<?php endif; ?>
+	<table class="table data grouped" id="super-product-table">
+		<caption class="table-caption"><?= /* @escapeNotVerified */ __('Grouped product items') ?></caption>
+		<thead>
+			<tr>
+				<?php if (in_array("image", $groupAttribute)): ?>
+				<th class="col item" scope="col"><?= /* @escapeNotVerified */ __('Image') ?></th>
+				<?php endif; ?>
+				<th class="col item" scope="col"><?= /* @escapeNotVerified */ __('Product Name') ?></th>
+				<?php if (in_array("sku", $groupAttribute)): ?>
+				<th class="col item" scope="col"><?= /* @escapeNotVerified */ __('SKU') ?></th>
+				<?php endif; ?>
+				<?php if (in_array("availability", $groupAttribute)): ?>
+				<th class="a-center avaibility" data-th="Availability"><?php echo __('Availability'); ?></th>
+				<?php endif;?>
+				<?php if (in_array("unitprice", $groupAttribute)): ?>
+				<th class="col item" scope="col"><?= /* @escapeNotVerified */ __('Unit Price ') ?></th>
+				<?php endif; ?>
+				<?php if ($_product->isSaleable()): ?>
+				<th class="col qty" scope="col"><?= /* @escapeNotVerified */ __('Qty') ?></th>
+				<?php endif; ?>
+				<?php if (in_array("subtotal", $groupAttribute)): ?>
+				<?php if($hidePrice): ?>
+				<th class="a-center price" data-th="Subtotal"><?php echo __('Subtotal'); ?></th>
+				<?php endif; endif;?>
+				<th class="col item" scope="col"></th>
+			</tr>
+		</thead>
+		<?php if ($_hasAssociatedProducts): ?>
+		<tbody>
+		<?php foreach ($_associatedProducts as $_item): ?>
+
+			<tr class="cws-config-line">
+				<?php if (in_array("image", $groupAttribute)): ?>
+				<td class="a-center">
+					<img src="<?php echo $helper->getProductImage($_item->getSku()) ; ?>" alt="<?php echo $_item->getName(); ?>" title="<?php echo $_item->getName();; ?>" />
+				</td>
+				<?php endif; ?>
+				<td data-th="<?= $block->escapeHtml(__('Product Name')) ?>" class="col item">
+					<strong class="product-item-name"><?= $block->escapeHtml($_item->getName()) ?></strong>
+				</td>
+				<?php if (in_array("sku", $groupAttribute)): ?>
+				<td data-th="<?= $block->escapeHtml(__('Product Sku')) ?>" class="col item">
+					<strong class="product-item-name"><?= $block->escapeHtml($_item->getSku()) ?></strong>
+				</td>
+				<?php endif; ?>
+				<?php if (in_array("availability", $groupAttribute)): ?>
+				<?php
+					$stockData = $helper->getStockRegistry()->getStockItem($_item->getId());
+					if($stockData['use_config_manage_stock'] == 0){
+						$qty_label = __('Unlimited');
+					}elseif($stockData['use_config_manage_stock'] == 1){
+						if($stockData['is_in_stock'] == 1){
+							$qty_label = floor($stockData->getData('qty'));
+						}else{
+							$qty_label = __('Out of stock');
+						}
+					}else{
+						if($stockData['is_in_stock'] == 1){
+							$qty_label = floor($stockData->getData('qty'));
+						}else{
+							$qty_label = __('Out of stock');
+						}
+					}
+					?>
+				<td class="a-center avaibility" data-th="Availability"><?php echo $qty_label; ?></td>
+				<?php endif;?>
+				<?php if (in_array("unitprice", $groupAttribute)): ?>
+				<td class="a-center">
+					<?php if ($objGrp->getCanShowProductPrice($_product)): ?>
+					<?php if ($objGrp->getCanShowProductPrice($_item)): ?>
+					<?= /* @escapeNotVerified */ $objGrp->getProductPrice($_item) ?>
+					<?php endif; ?>
+					<?php endif; ?>
+				</td>
+				<?php endif; ?>
+				<?php if ($_product->isSaleable()): ?>
+				<td data-th="<?= $block->escapeHtml(__('Qty')) ?>" class="col qty">
+					<?php if ($_item->isSaleable()) : ?>
+
+					<div class="control qty">
+						<input  class="config-down-qty-button" value="-"  type="button">
+						<input type="text" min="0" data-id="<?php echo $_item->getId().'_'.$_product->getId();?>" name="super_group[<?php echo $_item->getId(); ?>]" value="0" id="super_group_qty_<?php echo $_item->getId();?>" class="input-text qty config_qty" data-label="<?php echo $_item->getId(); ?>" onkeypress="javascript:return isNumber(event)" onInput="showCurrentValue(event)" form="saveForm-<?php echo $productId ?>">
+						<input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $block->getProduct()->getId(); ?>" form="saveForm">
+						<input class="config-up-qty-button" value="+"  type="button">
+
+					</div>
+					<?php if($helper->enabledMinQty() || $helper->enabledMaxQty()) { ?>
+					<div class="cws-help-icon">
+						<div class="control qty-content">
+							<?php if($helper->enabledMinQty()) { ?>
+							<?php $minSaleQty = $helper->getStockRegistry()->getStockItem($_item->getId())->getMinSaleQty(); ?>
+							<span class="minsaleqty"><?php echo __('
+								Minimum '.$minSaleQty.' Qty Allowed in Shopping Cart.'); ?></span>
+							<?php } ?>
+							<?php if($helper->enabledMaxQty()) { ?>
+							<?php $maxSaleQty = $helper->getStockRegistry()->getStockItem($_item->getId())->getMaxSaleQty(); ?>
+							<span class="maxsaleqty"><?php echo __('
+								Maximum '.$maxSaleQty.' Qty Allowed in Shopping Cart.'); ?></span>
+							<?php } ?>
+						</div>
+					</div>
+					<?php } ?>
+					<?php else: ?>
+					<?php echo $block->escapeHtml(__('N/A')); ?>
+					<?php endif; ?>
+				</td>
+				<?php endif; ?>
+				<?php $att_price = 0; ?>
+				<?php if (in_array("subtotal", $groupAttribute)): ?>
+				<?php
+					$priceHelper = $obj->create('Magento\Framework\Pricing\Helper\Data');
+					$cartqty = '0';
+					if($cartqty) {
+						$subtotal = $helper->getSubTotal($cartqty,$_item->getId());
+					}else{
+						$subtotal = "0.00";
+					}
+					$cwsfinalprice = $priceHelper->currency($subtotal, true, false);
+					$subtotal =  $subtotal * $cartqty;
+					$finalsubtotal =  $priceHelper->currency($subtotal, true, false);
+					?>
+				<?php if($hidePrice): ?>
+				<td class="a-center config-subtotal price total_<?php echo $_item->getId().'_'.$_product->getId();?>" data-th="Subtotal">
+					<?php echo '<span>'.$finalsubtotal.'</span>' ?>
+				</td>
+				<?php endif; endif; ?>
+				<?php if($eachRowAddtocart) { ?>
+				<td class="a-center cart-btn">
+					<?php if ($_item->isSaleable()) : ?>
+					<?php
+						$productInfos = $obj->create('Magento\Catalog\Model\Product')->load($_item->getId());
+						$postParams = $block->getAddToCartPostParams($productInfos);
+						$cartHelper = $this->helper('Magento\Checkout\Helper\Cart');
+
+						?>
+					<form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $cartHelper->getAddUrl($productInfos); ?>" method="post">
+						<input type="hidden" min="0" data-id="<?php echo $_item->getId().'_'.$_product->getId();?>" name="qty" value="1" id="super_group_qty_<?php echo $_item->getId();?>_s" class="input-text qty config_qty" data-label="<?php echo $_item->getId(); ?>">
+						<input type="hidden" name="product" value="<?php if(isset($postParams['data']['product'])) { echo $postParams['data']['product']; } ?>">
+						<input type="hidden" class="productid" value="<?php echo $att_price+ $_item->getId(); ?>">
+						<?php echo $block->getBlockHtml('formkey')?>
+						<button type="submit" title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"	class="action tocart primary">
+						<span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+						</button>
+					</form>
+					<script type="text/x-magento-init">
+						{
+							"[data-role=tocart-form], .form.map.checkout": {
+								"catalogAddToCart": {}
+							}
+						}
+					</script>
+					<?php else: ?>
+					<div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+						<span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>
+					</div>
+					<?php endif; ?>
+				</td>
+				<?php } ?>
+			</tr>
+			<?php if ($objGrp->getCanShowProductPrice($_product)
+				&& $objGrp->getCanShowProductPrice($_item)
+				&& trim($objGrp->getProductPriceHtml(
+					$_item,
+					\Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+				))): ?>
+			<tr class="row-tier-price">
+				<td colspan="2">
+					<?php echo $helper->_pushTierPrice($_item);?>
+				</td>
+			</tr>
+			<?php endif; ?>
+
+		<?php endforeach; ?>
+			</tbody>
+		<?php else: ?>
+		<tbody>
+			<tr>
+				<td class="unavailable"
+					colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>">
+					<?= /* @escapeNotVerified */ __('No options of this product are available.') ?>
+				</td>
+			</tr>
+		</tbody>
+		<?php endif; ?>
+	</table>
+</div>
+<div id="validation-message-box"></div>
+<?php } ?>
+<?php if($addAlltocart): ?>
+<div class="addalltocart">
+	<button type="submit" title="<?php echo $block->escapeHtml(__('Add All to Cart')); ?>"	class="action tocart primary"  id="savedataone-<?php echo $productId ?>"  >
+	<span><?php /* @escapeNotVerified */ echo __('Add All to Cart') ?></span>
+	</button>
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+	require([
+		'jquery'
+	],
+
+	function(jQuery) {
+
+		jQuery(document).on('click', '.cws', function (event){
+			event.stopImmediatePropagation();
+			var optID = jQuery(this).attr('option-id');
+			var datalabel = jQuery(this).attr('data-label');
+			jQuery('.cws').each(function() {
+				jQuery('.'+datalabel).removeClass("selected");
+			});
+			jQuery(this).addClass("selected");
+		});
+
+		/** For mobile browsers - numeric allowed in qty. fix is below **/
+		if(/Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent))
+		{
+		  jQuery(".qty-box").find(".config_qty").prop("type", "number");
+		}
+	});
+	<?php if($totalOption > ($expandno+1)){ ?>
+	function expandCollapse(prdid) {
+		if(jQuery("."+prdid).css('display') == 'none') {
+			jQuery("."+prdid).show("slow");
+			jQuery(".down-"+prdid).html("Collapse Options");
+			jQuery(".top-"+prdid).html("Collapse Options");
+		} else {
+			jQuery("."+prdid).hide("slow");
+			jQuery(".down-"+prdid).html("Expand All Options");
+			jQuery(".top-"+prdid).html("Expand All Options");
+		}
+	}
+	<?php } ?>
+	function isNumber(evt) {
+		var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+		if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
+			return false;
+		}
+		return true;
+	}
+	function showCurrentValue(event){
+		 const id = event.target.id;
+		 const value = event.target.value;
+		 jQuery("#"+id+"_s").val(value);
+	}
+</script>
+<script type="text/x-magento-init">
+	{
+	"*": {
+		  "mbconfigurable_product": {
+		  "priceFormat":<?php echo $helper->getPriceFormat(); ?>,
+		  "actionUrl":"<?php echo $this->getUrl('wholesaleconfigurable/index/price/'); ?>"
+		}
+	 }
+	}
+
+</script>
+<?php }  ?>
