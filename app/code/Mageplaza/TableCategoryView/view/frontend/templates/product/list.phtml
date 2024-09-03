@@ -573,7 +573,7 @@ if ($rfqShow) {
 
 
                                     </div>
-                                    <div class="divTableCell">
+                                    <div class="divTableCell" style="width:150px">
                                            <?php if ($_product->isAvailable()) : ?>
                                         <input type="hidden"
                                                value="<?= $block->escapeHtmlAttr($_product->getTypeId()) ?>"
@@ -616,6 +616,7 @@ if ($rfqShow) {
                                         <?php if ($block->checkEnable('add_button')) : ?>
                                         <input type="checkbox" class="mptablecategory-checkbox">
                                         <?php else : ?>
+                                                <?php if ($_product->getTypeId() != 'configurable') : ?>
                                             <button class="mptablecategory-add-each"
                                                     product-id="<?= $block->escapeHtmlAttr($_product->getId()) ?>"
                                                     type="button">
@@ -639,6 +640,7 @@ if ($rfqShow) {
                                             }
 
                                             </script>
+                                           <?php endif; ?>
                                         <?php endif; ?>
                                         <?php endif; ?>
                                         <?php if ($rfqShow) : ?>

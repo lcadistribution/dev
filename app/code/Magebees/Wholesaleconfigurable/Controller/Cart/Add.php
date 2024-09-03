@@ -146,9 +146,7 @@ class Add extends \Magento\Framework\App\Action\Action
             } else {
                 $cartresult['status'] = false;
                 $this->messageManager->addError(
-                    __('Please specify the quantity of product(s).
-
-')
+                    __('Please specify the quantity of product(s).')
                 );
                 return $this->goBack();
             }

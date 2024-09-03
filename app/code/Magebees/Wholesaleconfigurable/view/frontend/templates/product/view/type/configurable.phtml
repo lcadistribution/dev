@@ -404,6 +404,7 @@ $disabled = '';
 					success: function(res){
 						customerData.reload(['cart']);
 						customerData.reload(['messages']);
+
 					}
 				});
 
@@ -421,6 +422,9 @@ $disabled = '';
 							jQuery('#result').addClass('error');
 						}
 						jQuery('#result').html(text);
+
+
+
 					}
 			    });
 			});

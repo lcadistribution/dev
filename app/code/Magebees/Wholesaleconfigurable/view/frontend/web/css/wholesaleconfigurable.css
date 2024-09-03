@@ -4,7 +4,7 @@
  Capacity Web Solutions Pvt. Ltd.
 
 /*============================================================================*/
-*, *:before, *:after { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; }
+
 
 #loadingImage{ position:fixed; top:0; right:0; margin:0 auto; text-align:center; width:100%; height:100%; z-index:1024; }
 #loadingImage > div { position:absolute; top:50%; -ms-transform:translateY(-50%); -webkit-transform:translateY(-50%); transform:translateY(-50%); left:0; right:0; margin:0 auto; width:70px; height:70px; background-color:#fff; box-shadow:0 0 7px #555; }
@@ -21,15 +21,15 @@
 .grandtotal{ float:left; }
 .addalltocart{ float:right; }
 
-.table-wrapper{ overflow-x: auto; margin-bottom: 0; border: none; }
-.configurable-product-table { margin:20px 0 85px; }
+#wholesale-configurable.table-wrapper{ overflow-x: auto; margin-bottom: 0; border: none; }
+.configurable-product-table { margin:20px 0 0px;; }
 .configurable-product-table > thead > tr > th,
-.configurable-product-table > tbody > tr > td, 
+.configurable-product-table > tbody > tr > td,
 .configurable-product-table > tfoot > tr > td { padding:10px 8px; text-align:center; font-size:1.4rem; border:1px solid #ddd; vertical-align:middle }
 .configurable-product-table > thead > tr > th{ background-color: #e4e4e4; }
 .configurable-product-table .qty-box{ position: relative; text-align: center; display: inline-block; vertical-align: middle; }
 .configurable-product-table td.a-center.qty{ min-width:100px; margin:0 auto; position:relative; }
-.configurable-product-table .qty-box .config-down-qty-button, 
+.configurable-product-table .qty-box .config-down-qty-button,
 .configurable-product-table .qty-box .config-up-qty-button{ position:absolute; top:0; left:0; font-size:14px; font-weight:bold; background-color:#ddd; color:#000; width:20px; height:30px; text-align:center; line-height:normal; cursor: pointer; border:none; padding:0; }
 .configurable-product-table .qty-box .config_qty{ width:80px; height:30px; border:1px solid #ddd; padding:0 22px; text-align:center; }
 .configurable-product-table .qty-box .config-up-qty-button { left:auto; right:0; }
@@ -77,9 +77,9 @@
 
 #mb-group-products { margin:0 auto; display:inline-block; width:100%; }
 #mb-group-products .addalltocart{ margin-bottom:20px; }
- 
+
 #super-product-table > thead > tr > th,
-#super-product-table > tbody > tr > td, 
+#super-product-table > tbody > tr > td,
 #super-product-table > tfoot > tr > td { padding:10px 8px; text-align:center; font-size:1.4rem; border:1px solid #ddd; vertical-align:middle; }
 #super-product-table > thead > tr > th{ background-color: #e4e4e4; }
 #super-product-table tr:nth-child(2n) { background-color: #f2f2f2; }
@@ -88,7 +88,7 @@
 #super-product-table .price-container .price { font-size: 1.4rem; line-height: normal; }
 #super-product-table .control.qty { position: relative; text-align: center; display: inline-block; vertical-align: middle; }
 #super-product-table td.qty{ min-width:100px; margin:0 auto; position:relative; }
-#super-product-table .control.qty .config-down-qty-button, 
+#super-product-table .control.qty .config-down-qty-button,
 #super-product-table .control.qty .config-up-qty-button{ position:absolute; top:0; left:0; font-size:14px; font-weight:bold; background-color:#ddd; color:#000; width:20px; height:30px; text-align:center; line-height:normal; cursor: pointer; border:none; padding:0; }
 #super-product-table .control.qty .config_qty{ width:80px; height:30px; border:1px solid #ddd; padding:0 22px; text-align:center; }
 #super-product-table .control.qty .config-up-qty-button { left:auto; right:0; }
@@ -106,7 +106,7 @@
 .product-info-main #super-product-table > tbody > tr > td { min-width:100px; }
 .product-info-main #super-product-table > tbody > tr > td .action.primary { min-width:110px; }
 .product-info-main #super-product-table > tbody > tr > td.qty { min-width:130px; }
- 
+
 .page-products .products-list .addalltocart .action,
 .page-products .products-list #super-product-table .action,
 .page-products .products-list .configurable-product-table .action { margin:0; }
@@ -126,31 +126,31 @@
 /*============================================================================*/
 
 @media only screen and (max-width:1198px) {
-	
+
 }
 
 @media only screen and (max-width:999px) {
 	.product-info-main .product-info-stock-sku {  }
 }
 
-@media only screen and (max-width:767px) {	
+@media only screen and (max-width:767px) {
 	.modal-popup .modal-header, .modal-popup .modal-content, .modal-popup .modal-footer { padding-left:20px; padding-right:20px; }
-	
+
 	.cws-help-icon{ display:none; }
 	.configurable-product-table { margin:20px 0 20px; }
 	.wholesale-head h3 { font-size:17px; margin:0 0 10px; }
 	.grandtotal{ margin:0 0 10px; }
 	.grandtotal span { font-size:25px; }
 	.grandtotal,.addalltocart { float:none; }
-	
+
 	.wholesale-action{ position:static; padding:0;background-color:transparent;box-shadow:none; }
-	
+
 	#super-product-table { margin:20px auto 20px; }
-	
+
 	.catalog-product-view .column.main { max-width:100%; }
 	.page-product-configurable .product-info-main .product-info-price { padding-left:15px; padding-right:15px; }
 	.page-product-configurable .product-info-main .product-info-stock-sku { padding:0; }
-	
+
 	.expand-collapse-top, .expand-collapse{ text-align:left; }
 }
 
@@ -167,14 +167,14 @@
 	.page-products .table-wrapper tbody tr td{ min-width:100%; }
 	#super-product-table > tbody > tr { margin-bottom:10px; }
 	#super-product-table > tbody > tr > td { margin-bottom:-1px !important; }
-	
+
 	.product-info-main #super-product-table { margin:0 auto 0; }
 	.product-info-main #mb-group-products { margin:0 auto 0; }
 	.product-info-main .product-info-stock-sku { padding-left:10px; padding-right:10px; }
-	
+
 }
 
 @media only screen and (max-width:480px) {
-	
+
 }
 

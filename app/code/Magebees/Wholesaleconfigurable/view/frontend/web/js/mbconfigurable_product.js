@@ -138,6 +138,35 @@ define([
                 }
 
             });
+
+
+			$(document).ready(function() {
+
+				$("a.add").click(function(event)
+				{
+
+					event.preventDefault();
+
+					let conditionnemment = $(this).data('conditionnemment_achat');
+					let div = $(this).closest('tr');
+					let currentVal =  parseInt(div.find('input.qty').val());
+					let myinput = div.find('input.qty');
+
+					if (currentVal == '0')
+					{
+						myinput.val(conditionnemment);
+					} else {
+						myinput.val(currentVal + conditionnemment);
+					}
+
+				});
+
+
+			});
+
+
+
+
 			
 			var sumTotal = 0;
 			$(".config-subtotal span").each(function () {
