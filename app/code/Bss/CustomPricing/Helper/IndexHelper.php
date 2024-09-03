@@ -93,31 +93,7 @@ class IndexHelper
      */
     public function cleanIndex($pPriceId = null, int $ruleId = null, int $pId = null)
     {
-        try {
-            $select = $this->resourceConnection->getConnection()->select()
-                ->from(
-                    ['i' => $this->resourceConnection->getTableName(
-                        \Bss\CustomPricing\Model\Indexer\IndexerAction::BSS_INDEX_TABLE_NAME
-                    )],
-                    []
-                );
 
-            if ($pPriceId !== null) {
-                if (!is_array($pPriceId)) {
-                    $pPriceId = [$pPriceId];
-                }
-                $select->where("i.id IN (?)", $pPriceId);
-            }
-            if ($ruleId !== null) {
-                $select->where("i.rule_id = ?", $ruleId);
-            }
-            if ($pId !== null) {
-                $select->where("i.product_id = ?", $pId);
-            }
-
-            $query = $select->deleteFromSelect('i');
-            $this->resourceConnection->getConnection()->query($query);
-        } catch (\Exception $e) {}
     }
 
     /**
@@ -127,17 +103,6 @@ class IndexHelper
      */
     public function reindexByRule(int $ruleId)
     {
-        $this->searchCriteriaBuilder->addFilter(ProductPriceInterface::RULE_ID, $ruleId);
-        $list = $this->productPriceRepository->getList(
-            $this->searchCriteriaBuilder->create()
-        );
-        $ids = [];
-
-        foreach ($list->getItems() as $item) {
-            $ids[] = $item->getId();
-        }
-
-        $this->reindex($ids);
     }
 
     /**
@@ -147,22 +112,6 @@ class IndexHelper
      */
     public function reindex($ids)
     {
-        if (empty($ids)) {
-            return;
-        }
 
-        if (!is_array($ids)) {
-            $ids = [$ids];
-        }
-
-        $isSchedule = $this->indexer->load(\Bss\CustomPricing\Model\Indexer\PriceRule::INDEX_ID)->isScheduled();
-        if (!$isSchedule) {
-            $this->priceRuleIndexer->executeList($ids);
-        }
-
-        if ($isSchedule) {
-            $this->backlogResolver->setBacklog($ids);
-            $this->indexer->invalidate();
-        }
     }
 }

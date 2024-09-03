@@ -440,7 +440,14 @@ abstract class AbstractCustomers extends \Magento\Rule\Model\Condition\AbstractC
         }
 
         if ($attr && $attr->getFrontendInput() == 'multiselect') {
-            $value = $model->getData($attrCode);
+            $customer =$this->customerRepositoryInterface->getById($model->getId());
+
+            if($customer->getCustomAttribute($attrCode) != null){
+                $value = $customer->getCustomAttribute($attrCode)->getValue();
+            } else {
+                $value = $model->getData($attrCode);
+            }
+
             if ($value !== null) {
                 $value = strlen($value) ? explode(',', $value) : [];
             } else {
