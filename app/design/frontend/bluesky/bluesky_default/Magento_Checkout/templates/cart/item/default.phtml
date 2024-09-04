@@ -16,8 +16,8 @@ $isVisibleProduct = $product->isVisibleInSiteVisibility();
 $helper = $this->helper(Magento\Msrp\Helper\Data::class);
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
 $smallest = '';
-?>
-<tbody class="cart item">
+?> 
+<tbody class="cart item item-id-<?= $_item->getId(); ?>" data-id-item="<?= $_item->getId(); ?>">
     <tr class="item-info">
         <td data-th="<?= $block->escapeHtmlAttr(__('Item')) ?>" class="col item">
             <?php if ($block->hasProductUrl()) :?>

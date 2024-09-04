@@ -18,26 +18,6 @@
                 </argument>
             </action>
         </referenceBlock>
-        <referenceBlock name="checkout.cart.shipping">
-            <arguments>
-                <argument name="jsLayout" xsi:type="array">
-                    <item name="components" xsi:type="array">
-                        <item name="block-summary" xsi:type="array">
-                            <item name="config" xsi:type="array">
-                                <item name="componentDisabled" xsi:type="boolean">true</item>
-                            </item>
-                        </item>
-                    </item>
-                </argument>
-            </arguments>
-        </referenceBlock>
-        <referenceBlock name="checkout.cart.form">
-            <arguments>
-                <argument name="cart_view_model" xsi:type="object">Webkul\AttrBaseSplitcart\ViewModel\ViewModelClass</argument>
-            </arguments>
-
-        </referenceBlock>
-
         <referenceContainer name="main.content">
             <container name="cart.top"  htmlTag="div" htmlClass="cart-top" before="-">
                 <container name="scd.ountdown"  htmlTag="div" htmlClass="scd-countdown" before="-">

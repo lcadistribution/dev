@@ -48,32 +48,6 @@
             </div>
             <?= $block->getChildHtml('minicart.addons') ?>
         </div>
-        <script>
-            require(['jquery'], function ($) {
-                var number_click = 1;
-                $('body').on('click', '.minicart-wrapper .qty-down-fixed-onclick', function(){
-                    var val_input = $(this).closest('div.field').find('.cart-item-qty').val();
-                    val_input = parseInt(val_input);
-                    if(val_input <= number_click){
-                        val_input = number_click;
-                    }
-                    else{
-                        val_input = val_input - number_click;
-                    }
-                    $(this).closest('div.field').find('.cart-item-qty').val(val_input);
-                    $(this).closest('.details-qty').find('.update-cart-item').show();
-                    return false;
-                });
-                $('body').on('click', '.minicart-wrapper .qty-up-fixed-onclick', function(){
-                    var val_input = $(this).closest('div.field').find('.cart-item-qty').val();
-                    val_input = parseInt(val_input);
-                    val_input = val_input + number_click;
-                    $(this).closest('div.field').find('.cart-item-qty').val(val_input);
-                    $(this).closest('.details-qty').find('.update-cart-item').show();
-                    return false;
-                });
-            });
-        </script>
     <?php else :?>
         <script>
             require(['jquery'], function ($) {
