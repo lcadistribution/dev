@@ -112,7 +112,7 @@ class ConfigurablePrice
         $productTable = $this->resource->getTableName('catalog_product_entity');
         $websiteId = $this->storeManager->getStore($storeId)->getWebsiteId();
         $customerGroupId = $this->customerSession->getCustomerGroupId();
-        $ifPrice = $this->resource->getConnection()->getIfNullSql('t.min_price', 'core_index.min_price');
+        $ifPrice = $this->resource->getConnection()->getIfNullSql('t.custom_price');
 
 
         $priceSelect = $this->resource->getConnection()->select()
@@ -121,31 +121,18 @@ class ConfigurablePrice
                 ['link' => $this->resource->getTableName('catalog_product_relation')],
                 "link.parent_id = parent.$linkField",
                 []
-            )->joinInner(
-                [BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS => $productTable],
-                sprintf('%s.entity_id = link.child_id', BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS),
-                []
-            )->joinRight(
-                [
-                    'core_index' => $this->resource->getTableName('catalog_product_index_price')
-                ],
-                sprintf('%s.entity_id = core_index.entity_id ', BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS),
-                []
             )->joinLeft(
                 [
-                    't' => $this->resource->getTableName('bss_custom_pricing_index')
+                    't' => $this->resource->getTableName('bss_product_price')
                 ],
                 sprintf(
-                    't.product_id = %s.entity_id AND t.rule_id IN (%s)',
-                    BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS,
+                    't.product_id = link.child_id AND t.rule_id IN (%s)',
                     $customerRule
                 ),
                 []
             )->where('parent.entity_id = ?', $parentProductId)
-            ->where('core_index.website_id = ?', $websiteId)
-            ->where('core_index.customer_group_id = ?', $customerGroupId)
             ->order('last_min_price ' . Select::SQL_ASC)
-            ->order(BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS . '.' . $linkField . ' ' . Select::SQL_ASC)
+
             ->limit(1);
         $data = $this->resource->getConnection()->fetchCol($priceSelect);
 
