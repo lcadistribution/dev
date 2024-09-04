@@ -200,7 +200,7 @@ class ConfigurablePrice
                 []
             )->where('parent.entity_id = ?', $parentProductId)
             ->where('t.custom_price IS NOT NULL')
-            ->order('last_min_price ' . Select::SQL_ASC)
+            ->order('t.custom_price ' . Select::SQL_ASC)
             ->order(BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS . '.' . $linkField . ' ' . Select::SQL_ASC)
             ->limit(1);
         $data = $this->resource->getConnection()->fetchCol($priceSelect);

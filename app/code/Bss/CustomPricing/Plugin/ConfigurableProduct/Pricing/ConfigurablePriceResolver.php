@@ -92,7 +92,7 @@ class ConfigurablePriceResolver
         if ($this->helperData->isEnabled()) {
             $ruleIds = $this->helperRule->getAppliedRules(null, false);
             if ($ruleIds) {
-                $minCustomPriceRule = $this->configurablePrice->getMinPrice($ruleIds, $parentProductId, $storeId);
+                $minCustomPriceRule = $this->configurablePrice->getMinPriceAlter($ruleIds, $parentProductId, $storeId);
                 if ($minCustomPriceRule) {
 
                     if($priceText < $minCustomPriceRule &&  $priceText > 0){
